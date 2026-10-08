@@ -5,6 +5,7 @@ import re
 import sys
 import time
 import xml.etree.ElementTree as ET
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from email.utils import format_datetime
 from pathlib import Path
@@ -359,18 +360,21 @@ def main():
 
     print("Discovered " + str(len(urls)) + " source items")
 
-    for index, url in enumerate(urls, 1):
-        if url in known:
-            continue
-        try:
-            episode = extract_episode(url)
-            if episode:
-                known[url] = episode
-                print("[" + str(index) + "/" + str(len(urls)) + "] added: " + episode["title"])
-            else:
-                print("[" + str(index) + "/" + str(len(urls)) + "] skipped (no direct MP3): " + url)
-        except Exception as exc:
-            print("[" + str(index) + "/" + str(len(urls)) + "] failed: " + url + " -> " + str(exc), file=sys.stderr)
+    pending = [(index, url) for index, url in enumerate(urls, 1) if url not in known]
+
+    with ThreadPoolExecutor(max_workers=12) as pool:
+        future_map = {pool.submit(extract_episode, url): (index, url) for index, url in pending}
+        for future in as_completed(future_map):
+            index, url = future_map[future]
+            try:
+                episode = future.result()
+                if episode:
+                    known[url] = episode
+                    print("[" + str(index) + "/" + str(len(urls)) + "] added: " + episode["title"])
+                else:
+                    print("[" + str(index) + "/" + str(len(urls)) + "] skipped (no direct MP3): " + url)
+            except Exception as exc:
+                print("[" + str(index) + "/" + str(len(urls)) + "] failed: " + url + " -> " + str(exc), file=sys.stderr)
 
     ordered = sorted(known.values(), key=sort_key, reverse=True)[:MAX_ITEMS]
     DATA_FILE.write_text(json.dumps(ordered, ensure_ascii=False, indent=2) + NL, encoding="utf-8")
