@@ -307,8 +307,8 @@ def main():
     current_year = datetime.now(timezone.utc).year
     known = {}
     for url, item in load_items().items():
-        match = re.search(r"\((?:[^()]*)\b(20\d{2})\)\s*$", item.get("title", ""))
-        if match and int(match.group(1)) >= current_year:
+        years = [int(y) for y in re.findall(r"\b(20\d{2})\b", item.get("title", ""))]
+        if years and max(years) >= current_year:
             known[url] = item
 
     try:
