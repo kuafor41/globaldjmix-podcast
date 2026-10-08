@@ -158,19 +158,23 @@ def extract_episode(url):
     title = clean(heading.get_text(" ", strip=True)) if heading else url
 
     # Prefer the date embedded in the article title when available.
-    title_date_match = re.search(
-        r"\((\d{1,2})\s+([A-Za-z]+)\s+(\d{4})\)\s*$",
-        title
-    )
     title_date = None
-    if title_date_match:
-        try:
-            title_date = datetime.strptime(
-                title_date_match.group(0).strip("()"),
-                "%d %B %Y"
-            ).replace(tzinfo=timezone.utc)
-        except ValueError:
-            title_date = None
+    date_match = re.search(
+        r"-(20\d{2})-([A-Za-z]+)-(\d{1,2})(?:$|[^A-Za-z])",
+        url
+    )
+    if date_match:
+        year = int(date_match.group(1))
+        month_name = date_match.group(2).lower()
+        day = int(date_match.group(3))
+        months = {
+            "january": 1, "february": 2, "march": 3, "april": 4,
+            "may": 5, "june": 6, "july": 7, "august": 8,
+            "september": 9, "october": 10, "november": 11, "december": 12
+        }
+        month = months.get(month_name)
+        if month:
+            title_date = datetime(year, month, day, tzinfo=timezone.utc)
 
     mp3 = find_mp3(soup, response.text)
     if not mp3:
