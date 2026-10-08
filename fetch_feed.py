@@ -300,11 +300,12 @@ def build_rss(items):
 
 def main():
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
-    known = {
-        url: item
-        for url, item in load_items().items()
-        if item.get("pubDate", "").startswith(str(datetime.now(timezone.utc).year))
-    }
+    current_year = datetime.now(timezone.utc).year
+    known = {}
+    for url, item in load_items().items():
+        match = re.search(r"\((?:[^()]*)\b(20\d{2})\)\s*$", item.get("title", ""))
+        if match and int(match.group(1)) >= current_year:
+            known[url] = item
 
     try:
         urls = discover_urls()
