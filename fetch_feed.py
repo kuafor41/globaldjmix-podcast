@@ -67,18 +67,11 @@ def discover_urls():
     body = response.text
     found = []
 
-    # GlobalDJMix may serve the RSS endpoint with Content-Type text/html and
-    # malformed/non-XML markup. Extract every same-site URL and filter it to
-    # article-style paths. This is intentionally independent of XML validity.
-    pattern = r"https?://(?:www\\.)?globaldjmix\\.com/[^\\"'<>\\s]+"
+    # The source endpoint is sometimes served as HTML rather than strict XML.
+    # Extract same-site URLs directly and filter them to article-style paths.
+    pattern = r"https?://(?:www\\.)?globaldjmix\\.com/\\S+"
     for match in re.findall(pattern, body, flags=re.I):
-        url = html.unescape(match).rstrip(".,);]")
-        if article_url(url):
-            found.append(url)
-
-    # The HTML version may encode some links without the scheme.
-    for match in re.findall(r"(?:https?://)?(?:www\\.)?globaldjmix\\.com/[A-Za-z0-9À-ž_\\-'.%]+", body, flags=re.I):
-        url = match if match.startswith("http") else "https://" + match
+        url = html.unescape(match).rstrip(".,);]>\\\"'")
         if article_url(url):
             found.append(url)
 
