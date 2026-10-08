@@ -337,7 +337,7 @@ def build_rss(items):
         "    <itunes:author>GlobalDJMix</itunes:author>",
         "    <itunes:explicit>no</itunes:explicit>",
         "    <itunes:type>episodic</itunes:type>",
-        "    <itunes:category text="Music" />",
+        '    <itunes:category text="Music" />',
         "    <lastBuildDate>" + format_datetime(datetime.now(timezone.utc)) + "</lastBuildDate>",
     ]
 
