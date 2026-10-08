@@ -14,158 +14,159 @@ import requests
 from bs4 import BeautifulSoup
 
 BASE = "https://globaldjmix.com"
-RSS_SOURCE = f"{BASE}/rss"
+SOURCE_RSS = BASE + "/rss"
 DATA_FILE = Path("data/items.json")
 OUTPUT_FILE = Path("rss.xml")
 MAX_ITEMS = 1000
 TIMEOUT = 30
-HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; GlobalDJMixPodcastRSS/1.0)"}
+NL = chr(10)
 
 session = requests.Session()
-session.headers.update(HEADERS)
+session.headers.update({
+    "User-Agent": "Mozilla/5.0 (compatible; GlobalDJMixPodcastRSS/1.0)"
+})
 
 
 def fetch(url, attempts=3):
-    last = None
-    for n in range(attempts):
+    last_error = None
+    for attempt in range(attempts):
         try:
-            r = session.get(url, timeout=TIMEOUT, allow_redirects=True)
-            r.raise_for_status()
-            return r
+            response = session.get(url, timeout=TIMEOUT, allow_redirects=True)
+            response.raise_for_status()
+            return response
         except Exception as exc:
-            last = exc
-            time.sleep(2 * (n + 1))
-    raise last
+            last_error = exc
+            time.sleep(2 * (attempt + 1))
+    raise last_error
 
 
 def clean(value):
-    return re.sub(r"s+", " ", value or "").strip()
+    return re.sub(r"\s+", " ", value or "").strip()
 
 
-def is_article_url(url):
+def article_url(url):
     try:
-        p = urlparse(url)
-        host = p.netloc.lower()
-        path = p.path.strip("/")
+        parsed = urlparse(url)
+        path = parsed.path.strip("/")
         blocked = {
-            "rss", "livedjsets", "topic", "best-mixes-by-month",
+            "", "rss", "livedjsets", "topic", "best-mixes-by-month",
             "livesets", "podcasts", "news"
         }
-        if host not in {"globaldjmix.com", "www.globaldjmix.com"} or not path:
-            return False
-        if "/" in path or path in blocked or len(path) <= 20:
-            return False
-        return True
+        return (
+            parsed.netloc.lower() in {"globaldjmix.com", "www.globaldjmix.com"}
+            and path not in blocked
+            and "/" not in path
+            and len(path) > 20
+        )
     except Exception:
         return False
 
 
-def discover():
-    response = fetch(RSS_SOURCE)
+def discover_urls():
+    response = fetch(SOURCE_RSS)
     root = ET.fromstring(response.content)
-    out = []
+    found = []
     for item in root.findall(".//item"):
-        link = item.findtext("link", default="")
-        link = urljoin(BASE, clean(link))
-        if is_article_url(link):
-            out.append(link)
-    return list(dict.fromkeys(out))
+        link = clean(item.findtext("link", default=""))
+        url = urljoin(BASE, link)
+        if article_url(url):
+            found.append(url)
+    return list(dict.fromkeys(found))
 
 
 def parse_date(text, label):
-    m = re.search(
-        re.escape(label) +
-        r"s*:s*(d{1,2}-[A-Za-z]{3}-d{4}|d{1,2}/d{1,2}/d{4})",
+    match = re.search(
+        re.escape(label) + r"\s*:\s*(\d{1,2}-[A-Za-z]{3}-\d{4}|\d{1,2}/\d{1,2}/\d{4})",
         text,
         re.I,
     )
-    if not m:
+    if not match:
         return None
     for fmt in ("%d-%b-%Y", "%d/%m/%Y"):
         try:
-            return datetime.strptime(m.group(1), fmt).replace(tzinfo=timezone.utc)
+            return datetime.strptime(match.group(1), fmt).replace(tzinfo=timezone.utc)
         except ValueError:
             pass
     return None
 
 
 def parse_size(text):
-    m = re.search(r"FileSize:s*([0-9.,]+)s*(MB|GB)", text, re.I)
-    if not m:
+    match = re.search(r"FileSize:\s*([0-9.,]+)\s*(MB|GB)", text, re.I)
+    if not match:
         return 0
-    value = float(m.group(1).replace(",", "."))
-    return int(value * (1024 ** 2 if m.group(2).upper() == "MB" else 1024 ** 3))
+    value = float(match.group(1).replace(",", "."))
+    return int(value * (1024 ** 2 if match.group(2).upper() == "MB" else 1024 ** 3))
 
 
-def find_enclosure(soup, source):
+def find_mp3(soup, source):
+    candidates = []
     for tag in soup.find_all(["a", "audio", "source"], href=True):
-        url = html.unescape(tag.get("href", "")).strip()
-        if "box.globaldjmix.com" in urlparse(url).netloc.lower() and url.startswith(("http://", "https://")):
+        candidates.append(html.unescape(tag.get("href", "")).strip())
+    for tag in soup.find_all(["audio", "source"], src=True):
+        candidates.append(html.unescape(tag.get("src", "")).strip())
+
+    for url in candidates:
+        host = urlparse(url).netloc.lower()
+        if "box.globaldjmix.com" in host and url.startswith(("http://", "https://")):
             if ".mp3" in url.lower() or "media" in url.lower():
                 return url
 
-    for tag in soup.find_all(["audio", "source"], src=True):
-        url = html.unescape(tag.get("src", "")).strip()
-        if "box.globaldjmix.com" in urlparse(url).netloc.lower():
-            return url
-
     patterns = [
-        r"""https?://[^"'<>\s]+.mp3(?:?[^"'<>\s]*)?""",
-        r"""https?:\/\/[^"'<>\s]+\.mp3(?:\?[^"'<>\s]*)?""",
+        r'''https?://[^"'<>\s]+\.mp3(?:\?[^"'<>\s]*)?''',
+        r'''https?:\\/\\/[^"'<>\s]+\.mp3(?:\\?[^"'<>\s]*)?''',
     ]
     for pattern in patterns:
-        m = re.search(pattern, source, re.I)
-        if m:
-            url = html.unescape(m.group(0)).replace("\/", "/")
+        match = re.search(pattern, source, re.I)
+        if match:
+            url = html.unescape(match.group(0)).replace("\\/", "/")
             if "box.globaldjmix.com" in urlparse(url).netloc.lower():
                 return url
     return None
 
 
-def extract(url):
+def extract_episode(url):
     response = fetch(url)
     soup = BeautifulSoup(response.text, "html.parser")
-    page_text = clean(soup.get_text(" ", strip=True))
+    text = clean(soup.get_text(" ", strip=True))
 
-    h1 = soup.find("h1")
-    title = clean(h1.get_text(" ", strip=True)) if h1 else url
-    enclosure = find_enclosure(soup, response.text)
-    if not enclosure:
+    heading = soup.find("h1")
+    title = clean(heading.get_text(" ", strip=True)) if heading else url
+
+    mp3 = find_mp3(soup, response.text)
+    if not mp3:
         return None
 
     duration_match = re.search(
-        r"Duration:s*(.+?)(?=s*(?:Audio Bitrate|Bitrate|FileSize|Post Date|Rec Date):)",
-        page_text,
-        re.I,
+        r"Duration:\s*(.+?)(?=\s*(?:Audio Bitrate|Bitrate|FileSize|Post Date|Rec Date):)",
+        text, re.I
     )
     bitrate_match = re.search(
-        r"Audio Bitrate:s*(.+?)(?=s*(?:FileSize|Post Date|Rec Date):)",
-        page_text,
-        re.I,
+        r"Audio Bitrate:\s*(.+?)(?=\s*(?:FileSize|Post Date|Rec Date):)",
+        text, re.I
     )
     genre_match = re.search(
-        r"Genre:s*(.+?)(?=s*Duration:)",
-        page_text,
-        re.I,
+        r"Genre:\s*(.+?)(?=\s*Duration:)",
+        text, re.I
     )
 
-    duration = clean(duration_match.group(1)) if duration_match else ""
-    bitrate = clean(bitrate_match.group(1)) if bitrate_match else ""
-    genre = clean(genre_match.group(1)) if genre_match else "DJ Mix"
-    pub_date = parse_date(page_text, "Post Date") or parse_date(page_text, "Rec Date") or datetime.now(timezone.utc)
-    rec_date = parse_date(page_text, "Rec Date")
+    pub_date = (
+        parse_date(text, "Post Date")
+        or parse_date(text, "Rec Date")
+        or datetime.now(timezone.utc)
+    )
+    rec_date = parse_date(text, "Rec Date")
 
     return {
         "guid": url,
         "title": title,
         "link": url,
-        "enclosure": enclosure,
+        "enclosure": mp3,
         "pubDate": pub_date.isoformat(),
         "recDate": rec_date.isoformat() if rec_date else None,
-        "genre": genre,
-        "duration": duration,
-        "bitrate": bitrate,
-        "filesize": parse_size(page_text),
+        "genre": clean(genre_match.group(1)) if genre_match else "DJ Mix",
+        "duration": clean(duration_match.group(1)) if duration_match else "",
+        "bitrate": clean(bitrate_match.group(1)) if bitrate_match else "",
+        "filesize": parse_size(text),
     }
 
 
@@ -174,11 +175,15 @@ def load_items():
         return {}
     try:
         raw = json.loads(DATA_FILE.read_text(encoding="utf-8"))
-        if isinstance(raw, list):
-            return {x["guid"]: x for x in raw if isinstance(x, dict) and x.get("guid")}
-        return raw if isinstance(raw, dict) else {}
     except Exception:
         return {}
+    if isinstance(raw, list):
+        return {
+            item["guid"]: item
+            for item in raw
+            if isinstance(item, dict) and item.get("guid")
+        }
+    return raw if isinstance(raw, dict) else {}
 
 
 def sort_key(item):
@@ -188,7 +193,7 @@ def sort_key(item):
         return datetime.min.replace(tzinfo=timezone.utc)
 
 
-def xml_escape(value, quote=False):
+def esc(value, quote=False):
     return html.escape(str(value or ""), quote=quote)
 
 
@@ -197,51 +202,55 @@ def cdata(value):
 
 
 def build_rss(items):
-    now = datetime.now(timezone.utc)
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">',
         "  <channel>",
-        "    <title>GlobalDJMix – DJ Mixes &amp; Live Sets</title>",
-        f"    <link>{BASE}/livedjsets</link>",
+        "    <title>GlobalDJMix - DJ Mixes &amp; Live Sets</title>",
+        "    <link>" + BASE + "/livedjsets</link>",
         "    <description>GlobalDJMix releases with direct audio enclosures for podcast players.</description>",
         "    <language>en</language>",
-        f"    <lastBuildDate>{format_datetime(now)}</lastBuildDate>",
         "    <itunes:author>GlobalDJMix</itunes:author>",
         "    <itunes:explicit>no</itunes:explicit>",
         "    <itunes:type>episodic</itunes:type>",
+        "    <itunes:category text=\"Music\" />",
+        "    <lastBuildDate>" + format_datetime(datetime.now(timezone.utc)) + "</lastBuildDate>",
     ]
 
     for item in items:
         dt = datetime.fromisoformat(item["pubDate"])
         description = (
-            f"Source: {item['link']}\n"
-            f"Genre: {item.get('genre', '')}\n"
-            f"Duration: {item.get('duration', '')}\n"
-            f"Audio: {item.get('bitrate', '')}"
+            "Source: " + item["link"] + NL
+            + "Genre: " + item.get("genre", "") + NL
+            + "Duration: " + item.get("duration", "") + NL
+            + "Audio: " + item.get("bitrate", "")
         )
         if item.get("filesize"):
-            description += f"\nFile size: {item['filesize'] / (1024 ** 2):.2f} MB"
+            description += NL + "File size: " + f'{item["filesize"] / (1024 ** 2):.2f} MB'
+
+        enclosure = (
+            '      <enclosure url="' + esc(item["enclosure"], quote=True)
+            + '" length="' + str(int(item.get("filesize") or 0))
+            + '" type="audio/mpeg" />'
+        )
 
         lines.extend([
             "    <item>",
-            f"      <title>{xml_escape(item['title'])}</title>",
-            f"      <guid isPermaLink="true">{xml_escape(item['guid'])}</guid>",
-            f"      <link>{xml_escape(item['link'])}</link>",
-            f"      <pubDate>{format_datetime(dt)}</pubDate>",
-            f"      <description>{cdata(description)}</description>",
-            f"      <category>{xml_escape(item.get('genre') or 'DJ Mix')}</category>",
-            f"      <enclosure url="{xml_escape(item['enclosure'], quote=True)}" length="{int(item.get('filesize') or 0)}" type="audio/mpeg" />",
+            "      <title>" + esc(item["title"]) + "</title>",
+            '      <guid isPermaLink="true">' + esc(item["guid"]) + "</guid>",
+            "      <link>" + esc(item["link"]) + "</link>",
+            "      <pubDate>" + format_datetime(dt) + "</pubDate>",
+            "      <description>" + cdata(description) + "</description>",
+            "      <category>" + esc(item.get("genre") or "DJ Mix") + "</category>",
+            enclosure,
             "      <itunes:episodeType>full</itunes:episodeType>",
         ])
         if item.get("duration"):
-            lines.append(f"      <itunes:duration>{xml_escape(item['duration'])}</itunes:duration>")
+            lines.append("      <itunes:duration>" + esc(item["duration"]) + "</itunes:duration>")
         lines.append("    </item>")
 
     lines.extend(["  </channel>", "</rss>"])
-    return "
-".join(lines) + "
-"
+    return NL.join(lines) + NL
 
 
 def main():
@@ -249,32 +258,32 @@ def main():
     known = load_items()
 
     try:
-        links = discover()
+        urls = discover_urls()
     except Exception as exc:
-        print(f"Failed to read {RSS_SOURCE}: {exc}", file=sys.stderr)
-        sys.exit(1)
+        print("Unable to read " + SOURCE_RSS + ": " + str(exc), file=sys.stderr)
+        return 1
 
-    print(f"Discovered {len(links)} source items from {RSS_SOURCE}")
+    print("Discovered " + str(len(urls)) + " source items")
 
-    for index, url in enumerate(links, 1):
+    for index, url in enumerate(urls, 1):
         if url in known:
             continue
         try:
-            item = extract(url)
-            if item:
-                known[url] = item
-                print(f"[{index}/{len(links)}] added: {item['title']}")
+            episode = extract_episode(url)
+            if episode:
+                known[url] = episode
+                print("[" + str(index) + "/" + str(len(urls)) + "] added: " + episode["title"])
             else:
-                print(f"[{index}/{len(links)}] skipped (no direct MP3): {url}")
+                print("[" + str(index) + "/" + str(len(urls)) + "] skipped (no direct MP3): " + url)
         except Exception as exc:
-            print(f"[{index}/{len(links)}] failed: {url} -> {exc}", file=sys.stderr)
+            print("[" + str(index) + "/" + str(len(urls)) + "] failed: " + url + " -> " + str(exc), file=sys.stderr)
 
     ordered = sorted(known.values(), key=sort_key, reverse=True)[:MAX_ITEMS]
-    DATA_FILE.write_text(json.dumps(ordered, ensure_ascii=False, indent=2) + "
-", encoding="utf-8")
+    DATA_FILE.write_text(json.dumps(ordered, ensure_ascii=False, indent=2) + NL, encoding="utf-8")
     OUTPUT_FILE.write_text(build_rss(ordered), encoding="utf-8")
-    print(f"Wrote {OUTPUT_FILE} with {len(ordered)} podcast episodes.")
+    print("Wrote " + str(OUTPUT_FILE) + " with " + str(len(ordered)) + " podcast episodes.")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
