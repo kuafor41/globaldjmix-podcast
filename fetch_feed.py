@@ -304,12 +304,11 @@ def build_rss(items):
 
 def main():
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
-    current_year = datetime.now(timezone.utc).year
+    # Rebuild the feed from the current GlobalDJMix listing on each run.
+    # This prevents the site's "Most popular" archive block from being carried
+    # into the podcast feed.
     known = {}
-    for url, item in load_items().items():
-        years = [int(y) for y in re.findall(r"\b(20\d{2})\b", item.get("title", ""))]
-        if years and max(years) >= current_year:
-            known[url] = item
+
 
     try:
         urls = discover_urls()
