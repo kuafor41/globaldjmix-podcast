@@ -168,6 +168,85 @@ def find_mp3(soup, source):
     return None
 
 
+
+def normalize_image_url(value, page_url):
+    if not value:
+        return None
+    value = html.unescape(str(value)).strip()
+    if not value or value.startswith(("data:", "javascript:", "#")):
+        return None
+    url = urljoin(page_url, value)
+    parsed = urlparse(url)
+    if parsed.scheme == "http" and parsed.netloc:
+        url = "https://" + parsed.netloc + parsed.path
+        if parsed.query:
+            url += "?" + parsed.query
+    return url
+
+
+def find_image(soup, page_url):
+    # 1) Social/SEO metadata is normally the exact featured image for the post.
+    meta_selectors = [
+        ("meta", {"property": "og:image"}),
+        ("meta", {"property": "og:image:url"}),
+        ("meta", {"name": "twitter:image"}),
+        ("meta", {"name": "twitter:image:src"}),
+    ]
+    for tag_name, attrs in meta_selectors:
+        tag = soup.find(tag_name, attrs=attrs)
+        if tag and tag.get("content"):
+            image = normalize_image_url(tag.get("content"), page_url)
+            if image:
+                return image
+
+    # 2) Common link-based featured image declaration.
+    link_tag = soup.find("link", rel=lambda value: value and "image_src" in value)
+    if link_tag and link_tag.get("href"):
+        image = normalize_image_url(link_tag.get("href"), page_url)
+        if image:
+            return image
+
+    # 3) JSON-LD article metadata.
+    for script in soup.find_all("script", type="application/ld+json"):
+        raw = script.string or script.get_text()
+        if not raw:
+            continue
+        try:
+            payload = json.loads(raw)
+        except Exception:
+            continue
+
+        objects = payload if isinstance(payload, list) else [payload]
+        for obj in objects:
+            if not isinstance(obj, dict):
+                continue
+            value = obj.get("image")
+            if isinstance(value, dict):
+                value = value.get("url")
+            elif isinstance(value, list):
+                value = value[0] if value else None
+                if isinstance(value, dict):
+                    value = value.get("url")
+            image = normalize_image_url(value, page_url)
+            if image:
+                return image
+
+    # 4) Fallback to the first sufficiently sized content image.
+    for img in soup.find_all("img"):
+        for attr in ("src", "data-src", "data-lazy-src", "data-original"):
+            value = img.get(attr)
+            image = normalize_image_url(value, page_url)
+            if image:
+                lower = image.lower()
+                if any(skip in lower for skip in (
+                    "logo", "icon", "avatar", "favicon", "sprite", "emoji"
+                )):
+                    continue
+                return image
+
+    return None
+
+
 def extract_episode(url):
     response = fetch(url)
     soup = BeautifulSoup(response.text, "html.parser")
@@ -179,6 +258,8 @@ def extract_episode(url):
     mp3 = find_mp3(soup, response.text)
     if not mp3:
         return None
+
+    image = find_image(soup, url)
 
     duration_match = re.search(
         r"Duration:\s*(.+?)(?=\s*(?:Audio Bitrate|Bitrate|FileSize|Post Date|Rec Date):)",
@@ -202,6 +283,7 @@ def extract_episode(url):
         "title": title,
         "link": url,
         "enclosure": mp3,
+        "image": image,
         "pubDate": pub_date.isoformat(),
         "recDate": rec_date.isoformat() if rec_date else None,
         "genre": clean(genre_match.group(1)) if genre_match else "DJ Mix",
@@ -250,12 +332,12 @@ def build_rss(items):
         "  <channel>",
         "    <title>GlobalDJMix - DJ Mixes &amp; Live Sets</title>",
         "    <link>" + BASE + "/livedjsets</link>",
-        "    <description>GlobalDJMix releases with direct audio enclosures for podcast players.</description>",
+        "    <description>GlobalDJMix releases with direct audio enclosures and episode artwork for podcast players.</description>",
         "    <language>en</language>",
         "    <itunes:author>GlobalDJMix</itunes:author>",
         "    <itunes:explicit>no</itunes:explicit>",
         "    <itunes:type>episodic</itunes:type>",
-        "    <itunes:category text=\"Music\" />",
+        "    <itunes:category text="Music" />",
         "    <lastBuildDate>" + format_datetime(datetime.now(timezone.utc)) + "</lastBuildDate>",
     ]
 
@@ -284,15 +366,26 @@ def build_rss(items):
             "      <pubDate>" + format_datetime(dt) + "</pubDate>",
             "      <description>" + cdata(description) + "</description>",
             "      <category>" + esc(item.get("genre") or "DJ Mix") + "</category>",
+        ])
+
+        if item.get("image"):
+            lines.append(
+                '      <itunes:image href="' + esc(item["image"], quote=True) + '" />'
+            )
+
+        lines.extend([
             enclosure,
             "      <itunes:episodeType>full</itunes:episodeType>",
         ])
         if item.get("duration"):
-            lines.append("      <itunes:duration>" + esc(item["duration"]) + "</itunes:duration>")
+            lines.append(
+                "      <itunes:duration>" + esc(item["duration"]) + "</itunes:duration>"
+            )
         lines.append("    </item>")
 
     lines.extend(["  </channel>", "</rss>"])
     return NL.join(lines) + NL
+
 
 
 def main():
