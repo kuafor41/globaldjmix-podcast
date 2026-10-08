@@ -64,20 +64,25 @@ def article_url(url):
 
 def discover_urls():
     response = fetch(SOURCE_RSS)
-    # GlobalDJMix's source feed contains a few non-XML-safe characters.
-    # Parse it as tolerant HTML and only extract the item links we need.
-    soup = BeautifulSoup(response.text, "html.parser")
+    body = response.text
     found = []
-    for item in soup.find_all("item"):
-        link_node = item.find("link")
-        if not link_node:
-            continue
-        link = clean(link_node.get_text(" ", strip=True))
-        url = urljoin(BASE, link)
+
+    # GlobalDJMix may serve the RSS endpoint with Content-Type text/html and
+    # malformed/non-XML markup. Extract every same-site URL and filter it to
+    # article-style paths. This is intentionally independent of XML validity.
+    pattern = r"https?://(?:www\\.)?globaldjmix\\.com/[^\\"'<>\\s]+"
+    for match in re.findall(pattern, body, flags=re.I):
+        url = html.unescape(match).rstrip(".,);]")
         if article_url(url):
             found.append(url)
-    return list(dict.fromkeys(found))
 
+    # The HTML version may encode some links without the scheme.
+    for match in re.findall(r"(?:https?://)?(?:www\\.)?globaldjmix\\.com/[A-Za-z0-9À-ž_\\-'.%]+", body, flags=re.I):
+        url = match if match.startswith("http") else "https://" + match
+        if article_url(url):
+            found.append(url)
+
+    return list(dict.fromkeys(found))
 
 def parse_date(text, label):
     match = re.search(
