@@ -64,10 +64,15 @@ def article_url(url):
 
 def discover_urls():
     response = fetch(SOURCE_RSS)
-    root = ET.fromstring(response.content)
+    # GlobalDJMix's source feed contains a few non-XML-safe characters.
+    # Parse it as tolerant HTML and only extract the item links we need.
+    soup = BeautifulSoup(response.text, "html.parser")
     found = []
-    for item in root.findall(".//item"):
-        link = clean(item.findtext("link", default=""))
+    for item in soup.find_all("item"):
+        link_node = item.find("link")
+        if not link_node:
+            continue
+        link = clean(link_node.get_text(" ", strip=True))
         url = urljoin(BASE, link)
         if article_url(url):
             found.append(url)
