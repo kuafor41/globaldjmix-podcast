@@ -19,7 +19,7 @@ SOURCE_RSS = BASE + "/rss"
 DATA_FILE = Path("data/items.json")
 OUTPUT_FILE = Path("rss.xml")
 MAX_ITEMS = None
-TIMEOUT = 30
+TIMEOUT = 20
 NL = chr(10)
 
 session = requests.Session()
@@ -448,7 +448,11 @@ def main():
 
     print("Discovered " + str(len(urls)) + " source items")
 
+    # Repair legacy enclosure URLs in-place (notably old HTTP box URLs).
     known = existing
+    for item in known.values():
+        item["enclosure"] = normalize_media_url(item.get("enclosure")) or item.get("enclosure")
+
     pending = [(index, url) for index, url in enumerate(urls, 1) if url not in known]
     print("Article pages to inspect: " + str(len(pending)))
 
