@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"><channel><title>GlobalDJMix – DJ Mixes &amp; Live Sets</title><link>https://globaldjmix.com/livedjsets</link><description>Initial feed; GitHub Actions will populate direct MP3 enclosures.</description><language>en</language></channel></rss>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <title>GlobalDJMix - DJ Mixes &amp; Live Sets</title>
+    <link>https://globaldjmix.com/livedjsets</link>
+    <description>GlobalDJMix releases with direct audio enclosures for podcast players.</description>
+    <language>en</language>
+    <itunes:author>GlobalDJMix</itunes:author>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:type>episodic</itunes:type>
+    <itunes:category text="Music" />
+    <lastBuildDate>Thu, 08 Oct 2026 18:20:12 +0000</lastBuildDate>
+  </channel>
+</rss>
