@@ -185,109 +185,102 @@ def verify_media_url(url):
     return None
 
 
-def find_mp3(soup, source):
+def find_download_page(soup, source):
     candidates = []
-    for tag in soup.find_all(["a", "audio", "source"], href=True):
-        candidates.append(html.unescape(tag.get("href", "")).strip())
+
+    # The article's visible "Download" / "Box" link is an intermediate page.
+    for tag in soup.find_all("a", href=True):
+        href = html.unescape(tag.get("href", "")).strip()
+        text_value = clean(tag.get_text(" ", strip=True)).lower()
+        if "box.globaldjmix.com" in urlparse(href).netloc.lower():
+            if (
+                "download" in text_value
+                or "/media/" in href.lower()
+                or re.search(r"/[A-Za-z0-9]{5,10}$", href)
+            ):
+                candidates.append(urljoin(source, href))
+
+    # Fall back to a raw box URL if it appears in page source.
+    for pattern in (
+        r'''https?://box\.globaldjmix\.com/\S+''',
+        r'''https?:\\/\\/box\.globaldjmix\.com\\/[^"'<>\s]+''',
+    ):
+        for match in re.findall(pattern, source, flags=re.I):
+            candidates.append(html.unescape(match).replace("\\/", "/").rstrip(".,);]>\"'"))
+
+    seen = set()
+    for candidate in candidates:
+        candidate = normalize_media_url(candidate)
+        if candidate and candidate not in seen:
+            seen.add(candidate)
+            return candidate
+
+    return None
+
+
+def find_direct_download_url(intermediate_url):
+    if not intermediate_url:
+        return None
+
+    try:
+        response = fetch(intermediate_url)
+    except Exception as exc:
+        print("Download page fetch failed: " + intermediate_url + " -> " + str(exc), file=sys.stderr)
+        return None
+
+    soup = BeautifulSoup(response.text, "html.parser")
+    candidates = []
+
+    # The actual file is behind the final "Download" link on the box page.
+    for tag in soup.find_all("a", href=True):
+        href = html.unescape(tag.get("href", "")).strip()
+        label = clean(tag.get_text(" ", strip=True)).lower()
+        if "download" in label:
+            candidates.append(urljoin(response.url, href))
+
+    # Sometimes the final file URL is in a form/action attribute.
+    for tag in soup.find_all(["form", "audio", "source"], action=True):
+        candidates.append(urljoin(response.url, html.unescape(tag.get("action", "")).strip()))
     for tag in soup.find_all(["audio", "source"], src=True):
-        candidates.append(html.unescape(tag.get("src", "")).strip())
+        candidates.append(urljoin(response.url, html.unescape(tag.get("src", "")).strip()))
 
-    for url in candidates:
-        host = urlparse(url).netloc.lower()
-        if "box.globaldjmix.com" in host and url.startswith(("http://", "https://")):
-            if ".mp3" in url.lower() or "media" in url.lower():
-                return url
+    # Prefer obvious MP3/audio URLs.
+    candidates = list(dict.fromkeys(candidates))
+    prioritized = sorted(
+        candidates,
+        key=lambda u: (
+            0 if ".mp3" in u.lower() else 1,
+            0 if "download" in u.lower() else 1,
+            0 if "box.globaldjmix.com" not in urlparse(u).netloc.lower() else 1,
+        )
+    )
 
-    patterns = [
-        r'''https?://[^"'<>\s]+\.mp3(?:\?[^"'<>\s]*)?''',
-        r'''https?:\\/\\/[^"'<>\s]+\.mp3(?:\\?[^"'<>\s]*)?''',
-    ]
-    for pattern in patterns:
-        match = re.search(pattern, source, re.I)
-        if match:
-            url = html.unescape(match.group(0)).replace("\\/", "/")
-            if "box.globaldjmix.com" in urlparse(url).netloc.lower():
-                return url
-    return None
+    for candidate in prioritized:
+        if candidate.startswith(("http://", "https://")):
+            verified = verify_media_url(candidate)
+            if verified:
+                return verified
 
-
-
-def normalize_image_url(value, page_url):
-    if not value:
-        return None
-    value = html.unescape(str(value)).strip()
-    if not value or value.startswith(("data:", "javascript:", "#")):
-        return None
-    url = urljoin(page_url, value)
-    parsed = urlparse(url)
-    if parsed.scheme == "http" and parsed.netloc:
-        url = "https://" + parsed.netloc + parsed.path
-        if parsed.query:
-            url += "?" + parsed.query
-    return url
-
-
-def find_image(soup, page_url):
-    # 1) Social/SEO metadata is normally the exact featured image for the post.
-    meta_selectors = [
-        ("meta", {"property": "og:image"}),
-        ("meta", {"property": "og:image:url"}),
-        ("meta", {"name": "twitter:image"}),
-        ("meta", {"name": "twitter:image:src"}),
-    ]
-    for tag_name, attrs in meta_selectors:
-        tag = soup.find(tag_name, attrs=attrs)
-        if tag and tag.get("content"):
-            image = normalize_image_url(tag.get("content"), page_url)
-            if image:
-                return image
-
-    # 2) Common link-based featured image declaration.
-    link_tag = soup.find("link", rel=lambda value: value and "image_src" in value)
-    if link_tag and link_tag.get("href"):
-        image = normalize_image_url(link_tag.get("href"), page_url)
-        if image:
-            return image
-
-    # 3) JSON-LD article metadata.
-    for script in soup.find_all("script", type="application/ld+json"):
-        raw = script.string or script.get_text()
-        if not raw:
-            continue
-        try:
-            payload = json.loads(raw)
-        except Exception:
-            continue
-
-        objects = payload if isinstance(payload, list) else [payload]
-        for obj in objects:
-            if not isinstance(obj, dict):
-                continue
-            value = obj.get("image")
-            if isinstance(value, dict):
-                value = value.get("url")
-            elif isinstance(value, list):
-                value = value[0] if value else None
-                if isinstance(value, dict):
-                    value = value.get("url")
-            image = normalize_image_url(value, page_url)
-            if image:
-                return image
-
-    # 4) Fallback to the first sufficiently sized content image.
-    for img in soup.find_all("img"):
-        for attr in ("src", "data-src", "data-lazy-src", "data-original"):
-            value = img.get(attr)
-            image = normalize_image_url(value, page_url)
-            if image:
-                lower = image.lower()
-                if any(skip in lower for skip in (
-                    "logo", "icon", "avatar", "favicon", "sprite", "emoji"
-                )):
-                    continue
-                return image
+    # Last resort: search the intermediate page source for direct media URLs.
+    for pattern in (
+        r'''https?://[^"'<>\\s]+\\.mp3(?:\\?[^"'<>\\s]*)?''',
+        r'''https?:\\/\\/[^"'<>\\s]+\\.mp3(?:\\?[^"'<>\\s]*)?''',
+    ):
+        for match in re.findall(pattern, response.text, flags=re.I):
+            candidate = html.unescape(match).replace("\\/", "/")
+            verified = verify_media_url(candidate)
+            if verified:
+                return verified
 
     return None
+
+
+def find_mp3(soup, source):
+    intermediate = find_download_page(soup, source)
+    if not intermediate:
+        return None
+    return find_direct_download_url(intermediate)
+
 
 
 def extract_episode(url):
@@ -299,7 +292,6 @@ def extract_episode(url):
     title = clean(heading.get_text(" ", strip=True)) if heading else url
 
     mp3 = find_mp3(soup, response.text)
-    mp3 = verify_media_url(mp3)
     if not mp3:
         return None
 
