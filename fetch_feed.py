@@ -157,6 +157,21 @@ def extract_episode(url):
     heading = soup.find("h1")
     title = clean(heading.get_text(" ", strip=True)) if heading else url
 
+    # Prefer the date embedded in the article title when available.
+    title_date_match = re.search(
+        r"\((\d{1,2})\s+([A-Za-z]+)\s+(\d{4})\)\s*$",
+        title
+    )
+    title_date = None
+    if title_date_match:
+        try:
+            title_date = datetime.strptime(
+                title_date_match.group(0).strip("()"),
+                "%d %B %Y"
+            ).replace(tzinfo=timezone.utc)
+        except ValueError:
+            title_date = None
+
     mp3 = find_mp3(soup, response.text)
     if not mp3:
         return None
@@ -175,11 +190,16 @@ def extract_episode(url):
     )
 
     pub_date = (
-        parse_date(text, "Post Date")
+        title_date
+        or parse_date(text, "Post Date")
         or parse_date(text, "Rec Date")
         or datetime.now(timezone.utc)
     )
     rec_date = parse_date(text, "Rec Date")
+
+    current_year = datetime.now(timezone.utc).year
+    if pub_date.year < current_year:
+        return None
 
     return {
         "guid": url,
@@ -280,7 +300,11 @@ def build_rss(items):
 
 def main():
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
-    known = load_items()
+    known = {
+        url: item
+        for url, item in load_items().items()
+        if item.get("pubDate", "").startswith(str(datetime.now(timezone.utc).year))
+    }
 
     try:
         urls = discover_urls()
