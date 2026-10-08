@@ -18,7 +18,7 @@ BASE = "https://globaldjmix.com"
 SOURCE_RSS = BASE + "/rss"
 DATA_FILE = Path("data/items.json")
 OUTPUT_FILE = Path("rss.xml")
-MAX_ITEMS = 1000
+MAX_ITEMS = None
 TIMEOUT = 30
 NL = chr(10)
 
@@ -63,79 +63,59 @@ def article_url(url):
         return False
 
 
-def discover_urls(max_pages=10):
-    # The current-release archive is paginated as /dj-songs-mp3-download?p=N.
-    # Each page contains the main chronological listing followed by a
-    # separate "Most popular DJ Mixes & Live Sets" block. We deliberately
-    # ignore everything after that marker.
+def extract_page_urls(body):
+    marker = re.search(r"Most popular DJ Mixes", body, flags=re.I)
+    main_body = body[:marker.start()] if marker else body
+    soup = BeautifulSoup(main_body, "html.parser")
     found = []
+    for tag in soup.find_all("a", href=True):
+        href = html.unescape(tag.get("href", "")).strip()
+        url = urljoin(BASE, href)
+        if article_url(url):
+            found.append(url)
+    return list(dict.fromkeys(found))
 
-    for page in range(1, max_pages + 1):
-        page_url = BASE + "/dj-songs-mp3-download"
-        if page > 1:
-            page_url += "?p=" + str(page)
 
+def archive_page_total(body):
+    match = re.search(r"Page\s+1\s+of\s+(\d+)", body, flags=re.I)
+    return int(match.group(1)) if match else 1401
+
+
+def discover_urls(full_backfill=False):
+    first_url = BASE + "/dj-songs-mp3-download"
+    response = fetch(first_url)
+    first_urls = extract_page_urls(response.text)
+
+    if not full_backfill:
+        return first_urls
+
+    total_pages = archive_page_total(response.text)
+    print("FULL BACKFILL: " + str(total_pages) + " archive pages")
+
+    urls_by_page = {1: first_urls}
+    page_numbers = list(range(2, total_pages + 1))
+
+    def fetch_page(number):
+        page_url = BASE + "/dj-songs-mp3-download?p=" + str(number)
         try:
-            response = fetch(page_url)
+            page_response = fetch(page_url)
+            return number, extract_page_urls(page_response.text)
         except Exception as exc:
-            print("Page unavailable: " + page_url + " -> " + str(exc), file=sys.stderr)
-            continue
+            print("Page " + str(number) + " failed: " + str(exc), file=sys.stderr)
+            return number, []
 
-        soup = BeautifulSoup(response.text, "html.parser")
+    with ThreadPoolExecutor(max_workers=16) as pool:
+        futures = [pool.submit(fetch_page, number) for number in page_numbers]
+        for future in as_completed(futures):
+            number, page_urls = future.result()
+            urls_by_page[number] = page_urls
+            if number % 100 == 0:
+                print("Fetched archive page " + str(number) + "/" + str(total_pages))
 
-        # Find the "Most popular" marker and only inspect links appearing
-        # before it in document order.
-        marker = None
-        for element in soup.find_all(string=re.compile(r"Most popular DJ Mixes", re.I)):
-            marker = element.parent
-            break
-
-        if marker:
-            all_links = soup.find_all("a", href=True)
-            for link in all_links:
-                if marker in list(link.parents):
-                    # This test handles nested markup. We still need to stop
-                    # only after passing the marker in document order below.
-                    pass
-
-        candidates = []
-        for link in soup.find_all("a", href=True):
-            # Stop once the marker element itself is reached.
-            if marker is not None and link is marker:
-                break
-            href = html.unescape(link.get("href", "")).strip()
-            url = urljoin(BASE, href)
-            if article_url(url):
-                candidates.append(url)
-
-        # If the marker is not directly encountered by the anchor scan,
-        # remove links belonging to the marker's following section using
-        # document-order positions.
-        if marker is not None:
-            marker_index = None
-            for index, tag in enumerate(soup.find_all(True)):
-                if tag is marker or marker in list(tag.parents):
-                    marker_index = index
-                    break
-            if marker_index is not None:
-                tags = soup.find_all(True)
-                candidates = []
-                for index, tag in enumerate(tags):
-                    if index >= marker_index:
-                        break
-                    if tag.name == "a" and tag.get("href"):
-                        url = urljoin(BASE, html.unescape(tag.get("href", "")).strip())
-                        if article_url(url):
-                            candidates.append(url)
-
-        page_found = list(dict.fromkeys(candidates))
-        print("Archive page " + str(page) + ": " + str(len(page_found)) + " article URLs")
-        found.extend(page_found)
-
-        # Empty pages normally indicate the end of the archive.
-        if not page_found:
-            break
-
+    found = []
+    for number in range(1, total_pages + 1):
+        page_urls = urls_by_page.get(number, [])
+        found.extend(page_urls)
     return list(dict.fromkeys(found))
 
 def parse_date(text, label):
@@ -196,28 +176,6 @@ def extract_episode(url):
     heading = soup.find("h1")
     title = clean(heading.get_text(" ", strip=True)) if heading else url
 
-    # Extract the publication date from the final "(DD Month YYYY)"
-    # portion of the article title.
-    title_date = None
-    title_date_match = re.search(
-        r"\((\d{1,2})\s+([A-Za-z]+)\s+(20\d{2})\)\s*$",
-        title
-    )
-    if title_date_match:
-        months = {
-            "january": 1, "february": 2, "march": 3, "april": 4,
-            "may": 5, "june": 6, "july": 7, "august": 8,
-            "september": 9, "october": 10, "november": 11, "december": 12
-        }
-        month = months.get(title_date_match.group(2).lower())
-        if month:
-            title_date = datetime(
-                int(title_date_match.group(3)),
-                month,
-                int(title_date_match.group(1)),
-                tzinfo=timezone.utc,
-            )
-
     mp3 = find_mp3(soup, response.text)
     if not mp3:
         return None
@@ -235,17 +193,9 @@ def extract_episode(url):
         text, re.I
     )
 
-    pub_date = (
-        title_date
-        or parse_date(text, "Post Date")
-        or parse_date(text, "Rec Date")
-        or datetime.now(timezone.utc)
-    )
+    post_date = parse_date(text, "Post Date")
     rec_date = parse_date(text, "Rec Date")
-
-    current_year = datetime.now(timezone.utc).year
-    if pub_date.year < current_year:
-        return None
+    pub_date = post_date or rec_date or datetime.now(timezone.utc)
 
     return {
         "guid": url,
@@ -259,6 +209,7 @@ def extract_episode(url):
         "bitrate": clean(bitrate_match.group(1)) if bitrate_match else "",
         "filesize": parse_size(text),
     }
+
 
 
 def load_items():
@@ -346,38 +297,46 @@ def build_rss(items):
 
 def main():
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
-    # Rebuild the feed from the current GlobalDJMix listing on each run.
-    # This prevents the site's "Most popular" archive block from being carried
-    # into the podcast feed.
-    known = {}
+    existing = load_items()
+    full_backfill = not bool(existing)
 
-
+    print("Mode: " + ("FULL BACKFILL" if full_backfill else "INCREMENTAL"))
     try:
-        urls = discover_urls()
+        # Full first run: all archive pages. Later runs: newest page only,
+        # because new content enters the front of the archive.
+        urls = discover_urls(full_backfill=full_backfill)
     except Exception as exc:
-        print("Unable to read " + SOURCE_RSS + ": " + str(exc), file=sys.stderr)
+        print("Unable to discover archive URLs: " + str(exc), file=sys.stderr)
         return 1
 
     print("Discovered " + str(len(urls)) + " source items")
 
+    known = existing
     pending = [(index, url) for index, url in enumerate(urls, 1) if url not in known]
+    print("Article pages to inspect: " + str(len(pending)))
 
-    with ThreadPoolExecutor(max_workers=12) as pool:
-        future_map = {pool.submit(extract_episode, url): (index, url) for index, url in pending}
+    with ThreadPoolExecutor(max_workers=16) as pool:
+        future_map = {
+            pool.submit(extract_episode, url): (index, url)
+            for index, url in pending
+        }
         for future in as_completed(future_map):
             index, url = future_map[future]
             try:
                 episode = future.result()
                 if episode:
                     known[url] = episode
-                    print("[" + str(index) + "/" + str(len(urls)) + "] added: " + episode["title"])
-                else:
-                    print("[" + str(index) + "/" + str(len(urls)) + "] skipped (no direct MP3): " + url)
             except Exception as exc:
-                print("[" + str(index) + "/" + str(len(urls)) + "] failed: " + url + " -> " + str(exc), file=sys.stderr)
+                print("Failed: " + url + " -> " + str(exc), file=sys.stderr)
 
-    ordered = sorted(known.values(), key=sort_key, reverse=True)[:MAX_ITEMS]
-    DATA_FILE.write_text(json.dumps(ordered, ensure_ascii=False, indent=2) + NL, encoding="utf-8")
+    ordered = sorted(known.values(), key=sort_key, reverse=True)
+    if MAX_ITEMS is not None:
+        ordered = ordered[:MAX_ITEMS]
+
+    DATA_FILE.write_text(
+        json.dumps(ordered, ensure_ascii=False, indent=2) + NL,
+        encoding="utf-8",
+    )
     OUTPUT_FILE.write_text(build_rss(ordered), encoding="utf-8")
     print("Wrote " + str(OUTPUT_FILE) + " with " + str(len(ordered)) + " podcast episodes.")
     return 0
