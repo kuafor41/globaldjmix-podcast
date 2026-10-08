@@ -63,19 +63,41 @@ def article_url(url):
 
 
 def discover_urls():
-    response = fetch(SOURCE_RSS)
-    body = response.text
-    found = []
+    # Prefer the site's public RSS endpoint. If the endpoint is served in a
+    # non-parseable/empty form to GitHub runners, fall back to the site's
+    # current "Recent new DJ Mixes & Live Sets" listing.
+    sources = [SOURCE_RSS, BASE + "/livedjsets"]
 
-    # The source endpoint is sometimes served as HTML rather than strict XML.
-    # Extract same-site URLs directly and filter them to article-style paths.
-    pattern = r"https?://(?:www\\.)?globaldjmix\\.com/\\S+"
-    for match in re.findall(pattern, body, flags=re.I):
-        url = html.unescape(match).rstrip(".,);]>\\\"'")
-        if article_url(url):
-            found.append(url)
+    for source_url in sources:
+        try:
+            response = fetch(source_url)
+        except Exception as exc:
+            print("Source unavailable: " + source_url + " -> " + str(exc), file=sys.stderr)
+            continue
 
-    return list(dict.fromkeys(found))
+        body = response.text
+        found = []
+
+        # Direct URL extraction works with both XML and HTML responses.
+        for match in re.findall(r"https?://(?:www\\.)?globaldjmix\\.com/\\S+", body, flags=re.I):
+            url = html.unescape(match).rstrip(".,);]>\\\"'")
+            if article_url(url):
+                found.append(url)
+
+        # HTML DOM fallback: inspect href attributes.
+        soup = BeautifulSoup(body, "html.parser")
+        for tag in soup.find_all("a", href=True):
+            href = html.unescape(tag.get("href", "")).strip()
+            url = urljoin(BASE, href)
+            if article_url(url):
+                found.append(url)
+
+        found = list(dict.fromkeys(found))
+        if found:
+            print("Using source " + source_url + " with " + str(len(found)) + " article URLs")
+            return found
+
+    return []
 
 def parse_date(text, label):
     match = re.search(
