@@ -62,42 +62,80 @@ def article_url(url):
         return False
 
 
-def discover_urls():
-    # Prefer the site's public RSS endpoint. If the endpoint is served in a
-    # non-parseable/empty form to GitHub runners, fall back to the site's
-    # current "Recent new DJ Mixes & Live Sets" listing.
-    sources = [SOURCE_RSS, BASE + "/livedjsets"]
+def discover_urls(max_pages=10):
+    # The current-release archive is paginated as /dj-songs-mp3-download?p=N.
+    # Each page contains the main chronological listing followed by a
+    # separate "Most popular DJ Mixes & Live Sets" block. We deliberately
+    # ignore everything after that marker.
+    found = []
 
-    for source_url in sources:
+    for page in range(1, max_pages + 1):
+        page_url = BASE + "/dj-songs-mp3-download"
+        if page > 1:
+            page_url += "?p=" + str(page)
+
         try:
-            response = fetch(source_url)
+            response = fetch(page_url)
         except Exception as exc:
-            print("Source unavailable: " + source_url + " -> " + str(exc), file=sys.stderr)
+            print("Page unavailable: " + page_url + " -> " + str(exc), file=sys.stderr)
             continue
 
-        body = response.text
-        found = []
+        soup = BeautifulSoup(response.text, "html.parser")
 
-        # Direct URL extraction works with both XML and HTML responses.
-        for match in re.findall(r"https?://(?:www\\.)?globaldjmix\\.com/\\S+", body, flags=re.I):
-            url = html.unescape(match).rstrip(".,);]>\\\"'")
-            if article_url(url):
-                found.append(url)
+        # Find the "Most popular" marker and only inspect links appearing
+        # before it in document order.
+        marker = None
+        for element in soup.find_all(string=re.compile(r"Most popular DJ Mixes", re.I)):
+            marker = element.parent
+            break
 
-        # HTML DOM fallback: inspect href attributes.
-        soup = BeautifulSoup(body, "html.parser")
-        for tag in soup.find_all("a", href=True):
-            href = html.unescape(tag.get("href", "")).strip()
+        if marker:
+            all_links = soup.find_all("a", href=True)
+            for link in all_links:
+                if marker in list(link.parents):
+                    # This test handles nested markup. We still need to stop
+                    # only after passing the marker in document order below.
+                    pass
+
+        candidates = []
+        for link in soup.find_all("a", href=True):
+            # Stop once the marker element itself is reached.
+            if marker is not None and link is marker:
+                break
+            href = html.unescape(link.get("href", "")).strip()
             url = urljoin(BASE, href)
             if article_url(url):
-                found.append(url)
+                candidates.append(url)
 
-        found = list(dict.fromkeys(found))
-        if found:
-            print("Using source " + source_url + " with " + str(len(found)) + " article URLs")
-            return found
+        # If the marker is not directly encountered by the anchor scan,
+        # remove links belonging to the marker's following section using
+        # document-order positions.
+        if marker is not None:
+            marker_index = None
+            for index, tag in enumerate(soup.find_all(True)):
+                if tag is marker or marker in list(tag.parents):
+                    marker_index = index
+                    break
+            if marker_index is not None:
+                tags = soup.find_all(True)
+                candidates = []
+                for index, tag in enumerate(tags):
+                    if index >= marker_index:
+                        break
+                    if tag.name == "a" and tag.get("href"):
+                        url = urljoin(BASE, html.unescape(tag.get("href", "")).strip())
+                        if article_url(url):
+                            candidates.append(url)
 
-    return []
+        page_found = list(dict.fromkeys(candidates))
+        print("Archive page " + str(page) + ": " + str(len(page_found)) + " article URLs")
+        found.extend(page_found)
+
+        # Empty pages normally indicate the end of the archive.
+        if not page_found:
+            break
+
+    return list(dict.fromkeys(found))
 
 def parse_date(text, label):
     match = re.search(
