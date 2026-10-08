@@ -142,6 +142,49 @@ def parse_size(text):
     return int(value * (1024 ** 2 if match.group(2).upper() == "MB" else 1024 ** 3))
 
 
+def normalize_media_url(url):
+    if not url:
+        return None
+    url = html.unescape(str(url)).strip()
+    parsed = urlparse(url)
+    if parsed.scheme == "http" and "box.globaldjmix.com" in parsed.netloc.lower():
+        url = "https://" + parsed.netloc + parsed.path
+        if parsed.query:
+            url += "?" + parsed.query
+    return url
+
+
+def verify_media_url(url):
+    url = normalize_media_url(url)
+    if not url:
+        return None
+
+    try:
+        response = session.get(
+            url,
+            headers={"Range": "bytes=0-0"},
+            timeout=25,
+            allow_redirects=True,
+            stream=True,
+        )
+        final_url = response.url
+        content_type = (response.headers.get("content-type") or "").lower()
+        response.close()
+
+        if "audio/" in content_type or content_type.startswith("application/octet-stream"):
+            return final_url
+
+        print(
+            "Rejected media URL: " + url + " -> " + final_url
+            + " [" + content_type + "]",
+            file=sys.stderr,
+        )
+    except Exception as exc:
+        print("Media probe failed: " + url + " -> " + str(exc), file=sys.stderr)
+
+    return None
+
+
 def find_mp3(soup, source):
     candidates = []
     for tag in soup.find_all(["a", "audio", "source"], href=True):
@@ -256,6 +299,7 @@ def extract_episode(url):
     title = clean(heading.get_text(" ", strip=True)) if heading else url
 
     mp3 = find_mp3(soup, response.text)
+    mp3 = verify_media_url(mp3)
     if not mp3:
         return None
 
