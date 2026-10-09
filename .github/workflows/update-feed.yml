@@ -36,9 +36,9 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: $ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     env:
-      FEED_MODE: $ github.event_name == 'schedule' && 'incremental' || inputs.mode || 'test' }}
+      FEED_MODE: ${{ github.event_name == 'schedule' && 'incremental' || inputs.mode || 'test' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

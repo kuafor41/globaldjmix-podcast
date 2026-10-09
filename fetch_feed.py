@@ -150,28 +150,35 @@ def is_article(url):
 
 
 def extract_posts(body):
-    # Use the site's full DJ mix listing, not the separate DJ-song search page.
-    marker = re.search(r"Most popular DJ Mixes", body, re.I)
-    content = body[:marker.start()] if marker else body
-    soup = BeautifulSoup(content, "html.parser")
+    soup = BeautifulSoup(body, "html.parser")
+    # Exclude the historical "Most popular" section by DOM position, not raw HTML:
+    # templates sometimes mention that phrase in scripts before the real listings.
+    marker = soup.find(
+        lambda tag: tag.name in {"h2", "h3", "h4", "h5"}
+        and re.search(r"Most popular DJ Mixes", tag.get_text(" ", strip=True), re.I)
+    )
     result = []
     selectors = "h2 a[href], h3 a[href], h4 a[href], .post-title a[href], .entry-title a[href]"
-    for a in soup.select(selectors):
-        href = clean_url(a.get("href"), BASE)
-        title = re.sub(r"\s+", " ", a.get_text(" ", strip=True)).strip()
+    for anchor in soup.select(selectors):
+        if marker is not None and marker in anchor.find_all_previous():
+            continue
+        href = clean_url(anchor.get("href"), BASE)
+        title = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip()
         if href and title and is_article(href):
             result.append(urlunparse((*urlparse(href)[:3], "", "", "")))
     result = unique(result)
     if len(result) >= 10:
         return result
 
-    # Theme fallback: a root-level link is a post only when its nearby card has mix metadata.
-    for a in soup.find_all("a", href=True):
-        href = clean_url(a.get("href"), BASE)
-        title = re.sub(r"\s+", " ", a.get_text(" ", strip=True)).strip()
+    # Theme fallback: only accept a link when its nearby card has mix metadata.
+    for anchor in soup.find_all("a", href=True):
+        if marker is not None and marker in anchor.find_all_previous():
+            continue
+        href = clean_url(anchor.get("href"), BASE)
+        title = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip()
         if not href or len(title) < 10 or not is_article(href):
             continue
-        parent = a
+        parent = anchor
         context = ""
         for _ in range(5):
             if parent.parent is None:
@@ -184,7 +191,6 @@ def extract_posts(body):
             result.append(urlunparse((*urlparse(href)[:3], "", "", "")))
     return unique(result)
 
-
 def archive_page_url(n):
     return ARCHIVE if n == 1 else ARCHIVE + "?p=" + str(n)
 
@@ -194,17 +200,51 @@ def total_pages(body):
     return int(match.group(1)) if match else 1
 
 
+def page_debug(body):
+    soup = BeautifulSoup(body[:200000], "html.parser")
+    title = soup.title.get_text(" ", strip=True) if soup.title else "(no title)"
+    text = re.sub(r"\s+", " ", soup.get_text(" ", strip=True))[:350]
+    return {"html_length": len(body), "html_title": title, "text_preview": text}
+
+
 def discover_posts(mode):
-    first_url, first_body = get_page(ARCHIVE)
-    pages = total_pages(first_body)
-    found = extract_posts(first_body)
-    print("Archive source:", ARCHIVE)
-    print("Archive page 1:", len(found), "posts; reported pages:", pages)
     errors = []
+    pages_checked = 0
+    try:
+        _, first_body = get_page(ARCHIVE)
+        pages_checked = 1
+    except Exception as exc:
+        first_body = ""
+        errors.append({"page": 1, "url": ARCHIVE, "error": type(exc).__name__ + ": " + str(exc)})
+
+    reported = total_pages(first_body) if first_body else 1
+    found = extract_posts(first_body) if first_body else []
+    print("Archive source:", ARCHIVE)
+    print("Archive page 1:", len(found), "posts; reported pages:", reported)
+    if not found and first_body:
+        info = page_debug(first_body)
+        errors.append({"page": 1, "url": ARCHIVE, "error": "No episode links extracted", "response": info})
+        print("Archive page 1 diagnostic:", json.dumps(info, ensure_ascii=False)[:900])
+        # The home page also lists the newest mixes. This fallback avoids the separate
+        # DJ-song search page and gives the test a second legitimate listing source.
+        try:
+            _, home_body = get_page(BASE + "/")
+            home_posts = extract_posts(home_body)
+            print("Home page fallback:", len(home_posts), "posts")
+            if home_posts:
+                found.extend(home_posts)
+            else:
+                home_info = page_debug(home_body)
+                errors.append({"page": "home", "url": BASE + "/", "error": "No episode links extracted", "response": home_info})
+                print("Home page diagnostic:", json.dumps(home_info, ensure_ascii=False)[:900])
+        except Exception as exc:
+            errors.append({"page": "home", "url": BASE + "/", "error": type(exc).__name__ + ": " + str(exc)})
+
+    found = unique(found)
     if mode == "full":
-        page_numbers = range(2, pages + 1)
+        page_numbers = range(2, reported + 1)
     else:
-        page_numbers = range(2, min(pages, ARCHIVE_PAGE_CAP) + 1)
+        page_numbers = range(2, max(reported, ARCHIVE_PAGE_CAP) + 1)
 
     if mode == "full":
         with ThreadPoolExecutor(max_workers=WORKERS) as pool:
@@ -215,29 +255,36 @@ def discover_posts(mode):
                     _, body = future.result()
                     posts = extract_posts(body)
                     found.extend(posts)
+                    pages_checked += 1
                     print("Archive page", n, ":", len(posts), "posts")
+                    if not posts:
+                        errors.append({"page": n, "url": archive_page_url(n), "error": "No episode links extracted", "response": page_debug(body)})
                 except Exception as exc:
-                    errors.append({"page": n, "error": type(exc).__name__ + ": " + str(exc)})
+                    errors.append({"page": n, "url": archive_page_url(n), "error": type(exc).__name__ + ": " + str(exc)})
         found = unique(found)
     else:
         for n in page_numbers:
             try:
                 _, body = get_page(archive_page_url(n))
+                pages_checked += 1
                 posts = extract_posts(body)
                 found.extend(posts)
                 found = unique(found)
                 print("Archive page", n, ":", len(posts), "posts; unique total:", len(found))
+                if not posts:
+                    info = page_debug(body)
+                    errors.append({"page": n, "url": archive_page_url(n), "error": "No episode links extracted", "response": info})
+                    print("Page diagnostic:", json.dumps(info, ensure_ascii=False)[:700])
                 if mode == "test" and len(found) >= TEST_LIMIT:
                     break
             except Exception as exc:
-                errors.append({"page": n, "error": type(exc).__name__ + ": " + str(exc)})
+                errors.append({"page": n, "url": archive_page_url(n), "error": type(exc).__name__ + ": " + str(exc)})
                 print("Archive page", n, "failed:", str(exc))
                 break
 
     if mode == "test":
         found = found[:TEST_LIMIT]
-    return found, pages, errors
-
+    return found, reported, errors
 
 def noise(value):
     value = (value or "").lower()
@@ -565,7 +612,7 @@ def load_items():
 
 def rss_xml(items):
     ET.register_namespace("itunes", "http://www.itunes.com/dtds/podcast-1.0.dtd")
-    rss = ET.Element("rss", {"version": "2.0", "xmlns:itunes": "http://www.itunes.com/dtds/podcast-1.0.dtd"})
+    rss = ET.Element("rss", {"version": "2.0"})
     channel = ET.SubElement(rss, "channel")
     ET.SubElement(channel, "title").text = "GlobalDJMix Podcast"
     ET.SubElement(channel, "link").text = ARCHIVE
@@ -573,7 +620,9 @@ def rss_xml(items):
     ET.SubElement(channel, "language").text = "en"
     ET.SubElement(channel, "{http://www.itunes.com/dtds/podcast-1.0.dtd}author").text = "GlobalDJMix"
     ET.SubElement(channel, "{http://www.itunes.com/dtds/podcast-1.0.dtd}explicit").text = "no"
-    ET.SubElement(channel, "{http://www.itunes.com/dtds/podcast-1.0.dtd}image", {"href": "https://globaldjmix.com/favicon.ico"})
+    channel_image = next((item.get("image_url") for item in sorted(items, key=sort_key, reverse=True) if item.get("image_url")), None)
+    if channel_image:
+        ET.SubElement(channel, "{http://www.itunes.com/dtds/podcast-1.0.dtd}image", {"href": channel_image})
 
     for item in sorted(items, key=sort_key, reverse=True):
         if not item.get("audio_url"):
@@ -595,7 +644,8 @@ def rss_xml(items):
             "url": item["audio_url"], "length": str(max(0, int(item.get("length") or 0))),
             "type": enclosure_type,
         })
-        ET.SubElement(node, "{http://www.itunes.com/dtds/podcast-1.0.dtd}duration").text = item.get("duration", "")
+        if item.get("duration"):
+            ET.SubElement(node, "{http://www.itunes.com/dtds/podcast-1.0.dtd}duration").text = item["duration"]
         if item.get("image_url"):
             ET.SubElement(node, "{http://www.itunes.com/dtds/podcast-1.0.dtd}image", {"href": item["image_url"]})
 
