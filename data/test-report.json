@@ -1,10 +1,16 @@
 {
-  "mode": "pending-test",
+  "generated_at": "2026-10-09T06:08:51.673113+00:00",
+  "mode": "test",
   "archive_source": "https://globaldjmix.com/livedjsets",
-  "note": "Clean rebuild; run test mode before using the feed for listening.",
+  "archive_pages_reported": 1,
+  "archive_pages_failed": [],
   "selected_articles": 0,
+  "articles_checked": 0,
   "audio_resolved": 0,
   "images_found": 0,
   "images_verified": 0,
-  "test_passed": false
+  "audio_resolution_methods": {},
+  "test_passed": false,
+  "saved_episode_count": 0,
+  "diagnostics": []
 }
