@@ -51,22 +51,25 @@ jobs:
               es = BeautifulSoup(er.text, "html.parser")
               btn = es.select_one("button.show-tracklist")
               print("BUTTON", btn.get("data-id") if btn else None, "page", er.status_code)
-              targets = [urljoin(er.url, x.get("src")) for x in es.find_all("script", src=True)]
-              for target in targets:
-                  if "globaldjmix.com" not in target: continue
+              for script in es.find_all("script"):
+                  txt = script.string or script.get_text()
+                  if txt:
+                      for pat in (r"show-tracklist", r"tracklist", r"tracklist-single-item"):
+                          for m in list(re.finditer(pat, txt, re.I))[:8]:
+                              print("INLINE_MATCH", pat, re.sub(r"\\s+", " ", txt[max(0,m.start()-250):m.end()+450])[:750])
+              for path in ["/dist/js/script.js?v=6.2", "/dist/js/ajax.js?v=1.1", "/dist/js/style.js?v=1.0"]:
+                  jsurl = base + path
                   try:
-                      js = s.get(target, timeout=15).text
+                      js = s.get(jsurl, timeout=15).text
                   except Exception as exc:
-                      print("JS_ERROR", target, type(exc).__name__); continue
-                  matches = []
-                  for pat in (r"show-tracklist", r"tracklist", r"track.?list", r"get-track", r"ajax"):
-                      for m in list(re.finditer(pat, js, re.I))[:12]:
-                          snippet = re.sub(r"\\s+", " ", js[max(0,m.start()-240):min(len(js),m.end()+420)])
-                          matches.append((m.start(), pat, snippet[:700]))
-                  if matches:
-                      print("SCRIPT_URL", target, "matches", len(matches))
-                      for _, pat, snippet in sorted(matches)[:14]:
-                          print("JS_MATCH", pat, snippet)
+                      print("JS_ERROR", jsurl, type(exc).__name__); continue
+                  print("SCRIPT_URL", jsurl, "bytes", len(js))
+                  for pat in (r"show-tracklist", r"tracklist-single-item", r"tracklist", r"get-tracklist", r"track-list"):
+                      found = list(re.finditer(pat, js, re.I))
+                      if found:
+                          print("PATTERN", pat, "count", len(found))
+                          for m in found[:10]:
+                              print("JS_CONTEXT", re.sub(r"\\s+", " ", js[max(0,m.start()-300):m.end()+550])[:850])
               print("DONE")
           except Exception as exc:
               print("DIAG_ERROR", type(exc).__name__, str(exc)[:250])
