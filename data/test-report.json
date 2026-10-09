@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-09T06:13:51.406627+00:00",
+  "generated_at": "2026-10-09T06:15:57.743595+00:00",
   "mode": "test",
   "archive_source": "https://globaldjmix.com/livedjsets",
-  "archive_pages_reported": 1,
+  "archive_pages_reported": 1660,
   "archive_pages_failed": [],
   "selected_articles": 50,
   "articles_checked": 50,
-  "audio_resolved": 46,
+  "audio_resolved": 49,
   "images_found": 50,
   "images_verified": 50,
   "audio_resolution_methods": {
-    "intermediate": 30,
-    "direct": 16
+    "direct": 21,
+    "intermediate": 28
   },
   "test_passed": false,
   "saved_episode_count": 0,
@@ -20,50 +20,14 @@
       "url": "https://globaldjmix.com/cloudcage-monstercat-silk-showcase-874-2026-october-08/",
       "article_fetched": true,
       "title": "Cloudcage - Monstercat Silk Showcase 874 (08 October 2026)",
-      "audio_ok": false,
-      "audio_method": null,
-      "audio_candidates": [
-        "https://traffic.megaphone.fm/MSC7027724798.mp3"
-      ],
-      "audio_url": null,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/jacob_henry_tom_fall_jayeson_andel_johan_vilborg_vintage_morelli_and_terry_da_libra_monstercat_silk_showcase_2022.jpg",
-      "image_http_ok": true,
-      "audio_error": "No audio URL resolved. candidates=[\"https://traffic.megaphone.fm/MSC7027724798.mp3\"]; ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/nicole-moudaber-in-the-mood-649-live-in-rockerill-cherleroi-belgium-2026-october-08/",
-      "article_fetched": true,
-      "title": "Nicole Moudaber - In The MOOD 649 - Live In Rockerill, Cherleroi, Belgium (08 October 2026)",
-      "audio_ok": true,
-      "audio_method": "intermediate",
-      "audio_candidates": [
-        "http://box.globaldjmix.com/media/nicole-moudaber-in-the-mood-649-live-in-rockerill-cherleroi-belgium-2026-october-08/jtjXfZ",
-        "http://files.globaldjmix.com/2026/10/08/02/Nicole Moudaber - In The MOOD 649 (08 October 2026).mp3",
-        "http://files.globaldjmix.com/2026/10/08/02/Nicole"
-      ],
-      "audio_url": "http://files.globaldjmix.com/2026/10/08/02/Nicole%20Moudaber%20-%20In%20The%20MOOD%20649%20(08%20October%202026).mp3",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/in_the_mood_nicole_moudaber_common.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/anja-schneider-club-room-439-2026-october-08/",
-      "article_fetched": true,
-      "title": "Anja Schneider - Club Room 439 (08 October 2026)",
       "audio_ok": true,
       "audio_method": "direct",
       "audio_candidates": [
-        "https://feeds.soundcloud.com/stream/2415152520-anjaschneider-anja-schneider-clubroom_439.mp3"
+        "https://traffic.megaphone.fm/MSC7027724798.mp3"
       ],
-      "audio_url": "https://cf-media.sndcdn.com/aA5Oiv40PykQ.128.mp3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vYUE1T2l2NDBQeWtRLjEyOC5tcDMqIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkxNTMwMTI0fX19XX0_&Signature=OHWo3EX3MndrzcRTtfvnVN1GQMj0WU6f128RpH-N9u6i~F~9MQ7bl4rAc7Y~-z1j1scyiW5URbF8qb1vI69Ne6SMfL2aG4xnoMfPQSoP8B-6H1dw3-a~me~QXtxpesUO4afPqlmclZyHFZUaLynRE5GQbsEMb-WHjrg95gEl-zDNHorISfkSiytkc3OVIltLhWojqshbsuRfJANmjpCeEW59FV~KtJZDMwY3O9YiXXdqih68koHfbNl4GSaw0d875S3NOJYGcDfHAZhaCTT3ZINanZIzKt3qLkht~IqJlnA9Vpttd22PzKfsGnkUr-Iou7813h7m-mVp-AXAEUWgLQ__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ",
+      "audio_url": "https://dcs-spotify.megaphone.fm/MSC7027724798.mp3?key=8066ff74a7d9c2ef243bbc98032d5ec9&request_event_id=53e27339-254f-43cb-b0c8-1f0918ad7866&session_id=53e27339-254f-43cb-b0c8-1f0918ad7866&timetoken=1791533731_B3397BF0DAC532B35E1CDD579A996F3F",
       "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/anja_sneider_club_room_di_fm.jpg",
+      "image_url": "https://globaldjmix.com/files/download/jacob_henry_tom_fall_jayeson_andel_johan_vilborg_vintage_morelli_and_terry_da_libra_monstercat_silk_showcase_2022.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -90,6 +54,25 @@
       "error": null
     },
     {
+      "url": "https://globaldjmix.com/nicole-moudaber-in-the-mood-649-live-in-rockerill-cherleroi-belgium-2026-october-08/",
+      "article_fetched": true,
+      "title": "Nicole Moudaber - In The MOOD 649 - Live In Rockerill, Cherleroi, Belgium (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/nicole-moudaber-in-the-mood-649-live-in-rockerill-cherleroi-belgium-2026-october-08/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/08/02/Nicole Moudaber - In The MOOD 649 (08 October 2026).mp3",
+        "http://files.globaldjmix.com/2026/10/08/02/Nicole"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/08/02/Nicole%20Moudaber%20-%20In%20The%20MOOD%20649%20(08%20October%202026).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/in_the_mood_nicole_moudaber_common.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
       "url": "https://globaldjmix.com/euphoric-nation-trance-paradise-757-2026-october-08/",
       "article_fetched": true,
       "title": "Euphoric Nation - Trance Paradise 757 (08 October 2026)",
@@ -103,6 +86,23 @@
       "audio_url": "http://files.globaldjmix.com/2026/10/08/02/Euphoric%20Nation%20-%20Trance%20Paradise%20757%20on%20AH.FM%2008-10-2026.mp3",
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/trance_paradise_euphoric_nation.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/anja-schneider-club-room-439-2026-october-08/",
+      "article_fetched": true,
+      "title": "Anja Schneider - Club Room 439 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://feeds.soundcloud.com/stream/2415152520-anjaschneider-anja-schneider-clubroom_439.mp3"
+      ],
+      "audio_url": "https://cf-media.sndcdn.com/aA5Oiv40PykQ.128.mp3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vYUE1T2l2NDBQeWtRLjEyOC5tcDMqIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkxNTMwMjcxfX19XX0_&Signature=IHGNzZsvbk-AMr8-KyPbKRob4MYj-wDiTij~M82ZP1c53HP7KvIy38GgX2toSS-mx70VHlTLlB87u2HoD3BQR5fVY5EdwHUQG-L9xw4B46qtcpJgT-Gud3IPmW9CHEMrtWwNJeuRi2Pf6QwErfar8IBwxCTCRd43-IMph7~PlmDXo1cxCOzXjYZUMXoLHFYGUu2hYr-eQe-kaX1djSACc9A20-HU7Wa-rJa0HrsksE3qGweJ7LAHO1Gjj9wshlTvfIQBIZ0bHjMwgzx8QWtWTyuxy4ngXOt49eWW-qhyWt7cPGdQ3DTRMRg-c3bzhaKoKp8RzjN5kiyEncPIFEZsfw__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/anja_sneider_club_room_di_fm.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -164,25 +164,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/ori-uplift-uplifting-only-713-2026-october-08/",
-      "article_fetched": true,
-      "title": "Ori Uplift - Uplifting Only 713 (08 October 2026)",
-      "audio_ok": true,
-      "audio_method": "intermediate",
-      "audio_candidates": [
-        "http://box.globaldjmix.com/media/ori-uplift-uplifting-only-713-2026-october-08/jtjXfZ",
-        "http://files.globaldjmix.com/2026/10/08/Ori Uplift - Uplifting Only 713 (Oct 8, 2026).mp3",
-        "http://files.globaldjmix.com/2026/10/08/Ori"
-      ],
-      "audio_url": "http://files.globaldjmix.com/2026/10/08/Ori%20Uplift%20-%20Uplifting%20Only%20713%20(Oct%208,%202026).mp3",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/ori_uplift_presents_-_uplifting_only.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/markus-schulz-sander-van-doorn-global-dj-broadcast-2026-october-08/",
       "article_fetched": true,
       "title": "Markus Schulz & Sander van Doorn - Global DJ Broadcast (08 October 2026)",
@@ -197,6 +178,25 @@
       "audio_url": "http://files.globaldjmix.com/2026/10/08/Markus%20Schulz%20-%20Global%20DJ%20Broadcast%20(8%20October%202026)%20with%20guest%20Sander%20van%20Doorn.mp3",
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/markus_schulz_global_dj_broadcast_2022.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/ori-uplift-uplifting-only-713-2026-october-08/",
+      "article_fetched": true,
+      "title": "Ori Uplift - Uplifting Only 713 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/ori-uplift-uplifting-only-713-2026-october-08/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/08/Ori Uplift - Uplifting Only 713 (Oct 8, 2026).mp3",
+        "http://files.globaldjmix.com/2026/10/08/Ori"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/08/Ori%20Uplift%20-%20Uplifting%20Only%20713%20(Oct%208,%202026).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/ori_uplift_presents_-_uplifting_only.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -241,6 +241,40 @@
       "error": null
     },
     {
+      "url": "https://globaldjmix.com/manuel-le-saux-extrema-961-2026-october-07/",
+      "article_fetched": true,
+      "title": "Manuel Le Saux - Extrema 961 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://feeds.soundcloud.com/stream/2414212965-manuellesaux-extrema-961.mp3"
+      ],
+      "audio_url": "https://cf-media.sndcdn.com/6tWVUwCbP4Gj?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vNnRXVlV3Q2JQNEdqKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5MTUyNjY1OH19fV19&Signature=Db8tUas30IpFpYR30jzqgLLiVlQd4mIjk76LKIYYVe4wmJA-3KZ2YQpZeheDWfD6YaQ2Kgcicdc8SzWdpHgaopytimwSH5HUgh8bpF6ZINYMRsEnG0nGRn7vxGbtXlfsXW~YWhzhx70rwyDtb-DAQYpki9rdi8CDSsMtB1jzaArFIVIO8wFQ9sBsUQnV2aA-1AYRJt5lf3swjRb11BUXUkPVtJ-1uSUlzqXPf53YRbgDb5OHqbwu7ttygF6-rdYK1AvoTLWa~155UGUWF8CdP3DYooNe6kqLXRKBhJ~cEbttkKU7TG3z4Jv5jrXpjVVG41rYenvvgv9pSMuuZ~cD~A__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/manuel_le_saux_-_extrema_2025.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/andrew-rayel-find-your-harmony-radioshow-513-2026-october-07/",
+      "article_fetched": true,
+      "title": "Andrew Rayel - Find Your Harmony Radioshow 513 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://mcdn.podbean.com/mf/web/ihjaq6773dtuavz4/Andrew_Rayel_-_Find_Your_Harmony_Episode_5138s59m.mp3"
+      ],
+      "audio_url": "https://s388.podbean.com/pb/9c599d8618493a66c9d52c8b501411e3/6ac82f39/data1/fs124/683689/uploads/Andrew_Rayel_-_Find_Your_Harmony_Episode_5138s59m.mp3?pbss=fbfa90ea-3b94-5a1f-90e6-124cf2ceaedf",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/find_your_harmony_radioshow_513_2026-10-07.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
       "url": "https://globaldjmix.com/beatdealers-welcome-to-the-weekend-495-2026-october-08/",
       "article_fetched": true,
       "title": "Beatdealers - Welcome to the Weekend 495 (08 October 2026)",
@@ -260,40 +294,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/manuel-le-saux-extrema-961-2026-october-07/",
-      "article_fetched": true,
-      "title": "Manuel Le Saux - Extrema 961 (07 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://feeds.soundcloud.com/stream/2414212965-manuellesaux-extrema-961.mp3"
-      ],
-      "audio_url": "https://cf-media.sndcdn.com/6tWVUwCbP4Gj?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vNnRXVlV3Q2JQNEdqKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5MTUyNjUxMn19fV19&Signature=Jtv7nbrkWjgpJp9tkhvKXbRu9L-0N4wvpZKLSNzVCiZDCkQSLUCWn86tHt-E4T-erGSRB9QwZO5LVrwboNLH39ctTt3P1VvxS~Z0IHBY47Y5OW5Dbn6PKBUJpgiWnE48UAZVZJVgXt1ixNw5SY3TQOwqx00dZfVaWUfxamrRVoYNxQg35ldO5ySLNOX6VvGeXkZvArEPl84BAfvzi1MH9o7zMhQfVRc0XzqpzylFbleXcluZsXbq-6qiiIWiViu1tsEyVZuZejTdS~iN40VHCab6WxZqt3CDoa9VuoRXHxQ3uCdgSAtTNib9xhi~f1qHPgV0xGuVvdVelJZhD6DJPg__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/manuel_le_saux_-_extrema_2025.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/andrew-rayel-find-your-harmony-radioshow-513-2026-october-07/",
-      "article_fetched": true,
-      "title": "Andrew Rayel - Find Your Harmony Radioshow 513 (07 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://mcdn.podbean.com/mf/web/ihjaq6773dtuavz4/Andrew_Rayel_-_Find_Your_Harmony_Episode_5138s59m.mp3"
-      ],
-      "audio_url": "https://s388.podbean.com/pb/9c599d8618493a66c9d52c8b501411e3/6ac82f39/data1/fs124/683689/uploads/Andrew_Rayel_-_Find_Your_Harmony_Episode_5138s59m.mp3?pbss=eda8503b-f461-5b12-8691-b2549054c05b",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/find_your_harmony_radioshow_513_2026-10-07.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/aly-fila-future-sound-of-egypt-983-2026-october-07/",
       "article_fetched": true,
       "title": "Aly & Fila - Future Sound Of Egypt 983 (07 October 2026)",
@@ -307,6 +307,25 @@
       "audio_url": "http://files.globaldjmix.com/2026/10/07/Aly%20and%20Fila%20-%20Future%20Sound%20Of%20Egypt%20983.mp3",
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/future_sound_of_egypt_with_aly_fila_official.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/ferry-corsten-resonation-radio-306-2026-october-07/",
+      "article_fetched": true,
+      "title": "Ferry Corsten - Resonation Radio 306 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/ferry-corsten-resonation-radio-306-2026-october-07/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/07/Ferry Corsten - Resonation Radio 306 on AH.FM 07-10-2026.mp3",
+        "http://files.globaldjmix.com/2026/10/07/Ferry"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/07/Ferry%20Corsten%20-%20Resonation%20Radio%20306%20on%20AH.FM%2007-10-2026.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/resonation_radio_presented_by_ferry_corsten.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -341,25 +360,6 @@
       "audio_url": "https://app.syndicast.co.uk/download/itunes/uploads/audios/16/161-11.mp3",
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/kd_music_radio_show_with_kaiserdisco_2022.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/ferry-corsten-resonation-radio-306-2026-october-07/",
-      "article_fetched": true,
-      "title": "Ferry Corsten - Resonation Radio 306 (07 October 2026)",
-      "audio_ok": true,
-      "audio_method": "intermediate",
-      "audio_candidates": [
-        "http://box.globaldjmix.com/media/ferry-corsten-resonation-radio-306-2026-october-07/jtjXfZ",
-        "http://files.globaldjmix.com/2026/10/07/Ferry Corsten - Resonation Radio 306 on AH.FM 07-10-2026.mp3",
-        "http://files.globaldjmix.com/2026/10/07/Ferry"
-      ],
-      "audio_url": "http://files.globaldjmix.com/2026/10/07/Ferry%20Corsten%20-%20Resonation%20Radio%20306%20on%20AH.FM%2007-10-2026.mp3",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/resonation_radio_presented_by_ferry_corsten.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -605,23 +605,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/alison-wonderland-radio-wonderland-491-2026-october-05/",
-      "article_fetched": true,
-      "title": "Alison Wonderland - Radio Wonderland 491 (05 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://cdn.podtoo.com/syndication/2026/10/1790981306441full_episode_RADIO-WONDERLAND--491--WORLD-.mp3"
-      ],
-      "audio_url": "https://cdn.podtoo.com/syndication/2026/10/1790981306441full_episode_RADIO-WONDERLAND--491--WORLD-.mp3",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/alison_wonderland_-_radio_wonderland.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/lilly-palmer-spannung-radio-075-2026-october-05/",
       "article_fetched": true,
       "title": "Lilly Palmer - Spannung Radio 075 (05 October 2026)",
@@ -641,6 +624,23 @@
       "error": null
     },
     {
+      "url": "https://globaldjmix.com/alison-wonderland-radio-wonderland-491-2026-october-05/",
+      "article_fetched": true,
+      "title": "Alison Wonderland - Radio Wonderland 491 (05 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://cdn.podtoo.com/syndication/2026/10/1790981306441full_episode_RADIO-WONDERLAND--491--WORLD-.mp3"
+      ],
+      "audio_url": "https://cdn.podtoo.com/syndication/2026/10/1790981306441full_episode_RADIO-WONDERLAND--491--WORLD-.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/alison_wonderland_-_radio_wonderland.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
       "url": "https://globaldjmix.com/blasterjaxx-maxximize-on-air-642-2026-october-05/",
       "article_fetched": true,
       "title": "Blasterjaxx - Maxximize On Air 642 (05 October 2026)",
@@ -649,7 +649,7 @@
       "audio_candidates": [
         "https://feeds.soundcloud.com/stream/2412860526-maxximizeonair-maxximize-on-air-642.mp3"
       ],
-      "audio_url": "https://cf-media.sndcdn.com/DRDIeBqYe2Wa?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vRFJESWVCcVllMldhKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5MTUyNjUyM319fV19&Signature=Wy-n39ctugkciEIApUL2zNZ4hZ-yTlp-nVkbSmg6iReu6lZXCm~gGCbayrLoGMmMUQvpfxNMX3uB1mpNFd1dGzbLSPEhZAiLn27rwBBcro5fomIBpLSqFY0jBiw19k4aprcSEpU7teQ4UHkPZrUu75MfwinP24WVfXp~GPPexwCBzXY69Vj-9YjeoNMXTsQUeoJJfPkUdek6iXd2qSYT0HvT~wHe51kMRZUsWC2VKMVzyxt7YthkB5grJZegSZ07H1XI287j9l9ZX1bYVdzf39pUTAkcw2dYSdFqQC99iL16mhHR6~T318r3gDymXnTw7AAuWKSN3A7ey1ByQQOIEQ__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ",
+      "audio_url": "https://cf-media.sndcdn.com/DRDIeBqYe2Wa?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vRFJESWVCcVllMldhKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5MTUyNjY2OX19fV19&Signature=awgcuVxyb1xgwSjPvCblzFdtG5sygXA93TEXHpsORIJtZTqaB7TpiYOQmWdiCtU-R6Dwa9dnxPV6w3z5wQj~QmjWqgbVfIMZzZ0GvkxZMu5jnrnOgCPekYxKGgBKbG8BOHaTCGBfYQFqocpyDjfrb1CDcQmmuYOcqc8A03W4lZVoBwkQL6ifJRlsMV2tsbyKPkxnzIBLx7WWbJ8nYW4o6M-ynKeg-8xyeKa6VtOh59els1L~AubSshTsHwlSVqxPET0sp71lsn9csO9zuIBA6pnFaCXMwDmGSpHT6Y-LFwjik1Jh2fb6cpWbJGtE8C-IbEdo1QsBQx8fkjr3ABPeqw__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ",
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/blasterjaxx_maxximize_on_air.jpg",
       "image_http_ok": true,
@@ -683,9 +683,26 @@
       "audio_candidates": [
         "https://traffic.libsyn.com/secure/feddelegrand/Fedde_Le_Grand_-_Darklight_Sessions_737_-_Global.mp3?dest-id=177173"
       ],
-      "audio_url": "https://content.libsyn.com/p/f/2/0/f205a8593f334e8c/Fedde_Le_Grand_-_Darklight_Sessions_737_-_Global.mp3?c_id=207126048&cs_id=207126048&destination_id=177173&response-content-type=audio%2Fmpeg&Expires=1791531145&Signature=FyOcbG3qlKfdUbSSoAIs2aF5p6aJLm8hNXwwf8gqLOuDRcJ02PWmhZFonD8RHofpKsyOGbjRR2FVTkNAoR4oRYZmK-aqtlkNSTwmqcSKnSicgKbaK0SkUeFnojuUIeDqdf7saSyzckxAUm8UtCl-MAu6bIuce1Cp50J-~gCroiag2lvccoBoxM03zKpMu37huJl1KNGElrU5EbMu0Pw-NZYZkLaJ38V6OVASipC3ADzCPUafYw4KxOmy705dkd56liOD1bYghsvWwIj7OuHr4jQxGpmMGJzWL9yEL45MFuwc5ZAyIsrGLoh04irR5gtrQ1ZdWMXE5VDGiATMC-giTQ__&Key-Pair-Id=K1YS7LZGUP96OI",
+      "audio_url": "https://content.libsyn.com/p/f/2/0/f205a8593f334e8c/Fedde_Le_Grand_-_Darklight_Sessions_737_-_Global.mp3?c_id=207126048&cs_id=207126048&destination_id=177173&response-content-type=audio%2Fmpeg&Expires=1791531291&Signature=cHiHVBUQ7wdMPoahAKwGDcltu~AWep~BctpzYn7z9COfIxTJJ1h9yNhoMt3ASgHnoMwKlcF3iFm8qAJiRHYaTVVobx8uTImIL~-9g6lJ8XlWx2DnBKqo4d-GMuQzi2nUtKWdanzkY3T35KqH7h9Je15oo5Idn~aQVHzDo113MKOXPJVOaapt6Lup4O0CT2UG5ES1BHQPCSDl1bHBbn30m9-foiwZWgOeJedyEZ2Jp0Io6r5TSdt3f1Akfux0yJqTiRM2eMoOjEvsJdWcSro6OottGv3wAltIrOzJochipg2GUKdb~aHJ4uZHpXUvuYdc9gyQApa-ftKYoRgIl4El8A__&Key-Pair-Id=K1YS7LZGUP96OI",
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/fedde_le_grand_-_darklight_sessions.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/r3hab-cyb3rpvnk-radio-731-2026-october-05/",
+      "article_fetched": true,
+      "title": "R3hab - CYB3RPVNK Radio 731 (05 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://cdn.simplecast.com/media/audio/transcoded/9b1a1ac5-9559-41b7-9002-84899aa479a5/4243b339-d947-4b0d-9e58-31999d1c5022/episodes/audio/group/2f7917c9-10d4-422f-ad63-1f38b8554cbe/group-item/c814ad75-a9b3-4266-96f3-d44d3692e86b/128_default_tc.mp3?aid=rss_feed&feed=hBbiHUAC"
+      ],
+      "audio_url": "https://cdn.simplecast.com/media/audio/transcoded/9b1a1ac5-9559-41b7-9002-84899aa479a5/4243b339-d947-4b0d-9e58-31999d1c5022/episodes/audio/group/2f7917c9-10d4-422f-ad63-1f38b8554cbe/group-item/c814ad75-a9b3-4266-96f3-d44d3692e86b/128_default_tc.mp3?aid=rss_feed&feed=hBbiHUAC",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/i_need_r3hab_2017.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -709,226 +726,198 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/nora-en-pure-purified-281-2022-january-10/",
+      "url": "https://globaldjmix.com/deepsense-voyager-2026-october-04/",
       "article_fetched": true,
-      "title": "Nora En Pure - Purified 281 (10 January 2022)",
+      "title": "Deepsense - Voyager (04 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/deepsense-voyager-2026-october-04/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/04/Deepsense - Voyager (01 October 2026).mp3",
+        "http://files.globaldjmix.com/2026/10/04/Deepsense"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/04/Deepsense%20-%20Voyager%20(01%20October%202026).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/deepsense.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/paul-van-dyk-vonyc-sessions-1039-2026-october-04/",
+      "article_fetched": true,
+      "title": "Paul Van Dyk - Vonyc Sessions 1039 (04 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/paul-van-dyk-vonyc-sessions-1039-2026-october-04/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/04/Paul van Dyk - Vonyc Sessions 1039 on AH.FM 04-10-2026.mp3",
+        "http://files.globaldjmix.com/2026/10/04/Paul"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/04/Paul%20van%20Dyk%20-%20Vonyc%20Sessions%201039%20on%20AH.FM%2004-10-2026.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/paul_van_dyks_vonyc_sessions_ytb.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/yves-v-v-sessions-581-2026-october-04/",
+      "article_fetched": true,
+      "title": "Yves V - V Sessions 581 (04 October 2026)",
       "audio_ok": true,
       "audio_method": "direct",
       "audio_candidates": [
-        "https://audio.thisisdistorted.com/repository/audio/episodes/NORA_281_iTunes_V2-1641648157574312702-MzM3NzAtODU4NzY0MjY=.mp3"
+        "https://media3-yvesv.podtree.com/yvesv/media/podcast/V_Sessions_581.mp3"
       ],
-      "audio_url": "https://audio.thisisdistorted.com/repository/audio/episodes/NORA_281_iTunes_V2-1641648157574312702-MzM3NzAtODU4NzY0MjY=.mp3",
+      "audio_url": "https://media3-yvesv.podtree.com/yvesv/media/podcast/V_Sessions_581.mp3",
       "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/nora_en_pure_-_purified_radio.jpg",
+      "image_url": "https://globaldjmix.com/files/download/yves_v_difm_660x330.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/black-coffee-radio-1's-essential-mix-live-at-printworks-2023-april-28/",
+      "url": "https://globaldjmix.com/laura-van-dam-capture-radio-111-2026-october-04/",
       "article_fetched": true,
-      "title": "Black Coffee - Radio 1's Essential Mix (live at Printworks) (28 April 2023)",
-      "audio_ok": true,
-      "audio_method": "intermediate",
-      "audio_candidates": [
-        "http://box.globaldjmix.com/media/black-coffee-radio-1's-essential-mix-live-at-printworks-2023-april-28/jtjXfZ",
-        "http://box.globaldjmix.com/media/black-coffee-radio-1",
-        "http://files.globaldjmix.com/2023/04/28/Black Coffee - Radio 1's Essential Mix (live at Printworks) 2023-04-28.mp3",
-        "http://files.globaldjmix.com/2023/04/28/Black"
-      ],
-      "audio_url": "http://files.globaldjmix.com/2023/04/28/Black%20Coffee%20-%20Radio%201's%20Essential%20Mix%20(live%20at%20Printworks)%202023-04-28.mp3",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/essential_mix_live_at_printworks.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1100-xxl-top-50-of-2022-2022-december-22/",
-      "article_fetched": true,
-      "title": "Armin van Buuren & Ruben De Ronde & Ferry Corsten - A State Of Trance ASOT 1100 XXL (Top 50 Of 2022) (22 December 2022)",
-      "audio_ok": true,
-      "audio_method": "intermediate",
-      "audio_candidates": [
-        "http://box.globaldjmix.com/media/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1100-xxl-top-50-of-2022-2022-december-22/jtjXfZ",
-        "http://files.globaldjmix.com/2022/12/22/Armin van Buuren - A State Of Trance Episode 1100 XXL (Top 50 Of 2022).mp3",
-        "http://files.globaldjmix.com/2022/12/22/Armin"
-      ],
-      "audio_url": "http://files.globaldjmix.com/2022/12/22/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201100%20XXL%20(Top%2050%20Of%202022).mp3",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/a_state_of_trance_1100_top_50_of_2022_special_2022-12-22.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/dj-optick-obsession-ibiza-global-radio-best-of-2021-2022-january-11/",
-      "article_fetched": true,
-      "title": "Dj Optick - Obsession - Ibiza Global Radio - BEST OF 2021 (11 January 2022)",
+      "title": "Laura Van Dam - Capture Radio 111 (04 October 2026)",
       "audio_ok": true,
       "audio_method": "direct",
       "audio_candidates": [
-        "https://feeds.soundcloud.com/stream/1194546016-djoptick-dj-optick-obsession-ibiza-global-radio-09012022-best-of-2021.mp3"
+        "https://feeds.soundcloud.com/stream/2410410864-capturerecords-capture-radio-111.mp3"
       ],
-      "audio_url": "https://cf-media.sndcdn.com/G4mBt0RMUEOk?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vRzRtQnQwUk1VRU9rKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5MTUyNjUyN319fV19&Signature=Pena5DkM9EcRyiEAT~RGfxK08W24jcMnZHYw8QMSpPZ4~-7~OMD-LRIoNWYaQYIZIuCMCwrzEazf1wtLvLwN~CC4pagLDgytYRLzLg7Yu4AvWnGj2ueH0VmegcDf0a5qKx65S3xnwuuadq4XAYSSUGOy2naOUvLXvKsN7SQYqCyl7LKhFYjzYo13fXw-XJV2pwWw5Mjt9mYnsRnqNieJLBdkkHlkrNbffywm0BUYDfHWPoswmTNGyVJYdp9KNPlknnAWRyk1M7lPdh65IJrt8Q3n6Svx9042j5j7YlLmmFBFL0nZGlof3vZgvK6LwTXmdsEfNN60aSkmfKei7VP3Xw__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ",
+      "audio_url": "https://cf-media.sndcdn.com/c0SAKzx0aSkO.128.mp3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vYzBTQUt6eDBhU2tPLjEyOC5tcDMqIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkxNTMwMjc0fX19XX0_&Signature=N9JGrUTVMKg2hxSC4qoG9EnoxwQiNP~bwmAZ8O1hH3ZtSB5hO8Ugpf6S6DrRKRLHwxp8y2fF9rQs8TfGUUMzmWkazuS16aXRyXXMwcHPV392F7DbpQtZeiF6vFVSCUzpdXc4o~PfcHTUqZVHKIN5ngjsCiz-OpQDui2lwtA2mOM-DR2L9q~Ku02JcVw83Lik2bMesj6EiGhlVV0LZzO1tXlNHiSIX4v0G9ALiVkGYOU6psM6veP~P41mp~o5pXOgk3UhdwBk4-o0NRrNRLIYJlGFpMvm-UXY6DMLcLSy3CiPN0xmJIXFPWpXMrt1l5QBfD8o1ECg5WRmchKi9xFEzg__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ",
       "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/dj_optick_-_obsession.jpg",
+      "image_url": "https://globaldjmix.com/files/download/laura_van_dam_capture_radio.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1170-top-1000-2024-final-50-2024-april-25/",
+      "url": "https://globaldjmix.com/kyau-albert-euphonic-sessions-october-2026-2026-october-01/",
       "article_fetched": true,
-      "title": "Armin van Buuren & Ruben De Ronde & Ferry Corsten - A State Of Trance ASOT 1170 (TOP 1000 2024 - Final 50) (25 April 2024)",
+      "title": "Kyau & Albert - Euphonic Sessions October 2026 (01 October 2026)",
       "audio_ok": true,
       "audio_method": "intermediate",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1170-top-1000-2024-final-50-2024-april-25/jtjXfZ",
-        "http://files.globaldjmix.com/2024/04/25/Armin van Buuren - A State Of Trance Episode 1170 XXL (Top1000 2024, Final 50).mp3",
-        "http://files.globaldjmix.com/2024/04/25/Armin"
+        "http://box.globaldjmix.com/media/kyau-albert-euphonic-sessions-october-2026-2026-october-01/jtjXfZ",
+        "http://www.kyauandalbert.com/ES/EuphonicSessions-Kyau&Albert-October2026.mp3"
       ],
-      "audio_url": "http://files.globaldjmix.com/2024/04/25/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201170%20XXL%20(Top1000%202024,%20Final%2050).mp3",
+      "audio_url": "http://www.kyauandalbert.com/ES/EuphonicSessions-Kyau&Albert-October2026.mp3",
       "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/asot_1170.jpg",
+      "image_url": "https://globaldjmix.com/files/download/kyau_albert_euphonic_sessions_2022.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/armin-van-buuren-ferry-corsten-a-state-of-trance-asot-1050-2022-january-06/",
+      "url": "https://globaldjmix.com/hernan-cattaneo-resident-804-2026-october-03/",
       "article_fetched": true,
-      "title": "Armin van Buuren & Ferry Corsten - A State of Trance ASOT 1050 (06 January 2022)",
+      "title": "Hernan Cattaneo - Resident 804 (03 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://mcdn.podbean.com/mf/web/qdymgpgjikhh3hax/804-HernanCattaneo-2026-10-03.mp3"
+      ],
+      "audio_url": "https://s338.podbean.com/pb/fee55468ebf53baed9c3e12bdc79d857/6ac7f7c1/data1/fs80/274700/uploads/804-HernanCattaneo-2026-10-03.mp3?pbss=c372e2f0-fb70-568c-97a6-015dd248128d",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/hernan_cattaneo_-_resident_2_-_2025.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/armin-van-buuren-kaskade-dance-department-2026-october-03/",
+      "article_fetched": true,
+      "title": "Armin van Buuren & Kaskade - Dance Department (03 October 2026)",
       "audio_ok": true,
       "audio_method": "intermediate",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/armin-van-buuren-ferry-corsten-a-state-of-trance-asot-1050-2022-january-06/jtjXfZ",
-        "http://files.globaldjmix.com/dock-station/download/2022/01/06/Armin van Buuren - A State of Trance Episode 1050.mp3",
-        "http://files.globaldjmix.com/dock-station/download/2022/01/06/Armin"
+        "http://box.globaldjmix.com/media/armin-van-buuren-kaskade-dance-department-2026-october-03/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/03/Armin van Buuren & Kaskade - Dance Department (2026-10-03).mp3",
+        "http://files.globaldjmix.com/2026/10/03/Armin"
       ],
-      "audio_url": "http://files.globaldjmix.com/dock-station/download/2022/01/06/Armin%20van%20Buuren%20-%20A%20State%20of%20Trance%20Episode%201050.mp3",
+      "audio_url": "http://files.globaldjmix.com/2026/10/03/Armin%20van%20Buuren%20&%20Kaskade%20-%20Dance%20Department%20(2026-10-03).mp3",
       "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/a_state_of_trance_episode_1050_-_armin_van_buuren_a_state_of_trance.jpg",
+      "image_url": "https://globaldjmix.com/files/download/armin_van_buuren-_dance_department_radio_538.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1204-xxl-top-50-of-2024-2024-december-19/",
+      "url": "https://globaldjmix.com/tiësto-prismatic-040-2026-october-03/",
       "article_fetched": true,
-      "title": "Armin van Buuren & Ruben De Ronde & Ferry Corsten - A State Of Trance ASOT 1204 XXL (Top 50 Of 2024) (19 December 2024)",
+      "title": "Tiësto - Prismatic 040 (03 October 2026)",
       "audio_ok": true,
       "audio_method": "intermediate",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1204-xxl-top-50-of-2024-2024-december-19/jtjXfZ",
-        "http://files.globaldjmix.com/2024/12/18/Armin van Buuren - A State Of Trance Episode 1204 XXL (Top 50 Of 2024).mp3",
-        "http://files.globaldjmix.com/2024/12/18/Armin"
+        "http://box.globaldjmix.com/media/tiësto-prismatic-040-2026-october-03/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/03/Tiesto - Prismatic 040 (2026-10-03).mp3",
+        "http://files.globaldjmix.com/2026/10/03/Tiesto"
       ],
-      "audio_url": "http://files.globaldjmix.com/2024/12/18/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201204%20XXL%20(Top%2050%20Of%202024).mp3",
+      "audio_url": "http://files.globaldjmix.com/2026/10/03/Tiesto%20-%20Prismatic%20040%20(2026-10-03).mp3",
       "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/asot_1204.jpg",
+      "image_url": "https://globaldjmix.com/files/download/prismatic_by_tiesto.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/armin-van-buuren-a-state-of-trance-asot-1101-yearmix-2022-2022-december-29/",
+      "url": "https://globaldjmix.com/vintage-culture-affairs-158-2026-october-03/",
       "article_fetched": true,
-      "title": "Armin van Buuren - A State Of Trance ASOT 1101 (Yearmix 2022) (29 December 2022)",
+      "title": "Vintage Culture - Affairs 158 (03 October 2026)",
       "audio_ok": true,
-      "audio_method": "intermediate",
+      "audio_method": "direct",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/armin-van-buuren-a-state-of-trance-asot-1101-yearmix-2022-2022-december-29/jtjXfZ",
-        "http://files.globaldjmix.com/2022/12/29/Armin van Buuren - A State Of Trance Episode 1101 (Yearmix 2022).mp3",
-        "http://files.globaldjmix.com/2022/12/29/Armin"
+        "https://cdn.podtoo.com/syndication/2026/10/1791001563371full_episode_AFFAIRS--158--World-.mp3"
       ],
-      "audio_url": "http://files.globaldjmix.com/2022/12/29/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201101%20(Yearmix%202022).mp3",
+      "audio_url": "https://cdn.podtoo.com/syndication/2026/10/1791001563371full_episode_AFFAIRS--158--World-.mp3",
       "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/asot_1101.jpg",
+      "image_url": "https://globaldjmix.com/files/download/vintage_culture_-_affairs.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/armin-van-buuren-a-state-of-trance-asot-1205-yearmix-2024-2024-december-26/",
+      "url": "https://globaldjmix.com/steve-aoki-aoki's-house-podcast-687-2026-october-03/",
       "article_fetched": true,
-      "title": "Armin van Buuren - A State Of Trance ASOT 1205 (Yearmix 2024) (26 December 2024)",
+      "title": "Steve Aoki - Aoki's House Podcast 687 (03 October 2026)",
       "audio_ok": true,
-      "audio_method": "intermediate",
+      "audio_method": "direct",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/armin-van-buuren-a-state-of-trance-asot-1205-yearmix-2024-2024-december-26/jtjXfZ",
-        "http://files.globaldjmix.com/2024/12/26/Armin van Buuren - A State Of Trance Episode 1205 (Yearmix 2024).mp3",
-        "http://files.globaldjmix.com/2024/12/26/Armin"
+        "https://traffic.libsyn.com/secure/steveaoki/Aokis_House_Podcast_687_EP_765_Air_Date_9.30.26_-_Podcast.mp3?dest-id=317282"
       ],
-      "audio_url": "http://files.globaldjmix.com/2024/12/26/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201205%20(Yearmix%202024).mp3",
+      "audio_url": "https://content.libsyn.com/p/2/1/b/21bbe5f49fa66d09/Aokis_House_Podcast_687_EP_765_Air_Date_9.30.26_-_Podcast.mp3?c_id=206788053&cs_id=206788053&destination_id=317282&response-content-type=audio%2Fmpeg&Expires=1791531340&Signature=PZjU50BHcvRZ8OtHGdjakO-V3~M8prnbHjowU0bWEJ9lXomNZd8-QcNr77~sCWfMdDTYAJVAKW1K4rBB8XZcoTk~LmDvbpk-NMJ2sKFJJSrRvP673GcmjTGJjY4kWAXx4aeT6v8038zVe8eqNgm3eJ1Xl8dUzSFeSInqSBnAFcYXdoIdvGhRKWVdxppT8Iu5SucdOGBXUvka6RsRCHL8cdWIkR~7-VxNNIwxysG5dGfT4CuTn0Z~S17-iGfvB72HuA0gGvHo2HJV3a6qmPCdSxLdtp2uOTWXB9Xzj2V-FmhfwxeWveVJRK2UdqHD~LQD4tjALhAY2AM4rtjMJ40Lyg__&Key-Pair-Id=K1YS7LZGUP96OI",
       "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/a_state_of_trance_episode_1205_-_year_mix_2025.jpg",
+      "image_url": "https://globaldjmix.com/files/download/steve_aoki_sirius.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/shimza-black-coffee-live-factory-town-miami-united-states-2025-march-29/",
+      "url": "https://globaldjmix.com/v-fox-the-world-around-seven-five-303-xxl-special-2026-october-03/",
       "article_fetched": true,
-      "title": "Shimza & Black Coffee - Live @ Factory Town Miami, United States (29 March 2025)",
+      "title": "V-FOX - The World Around Seven Five 303 XXL Special (03 October 2026)",
       "audio_ok": false,
       "audio_method": null,
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/shimza-black-coffee-live-factory-town-miami-united-states-2025-march-29/jtjXfZ",
-        "http://mirror.globaldjmix.com:7001/2025/04/02/Shimza - Black Coffee presents, Factory Town Miami, United States 2025-03-29.mp3",
-        "http://mirror.globaldjmix.com:7001/2025/04/02/Shimza"
+        "https://pixeldrain.com/u/MeRsgzLf"
       ],
       "audio_url": null,
       "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/shimza_black_coffee_presents_factory_town_miami_united_states_2025-03-29.jpg",
+      "image_url": "https://globaldjmix.com/files/download/v-fox_-_the_world_around_seven_five_303_xxl_special.png",
       "image_http_ok": true,
-      "audio_error": "No audio URL resolved. candidates=[\"http://box.globaldjmix.com/media/shimza-black-coffee-live-factory-town-miami-united-states-2025-march-29/jtjXfZ\", \"http://mirror.globaldjmix.com:7001/2025/04/02/Shimza - Black Coffee presents, Factory Town Miami, United States 2025-03-29.mp3\", \"http://mirror.globaldjmix.com:7001/2025/04/02/Shimza\"]; content-type=text/css | ConnectTimeout: HTTPConnectionPool(host='mirror.globaldjmix.com', port=7001): Max retries exceeded with url: /2025/04/02/Shimza%20-%20Black%20Coffee%20presents,%20Factory%20Town%20Miami,%20United%20States%202025-03-29.mp3 (Caused by ConnectTimeoutError(<HTTPConnection(host='mirror.globaldjmix.com', port=7001) at 0x7fedd6c25cd0>, 'Connection to mirror.globaldjmix.com timed out. (connect timeout=6)')) | content-type=text/css; charset=utf-8 | ConnectTimeout: HTTPConnectionPool(host='mirror.globaldjmix.com', port=7001): Max retries exceeded with url: /2025/04/02/Shimza%20-%20Black%20Coffee%20presents,%20Factory%20Town%20Miami,%20United%20States%202025-03-29.mp3 (Caused by ConnectTimeoutError(<HTTPConnection(host='mirror.globaldjmix.com', port=7001) at 0x7fedd6f72f00>, 'Connection to mirror.globaldjmix.com timed out. (connect timeout=6)'))",
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1152-xxl-top-50-of-2023-2023-december-21/",
-      "article_fetched": true,
-      "title": "Armin van Buuren & Ruben De Ronde & Ferry Corsten - A State Of Trance ASOT 1152 XXL (Top 50 Of 2023) (21 December 2023)",
-      "audio_ok": false,
-      "audio_method": null,
-      "audio_candidates": [
-        "http://box.globaldjmix.com/media/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1152-xxl-top-50-of-2023-2023-december-21/jtjXfZ",
-        "http://mirror.globaldjmix.com:7001/2023/12/21/Armin van Buuren - A State Of Trance Episode 1152 XXL (Top 50 Of 2023).mp3",
-        "http://mirror.globaldjmix.com:7001/2023/12/21/Armin"
-      ],
-      "audio_url": null,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/armin_van_buuren_-_a_state_of_trance_1152_top_50_of_2023_special_2023-12-21.jpg",
-      "image_http_ok": true,
-      "audio_error": "No audio URL resolved. candidates=[\"http://box.globaldjmix.com/media/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1152-xxl-top-50-of-2023-2023-december-21/jtjXfZ\", \"http://mirror.globaldjmix.com:7001/2023/12/21/Armin van Buuren - A State Of Trance Episode 1152 XXL (Top 50 Of 2023).mp3\", \"http://mirror.globaldjmix.com:7001/2023/12/21/Armin\"]; content-type=text/css | ConnectTimeout: HTTPConnectionPool(host='mirror.globaldjmix.com', port=7001): Max retries exceeded with url: /2023/12/21/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201152%20XXL%20(Top%2050%20Of%202023).mp3 (Caused by ConnectTimeoutError(<HTTPConnection(host='mirror.globaldjmix.com', port=7001) at 0x7fedd6a463c0>, 'Connection to mirror.globaldjmix.com timed out. (connect timeout=6)')) | content-type=text/css; charset=utf-8 | ConnectTimeout: HTTPConnectionPool(host='mirror.globaldjmix.com', port=7001): Max retries exceeded with url: /2023/12/21/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201152%20XXL%20(Top%2050%20Of%202023).mp3 (Caused by ConnectTimeoutError(<HTTPConnection(host='mirror.globaldjmix.com', port=7001) at 0x7fedd6c26930>, 'Connection to mirror.globaldjmix.com timed out. (connect timeout=6)'))",
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/armin-van-buuren-a-state-of-trance-asot-1153-yearmix-2023-2023-december-28/",
-      "article_fetched": true,
-      "title": "Armin van Buuren - A State Of Trance ASOT 1153 (Yearmix 2023) (28 December 2023)",
-      "audio_ok": false,
-      "audio_method": null,
-      "audio_candidates": [
-        "http://box.globaldjmix.com/media/armin-van-buuren-a-state-of-trance-asot-1153-yearmix-2023-2023-december-28/jtjXfZ",
-        "http://mirror.globaldjmix.com:7001/2023/12/28/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201153%20(Yearmix%202023).mp3"
-      ],
-      "audio_url": null,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/a_state_of_trance_episode_1153_-_year_mix_2023.jpg",
-      "image_http_ok": true,
-      "audio_error": "No audio URL resolved. candidates=[\"http://box.globaldjmix.com/media/armin-van-buuren-a-state-of-trance-asot-1153-yearmix-2023-2023-december-28/jtjXfZ\", \"http://mirror.globaldjmix.com:7001/2023/12/28/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201153%20(Yearmix%202023).mp3\"]; content-type=text/css | ConnectTimeout: HTTPConnectionPool(host='mirror.globaldjmix.com', port=7001): Max retries exceeded with url: /2023/12/28/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201153%20(Yearmix%202023).mp3 (Caused by ConnectTimeoutError(<HTTPConnection(host='mirror.globaldjmix.com', port=7001) at 0x7fedd6c266c0>, 'Connection to mirror.globaldjmix.com timed out. (connect timeout=6)')) | content-type=text/css; charset=utf-8 | ConnectTimeout: HTTPConnectionPool(host='mirror.globaldjmix.com', port=7001): Max retries exceeded with url: /2023/12/28/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201153%20(Yearmix%202023).mp3 (Caused by ConnectTimeoutError(<HTTPConnection(host='mirror.globaldjmix.com', port=7001) at 0x7fedd64741a0>, 'Connection to mirror.globaldjmix.com timed out. (connect timeout=6)'))",
+      "audio_error": "No audio URL resolved. candidates=[\"https://pixeldrain.com/u/MeRsgzLf\"]; content-type=image/png | content-type=text/css; charset=utf-8 | content-type=text/css | content-type=image/png",
       "image_error": null,
       "error": null
     }
