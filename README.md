@@ -1,8 +1,7 @@
-# GlobalDJMix Podcast RSS
+# UniversalMixDJ Podcast RSS
 
 An automated RSS builder for the GlobalDJMix DJ mix and live-set archive.
 
-- **Source archive:** https://globaldjmix.com/livedjsets
 - **Podcast RSS:** https://kuafor41.github.io/globaldjmix-podcast/rss.xml
 - **Scheduled updates:** hourly, at minute 15, in the `Europe/Istanbul` timezone
 - **Manual workflow modes:** `test`, `incremental`, `since2025`, `full`
