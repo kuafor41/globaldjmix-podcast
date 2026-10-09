@@ -434,10 +434,10 @@ def download_candidates(soup, base_url, raw_source=""):
                     add(match)
 
     patterns = (
-        r'''https?://[^"'<>\\s]+\\.mp3(?:\\?[^"'<>\\s]*)?''',
-        r'''https?:\\/\\/[^"'<>\\s]+\\.mp3(?:\\?[^"'<>\\s]*)?''',
-        r'''https?://box\\.globaldjmix\\.com/[^"'<>\\s]+''',
-        r'''https?://box\\.download/[^"'<>\\s]+''',
+        r'''https?://[^"'<> \s]+\.mp3(?:\?[^"'<> \s]*)?''',
+        r'''https?:\\/\\/[^"'<> \s]+\.mp3(?:\?[^"'<> \s]*)?''',
+        r'''https?://box\.globaldjmix\.com/[^"'<> \s]+''',
+        r'''https?://box\.download/[^"'<> \s]+''',
     )
     for pattern in patterns:
         for match in re.findall(pattern, raw_source or "", flags=re.I):
@@ -483,8 +483,8 @@ def probe_url(url, referer=None):
         )
         if audio:
             return "audio", final_url, None
-        return "other", final_url, "Response was not identified as audio (Content-Type="
-               + (content_type or "missing") + ")"
+        return "other", final_url, ("Response was not identified as audio (Content-Type="
+               + (content_type or "missing") + ")")
     except Exception as exc:
         return "error", None, str(exc)
     finally:
