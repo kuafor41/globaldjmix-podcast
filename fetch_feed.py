@@ -151,44 +151,24 @@ def is_article(url):
 
 def extract_posts(body):
     soup = BeautifulSoup(body, "html.parser")
-    # Exclude the historical "Most popular" section by DOM position, not raw HTML:
-    # templates sometimes mention that phrase in scripts before the real listings.
+    # The current template puts genre names in H4 tags; episode title anchors
+    # are often plain links next to them, so scan all links rather than headings only.
     marker = soup.find(
         lambda tag: tag.name in {"h2", "h3", "h4", "h5"}
         and re.search(r"Most popular DJ Mixes", tag.get_text(" ", strip=True), re.I)
     )
     result = []
-    selectors = "h2 a[href], h3 a[href], h4 a[href], .post-title a[href], .entry-title a[href]"
-    for anchor in soup.select(selectors):
-        if marker is not None and marker in anchor.find_all_previous():
-            continue
-        href = clean_url(anchor.get("href"), BASE)
-        title = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip()
-        if href and title and is_article(href):
-            result.append(urlunparse((*urlparse(href)[:3], "", "", "")))
-    result = unique(result)
-    if len(result) >= 10:
-        return result
-
-    # Theme fallback: only accept a link when its nearby card has mix metadata.
     for anchor in soup.find_all("a", href=True):
         if marker is not None and marker in anchor.find_all_previous():
             continue
         href = clean_url(anchor.get("href"), BASE)
         title = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip()
-        if not href or len(title) < 10 or not is_article(href):
+        if not href or len(title) < 12 or not is_article(href):
             continue
-        parent = anchor
-        context = ""
-        for _ in range(5):
-            if parent.parent is None:
-                break
-            parent = parent.parent
-            context = parent.get_text(" ", strip=True)
-            if re.search(r"Bitrate\s*:|Duration\s*:|File\s*Size\s*:|Genre\s*:", context, re.I):
-                break
-        if re.search(r"Bitrate\s*:|Duration\s*:|File\s*Size\s*:|Genre\s*:", context, re.I):
-            result.append(urlunparse((*urlparse(href)[:3], "", "", "")))
+        # Keep post links at the root of the GlobalDJMix domain and exclude generic UI links.
+        if re.fullmatch(r"(?:page\s*)?\d+", title, re.I):
+            continue
+        result.append(urlunparse((*urlparse(href)[:3], "", "", "")))
     return unique(result)
 
 def archive_page_url(n):
