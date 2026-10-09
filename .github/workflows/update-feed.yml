@@ -21,7 +21,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     env:
       FEED_MODE: ${{ github.event_name == 'schedule' && 'incremental' || 'test' }}
-      REQUEST_TIMEOUT: ${{ github.event_name == 'schedule' && '60' || '45' }}
+      REQUEST_TIMEOUT: ${{ github.event_name == 'schedule' && '60' || '20' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

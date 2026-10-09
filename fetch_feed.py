@@ -28,7 +28,7 @@ if MODE not in {"test", "incremental", "full"}:
     print("Unrecognized FEED_MODE; falling back to test.", file=sys.stderr)
     MODE = "test"
 
-TIMEOUT = int(os.environ.get("REQUEST_TIMEOUT", "45" if MODE == "test" else "60"))
+TIMEOUT = int(os.environ.get("REQUEST_TIMEOUT", "20" if MODE == "test" else "60"))
 MAX_TEST_ARTICLES = 50
 TEST_WORKERS = 3
 INCREMENTAL_WORKERS = 3
