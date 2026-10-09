@@ -459,6 +459,19 @@ def resolve_audio(soup, raw_body, article_url):
     candidates = audio_candidates(soup, article_url, raw_body)
     errors = []
     for candidate in candidates[:5]:
+        parsed = urlparse(candidate)
+        host = (parsed.hostname or "").lower()
+        pixeldrain = re.fullmatch(r"/u/([A-Za-z0-9_-]+)", parsed.path.rstrip("/"))
+        if host in {"pixeldrain.com", "www.pixeldrain.com"} and pixeldrain:
+            # Turn a Pixeldrain sharing page into its generic file API URL using
+            # the ID discovered from that page; no episode-specific token is fixed.
+            direct = "https://pixeldrain.com/api/file/" + pixeldrain.group(1) + "?download"
+            kind, final_url, body, size, error = probe_audio(direct, article_url)
+            if kind == "audio":
+                return final_url, "intermediate", size, candidates, None
+            if error:
+                errors.append("Pixeldrain API: " + error)
+
         kind, final_url, body, size, error = probe_audio(candidate, article_url)
         if kind == "audio":
             return final_url, "direct", size, candidates, None
@@ -494,7 +507,6 @@ def resolve_audio(soup, raw_body, article_url):
     if errors:
         detail += "; " + " | ".join(errors[:4])
     return None, None, 0, candidates, detail
-
 
 def verify_image(url, referer):
     if not url:
