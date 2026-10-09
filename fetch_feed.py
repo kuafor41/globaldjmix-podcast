@@ -634,7 +634,7 @@ def parse_episode(url):
         "url": url, "article_fetched": False, "title": "", "audio_ok": False,
         "audio_method": None, "audio_candidates": [], "audio_url": None,
         "image_found": False, "image_url": None, "image_http_ok": False,
-        "tracklist_found": False, "tracklist_error": None,
+        "tracklist_button_found": False, "tracklist_found": False, "tracklist_error": None,
         "audio_error": None, "image_error": None, "error": None,
     }
     try:
@@ -673,6 +673,7 @@ def parse_episode(url):
                 description = meta["content"].strip()
                 break
         description = description or title
+        diag["tracklist_button_found"] = bool(soup.select_one("button.show-tracklist[data-id]"))
         tracklist, tracklist_error = fetch_tracklist(soup, final_url)
         diag["tracklist_found"] = bool(tracklist)
         diag["tracklist_error"] = tracklist_error
@@ -795,9 +796,15 @@ def main():
     image_found = sum(bool(d.get("image_found")) for d in diagnostics)
     tracklists_found = sum(bool(d.get("tracklist_found")) for d in diagnostics)
     tracklists_missing = len(diagnostics) - tracklists_found
+    tracklist_buttons_found = sum(bool(d.get("tracklist_button_found")) for d in diagnostics)
+    tracklist_buttonless_pages = len(diagnostics) - tracklist_buttons_found
+    tracklist_button_pages_missing_tracklist = tracklist_buttons_found - tracklists_found
     tracklist_required = bool(os.getenv("GLOBALDJMIX_USERNAME") and os.getenv("GLOBALDJMIX_PASSWORD"))
-    tracklist_minimum = max(1, (len(selected) * 4 + 4) // 5) if tracklist_required and selected else 0
-    tracklist_test_passed = not tracklist_required or tracklists_found >= tracklist_minimum
+    tracklist_minimum = tracklist_buttons_found if tracklist_required else 0
+    tracklist_test_passed = (
+        not tracklist_required
+        or (tracklist_buttons_found > 0 and tracklists_found == tracklist_buttons_found)
+    )
     methods = {}
     for diag in diagnostics:
         if diag.get("audio_method"):
@@ -816,6 +823,9 @@ def main():
         "images_verified": image_ok,
         "tracklists_found": tracklists_found,
         "tracklists_missing": tracklists_missing,
+        "tracklist_buttons_found": tracklist_buttons_found,
+        "tracklist_buttonless_pages": tracklist_buttonless_pages,
+        "tracklist_button_pages_missing_tracklist": tracklist_button_pages_missing_tracklist,
         "tracklist_minimum_for_test": tracklist_minimum,
         "tracklist_test_passed": tracklist_test_passed if MODE == "test" else None,
         "audio_resolution_methods": methods,
@@ -849,8 +859,9 @@ def main():
         "| audio=", str(audio_ok) + "/" + str(len(selected)),
         "| artwork found=", str(image_found) + "/" + str(len(selected)),
         "| artwork verified=", str(image_ok) + "/" + str(len(selected)),
-        "| tracklists=", str(tracklists_found) + "/" + str(len(diagnostics)),
-        "| tracklist minimum=", tracklist_minimum,
+        "| tracklists=", str(tracklists_found) + "/" + str(tracklist_buttons_found) + " buttons",
+        "| pages without tracklist button=", tracklist_buttonless_pages,
+        "| button pages missing tracklist=", tracklist_button_pages_missing_tracklist,
         "| methods=", json.dumps(methods),
         "| test passed=", passed,
         "| saved episodes=", report["saved_episode_count"],
