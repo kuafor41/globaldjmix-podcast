@@ -22,7 +22,7 @@ permissions:
   pages: write
   id-token: write
 concurrency:
-  group: globaldjmix-rss-v2
+  group: globaldjmix-rss-${{ github.run_id }}
   cancel-in-progress: true
 jobs:
   build-and-deploy:
