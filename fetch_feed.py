@@ -125,12 +125,15 @@ def request_redirect_safe(url, headers=None, timeout=None, stream=False, max_red
     raise requests.TooManyRedirects("Too many redirects for " + str(url))
 
 
-def fetch_page(url, referer=None, attempts=2):
+def fetch_page(url, referer=None, attempts=None):
     last_error = None
+    if attempts is None:
+        attempts = 1 if MODE == "test" else 2
     headers = {"Referer": referer} if referer else {}
+    request_timeout = min(TIMEOUT, 12) if MODE == "test" else TIMEOUT
     for attempt in range(attempts):
         try:
-            return request_redirect_safe(url, headers=headers)
+            return request_redirect_safe(url, headers=headers, timeout=request_timeout)
         except requests.exceptions.SSLError:
             raise
         except Exception as exc:
@@ -343,7 +346,7 @@ def article_download_candidates(soup, base_url, include_raw=False, raw=""):
         )
         if is_download:
             add(href)
-            if len(candidates) >= (5 if include_raw else 3):
+            if len(candidates) >= (3 if include_raw else 2):
                 break
 
     if include_raw and raw:
@@ -353,9 +356,9 @@ def article_download_candidates(soup, base_url, include_raw=False, raw=""):
         ):
             for match in re.findall(pattern, raw, re.I):
                 add(match.replace("\\/", "/"))
-                if len(candidates) >= 5:
+                if len(candidates) >= 3:
                     break
-    return candidates[:(5 if include_raw else 3)]
+    return candidates[:(3 if include_raw else 2)]
 
 
 def probe(url, referer):
@@ -363,7 +366,7 @@ def probe(url, referer):
     response = None
     try:
         headers = {"Range": "bytes=0-511", "Referer": referer}
-        response = request_redirect_safe(url, headers=headers, stream=True, timeout=TIMEOUT)
+        response = request_redirect_safe(url, headers=headers, stream=True, timeout=(min(TIMEOUT, 8) if MODE == "test" else TIMEOUT))
         final_url = response.url
         content_type = (response.headers.get("content-type") or "").lower()
         disposition = (response.headers.get("content-disposition") or "").lower()
@@ -403,7 +406,7 @@ def probe(url, referer):
 def resolve_audio(article_soup, article_html, article_url):
     candidates = article_download_candidates(article_soup, article_url, include_raw=True, raw=article_html)
     errors = []
-    for candidate in candidates[:5]:
+    for candidate in candidates[:3]:
         kind, final_url, body, error = probe(candidate, article_url)
         if kind == "audio":
             return final_url, "direct", None
@@ -413,7 +416,7 @@ def resolve_audio(article_soup, article_html, article_url):
                 intermediate, final_url, include_raw=True, raw=body
             )
             # The inner page's explicit Download button is first priority.
-            for inner in inner_candidates[:3]:
+            for inner in inner_candidates[:2]:
                 inner_kind, inner_final, _, inner_error = probe(inner, final_url)
                 if inner_kind == "audio":
                     return inner_final, "intermediate", None
@@ -431,7 +434,7 @@ def verify_image(url, referer):
     try:
         response = request_redirect_safe(
             url, headers={"Range": "bytes=0-255", "Referer": referer},
-            stream=True, timeout=min(TIMEOUT, 15)
+            stream=True, timeout=(min(TIMEOUT, 8) if MODE == "test" else min(TIMEOUT, 15))
         )
         ctype = (response.headers.get("content-type") or "").lower()
         suffix = urlparse(response.url).path.lower()
@@ -502,7 +505,7 @@ def parse_episode(url):
             "guid": url, "title": title, "link": url,
             "enclosure": audio_url, "image": image_url,
             "pubDate": pub_date.isoformat(),
-            "genre": duration.group(1) if False else (genre.group(1).strip() if genre else "DJ Mix"),
+            "genre": genre.group(1).strip() if genre else "DJ Mix",
             "duration": duration.group(1).strip() if duration else "",
             "bitrate": bitrate.group(1).strip() if bitrate else "",
             "filesize": size_bytes,
