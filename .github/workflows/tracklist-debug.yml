@@ -1,0 +1,73 @@
+name: Temporary GlobalDJMix Tracklist Diagnostic
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/tracklist-debug.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install diagnostic dependencies
+        run: python -m pip install requests beautifulsoup4
+      - name: Login and inspect tracklist JavaScript
+        env:
+          SITE_LOGIN: ${{ secrets.GLOBALDJMIX_USERNAME }}
+          SITE_PASSWORD: ${{ secrets.GLOBALDJMIX_PASSWORD }}
+        run: |
+          python - <<'PY'
+          import os, re, requests
+          from bs4 import BeautifulSoup
+          from urllib.parse import urljoin
+          base = "https://globaldjmix.com"
+          episode = base + "/david-guetta-playlist-849-2026-october-02/"
+          s = requests.Session()
+          s.headers["User-Agent"] = "Mozilla/5.0"
+          try:
+              r = s.get(base + "/get-auth-form", timeout=20)
+              soup = BeautifulSoup(r.text, "html.parser")
+              f = soup.find("form")
+              data = {}
+              if f:
+                  for el in f.find_all("input"):
+                      name = el.get("name")
+                      if not name: continue
+                      typ = (el.get("type") or "text").lower()
+                      if typ == "password": data[name] = os.getenv("SITE_PASSWORD", "")
+                      elif name.lower() in ("login", "username", "user", "email"): data[name] = os.getenv("SITE_LOGIN", "")
+                      else: data[name] = el.get("value", "")
+                  login = s.post(urljoin(r.url, f.get("action") or r.url), data=data, timeout=20, allow_redirects=True)
+                  print("LOGIN_OK", login.status_code, login.url, any(x in login.text.lower() for x in ("logout", "log out", "sign out")))
+              er = s.get(episode, timeout=20)
+              es = BeautifulSoup(er.text, "html.parser")
+              btn = es.select_one("button.show-tracklist")
+              print("BUTTON", btn.get("data-id") if btn else None, "page", er.status_code)
+              targets = [urljoin(er.url, x.get("src")) for x in es.find_all("script", src=True)]
+              for target in targets:
+                  if "globaldjmix.com" not in target: continue
+                  try:
+                      js = s.get(target, timeout=15).text
+                  except Exception as exc:
+                      print("JS_ERROR", target, type(exc).__name__); continue
+                  matches = []
+                  for pat in (r"show-tracklist", r"tracklist", r"track.?list", r"get-track", r"ajax"):
+                      for m in list(re.finditer(pat, js, re.I))[:12]:
+                          snippet = re.sub(r"\\s+", " ", js[max(0,m.start()-240):min(len(js),m.end()+420)])
+                          matches.append((m.start(), pat, snippet[:700]))
+                  if matches:
+                      print("SCRIPT_URL", target, "matches", len(matches))
+                      for _, pat, snippet in sorted(matches)[:14]:
+                          print("JS_MATCH", pat, snippet)
+              print("DONE")
+          except Exception as exc:
+              print("DIAG_ERROR", type(exc).__name__, str(exc)[:250])
+          PY
