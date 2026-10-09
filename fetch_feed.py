@@ -24,7 +24,7 @@ REPORT_FILE = DATA / "test-report.json"
 RSS_FILE = Path("rss.xml")
 
 MODE = os.getenv("FEED_MODE", "test").strip().lower()
-if MODE not in {"test", "incremental", "year2026", "full"}:
+if MODE not in {"test", "incremental", "since2025", "full"}:
     MODE = "test"
 TEST_LIMIT = 50
 ARCHIVE_PAGE_CAP = 3
@@ -203,9 +203,10 @@ def archive_url_year(url):
         match = re.search(r"-(20\d{2})-(\d{1,2})-(\d{1,2})$", slug)
     if match:
         return int(match.group(1))
-    # A fallback for alternate slugs where the year is present but month formatting differs.
-    if re.search(r"(?:^|-)2026(?:-|$)", slug):
-        return 2026
+    # Fallback for dated slugs whose month formatting differs.
+    match = re.search(r"(?:^|-)(20\d{2})(?:-|$)", slug)
+    if match:
+        return int(match.group(1))
     return None
 
 
@@ -243,37 +244,37 @@ def discover_posts(mode):
     found = unique(first_posts)
     older_consecutive = 0
 
-    def keep_year_2026(url):
+    def keep_since_2025(url):
         year = archive_url_year(url)
-        return year == 2026 or (year is None and "2026" in urlparse(url).path.lower())
+        return year is None or year >= 2025
 
-    if mode == "year2026":
-        found = [url for url in found if keep_year_2026(url)]
-        print("2026 episodes found on page 1:", len(found))
+    if mode == "since2025":
+        found = [url for url in found if keep_since_2025(url)]
+        print("Episodes from 2025 onward found on page 1:", len(found))
         # Archive is newest-first. Stop after two consecutive pages whose dated
-        # episode URLs are all older than 2026, rather than scanning the entire archive.
+        # episode URLs are all older than 2025, rather than scanning the entire archive.
         for n in range(2, reported + 1):
             try:
                 _, body = get_page(archive_page_url(n))
                 pages_checked += 1
                 posts = unique(extract_posts(body))
                 years = [archive_url_year(url) for url in posts]
-                has_2026 = any(keep_year_2026(url) for url in posts)
+                has_since_2025 = any(keep_since_2025(url) for url in posts)
                 known_years = [year for year in years if year is not None]
-                if posts and not has_2026 and known_years and max(known_years) < 2026:
+                if posts and not has_since_2025 and known_years and max(known_years) < 2025:
                     older_consecutive += 1
                 else:
                     older_consecutive = 0
-                found.extend(url for url in posts if keep_year_2026(url))
+                found.extend(url for url in posts if keep_since_2025(url))
                 found = unique(found)
                 print(
                     "Archive page", n, ":", len(posts), "posts;",
-                    "2026 total:", len(found), "| older pages in a row:", older_consecutive,
+                    "2025+ total:", len(found), "| older pages in a row:", older_consecutive,
                 )
                 if not posts:
                     errors.append({"page": n, "url": archive_page_url(n), "error": "No episode links extracted", "response": page_debug(body)})
                 if older_consecutive >= 2:
-                    print("Reached archive entries before 2026; stopping archive discovery.")
+                    print("Reached archive entries before 2025; stopping archive discovery.")
                     break
             except Exception as exc:
                 errors.append({"page": n, "url": archive_page_url(n), "error": type(exc).__name__ + ": " + str(exc)})
@@ -788,16 +789,17 @@ def main():
         merged = dict(existing_by_url)
         for item in new_items:
             merged[item["source_url"]] = item
-        if MODE == "year2026":
-            def item_year(item):
-                year = archive_url_year(item.get("source_url", ""))
-                if year is not None:
-                    return year
-                try:
-                    return datetime.fromisoformat(item.get("pub_date", "").replace("Z", "+00:00")).year
-                except Exception:
-                    return 0
-            merged = {url: item for url, item in merged.items() if item_year(item) >= 2026}
+        def item_year(item):
+            year = archive_url_year(item.get("source_url", ""))
+            if year is not None:
+                return year
+            try:
+                return datetime.fromisoformat(item.get("pub_date", "").replace("Z", "+00:00")).year
+            except Exception:
+                return 0
+        # Apply the retention boundary on every non-test run so old episodes
+        # cannot re-enter the feed from previously saved data.
+        merged = {url: item for url, item in merged.items() if item_year(item) >= 2025}
         items = sorted(merged.values(), key=sort_key, reverse=True)
         ITEMS_FILE.write_text(json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         RSS_FILE.write_text(rss_xml(items), encoding="utf-8")
