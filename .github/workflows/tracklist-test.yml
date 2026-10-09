@@ -1,0 +1,46 @@
+name: GlobalDJMix Tracklist Feasibility Test
+on:
+  push:
+    branches: ["tracklist-description-test"]
+    paths:
+      - "tracklist_test.py"
+      - ".github/workflows/tracklist-test.yml"
+      - "data/items.json"
+  workflow_dispatch:
+    inputs:
+      confirm_test:
+        description: "Run the read-only 50-episode test with one tracklist request every 30 seconds"
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: globaldjmix-tracklist-feasibility-test
+  cancel-in-progress: false
+
+jobs:
+  tracklist-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GLOBALDJMIX_USERNAME: ${{ secrets.GLOBALDJMIX_USERNAME }}
+      GLOBALDJMIX_PASSWORD: ${{ secrets.GLOBALDJMIX_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install requests beautifulsoup4
+      - name: Test authenticated tracklists (read-only)
+        run: python tracklist_test.py
+      - name: Upload diagnostic report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tracklist-test-report
+          path: tracklist-test-report.json
+          if-no-files-found: warn
