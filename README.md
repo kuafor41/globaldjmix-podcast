@@ -2,7 +2,6 @@
 
 An automated RSS builder for the GlobalDJMix DJ mix and live-set archive.
 
-- **Podcast RSS:** https://kuafor41.github.io/globaldjmix-podcast/rss.xml
 - **Scheduled updates:** hourly, at minute 15, in the `Europe/Istanbul` timezone
 - **Manual workflow modes:** `test`, `incremental`, `since2025`, `full`
 - **Retention:** episodes from 1 January 2025 onward
