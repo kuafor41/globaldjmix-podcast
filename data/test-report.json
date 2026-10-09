@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T06:39:08.583798+00:00",
+  "generated_at": "2026-10-09T07:44:20.769098+00:00",
   "mode": "test",
   "archive_source": "https://globaldjmix.com/livedjsets",
   "archive_pages_reported": 1660,
@@ -54,6 +54,23 @@
       "error": null
     },
     {
+      "url": "https://globaldjmix.com/anja-schneider-club-room-439-2026-october-08/",
+      "article_fetched": true,
+      "title": "Anja Schneider - Club Room 439 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://feeds.soundcloud.com/stream/2415152520-anjaschneider-anja-schneider-clubroom_439.mp3"
+      ],
+      "audio_url": "https://feeds.soundcloud.com/stream/2415152520-anjaschneider-anja-schneider-clubroom_439.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/anja_sneider_club_room_di_fm.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
       "url": "https://globaldjmix.com/nicole-moudaber-in-the-mood-649-live-in-rockerill-cherleroi-belgium-2026-october-08/",
       "article_fetched": true,
       "title": "Nicole Moudaber - In The MOOD 649 - Live In Rockerill, Cherleroi, Belgium (08 October 2026)",
@@ -67,23 +84,6 @@
       "audio_url": "http://files.globaldjmix.com/2026/10/08/02/Nicole Moudaber - In The MOOD 649 (08 October 2026).mp3",
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/in_the_mood_nicole_moudaber_common.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/anja-schneider-club-room-439-2026-october-08/",
-      "article_fetched": true,
-      "title": "Anja Schneider - Club Room 439 (08 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://feeds.soundcloud.com/stream/2415152520-anjaschneider-anja-schneider-clubroom_439.mp3"
-      ],
-      "audio_url": "https://feeds.soundcloud.com/stream/2415152520-anjaschneider-anja-schneider-clubroom_439.mp3",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/anja_sneider_club_room_di_fm.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -347,6 +347,23 @@
       "error": null
     },
     {
+      "url": "https://globaldjmix.com/robin-schulz-sugar-radio-562-2026-october-07/",
+      "article_fetched": true,
+      "title": "Robin Schulz - Sugar Radio 562 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://app.syndicast.co.uk/download/itunes/uploads/audios/56/562-7.mp3"
+      ],
+      "audio_url": "https://app.syndicast.co.uk/download/itunes/uploads/audios/56/562-7.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/robin_schulz.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
       "url": "https://globaldjmix.com/ferry-corsten-resonation-radio-306-2026-october-07/",
       "article_fetched": true,
       "title": "Ferry Corsten - Resonation Radio 306 (07 October 2026)",
@@ -360,23 +377,6 @@
       "audio_url": "http://files.globaldjmix.com/2026/10/07/Ferry Corsten - Resonation Radio 306 on AH.FM 07-10-2026.mp3",
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/resonation_radio_presented_by_ferry_corsten.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/robin-schulz-sugar-radio-562-2026-october-07/",
-      "article_fetched": true,
-      "title": "Robin Schulz - Sugar Radio 562 (07 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://app.syndicast.co.uk/download/itunes/uploads/audios/56/562-7.mp3"
-      ],
-      "audio_url": "https://app.syndicast.co.uk/download/itunes/uploads/audios/56/562-7.mp3",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/robin_schulz.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -745,19 +745,17 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/paul-van-dyk-vonyc-sessions-1039-2026-october-04/",
+      "url": "https://globaldjmix.com/yves-v-v-sessions-581-2026-october-04/",
       "article_fetched": true,
-      "title": "Paul Van Dyk - Vonyc Sessions 1039 (04 October 2026)",
+      "title": "Yves V - V Sessions 581 (04 October 2026)",
       "audio_ok": true,
-      "audio_method": "intermediate",
+      "audio_method": "direct",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/paul-van-dyk-vonyc-sessions-1039-2026-october-04/jtjXfZ",
-        "http://files.globaldjmix.com/2026/10/04/Paul van Dyk - Vonyc Sessions 1039 on AH.FM 04-10-2026.mp3",
-        "http://files.globaldjmix.com/2026/10/04/Paul"
+        "https://media3-yvesv.podtree.com/yvesv/media/podcast/V_Sessions_581.mp3"
       ],
-      "audio_url": "http://files.globaldjmix.com/2026/10/04/Paul van Dyk - Vonyc Sessions 1039 on AH.FM 04-10-2026.mp3",
+      "audio_url": "https://media3-yvesv.podtree.com/yvesv/media/podcast/V_Sessions_581.mp3",
       "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/paul_van_dyks_vonyc_sessions_ytb.jpg",
+      "image_url": "https://globaldjmix.com/files/download/yves_v_difm_660x330.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -781,17 +779,19 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/yves-v-v-sessions-581-2026-october-04/",
+      "url": "https://globaldjmix.com/paul-van-dyk-vonyc-sessions-1039-2026-october-04/",
       "article_fetched": true,
-      "title": "Yves V - V Sessions 581 (04 October 2026)",
+      "title": "Paul Van Dyk - Vonyc Sessions 1039 (04 October 2026)",
       "audio_ok": true,
-      "audio_method": "direct",
+      "audio_method": "intermediate",
       "audio_candidates": [
-        "https://media3-yvesv.podtree.com/yvesv/media/podcast/V_Sessions_581.mp3"
+        "http://box.globaldjmix.com/media/paul-van-dyk-vonyc-sessions-1039-2026-october-04/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/04/Paul van Dyk - Vonyc Sessions 1039 on AH.FM 04-10-2026.mp3",
+        "http://files.globaldjmix.com/2026/10/04/Paul"
       ],
-      "audio_url": "https://media3-yvesv.podtree.com/yvesv/media/podcast/V_Sessions_581.mp3",
+      "audio_url": "http://files.globaldjmix.com/2026/10/04/Paul van Dyk - Vonyc Sessions 1039 on AH.FM 04-10-2026.mp3",
       "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/yves_v_difm_660x330.jpg",
+      "image_url": "https://globaldjmix.com/files/download/paul_van_dyks_vonyc_sessions_ytb.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,

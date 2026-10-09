@@ -18,15 +18,6 @@
     "description": "Download Eric Prydz - Epic Radio 040 (08 October 2026) music DJ Mix in MP3 format; Audio Bitrate: 320kbps 44100kHz; FileSize: 139.4 MB; Genre: Progressive house; Duration: 60:43. Listen online. Also Tracklist / Playlist"
   },
   {
-    "title": "Nicole Moudaber - In The MOOD 649 - Live In Rockerill, Cherleroi, Belgium (08 October 2026)",
-    "source_url": "https://globaldjmix.com/nicole-moudaber-in-the-mood-649-live-in-rockerill-cherleroi-belgium-2026-october-08/",
-    "audio_url": "http://files.globaldjmix.com/2026/10/08/02/Nicole Moudaber - In The MOOD 649 (08 October 2026).mp3",
-    "image_url": "https://globaldjmix.com/files/download/in_the_mood_nicole_moudaber_common.jpg",
-    "pub_date": "2026-10-09T00:00:00+00:00",
-    "length": 139133036,
-    "description": "Download Nicole Moudaber - In The MOOD 649 - Live In Rockerill, Cherleroi, Belgium (08 October 2026) music DJ Mix in MP3 format; Audio Bitrate: 320kbps 44100kHz; FileSize: 132.69 MB; Genre: Techno; Duration: 57:39. Also Tracklist / Playlist"
-  },
-  {
     "title": "Anja Schneider - Club Room 439 (08 October 2026)",
     "source_url": "https://globaldjmix.com/anja-schneider-club-room-439-2026-october-08/",
     "audio_url": "https://feeds.soundcloud.com/stream/2415152520-anjaschneider-anja-schneider-clubroom_439.mp3",
@@ -34,6 +25,15 @@
     "pub_date": "2026-10-09T00:00:00+00:00",
     "length": 57896801,
     "description": "Download Anja Schneider - Club Room 439 (08 October 2026) music DJ Mix in MP3 format; Audio Bitrate: 128kbps 44100kHz; FileSize: 55.21 MB; Genre: Tech House; Duration: 60:18. Listen online. Also Tracklist / Playlist"
+  },
+  {
+    "title": "Nicole Moudaber - In The MOOD 649 - Live In Rockerill, Cherleroi, Belgium (08 October 2026)",
+    "source_url": "https://globaldjmix.com/nicole-moudaber-in-the-mood-649-live-in-rockerill-cherleroi-belgium-2026-october-08/",
+    "audio_url": "http://files.globaldjmix.com/2026/10/08/02/Nicole Moudaber - In The MOOD 649 (08 October 2026).mp3",
+    "image_url": "https://globaldjmix.com/files/download/in_the_mood_nicole_moudaber_common.jpg",
+    "pub_date": "2026-10-09T00:00:00+00:00",
+    "length": 139133036,
+    "description": "Download Nicole Moudaber - In The MOOD 649 - Live In Rockerill, Cherleroi, Belgium (08 October 2026) music DJ Mix in MP3 format; Audio Bitrate: 320kbps 44100kHz; FileSize: 132.69 MB; Genre: Techno; Duration: 57:39. Also Tracklist / Playlist"
   },
   {
     "title": "Euphoric Nation - Trance Paradise 757 (08 October 2026)",
@@ -162,15 +162,6 @@
     "description": "Download Kaiserdisco - KD Music Radio 161 (07 October 2026) music DJ Mix in MP3 format; Audio Bitrate: 192kbps 44100kHz; FileSize: 82.44 MB; Genre: Techno; Duration: 60:00. Listen online. Also Tracklist / Playlist"
   },
   {
-    "title": "Ferry Corsten - Resonation Radio 306 (07 October 2026)",
-    "source_url": "https://globaldjmix.com/ferry-corsten-resonation-radio-306-2026-october-07/",
-    "audio_url": "http://files.globaldjmix.com/2026/10/07/Ferry Corsten - Resonation Radio 306 on AH.FM 07-10-2026.mp3",
-    "image_url": "https://globaldjmix.com/files/download/resonation_radio_presented_by_ferry_corsten.jpg",
-    "pub_date": "2026-10-08T00:00:00+00:00",
-    "length": 86805402,
-    "description": "Download Ferry Corsten - Resonation Radio 306 (07 October 2026) music DJ Mix in MP3 format; Audio Bitrate: 192kbps 44100kHz; FileSize: 82.78 MB; Genre: Progressive house; Duration: 60:00. Listen online. Also Tracklist / Playlist"
-  },
-  {
     "title": "Robin Schulz - Sugar Radio 562 (07 October 2026)",
     "source_url": "https://globaldjmix.com/robin-schulz-sugar-radio-562-2026-october-07/",
     "audio_url": "https://app.syndicast.co.uk/download/itunes/uploads/audios/56/562-7.mp3",
@@ -178,6 +169,15 @@
     "pub_date": "2026-10-08T00:00:00+00:00",
     "length": 86358486,
     "description": "Download Robin Schulz - Sugar Radio 562 (07 October 2026) music DJ Mix in MP3 format; Audio Bitrate: 192kbps 44100kHz; FileSize: 82.36 MB; Genre: Electro Pop; Duration: 60:00. Listen online. Also Tracklist / Playlist"
+  },
+  {
+    "title": "Ferry Corsten - Resonation Radio 306 (07 October 2026)",
+    "source_url": "https://globaldjmix.com/ferry-corsten-resonation-radio-306-2026-october-07/",
+    "audio_url": "http://files.globaldjmix.com/2026/10/07/Ferry Corsten - Resonation Radio 306 on AH.FM 07-10-2026.mp3",
+    "image_url": "https://globaldjmix.com/files/download/resonation_radio_presented_by_ferry_corsten.jpg",
+    "pub_date": "2026-10-08T00:00:00+00:00",
+    "length": 86805402,
+    "description": "Download Ferry Corsten - Resonation Radio 306 (07 October 2026) music DJ Mix in MP3 format; Audio Bitrate: 192kbps 44100kHz; FileSize: 82.78 MB; Genre: Progressive house; Duration: 60:00. Listen online. Also Tracklist / Playlist"
   },
   {
     "title": "Christian Smith - Tronic Podcast 741 (07 October 2026)",
@@ -360,13 +360,13 @@
     "description": "Download Deepsense - Voyager (04 October 2026) music DJ Mix in MP3 format; Audio Bitrate: 320kbps 44100kHz; FileSize: 282.74 MB; Genre: Progressive house; Duration: 123:11."
   },
   {
-    "title": "Paul Van Dyk - Vonyc Sessions 1039 (04 October 2026)",
-    "source_url": "https://globaldjmix.com/paul-van-dyk-vonyc-sessions-1039-2026-october-04/",
-    "audio_url": "http://files.globaldjmix.com/2026/10/04/Paul van Dyk - Vonyc Sessions 1039 on AH.FM 04-10-2026.mp3",
-    "image_url": "https://globaldjmix.com/files/download/paul_van_dyks_vonyc_sessions_ytb.jpg",
+    "title": "Yves V - V Sessions 581 (04 October 2026)",
+    "source_url": "https://globaldjmix.com/yves-v-v-sessions-581-2026-october-04/",
+    "audio_url": "https://media3-yvesv.podtree.com/yvesv/media/podcast/V_Sessions_581.mp3",
+    "image_url": "https://globaldjmix.com/files/download/yves_v_difm_660x330.jpg",
     "pub_date": "2026-10-05T00:00:00+00:00",
-    "length": 172604962,
-    "description": "Download Paul Van Dyk - Vonyc Sessions 1039 (04 October 2026) music DJ Mix in MP3 format; Audio Bitrate: 192kbps 44100kHz; FileSize: 164.61 MB; Genre: Trance; Duration: 120:00. Also Tracklist / Playlist"
+    "length": 146372151,
+    "description": "Download Yves V - V Sessions 581 (04 October 2026) music DJ Mix in MP3 format; Audio Bitrate: 320kbps 44100kHz; FileSize: 139.59 MB; Genre: Electro House; Duration: 60:43. Listen online. Also Tracklist / Playlist"
   },
   {
     "title": "Laura Van Dam - Capture Radio 111 (04 October 2026)",
@@ -378,13 +378,13 @@
     "description": "Download Laura Van Dam - Capture Radio 111 (04 October 2026) music DJ Mix in MP3 format; Audio Bitrate: 128kbps 44100kHz; FileSize: 54.96 MB; Genre: Techno; Duration: 60:00. Listen online. Also Tracklist / Playlist"
   },
   {
-    "title": "Yves V - V Sessions 581 (04 October 2026)",
-    "source_url": "https://globaldjmix.com/yves-v-v-sessions-581-2026-october-04/",
-    "audio_url": "https://media3-yvesv.podtree.com/yvesv/media/podcast/V_Sessions_581.mp3",
-    "image_url": "https://globaldjmix.com/files/download/yves_v_difm_660x330.jpg",
+    "title": "Paul Van Dyk - Vonyc Sessions 1039 (04 October 2026)",
+    "source_url": "https://globaldjmix.com/paul-van-dyk-vonyc-sessions-1039-2026-october-04/",
+    "audio_url": "http://files.globaldjmix.com/2026/10/04/Paul van Dyk - Vonyc Sessions 1039 on AH.FM 04-10-2026.mp3",
+    "image_url": "https://globaldjmix.com/files/download/paul_van_dyks_vonyc_sessions_ytb.jpg",
     "pub_date": "2026-10-05T00:00:00+00:00",
-    "length": 146372151,
-    "description": "Download Yves V - V Sessions 581 (04 October 2026) music DJ Mix in MP3 format; Audio Bitrate: 320kbps 44100kHz; FileSize: 139.59 MB; Genre: Electro House; Duration: 60:43. Listen online. Also Tracklist / Playlist"
+    "length": 172604962,
+    "description": "Download Paul Van Dyk - Vonyc Sessions 1039 (04 October 2026) music DJ Mix in MP3 format; Audio Bitrate: 192kbps 44100kHz; FileSize: 164.61 MB; Genre: Trance; Duration: 120:00. Also Tracklist / Playlist"
   },
   {
     "title": "Kyau & Albert - Euphonic Sessions October 2026 (01 October 2026)",
