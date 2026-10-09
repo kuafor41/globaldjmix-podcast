@@ -24,7 +24,7 @@ REPORT_FILE = DATA / "test-report.json"
 RSS_FILE = Path("rss.xml")
 
 MODE = os.getenv("FEED_MODE", "test").strip().lower()
-if MODE not in {"test", "incremental", "full"}:
+if MODE not in {"test", "incremental", "year2026", "full"}:
     MODE = "test"
 TEST_LIMIT = 50
 ARCHIVE_PAGE_CAP = 3
@@ -192,6 +192,23 @@ def total_pages(body):
             pass
     return max(values) if values else 1
 
+def archive_url_year(url):
+    """Extract the listing/post date year from GlobalDJMix's trailing URL date."""
+    slug = urlparse(url).path.strip("/").lower()
+    match = re.search(
+        r"-(20\d{2})-(january|february|march|april|may|june|july|august|september|october|november|december)-\d{1,2}$",
+        slug,
+    )
+    if not match:
+        match = re.search(r"-(20\d{2})-(\d{1,2})-(\d{1,2})$", slug)
+    if match:
+        return int(match.group(1))
+    # A fallback for alternate slugs where the year is present but month formatting differs.
+    if re.search(r"(?:^|-)2026(?:-|$)", slug):
+        return 2026
+    return None
+
+
 def discover_posts(mode):
     errors = []
     pages_checked = 0
@@ -203,21 +220,19 @@ def discover_posts(mode):
         errors.append({"page": 1, "url": ARCHIVE, "error": type(exc).__name__ + ": " + str(exc)})
 
     reported = total_pages(first_body) if first_body else 1
-    found = extract_posts(first_body) if first_body else []
+    first_posts = extract_posts(first_body) if first_body else []
     print("Archive source:", ARCHIVE)
-    print("Archive page 1:", len(found), "posts; reported pages:", reported)
-    if not found and first_body:
+    print("Archive page 1:", len(first_posts), "posts; reported pages:", reported)
+    if not first_posts and first_body:
         info = page_debug(first_body)
         errors.append({"page": 1, "url": ARCHIVE, "error": "No episode links extracted", "response": info})
         print("Archive page 1 diagnostic:", json.dumps(info, ensure_ascii=False)[:900])
-        # The home page also lists the newest mixes. This fallback avoids the separate
-        # DJ-song search page and gives the test a second legitimate listing source.
         try:
             _, home_body = get_page(BASE + "/")
             home_posts = extract_posts(home_body)
             print("Home page fallback:", len(home_posts), "posts")
             if home_posts:
-                found.extend(home_posts)
+                first_posts.extend(home_posts)
             else:
                 home_info = page_debug(home_body)
                 errors.append({"page": "home", "url": BASE + "/", "error": "No episode links extracted", "response": home_info})
@@ -225,15 +240,49 @@ def discover_posts(mode):
         except Exception as exc:
             errors.append({"page": "home", "url": BASE + "/", "error": type(exc).__name__ + ": " + str(exc)})
 
-    found = unique(found)
-    if mode == "full":
-        page_numbers = range(2, reported + 1)
-    else:
-        page_numbers = range(2, max(reported, ARCHIVE_PAGE_CAP) + 1)
+    found = unique(first_posts)
+    older_consecutive = 0
 
-    if mode == "full":
+    def keep_year_2026(url):
+        year = archive_url_year(url)
+        return year == 2026 or (year is None and "2026" in urlparse(url).path.lower())
+
+    if mode == "year2026":
+        found = [url for url in found if keep_year_2026(url)]
+        print("2026 episodes found on page 1:", len(found))
+        # Archive is newest-first. Stop after two consecutive pages whose dated
+        # episode URLs are all older than 2026, rather than scanning the entire archive.
+        for n in range(2, reported + 1):
+            try:
+                _, body = get_page(archive_page_url(n))
+                pages_checked += 1
+                posts = unique(extract_posts(body))
+                years = [archive_url_year(url) for url in posts]
+                has_2026 = any(keep_year_2026(url) for url in posts)
+                known_years = [year for year in years if year is not None]
+                if posts and not has_2026 and known_years and max(known_years) < 2026:
+                    older_consecutive += 1
+                else:
+                    older_consecutive = 0
+                found.extend(url for url in posts if keep_year_2026(url))
+                found = unique(found)
+                print(
+                    "Archive page", n, ":", len(posts), "posts;",
+                    "2026 total:", len(found), "| older pages in a row:", older_consecutive,
+                )
+                if not posts:
+                    errors.append({"page": n, "url": archive_page_url(n), "error": "No episode links extracted", "response": page_debug(body)})
+                if older_consecutive >= 2:
+                    print("Reached archive entries before 2026; stopping archive discovery.")
+                    break
+            except Exception as exc:
+                errors.append({"page": n, "url": archive_page_url(n), "error": type(exc).__name__ + ": " + str(exc)})
+                print("Archive page", n, "failed:", str(exc))
+                # Do not silently assume older pages are reached after a network failure.
+                break
+    elif mode == "full":
         with ThreadPoolExecutor(max_workers=WORKERS) as pool:
-            futures = {pool.submit(get_page, archive_page_url(n)): n for n in page_numbers}
+            futures = {pool.submit(get_page, archive_page_url(n)): n for n in range(2, reported + 1)}
             for future in as_completed(futures):
                 n = futures[future]
                 try:
@@ -248,7 +297,7 @@ def discover_posts(mode):
                     errors.append({"page": n, "url": archive_page_url(n), "error": type(exc).__name__ + ": " + str(exc)})
         found = unique(found)
     else:
-        for n in page_numbers:
+        for n in range(2, max(reported, ARCHIVE_PAGE_CAP) + 1):
             try:
                 _, body = get_page(archive_page_url(n))
                 pages_checked += 1
@@ -739,6 +788,16 @@ def main():
         merged = dict(existing_by_url)
         for item in new_items:
             merged[item["source_url"]] = item
+        if MODE == "year2026":
+            def item_year(item):
+                year = archive_url_year(item.get("source_url", ""))
+                if year is not None:
+                    return year
+                try:
+                    return datetime.fromisoformat(item.get("pub_date", "").replace("Z", "+00:00")).year
+                except Exception:
+                    return 0
+            merged = {url: item for url, item in merged.items() if item_year(item) >= 2026}
         items = sorted(merged.values(), key=sort_key, reverse=True)
         ITEMS_FILE.write_text(json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         RSS_FILE.write_text(rss_xml(items), encoding="utf-8")
