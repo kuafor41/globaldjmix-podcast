@@ -1,4 +1,9 @@
 {
   "timezone": "Europe/Istanbul",
-  "days": {}
+  "days": {
+    "2026-10-10": {
+      "added_count": 0,
+      "episodes": []
+    }
+  }
 }
