@@ -30,7 +30,7 @@ permissions:
 
 concurrency:
   group: globaldjmix-podcast-rss
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
