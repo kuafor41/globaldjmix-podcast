@@ -10,16 +10,17 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "Test 50 newest episodes, update recent entries, or backfill archive"
+        description: "Test 50 newest episodes, update recent entries, import all 2026 episodes, or backfill archive"
         required: true
         type: choice
-        default: test
+        default: incremental
         options:
           - test
           - incremental
+          - year2026
           - full
   schedule:
-    - cron: "15 */4 * * *"
+    - cron: "15 * * * *"
       timezone: "Europe/Istanbul"
 
 permissions:
@@ -38,7 +39,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      FEED_MODE: ${{ github.event_name == 'schedule' && 'incremental' || inputs.mode || 'test' }}
+      FEED_MODE: ${{ github.event_name == 'schedule' && 'incremental' || (github.event_name == 'push' && contains(github.event.head_commit.message, '[backfill-2026]') && 'year2026') || inputs.mode || 'incremental' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
