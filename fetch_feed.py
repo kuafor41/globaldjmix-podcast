@@ -151,12 +151,14 @@ def is_article(url):
 
 def extract_posts(body):
     soup = BeautifulSoup(body, "html.parser")
-    # The current template puts genre names in H4 tags; episode title anchors
-    # are often plain links next to them, so scan all links rather than headings only.
-    marker = soup.find(
-        lambda tag: tag.name in {"h2", "h3", "h4", "h5"}
-        and re.search(r"Most popular DJ Mixes", tag.get_text(" ", strip=True), re.I)
-    )
+    # Recent-mix entries come before the "Most popular" block. Find the visible
+    # marker as DOM text (it is not always an H2/H3 tag in the current template).
+    marker = None
+    for text_node in soup.find_all(string=re.compile(r"Most popular DJ Mixes", re.I)):
+        if text_node.parent and text_node.parent.name not in {"script", "style"}:
+            marker = text_node.parent
+            break
+
     result = []
     for anchor in soup.find_all("a", href=True):
         if marker is not None and marker in anchor.find_all_previous():
@@ -165,7 +167,6 @@ def extract_posts(body):
         title = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip()
         if not href or len(title) < 12 or not is_article(href):
             continue
-        # Keep post links at the root of the GlobalDJMix domain and exclude generic UI links.
         if re.fullmatch(r"(?:page\s*)?\d+", title, re.I):
             continue
         result.append(urlunparse((*urlparse(href)[:3], "", "", "")))
@@ -176,38 +177,20 @@ def archive_page_url(n):
 
 
 def total_pages(body):
-    match = re.search(r"Page\s+1\s+of\s+(\d+)", body, re.I)
-    return int(match.group(1)) if match else 1
-
-
-def page_debug(body):
-    soup = BeautifulSoup(body[:200000], "html.parser")
-    title = soup.title.get_text(" ", strip=True) if soup.title else "(no title)"
-    text = re.sub(r"\s+", " ", soup.get_text(" ", strip=True))[:350]
-    headings = []
-    for tag in soup.find_all(["h1", "h2", "h3", "h4", "h5"])[:35]:
-        anchor = tag.find("a", href=True)
-        headings.append({
-            "tag": tag.name,
-            "text": re.sub(r"\s+", " ", tag.get_text(" ", strip=True))[:100],
-            "href": clean_url(anchor.get("href"), BASE) if anchor else None,
-        })
-    links = []
-    for anchor in soup.find_all("a", href=True):
-        href = clean_url(anchor.get("href"), BASE)
-        label = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip()
-        if href and (urlparse(href).hostname or "").lower() in {"globaldjmix.com", "www.globaldjmix.com"} and len(label) >= 12:
-            links.append({
-                "text": label[:95], "href": href,
-                "article_candidate": is_article(href),
-                "parent_text": re.sub(r"\s+", " ", anchor.parent.get_text(" ", strip=True))[:120] if anchor.parent else "",
-            })
-        if len(links) >= 25:
-            break
-    return {
-        "html_length": len(body), "html_title": title, "text_preview": text,
-        "heading_sample": headings, "same_site_link_sample": links,
-    }
+    soup = BeautifulSoup(body, "html.parser")
+    text = soup.get_text(" ", strip=True)
+    for source in (text, body):
+        match = re.search(r"Page\s+\d+\s+of\s+([\d,]+)", source, re.I)
+        if match:
+            return int(match.group(1).replace(",", ""))
+    # Pagination links can still disclose the final page number when its label changes.
+    values = []
+    for href in re.findall(r"""href=["']([^"']*?)[?&]p=(\d+)[^"']*["']""", body, re.I):
+        try:
+            values.append(int(href[1]))
+        except (ValueError, TypeError):
+            pass
+    return max(values) if values else 1
 
 def discover_posts(mode):
     errors = []
@@ -427,42 +410,50 @@ def get_response_size(response):
 
 
 def probe_audio(url, referer):
-    response = None
-    try:
-        response = request(
-            url, referer=referer, stream=True, timeout=12,
-        )
-        final_url = response.url
-        content_type = (response.headers.get("Content-Type") or "").lower()
-        disposition = (response.headers.get("Content-Disposition") or "").lower()
-        size = get_response_size(response)
-        if "text/html" in content_type or "xhtml" in content_type:
-            body = response.text[:300000]
-            return "html", final_url, body, size, None
+    last_error = None
+    for attempt in range(2):
+        response = None
+        try:
+            response = request(
+                url, referer=referer, stream=True, timeout=10, max_redirects=5,
+            )
+            final_url = response.url
+            content_type = (response.headers.get("Content-Type") or "").lower()
+            disposition = (response.headers.get("Content-Disposition") or "").lower()
+            size = get_response_size(response)
+            if "text/html" in content_type or "xhtml" in content_type:
+                body = response.text[:300000]
+                return "html", final_url, body, size, None
 
-        prefix = next(response.iter_content(chunk_size=512), b"")
-        if prefix.lstrip().lower().startswith((b"<!doctype html", b"<html", b"<head", b"<body")):
-            body = prefix.decode("utf-8", "ignore")
-            return "html", final_url, body, size, None
+            prefix = next(response.iter_content(chunk_size=512), b"")
+            if prefix.lstrip().lower().startswith((b"<!doctype html", b"<html", b"<head", b"<body")):
+                body = prefix.decode("utf-8", "ignore")
+                return "html", final_url, body, size, None
 
-        audio_like = (
-            content_type.startswith("audio/")
-            or any(x in content_type for x in (
-                "application/octet-stream", "application/x-download",
-                "application/download", "application/force-download", "binary/octet-stream",
-            ))
-            or ".mp3" in disposition
-            or any(ext in final_url.lower() for ext in (".mp3", ".m4a", ".aac", ".ogg", ".wav"))
-        )
-        if audio_like:
-            return "audio", final_url, None, size, None
-        return "other", final_url, None, size, "content-type=" + (content_type or "missing")
-    except Exception as exc:
-        return "error", None, None, 0, type(exc).__name__ + ": " + str(exc)
-    finally:
-        if response is not None:
-            response.close()
-
+            audio_like = (
+                content_type.startswith("audio/")
+                or any(x in content_type for x in (
+                    "application/octet-stream", "application/x-download",
+                    "application/download", "application/force-download", "binary/octet-stream",
+                ))
+                or ".mp3" in disposition
+                or any(ext in final_url.lower() for ext in (".mp3", ".m4a", ".aac", ".ogg", ".wav"))
+            )
+            if audio_like:
+                return "audio", final_url, None, size, None
+            return "other", final_url, None, size, "content-type=" + (content_type or "missing")
+        except (requests.exceptions.ConnectionError, requests.exceptions.Timeout) as exc:
+            last_error = type(exc).__name__ + ": " + str(exc)
+            if attempt == 0:
+                time.sleep(0.5)
+                continue
+            return "error", None, None, 0, last_error
+        except Exception as exc:
+            return "error", None, None, 0, type(exc).__name__ + ": " + str(exc)
+        finally:
+            if response is not None:
+                response.close()
+    return "error", None, None, 0, last_error or "probe failed"
 
 def resolve_audio(soup, raw_body, article_url):
     candidates = audio_candidates(soup, article_url, raw_body)
