@@ -46,6 +46,33 @@ jobs:
           python-version: "3.12"
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
+      - name: Inspect GlobalDJMix login and tracklist markup (temporary)
+        continue-on-error: true
+        run: |
+          python - <<'PY'
+          import re, requests
+          from bs4 import BeautifulSoup
+          s = requests.Session()
+          s.headers["User-Agent"] = "Mozilla/5.0"
+          for url in ["https://globaldjmix.com/get-auth-form", "https://globaldjmix.com/david-guetta-playlist-849-2026-october-02/"]:
+              try:
+                  r = s.get(url, timeout=20)
+                  soup = BeautifulSoup(r.text, "html.parser")
+                  print("PAGE", url, "status", r.status_code, "final", r.url, "bytes", len(r.text), "title", soup.title.get_text(" ", strip=True) if soup.title else "")
+                  for f in soup.find_all("form")[:4]:
+                      print("FORM", "action", f.get("action"), "method", f.get("method"), "fields", [(x.name, x.get("type"), x.get("name"), x.get("id")) for x in f.find_all(["input", "button"])])
+                  for el in soup.find_all(["button", "a"], string=re.compile("tracklist", re.I))[:4]:
+                      print("TRACKLIST_CONTROL", el.name, "id", el.get("id"), "class", el.get("class"), "href", el.get("href"), "onclick", str(el.get("onclick"))[:200], "data", {k:v for k,v in el.attrs.items() if k.startswith("data-")})
+                  scripts = []
+                  for script in soup.find_all("script"):
+                      txt = script.string or script.get_text()
+                      if txt and re.search(r"track.?list|playlist", txt, re.I):
+                          scripts.append(re.sub(r"\\s+", " ", txt)[:350])
+                  print("MATCHING_SCRIPTS", len(scripts))
+                  for x in scripts[:6]: print("SCRIPT", x)
+              except Exception as e:
+                  print("FETCH_ERROR", url, type(e).__name__, str(e)[:200])
+          PY
       - name: Build podcast feed
         run: python fetch_feed.py
       - name: Commit feed data and diagnostics
