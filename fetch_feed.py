@@ -468,20 +468,20 @@ def resolve_audio(soup, raw_body, article_url):
             direct = "https://pixeldrain.com/api/file/" + pixeldrain.group(1) + "?download"
             kind, final_url, body, size, error = probe_audio(direct, article_url)
             if kind == "audio":
-                return final_url, "intermediate", size, candidates, None
+                return direct, "intermediate", size, candidates, None
             if error:
                 errors.append("Pixeldrain API: " + error)
 
         kind, final_url, body, size, error = probe_audio(candidate, article_url)
         if kind == "audio":
-            return final_url, "direct", size, candidates, None
+            return candidate, "direct", size, candidates, None
         if kind == "html" and body:
             mid_soup = BeautifulSoup(body, "html.parser")
             inner = audio_candidates(mid_soup, final_url, body, intermediate=True)
             for url in inner[:6]:
                 inner_kind, inner_url, _, inner_size, inner_error = probe_audio(url, final_url)
                 if inner_kind == "audio":
-                    return inner_url, "intermediate", inner_size, candidates, None
+                    return url, "intermediate", inner_size, candidates, None
                 if inner_error:
                     errors.append(inner_error)
 
