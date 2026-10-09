@@ -1,0 +1,10 @@
+{
+  "mode": "pending-test",
+  "archive_source": "https://globaldjmix.com/livedjsets",
+  "note": "Clean rebuild; run test mode before using the feed for listening.",
+  "selected_articles": 0,
+  "audio_resolved": 0,
+  "images_found": 0,
+  "images_verified": 0,
+  "test_passed": false
+}

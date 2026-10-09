@@ -2,10 +2,15 @@ name: Update GlobalDJMix Podcast RSS
 on:
   push:
     branches: ["main"]
+    paths:
+      - ".github/workflows/update-feed.yml"
+      - "fetch_feed.py"
+      - "requirements.txt"
+      - "README.md"
   workflow_dispatch:
     inputs:
       mode:
-        description: "Run the 50-episode test, incremental scan, or full archive backfill"
+        description: "Test 50 newest episodes, update recent entries, or backfill archive"
         required: true
         type: choice
         default: test
@@ -16,50 +21,40 @@ on:
   schedule:
     - cron: "15 */4 * * *"
       timezone: "Europe/Istanbul"
+
 permissions:
-  actions: write
   contents: write
   pages: write
   id-token: write
+
 concurrency:
-  group: globaldjmix-rss-${{ github.run_id }}
+  group: globaldjmix-podcast-rss
   cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: $ steps.deployment.outputs.page_url }}
     env:
-      FEED_MODE: ${{ github.event_name == 'schedule' && 'incremental' || inputs.mode || 'test' }}
-      REQUEST_TIMEOUT: ${{ (github.event_name == 'schedule' || inputs.mode == 'full') && '60' || '20' }}
+      FEED_MODE: $ github.event_name == 'schedule' && 'incremental' || inputs.mode || 'test' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.13"
-      - name: Cancel stale GlobalDJMix feed runs
-        env:
-          GH_TOKEN: ${{ github.token }}
-        shell: bash
-        run: |
-          ids="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs?per_page=100" --jq '.workflow_runs[] | select(.name == "Update GlobalDJMix Podcast RSS" and (.status == "in_progress" or .status == "queued")) | .id')"
-          for run_id in $ids; do
-            if [[ "$run_id" != "$GITHUB_RUN_ID" ]]; then
-              echo "Canceling stale GlobalDJMix feed run $run_id"
-              gh api --method POST "repos/$GITHUB_REPOSITORY/actions/runs/$run_id/cancel" || echo "Could not cancel $run_id; continuing."
-            fi
-          done
-      - run: python -m pip install -r requirements.txt
-      - name: Build test/incremental podcast feed
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Build podcast feed
         run: python fetch_feed.py
-      - name: Commit generated feed and test report
+      - name: Commit feed data and diagnostics
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add rss.xml data/items.json data/test-report.json data/failed-archive-pages.json
+          git add rss.xml data/items.json data/test-report.json
           if git diff --cached --quiet; then
-            echo "No feed changes to commit."
+            echo "No output changes to commit."
           else
             git commit -m "Update GlobalDJMix podcast feed"
             git push

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
-  <channel>
-    <title>GlobalDJMix - DJ Mixes &amp; Live Sets</title>
-    <link>https://globaldjmix.com/livedjsets</link>
-    <description>GlobalDJMix releases with direct audio enclosures and episode artwork for podcast players.</description>
-    <language>en</language>
-    <itunes:author>GlobalDJMix</itunes:author>
-    <itunes:explicit>no</itunes:explicit>
-    <itunes:type>episodic</itunes:type>
-    <itunes:category text="Music" />
-    <lastBuildDate>Fri, 09 Oct 2026 04:00:09 +0000</lastBuildDate>
-  </channel>
+<channel>
+<title>GlobalDJMix Podcast</title>
+<link>https://globaldjmix.com/livedjsets</link>
+<description>DJ mixes, podcasts and live sets from GlobalDJMix.</description>
+<language>en</language>
+<itunes:author>GlobalDJMix</itunes:author>
+<itunes:explicit>no</itunes:explicit>
+</channel>
 </rss>

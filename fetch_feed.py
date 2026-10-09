@@ -1,201 +1,179 @@
 #!/usr/bin/env python3
-"""GlobalDJMix podcast feed. Push/manual runs test 50 episodes; full crawl is opt-in."""
+"""GlobalDJMix podcast RSS builder; new runs test 50 recent episodes first."""
 import html
 import json
 import os
 import re
-import sys
 import time
+import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
-from email.utils import format_datetime
+from email.utils import format_datetime, parsedate_to_datetime
 from pathlib import Path
 from threading import Lock, local
-from time import monotonic
 from urllib.parse import urljoin, urlparse, urlunparse
 
 import requests
 from bs4 import BeautifulSoup
 
 BASE = "https://globaldjmix.com"
-ARCHIVE = BASE + "/dj-songs-mp3-download"
-DATA_FILE = Path("data/items.json")
-REPORT_FILE = Path("data/test-report.json")
-OUTPUT_FILE = Path("rss.xml")
+ARCHIVE = BASE + "/livedjsets"
+DATA = Path("data")
+ITEMS_FILE = DATA / "items.json"
+REPORT_FILE = DATA / "test-report.json"
+RSS_FILE = Path("rss.xml")
 
-MODE = os.environ.get("FEED_MODE", "test").lower().strip()
+MODE = os.getenv("FEED_MODE", "test").strip().lower()
 if MODE not in {"test", "incremental", "full"}:
     MODE = "test"
-TIMEOUT = int(os.environ.get("REQUEST_TIMEOUT", "20" if MODE == "test" else "60"))
 TEST_LIMIT = 50
-WORKERS = 2 if MODE == "test" else (3 if MODE == "incremental" else 4)
-REQUEST_GAP = 0.20
-NL = "\n"
+ARCHIVE_PAGE_CAP = 3
+WORKERS = 5
+TIMEOUT = 18
+REQUEST_GAP = 0.12
+AGENT = "Mozilla/5.0 (compatible; GlobalDJMixPodcastRSS/3.0)"
+THREAD = local()
+RATE_LOCK = Lock()
+NEXT_REQUEST = 0.0
 
-_thread_state = local()
-_rate_lock = Lock()
-_next_request = 0.0
-_logged_tls_fallback = False
+BLOCKED = {
+    "", "rss", "topic", "livedjsets", "livesets", "podcasts", "news",
+    "best-mixes-by-month", "dj-songs-mp3-download", "dj-songs-download",
+    "tomorrowland", "abgt", "asot", "new-dj-mixes", "djs-list", "dj-shows",
+    "share-mix-web-article", "search", "contact", "about", "podcast", "mixes",
+    "sitemap", "privacy-policy", "terms",
+}
+MEDIA_HOSTS = {"box.globaldjmix.com", "box.download"}
+URL_PATTERN = re.compile(r"""(?:https?:)?//[^\s"'<>\\]+""", re.I)
+MP3_PATTERN = re.compile(r"""https?://[^"'<> \s\\]+\.mp3(?:\?[^"'<> \s]*)?""", re.I)
 
 
-def get_session():
-    if not hasattr(_thread_state, "session"):
-        s = requests.Session()
-        s.headers.update({
-            "User-Agent": "Mozilla/5.0 (compatible; GlobalDJMixPodcastRSS/2.0)",
+def session():
+    if not hasattr(THREAD, "session"):
+        THREAD.session = requests.Session()
+        THREAD.session.headers.update({
+            "User-Agent": AGENT,
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         })
-        _thread_state.session = s
-    return _thread_state.session
+    return THREAD.session
 
 
-def throttle():
-    global _next_request
-    with _rate_lock:
-        delay = _next_request - monotonic()
-        if delay > 0:
-            time.sleep(delay)
-        _next_request = monotonic() + REQUEST_GAP
+def wait_turn():
+    global NEXT_REQUEST
+    with RATE_LOCK:
+        now = time.monotonic()
+        if now < NEXT_REQUEST:
+            time.sleep(NEXT_REQUEST - now)
+        NEXT_REQUEST = max(time.monotonic(), NEXT_REQUEST) + REQUEST_GAP
 
 
-def absolute_url(value, base=None):
+def clean_url(value, base=None):
     if not value:
         return None
-    value = html.unescape(str(value)).strip().strip("\"'")
+    value = html.unescape(str(value)).strip().strip("\"'").replace("\\/", "/")
     if value.startswith("//"):
         value = "https:" + value
-    if base:
-        value = urljoin(base, value)
+    value = urljoin(base or BASE, value)
     p = urlparse(value)
     if p.scheme not in {"http", "https"} or not p.netloc:
         return None
-    return value
+    return urlunparse((p.scheme, p.netloc, p.path, p.params, p.query, ""))
 
 
-def request_redirect_safe(url, headers=None, timeout=None, stream=False, max_redirects=6):
-    """Follow redirects manually. Never disable certificate verification."""
-    global _logged_tls_fallback
-    current = absolute_url(url)
+def http_version(url):
+    p = urlparse(url)
+    return urlunparse(("http", p.netloc, p.path, p.params, p.query, ""))
+
+
+def request(url, referer=None, stream=False, timeout=TIMEOUT, max_redirects=7):
+    current = clean_url(url)
     if not current:
-        raise requests.RequestException("Invalid URL: " + str(url))
+        raise requests.RequestException("invalid URL")
     seen = set()
-    sess = get_session()
+    headers = {"Referer": referer} if referer else {}
     for _ in range(max_redirects + 1):
         if current in seen:
-            raise requests.TooManyRedirects("Redirect loop: " + current)
+            raise requests.TooManyRedirects("redirect loop: " + current)
         seen.add(current)
-        throttle()
+        wait_turn()
         try:
-            response = sess.get(
-                current,
-                headers=headers or {},
-                timeout=(8, timeout or TIMEOUT),
-                allow_redirects=False,
-                stream=stream,
+            response = session().get(
+                current, headers=headers, timeout=(6, timeout),
+                stream=stream, allow_redirects=False,
             )
         except requests.exceptions.SSLError:
             p = urlparse(current)
-            if (p.scheme == "https" and (p.hostname or "").lower() == "box.globaldjmix.com"):
-                if not _logged_tls_fallback:
-                    print("box.globaldjmix.com TLS name mismatch; trying HTTP for this host only.",
-                          file=sys.stderr)
-                    _logged_tls_fallback = True
-                current = urlunparse(("http", p.netloc, p.path, p.params, p.query, p.fragment))
+            if p.scheme == "https" and (p.hostname or "").lower() == "box.globaldjmix.com":
+                current = http_version(current)
                 continue
             raise
-
         if response.status_code in {301, 302, 303, 307, 308}:
             location = response.headers.get("Location")
-            if not location:
-                response.raise_for_status()
-                return response
-            target = absolute_url(location, current)
             response.close()
-            if not target:
-                raise requests.RequestException("Invalid redirect from " + current)
-            p = urlparse(target)
+            if not location:
+                raise requests.RequestException("redirect without Location")
+            target = clean_url(location, current)
+            p = urlparse(target or "")
             if (p.hostname or "").lower() == "box.globaldjmix.com" and p.scheme == "https":
-                target = urlunparse(("http", p.netloc, p.path, p.params, p.query, p.fragment))
-            if target in seen or target == current:
-                raise requests.TooManyRedirects("Redirect loop: " + current)
+                target = http_version(target)
             current = target
             continue
         response.raise_for_status()
         return response
-    raise requests.TooManyRedirects("Too many redirects for " + str(url))
+    raise requests.TooManyRedirects("too many redirects: " + str(url))
 
 
-def fetch_page(url, referer=None, attempts=None):
-    last_error = None
-    if attempts is None:
-        attempts = 1 if MODE == "test" else 2
-    headers = {"Referer": referer} if referer else {}
-    request_timeout = min(TIMEOUT, 12) if MODE == "test" else TIMEOUT
-    for attempt in range(attempts):
-        try:
-            return request_redirect_safe(url, headers=headers, timeout=request_timeout)
-        except requests.exceptions.SSLError:
-            raise
-        except Exception as exc:
-            last_error = exc
-            if attempt + 1 < attempts:
-                time.sleep(0.5 * (attempt + 1))
-    raise last_error
+def get_page(url, referer=None):
+    response = request(url, referer=referer, timeout=TIMEOUT)
+    try:
+        return response.url, response.text
+    finally:
+        response.close()
 
 
-BLOCKED = {
-    "", "rss", "livedjsets", "topic", "best-mixes-by-month", "livesets",
-    "podcasts", "news", "dj-songs-mp3-download", "dj-songs-download",
-    "tomorrowland", "abgt", "asot", "new-dj-mixes", "djs-list", "dj-shows",
-    "share-mix-web-article", "search", "contact", "about", "podcast", "mixes",
-}
+def unique(values):
+    return list(dict.fromkeys(x for x in values if x))
 
 
-def is_article_url(url):
+def is_article(url):
     try:
         p = urlparse(url)
         slug = p.path.strip("/").lower()
         return (
             p.scheme in {"http", "https"}
             and (p.hostname or "").lower() in {"globaldjmix.com", "www.globaldjmix.com"}
-            and "/" not in slug and slug not in BLOCKED and len(slug) >= 16
+            and "/" not in slug and len(slug) >= 15 and slug not in BLOCKED
             and not slug.endswith((".jpg", ".jpeg", ".png", ".webp", ".gif", ".css", ".js", ".xml"))
         )
     except Exception:
         return False
 
 
-def unique(values):
-    return list(dict.fromkeys(values))
-
-
-def extract_post_urls(page_html):
-    marker = re.search(r"Most popular DJ Mixes", page_html, re.I)
-    main_html = page_html[:marker.start()] if marker else page_html
-    soup = BeautifulSoup(main_html, "html.parser")
-    found = []
-
-    # Archive titles are the headings; this keeps menus, genre links and footer links out.
-    for a in soup.select("h2 a[href], h3 a[href], h4 a[href], .post-title a[href], .entry-title a[href]"):
-        href = absolute_url(a.get("href"), BASE)
+def extract_posts(body):
+    # Use the site's full DJ mix listing, not the separate DJ-song search page.
+    marker = re.search(r"Most popular DJ Mixes", body, re.I)
+    content = body[:marker.start()] if marker else body
+    soup = BeautifulSoup(content, "html.parser")
+    result = []
+    selectors = "h2 a[href], h3 a[href], h4 a[href], .post-title a[href], .entry-title a[href]"
+    for a in soup.select(selectors):
+        href = clean_url(a.get("href"), BASE)
         title = re.sub(r"\s+", " ", a.get_text(" ", strip=True)).strip()
-        if href and title and is_article_url(href):
-            p = urlparse(href)
-            found.append(urlunparse((p.scheme, p.netloc, p.path, "", "", "")))
+        if href and title and is_article(href):
+            result.append(urlunparse((*urlparse(href)[:3], "", "", "")))
+    result = unique(result)
+    if len(result) >= 10:
+        return result
 
-    found = unique(found)
-    if len(found) >= 10:
-        return found
-
-    # Fallback only if heading markup differs: require a nearby post-metadata pattern.
+    # Theme fallback: a root-level link is a post only when its nearby card has mix metadata.
     for a in soup.find_all("a", href=True):
-        href = absolute_url(a.get("href"), BASE)
+        href = clean_url(a.get("href"), BASE)
         title = re.sub(r"\s+", " ", a.get_text(" ", strip=True)).strip()
-        if not href or len(title) < 10 or not is_article_url(href):
+        if not href or len(title) < 10 or not is_article(href):
             continue
         parent = a
         context = ""
-        for _ in range(4):
+        for _ in range(5):
             if parent.parent is None:
                 break
             parent = parent.parent
@@ -203,466 +181,525 @@ def extract_post_urls(page_html):
             if re.search(r"Bitrate\s*:|Duration\s*:|File\s*Size\s*:|Genre\s*:", context, re.I):
                 break
         if re.search(r"Bitrate\s*:|Duration\s*:|File\s*Size\s*:|Genre\s*:", context, re.I):
-            p = urlparse(href)
-            found.append(urlunparse((p.scheme, p.netloc, p.path, "", "", "")))
-    return unique(found)
+            result.append(urlunparse((*urlparse(href)[:3], "", "", "")))
+    return unique(result)
 
 
-def get_archive_total(body):
-    m = re.search(r"Page\s+1\s+of\s+(\d+)", body, re.I)
-    return int(m.group(1)) if m else 1387
+def archive_page_url(n):
+    return ARCHIVE if n == 1 else ARCHIVE + "?p=" + str(n)
 
 
-def discover(mode):
-    first = fetch_page(ARCHIVE)
-    first_urls = extract_post_urls(first.text)
-    total = get_archive_total(first.text)
-    print("Archive: " + ARCHIVE)
-    print("Archive reports " + str(total) + " pages; first page yielded " + str(len(first_urls)) + " posts.")
+def total_pages(body):
+    match = re.search(r"Page\s+1\s+of\s+(\d+)", body, re.I)
+    return int(match.group(1)) if match else 1
 
-    if mode == "incremental":
-        return first_urls, total
-    if mode == "test":
-        posts = list(first_urls)
-        # A test may read at most three archive pages; it never starts the full crawl.
-        for page_no in (2, 3):
-            if len(posts) >= TEST_LIMIT:
-                break
-            page = fetch_page(ARCHIVE + "?p=" + str(page_no))
-            added = extract_post_urls(page.text)
-            posts = unique(posts + added)
-            print("Test discovery page " + str(page_no) + ": " + str(len(posts)) + "/" + str(TEST_LIMIT) + " posts.")
-        return posts[:TEST_LIMIT], total
 
-    # Full mode is intentionally separate and only selected explicitly in Actions.
-    by_page = {1: first_urls}
-    failed = []
+def discover_posts(mode):
+    first_url, first_body = get_page(ARCHIVE)
+    pages = total_pages(first_body)
+    found = extract_posts(first_body)
+    print("Archive source:", ARCHIVE)
+    print("Archive page 1:", len(found), "posts; reported pages:", pages)
+    errors = []
+    if mode == "full":
+        page_numbers = range(2, pages + 1)
+    else:
+        page_numbers = range(2, min(pages, ARCHIVE_PAGE_CAP) + 1)
 
-    def load_archive_page(n):
-        try:
-            r = fetch_page(ARCHIVE + "?p=" + str(n), attempts=3)
-            return n, extract_post_urls(r.text), None
-        except Exception as exc:
-            return n, [], str(exc)
-
-    print("Full crawl selected: 4 workers, 60-second timeout, failed pages retried once.")
-    with ThreadPoolExecutor(max_workers=4) as pool:
-        futures = [pool.submit(load_archive_page, n) for n in range(2, total + 1)]
-        for i, future in enumerate(as_completed(futures), 1):
-            n, urls, error = future.result()
-            by_page[n] = urls
-            if error:
-                failed.append(n)
-            if i % 100 == 0:
-                print("Archive pages completed: " + str(i) + "/" + str(total - 1))
-
-    if failed:
-        print("Retrying " + str(len(failed)) + " archive pages once.")
-        retry_failed = []
-        with ThreadPoolExecutor(max_workers=2) as pool:
-            futures = {pool.submit(load_archive_page, n): n for n in failed}
+    if mode == "full":
+        with ThreadPoolExecutor(max_workers=WORKERS) as pool:
+            futures = {pool.submit(get_page, archive_page_url(n)): n for n in page_numbers}
             for future in as_completed(futures):
-                n, urls, error = future.result()
-                if not error:
-                    by_page[n] = urls
-                else:
-                    retry_failed.append({"page": n, "error": error})
-        Path("data/failed-archive-pages.json").write_text(
-            json.dumps(retry_failed, ensure_ascii=False, indent=2) + NL, encoding="utf-8"
-        )
+                n = futures[future]
+                try:
+                    _, body = future.result()
+                    posts = extract_posts(body)
+                    found.extend(posts)
+                    print("Archive page", n, ":", len(posts), "posts")
+                except Exception as exc:
+                    errors.append({"page": n, "error": type(exc).__name__ + ": " + str(exc)})
+        found = unique(found)
+    else:
+        for n in page_numbers:
+            try:
+                _, body = get_page(archive_page_url(n))
+                posts = extract_posts(body)
+                found.extend(posts)
+                found = unique(found)
+                print("Archive page", n, ":", len(posts), "posts; unique total:", len(found))
+                if mode == "test" and len(found) >= TEST_LIMIT:
+                    break
+            except Exception as exc:
+                errors.append({"page": n, "error": type(exc).__name__ + ": " + str(exc)})
+                print("Archive page", n, "failed:", str(exc))
+                break
 
-    collected = []
-    for n in range(1, total + 1):
-        collected.extend(by_page.get(n, []))
-    return unique(collected), total
+    if mode == "test":
+        found = found[:TEST_LIMIT]
+    return found, pages, errors
+
+
+def noise(value):
+    value = (value or "").lower()
+    return any(word in value for word in (
+        "logo", "favicon", "avatar", "sprite", "placeholder", "transparent",
+        "emoji", "icon-", "banner-ad", "gravatar", "social-icon",
+    ))
+
+
+def images_from_jsonld(data, page_url):
+    found, stack = [], [data]
+    while stack:
+        value = stack.pop()
+        if isinstance(value, dict):
+            image = value.get("image") or value.get("thumbnailUrl")
+            if isinstance(image, str):
+                found.append(clean_url(image, page_url))
+            elif isinstance(image, dict):
+                found.append(clean_url(image.get("url") or image.get("@id"), page_url))
+            elif isinstance(image, list):
+                for item in image:
+                    if isinstance(item, str):
+                        found.append(clean_url(item, page_url))
+                    elif isinstance(item, dict):
+                        found.append(clean_url(item.get("url") or item.get("@id"), page_url))
+            stack.extend(x for x in value.values() if isinstance(x, (dict, list)))
+        elif isinstance(value, list):
+            stack.extend(value)
+    return found
 
 
 def find_image(soup, page_url):
-    for tag_name, attrs, attr in (
-        ("meta", {"property": "og:image"}, "content"),
-        ("meta", {"property": "og:image:url"}, "content"),
-        ("meta", {"name": "twitter:image"}, "content"),
-        ("meta", {"name": "twitter:image:src"}, "content"),
-        ("link", {"rel": "image_src"}, "href"),
+    candidates = []
+    for attrs in (
+        {"property": "og:image"}, {"property": "og:image:url"},
+        {"name": "twitter:image"}, {"name": "twitter:image:src"},
     ):
-        tag = soup.find(tag_name, attrs=attrs)
-        url = absolute_url(tag.get(attr), page_url) if tag and tag.get(attr) else None
-        if url:
-            return url
-
+        tag = soup.find("meta", attrs=attrs)
+        if tag and tag.get("content"):
+            candidates.append(clean_url(tag["content"], page_url))
     for script in soup.find_all("script", type="application/ld+json"):
         try:
-            data = json.loads(script.string or script.get_text())
+            candidates.extend(images_from_jsonld(json.loads(script.string or script.get_text()), page_url))
         except Exception:
-            continue
-        stack = [data]
-        while stack:
-            item = stack.pop()
-            if isinstance(item, dict):
-                image = item.get("image") or item.get("thumbnailUrl")
-                if isinstance(image, str):
-                    url = absolute_url(image, page_url)
-                    if url:
-                        return url
-                if isinstance(image, dict) and image.get("url"):
-                    url = absolute_url(image["url"], page_url)
-                    if url:
-                        return url
-                stack.extend(v for v in item.values() if isinstance(v, (dict, list)))
-            elif isinstance(item, list):
-                stack.extend(item)
+            pass
 
-    for container in soup.select("article, main, .entry-content, .post, .content"):
-        for img in container.find_all("img", src=True):
-            src = img.get("src", "")
-            details = (src + " " + img.get("alt", "") + " " + " ".join(img.get("class", []))).lower()
-            if any(skip in details for skip in ("logo", "avatar", "favicon", "sprite", "emoji", "icon", "banner", "advert")):
+    containers = soup.select("article, main, .entry-content, .post, .content, .mix-content")
+    for container in containers or [soup]:
+        for img in container.find_all("img"):
+            label = " ".join([
+                str(img.get("alt", "")), " ".join(img.get("class", [])),
+                str(img.get("src", "")),
+            ])
+            if noise(label):
                 continue
-            url = absolute_url(src, page_url)
-            if url:
-                return url
+            for attr in ("data-src", "data-lazy-src", "data-original", "data-image", "src", "srcset", "data-srcset"):
+                raw = img.get(attr)
+                if raw:
+                    if "srcset" in attr:
+                        raw = raw.split(",")[0].strip().split(" ")[0]
+                    candidates.append(clean_url(raw, page_url))
+                    break
+    for candidate in unique(candidates):
+        if candidate and not noise(candidate):
+            return candidate
     return None
 
 
-def article_download_candidates(soup, base_url, include_raw=False, raw=""):
-    candidates = []
-    def add(value):
-        value = absolute_url(value, base_url)
-        if value and value not in candidates:
-            candidates.append(value)
+def audio_candidates(soup, base_url, raw_body="", intermediate=False):
+    scored, seen = [], set()
 
-    # Prioritise the actual visible Download/box.download buttons rather than every page link.
-    for a in soup.find_all("a", href=True):
-        href = a.get("href", "").strip()
-        text = re.sub(r"\s+", " ", a.get_text(" ", strip=True)).strip().lower()
-        title = str(a.get("title", "")).lower()
-        aria = str(a.get("aria-label", "")).lower()
-        classes = " ".join(a.get("class", [])).lower()
-        host = (urlparse(urljoin(base_url, href)).hostname or "").lower()
-        is_download = (
-            "download" in text or "box.download" in text or "download" in title
-            or "download" in aria or "download" in classes or a.has_attr("download")
-            or ".mp3" in href.lower() or host in {"box.download", "box.globaldjmix.com"}
-        )
-        if is_download:
-            add(href)
-            if len(candidates) >= (3 if include_raw else 2):
-                break
+    def add(raw, label="", attr_name=""):
+        url = clean_url(raw, base_url)
+        if not url or url in seen or noise(url):
+            return
+        p = urlparse(url)
+        host = (p.hostname or "").lower()
+        lower = url.lower()
+        label_lower = label.lower()
+        score = 0
+        if host == "box.globaldjmix.com":
+            score = 130
+        elif host == "box.download":
+            score = 125
+        elif ".mp3" in lower:
+            score = 120
+        elif any(ext in lower for ext in (".m4a", ".aac", ".ogg", ".wav")):
+            score = 115
+        elif "download" in label_lower and host not in {"globaldjmix.com", "www.globaldjmix.com"}:
+            score = 100
+        elif intermediate and host not in {"globaldjmix.com", "www.globaldjmix.com"} and p.scheme in {"http", "https"}:
+            score = 30
+        if host in {"globaldjmix.com", "www.globaldjmix.com"} and (p.path.strip("/") in BLOCKED or url.rstrip("/") == base_url.rstrip("/")):
+            score = 0
+        if score:
+            seen.add(url)
+            scored.append((score, len(scored), url))
 
-    if include_raw and raw:
-        for pattern in (
-            r'''https?://[^"'<> \s]+\.mp3(?:\?[^"'<> \s]*)?''',
-            r'''https?:\\/\\/[^"'<> \s]+\.mp3(?:\?[^"'<> \s]*)?''',
-        ):
-            for match in re.findall(pattern, raw, re.I):
-                add(match.replace("\\/", "/"))
-                if len(candidates) >= 3:
-                    break
-    return candidates[:(3 if include_raw else 2)]
+    attrs = ("href", "src", "data-href", "data-url", "data-download", "data-src", "data-link", "formaction", "onclick")
+    for tag in soup.find_all(True):
+        label_parts = [tag.get_text(" ", strip=True)[:120] if tag.name in {"a", "button", "source", "audio", "iframe"} else ""]
+        for name in ("id", "class", "title", "aria-label", "download"):
+            value = tag.get(name)
+            if isinstance(value, list):
+                value = " ".join(value)
+            if value:
+                label_parts.append(str(value))
+        label = " ".join(label_parts)
+        for attr in attrs:
+            value = tag.get(attr)
+            if not value:
+                continue
+            for raw in (value if isinstance(value, list) else [str(value)]):
+                add(raw, label, attr)
+                if attr in {"onclick", "data-url", "data-href", "data-download", "data-link"}:
+                    for match in URL_PATTERN.findall(html.unescape(str(raw)).replace("\\/", "/")):
+                        add(match, label, attr)
+
+    raw = html.unescape(raw_body or "").replace("\\/", "/")
+    for match in MP3_PATTERN.findall(raw):
+        add(match, "mp3", "raw")
+    for match in URL_PATTERN.findall(raw):
+        candidate = match.rstrip(");,]")
+        if any(host in candidate.lower() for host in MEDIA_HOSTS):
+            add(candidate, "box.download", "raw")
+
+    scored.sort(key=lambda item: (-item[0], item[1]))
+    return [url for _, _, url in scored[:7]]
 
 
-def probe(url, referer):
-    """Return (audio/html/other/error, final_url, html_text, error)."""
+def get_response_size(response):
+    content_range = response.headers.get("Content-Range", "")
+    match = re.search(r"/(\d+)\s*$", content_range)
+    if match:
+        return int(match.group(1))
+    value = response.headers.get("Content-Length", "")
+    return int(value) if value.isdigit() else 0
+
+
+def probe_audio(url, referer):
     response = None
     try:
-        headers = {"Range": "bytes=0-511", "Referer": referer}
-        response = request_redirect_safe(url, headers=headers, stream=True, timeout=(min(TIMEOUT, 8) if MODE == "test" else TIMEOUT))
+        response = request(
+            url, referer=referer, stream=True, timeout=12,
+        )
         final_url = response.url
-        content_type = (response.headers.get("content-type") or "").lower()
-        disposition = (response.headers.get("content-disposition") or "").lower()
-
-        # If response looks like HTML, read the small interstitial page to locate its Download button.
+        content_type = (response.headers.get("Content-Type") or "").lower()
+        disposition = (response.headers.get("Content-Disposition") or "").lower()
+        size = get_response_size(response)
         if "text/html" in content_type or "xhtml" in content_type:
-            page_text = response.text
-            return "html", final_url, page_text, None
+            body = response.text[:300000]
+            return "html", final_url, body, size, None
 
-        prefix = b""
-        try:
-            prefix = response.raw.read(512, decode_content=True).lstrip().lower()
-        except Exception:
-            pass
-        if prefix.startswith(b"<!doctype html") or prefix.startswith(b"<html"):
-            return "html", final_url, prefix.decode("utf-8", "ignore"), None
+        prefix = next(response.iter_content(chunk_size=512), b"")
+        if prefix.lstrip().lower().startswith((b"<!doctype html", b"<html", b"<head", b"<body")):
+            body = prefix.decode("utf-8", "ignore")
+            return "html", final_url, body, size, None
 
         audio_like = (
             content_type.startswith("audio/")
-            or any(t in content_type for t in (
-                "application/octet-stream", "application/x-download", "application/download",
-                "application/force-download", "binary/octet-stream",
+            or any(x in content_type for x in (
+                "application/octet-stream", "application/x-download",
+                "application/download", "application/force-download", "binary/octet-stream",
             ))
             or ".mp3" in disposition
-            or ".mp3" in final_url.lower()
+            or any(ext in final_url.lower() for ext in (".mp3", ".m4a", ".aac", ".ogg", ".wav"))
         )
         if audio_like:
-            return "audio", final_url, None, None
-        return "other", final_url, None, "non-audio response (" + (content_type or "unknown content-type") + ")"
+            return "audio", final_url, None, size, None
+        return "other", final_url, None, size, "content-type=" + (content_type or "missing")
     except Exception as exc:
-        return "error", None, None, str(exc)
+        return "error", None, None, 0, type(exc).__name__ + ": " + str(exc)
     finally:
         if response is not None:
             response.close()
 
 
-def resolve_audio(article_soup, article_html, article_url):
-    candidates = article_download_candidates(article_soup, article_url, include_raw=True, raw=article_html)
+def resolve_audio(soup, raw_body, article_url):
+    candidates = audio_candidates(soup, article_url, raw_body)
     errors = []
-    for candidate in candidates[:3]:
-        kind, final_url, body, error = probe(candidate, article_url)
+    for candidate in candidates[:5]:
+        kind, final_url, body, size, error = probe_audio(candidate, article_url)
         if kind == "audio":
-            return final_url, "direct", None
+            return final_url, "direct", size, candidates, None
         if kind == "html" and body:
-            intermediate = BeautifulSoup(body, "html.parser")
-            inner_candidates = article_download_candidates(
-                intermediate, final_url, include_raw=True, raw=body
-            )
-            # The inner page's explicit Download button is first priority.
-            for inner in inner_candidates[:2]:
-                inner_kind, inner_final, _, inner_error = probe(inner, final_url)
+            mid_soup = BeautifulSoup(body, "html.parser")
+            inner = audio_candidates(mid_soup, final_url, body, intermediate=True)
+            for url in inner[:6]:
+                inner_kind, inner_url, _, inner_size, inner_error = probe_audio(url, final_url)
                 if inner_kind == "audio":
-                    return inner_final, "intermediate", None
+                    return inner_url, "intermediate", inner_size, candidates, None
+                if inner_error:
+                    errors.append(inner_error)
+
+            # Last-resort: JavaScript/HTML may spell the actual link without an anchor.
+            raw = html.unescape(body).replace("\\/", "/")
+            raw_urls = unique([clean_url(x, final_url) for x in URL_PATTERN.findall(raw)])
+            raw_urls += unique([clean_url(x, final_url) for x in MP3_PATTERN.findall(raw)])
+            for url in raw_urls:
+                if not url:
+                    continue
+                p = urlparse(url)
+                if (p.hostname or "").lower() not in MEDIA_HOSTS and ".mp3" not in url.lower():
+                    continue
+                inner_kind, inner_url, _, inner_size, inner_error = probe_audio(url, final_url)
+                if inner_kind == "audio":
+                    return inner_url, "intermediate", inner_size, candidates, None
                 if inner_error:
                     errors.append(inner_error)
         if error:
             errors.append(error)
-    return None, None, "No candidate resolved to audio. " + "; ".join(errors[:3])
+
+    detail = "No audio URL resolved. candidates=" + json.dumps(candidates[:5])
+    if errors:
+        detail += "; " + " | ".join(errors[:4])
+    return None, None, 0, candidates, detail
 
 
 def verify_image(url, referer):
     if not url:
-        return False
+        return False, "No image URL found in this episode page."
     response = None
     try:
-        response = request_redirect_safe(
-            url, headers={"Range": "bytes=0-255", "Referer": referer},
-            stream=True, timeout=(min(TIMEOUT, 8) if MODE == "test" else min(TIMEOUT, 15))
-        )
-        ctype = (response.headers.get("content-type") or "").lower()
+        response = request(url, referer=referer, stream=True, timeout=10)
+        content_type = (response.headers.get("Content-Type") or "").lower()
         suffix = urlparse(response.url).path.lower()
-        return ctype.startswith("image/") or (
-            any(suffix.endswith(x) for x in (".jpg", ".jpeg", ".png", ".webp", ".gif"))
-            and ("octet-stream" in ctype or not ctype)
+        ok = content_type.startswith("image/") or (
+            suffix.endswith((".jpg", ".jpeg", ".png", ".webp", ".gif"))
+            and ("octet-stream" in content_type or not content_type)
         )
-    except Exception:
-        return False
+        if not ok:
+            return False, "image returned content-type=" + (content_type or "missing")
+        return True, None
+    except Exception as exc:
+        return False, type(exc).__name__ + ": " + str(exc)
     finally:
         if response is not None:
             response.close()
 
 
-def parse_date(text, label):
-    m = re.search(re.escape(label) + r"\s*:\s*(\d{1,2}[-/][A-Za-z]{3,9}[-/]\d{4}|\d{1,2}/\d{1,2}/\d{4})", text, re.I)
-    if not m:
-        return None
-    for fmt in ("%d-%b-%Y", "%d-%B-%Y", "%d/%m/%Y"):
-        try:
-            return datetime.strptime(m.group(1), fmt).replace(tzinfo=timezone.utc)
-        except ValueError:
-            continue
-    return None
+def episode_date(text, title):
+    patterns = [
+        (r"(?:Post Date|Rec Date)\s*:?\s*(\d{1,2}-[A-Za-z]{3,9}-\d{4})", ("%d-%b-%Y", "%d-%B-%Y")),
+        (r"(?:Post Date|Rec Date)\s*:?\s*(\d{1,2}/\d{1,2}/\d{4})", ("%d/%m/%Y", "%m/%d/%Y")),
+        (r"\b(\d{4}-\d{2}-\d{2})\b", ("%Y-%m-%d",)),
+    ]
+    for pattern, formats in patterns:
+        values = re.findall(pattern, text, re.I) or re.findall(pattern, title, re.I)
+        for value in values:
+            for fmt in formats:
+                try:
+                    return datetime.strptime(value, fmt).replace(tzinfo=timezone.utc).isoformat()
+                except ValueError:
+                    pass
+    return datetime.now(timezone.utc).isoformat()
 
 
 def parse_episode(url):
-    report = {
-        "url": url, "title": "", "audio_ok": False, "audio_method": None,
-        "image_found": False, "image_http_ok": False, "image_url": None, "error": None,
+    diag = {
+        "url": url, "article_fetched": False, "title": "", "audio_ok": False,
+        "audio_method": None, "audio_candidates": [], "audio_url": None,
+        "image_found": False, "image_url": None, "image_http_ok": False,
+        "audio_error": None, "image_error": None, "error": None,
     }
     try:
-        response = fetch_page(url)
-        soup = BeautifulSoup(response.text, "html.parser")
-        text = re.sub(r"\s+", " ", soup.get_text(" ", strip=True)).strip()
-        h = soup.find("h1")
-        title = re.sub(r"\s+", " ", h.get_text(" ", strip=True)).strip() if h else url
-        report["title"] = title
+        final_url, body = get_page(url)
+        diag["article_fetched"] = True
+        soup = BeautifulSoup(body, "html.parser")
+        heading = soup.find("h1")
+        title = re.sub(r"\s+", " ", heading.get_text(" ", strip=True)).strip() if heading else ""
+        if not title:
+            meta = soup.find("meta", attrs={"property": "og:title"})
+            title = (meta.get("content") or "").strip() if meta else ""
+        if not title and soup.title:
+            title = soup.title.get_text(" ", strip=True)
+        diag["title"] = title or url
 
-        image_url = find_image(soup, response.url)
-        report["image_found"] = bool(image_url)
-        report["image_url"] = image_url
-        audio_url, method, error = resolve_audio(soup, response.text, response.url)
+        image_url = find_image(soup, final_url)
+        diag["image_found"] = bool(image_url)
+        diag["image_url"] = image_url
+        diag["image_http_ok"], diag["image_error"] = verify_image(image_url, final_url)
+
+        audio_url, method, size, candidates, error = resolve_audio(soup, body, final_url)
+        diag["audio_candidates"] = candidates
+        diag["audio_error"] = error
         if not audio_url:
-            report["error"] = error
-            return None, report
+            return None, diag
 
-        report["audio_ok"] = True
-        report["audio_method"] = method
-        report["image_http_ok"] = verify_image(image_url, response.url)
-        post_date = parse_date(text, "Post Date")
-        rec_date = parse_date(text, "Rec Date")
-        pub_date = post_date or rec_date or datetime.now(timezone.utc)
-
-        size_match = re.search(r"(?:FileSize|File Size|Size)\s*:\s*([0-9.,]+)\s*(MB|GB)", text, re.I)
-        size_bytes = 0
-        if size_match:
-            try:
-                amount = float(size_match.group(1).replace(",", "."))
-                size_bytes = int(amount * (1024 ** 2 if size_match.group(2).upper() == "MB" else 1024 ** 3))
-            except ValueError:
-                pass
-        duration = re.search(r"Duration\s*:\s*(.+?)(?=\s*(?:Audio Bitrate|Bitrate|FileSize|File Size|Post Date|Rec Date|Genre)\s*:|$)", text, re.I)
-        bitrate = re.search(r"(?:Audio Bitrate|Bitrate)\s*:\s*(.+?)(?=\s*(?:FileSize|File Size|Post Date|Rec Date|Genre)\s*:|$)", text, re.I)
-        genre = re.search(r"Genre\s*:\s*(.+?)(?=\s*Duration\s*:|$)", text, re.I)
-
-        return {
-            "guid": url, "title": title, "link": url,
-            "enclosure": audio_url, "image": image_url,
-            "pubDate": pub_date.isoformat(),
-            "genre": genre.group(1).strip() if genre else "DJ Mix",
-            "duration": duration.group(1).strip() if duration else "",
-            "bitrate": bitrate.group(1).strip() if bitrate else "",
-            "filesize": size_bytes,
-        }, report
+        diag["audio_ok"] = True
+        diag["audio_method"] = method
+        diag["audio_url"] = audio_url
+        text = re.sub(r"\s+", " ", soup.get_text(" ", strip=True)).strip()
+        date = episode_date(text, title)
+        description = ""
+        for selector in ("meta[name=description]", "meta[property='og:description']"):
+            meta = soup.select_one(selector)
+            if meta and meta.get("content"):
+                description = meta["content"].strip()
+                break
+        item = {
+            "title": title, "source_url": final_url, "audio_url": audio_url,
+            "image_url": image_url, "pub_date": date, "length": size,
+            "description": description or title,
+        }
+        return item, diag
     except Exception as exc:
-        report["error"] = "Article failed: " + str(exc)
-        return None, report
+        diag["error"] = type(exc).__name__ + ": " + str(exc)
+        return None, diag
 
 
-def load_items():
+def sort_key(item):
     try:
-        raw = json.loads(DATA_FILE.read_text(encoding="utf-8"))
-    except Exception:
-        return {}
-    if isinstance(raw, list):
-        return {x["guid"]: x for x in raw if isinstance(x, dict) and x.get("guid")}
-    if isinstance(raw, dict):
-        return raw
-    return {}
-
-
-def date_key(item):
-    try:
-        return datetime.fromisoformat(item["pubDate"])
+        return datetime.fromisoformat(item.get("pub_date", "").replace("Z", "+00:00"))
     except Exception:
         return datetime.min.replace(tzinfo=timezone.utc)
 
 
-def esc(value, quote=False):
-    return html.escape(str(value or ""), quote=quote)
+def load_items():
+    try:
+        parsed = json.loads(ITEMS_FILE.read_text(encoding="utf-8"))
+        return parsed if isinstance(parsed, list) else []
+    except Exception:
+        return []
 
 
-def cdata(value):
-    return "<![CDATA[" + str(value or "").replace("]]>", "]]]]><![CDATA[>") + "]]>"
+def rss_xml(items):
+    ET.register_namespace("itunes", "http://www.itunes.com/dtds/podcast-1.0.dtd")
+    rss = ET.Element("rss", {"version": "2.0", "xmlns:itunes": "http://www.itunes.com/dtds/podcast-1.0.dtd"})
+    channel = ET.SubElement(rss, "channel")
+    ET.SubElement(channel, "title").text = "GlobalDJMix Podcast"
+    ET.SubElement(channel, "link").text = ARCHIVE
+    ET.SubElement(channel, "description").text = "DJ mixes, podcasts and live sets from GlobalDJMix."
+    ET.SubElement(channel, "language").text = "en"
+    ET.SubElement(channel, "{http://www.itunes.com/dtds/podcast-1.0.dtd}author").text = "GlobalDJMix"
+    ET.SubElement(channel, "{http://www.itunes.com/dtds/podcast-1.0.dtd}explicit").text = "no"
+    ET.SubElement(channel, "{http://www.itunes.com/dtds/podcast-1.0.dtd}image", {"href": "https://globaldjmix.com/favicon.ico"})
 
-
-def build_rss(items):
-    lines = [
-        '<?xml version="1.0" encoding="UTF-8"?>',
-        '<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">',
-        "  <channel>",
-        "    <title>GlobalDJMix - DJ Mixes &amp; Live Sets</title>",
-        "    <link>" + ARCHIVE + "</link>",
-        "    <description>GlobalDJMix DJ mixes with direct audio enclosures and episode artwork.</description>",
-        "    <language>en</language>",
-        "    <itunes:author>GlobalDJMix</itunes:author>",
-        "    <itunes:explicit>no</itunes:explicit>",
-        '    <itunes:type>episodic</itunes:type>',
-        '    <itunes:category text="Music" />',
-        "    <lastBuildDate>" + format_datetime(datetime.now(timezone.utc)) + "</lastBuildDate>",
-    ]
-    for item in items:
+    for item in sorted(items, key=sort_key, reverse=True):
+        if not item.get("audio_url"):
+            continue
+        node = ET.SubElement(channel, "item")
+        ET.SubElement(node, "title").text = item.get("title") or item.get("source_url") or "DJ Mix"
+        ET.SubElement(node, "link").text = item.get("source_url", "")
+        ET.SubElement(node, "guid", {"isPermaLink": "false"}).text = item.get("source_url", item.get("audio_url", ""))
         try:
-            dt = datetime.fromisoformat(item["pubDate"])
+            dt = datetime.fromisoformat(item["pub_date"].replace("Z", "+00:00"))
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
         except Exception:
             dt = datetime.now(timezone.utc)
-        description = "Source: " + item["link"] + NL + "Genre: " + item.get("genre", "") + NL \
-            + "Duration: " + item.get("duration", "") + NL + "Audio: " + item.get("bitrate", "")
-        lines.extend([
-            "    <item>",
-            "      <title>" + esc(item["title"]) + "</title>",
-            '      <guid isPermaLink="true">' + esc(item["guid"]) + "</guid>",
-            "      <link>" + esc(item["link"]) + "</link>",
-            "      <pubDate>" + format_datetime(dt) + "</pubDate>",
-            "      <description>" + cdata(description) + "</description>",
-            "      <category>" + esc(item.get("genre") or "DJ Mix") + "</category>",
-        ])
-        if item.get("image"):
-            lines.append('      <itunes:image href="' + esc(item["image"], quote=True) + '" />')
-        lines.extend([
-            '      <enclosure url="' + esc(item["enclosure"], quote=True)
-            + '" length="' + str(int(item.get("filesize") or 0)) + '" type="audio/mpeg" />',
-            "      <itunes:episodeType>full</itunes:episodeType>",
-        ])
-        if item.get("duration"):
-            lines.append("      <itunes:duration>" + esc(item["duration"]) + "</itunes:duration>")
-        lines.append("    </item>")
-    lines.extend(["  </channel>", "</rss>"])
-    return NL.join(lines) + NL
+        ET.SubElement(node, "pubDate").text = format_datetime(dt)
+        ET.SubElement(node, "description").text = item.get("description") or item.get("title") or ""
+        enclosure_type = "audio/mpeg"
+        ET.SubElement(node, "enclosure", {
+            "url": item["audio_url"], "length": str(max(0, int(item.get("length") or 0))),
+            "type": enclosure_type,
+        })
+        ET.SubElement(node, "{http://www.itunes.com/dtds/podcast-1.0.dtd}duration").text = item.get("duration", "")
+        if item.get("image_url"):
+            ET.SubElement(node, "{http://www.itunes.com/dtds/podcast-1.0.dtd}image", {"href": item["image_url"]})
+
+    return '<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(rss, encoding="unicode") + "\n"
 
 
 def main():
-    DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
+    DATA.mkdir(parents=True, exist_ok=True)
     existing = load_items()
-    print("FEED_MODE=" + MODE + "; timeout=" + str(TIMEOUT) + "s; workers=" + str(WORKERS))
-    print("Archive source: " + ARCHIVE)
-    try:
-        urls, total_pages = discover(MODE)
-    except Exception as exc:
-        print("Archive discovery error: " + str(exc), file=sys.stderr)
-        REPORT_FILE.write_text(json.dumps({
-            "mode": MODE, "archive_source": ARCHIVE, "error": str(exc),
-            "source_articles_attempted": 0, "rss_episode_count": 0, "diagnostics": [],
-        }, ensure_ascii=False, indent=2) + NL, encoding="utf-8")
-        DATA_FILE.write_text("[]\n", encoding="utf-8")
-        OUTPUT_FILE.write_text(build_rss([]), encoding="utf-8")
-        return 0
+    print("Mode:", MODE, "| timeout:", TIMEOUT, "| workers:", WORKERS)
+    posts, reported_pages, archive_errors = discover_posts(MODE)
+    print("Selected article pages:", len(posts))
 
-    if MODE == "test":
-        base_items = {}
-        selected = urls[:TEST_LIMIT]
+    existing_by_url = {item.get("source_url"): item for item in existing if item.get("source_url")}
+    if MODE == "full":
+        selected = posts
+        pending = [url for url in selected if url not in existing_by_url]
     else:
-        base_items = existing
-        selected = urls if MODE == "full" else urls[:]
-    pending = [u for u in selected if u not in base_items]
-    print("Selected post URLs: " + str(len(selected)) + "; new pages to inspect: " + str(len(pending)))
+        selected = posts[:TEST_LIMIT] if MODE == "test" else posts
+        pending = [url for url in selected if url not in existing_by_url]
+    if MODE == "test":
+        # A test always performs the requested checks instead of skipping previously saved rows.
+        pending = selected
 
     diagnostics = []
-    result = dict(base_items)
+    new_items = []
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         futures = {pool.submit(parse_episode, url): url for url in pending}
-        done = 0
-        for future in as_completed(futures):
-            url = futures[future]
+        for number, future in enumerate(as_completed(futures), start=1):
             try:
-                episode, detail = future.result()
+                item, diag = future.result()
             except Exception as exc:
-                episode, detail = None, {"url": url, "error": str(exc)}
-            diagnostics.append(detail)
-            if episode:
-                result[url] = episode
-            done += 1
+                item = None
+                diag = {"url": futures[future], "error": type(exc).__name__ + ": " + str(exc)}
+            diagnostics.append(diag)
+            if item:
+                new_items.append(item)
             print(
-                "Episode test " + str(done) + "/" + str(len(pending))
-                + ": audio=" + str(bool(episode))
-                + ", image=" + str(bool(detail.get("image_http_ok")))
-                + ", method=" + str(detail.get("audio_method") or "-")
-                + ", title=" + (detail.get("title") or url)[:90]
+                "Episode", number, "/", len(pending),
+                "| audio", bool(item),
+                "| image", bool(diag.get("image_http_ok")),
+                "| method", diag.get("audio_method") or "-",
+                "|", (diag.get("title") or diag.get("url") or "")[:92],
             )
+            if not item:
+                print("  Diagnostic:", (diag.get("audio_error") or diag.get("error") or "audio unresolved")[:700])
+            if diag.get("image_error"):
+                print("  Image diagnostic:", str(diag["image_error"])[:250])
 
-    items = sorted(result.values(), key=date_key, reverse=True)
-    if MODE == "test":
-        items = items[:TEST_LIMIT]
-    DATA_FILE.write_text(json.dumps(items, ensure_ascii=False, indent=2) + NL, encoding="utf-8")
-    OUTPUT_FILE.write_text(build_rss(items), encoding="utf-8")
-
+    audio_ok = sum(bool(d.get("audio_ok")) for d in diagnostics)
+    image_ok = sum(bool(d.get("image_http_ok")) for d in diagnostics)
+    image_found = sum(bool(d.get("image_found")) for d in diagnostics)
     methods = {}
-    for d in diagnostics:
-        if d.get("audio_ok"):
-            m = d.get("audio_method") or "unknown"
-            methods[m] = methods.get(m, 0) + 1
+    for diag in diagnostics:
+        if diag.get("audio_method"):
+            methods[diag["audio_method"]] = methods.get(diag["audio_method"], 0) + 1
+
+    passed = bool(selected) and audio_ok == len(selected) and image_ok == len(selected)
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "mode": MODE, "archive_source": ARCHIVE, "archive_pages_reported": total_pages,
-        "source_articles_attempted": len(selected),
-        "audio_resolved": sum(bool(d.get("audio_ok")) for d in diagnostics),
-        "images_found_on_episode_pages": sum(bool(d.get("image_found")) for d in diagnostics),
-        "image_urls_http_verified": sum(bool(d.get("image_http_ok")) for d in diagnostics),
-        "audio_resolution_methods": methods, "rss_episode_count": len(items),
+        "mode": MODE, "archive_source": ARCHIVE,
+        "archive_pages_reported": reported_pages,
+        "archive_pages_failed": archive_errors,
+        "selected_articles": len(selected),
+        "articles_checked": len(diagnostics),
+        "audio_resolved": audio_ok,
+        "images_found": image_found,
+        "images_verified": image_ok,
+        "audio_resolution_methods": methods,
+        "test_passed": passed if MODE == "test" else None,
+        "saved_episode_count": 0,
         "diagnostics": diagnostics,
     }
-    REPORT_FILE.write_text(json.dumps(report, ensure_ascii=False, indent=2) + NL, encoding="utf-8")
-    print("SUMMARY: audio=" + str(report["audio_resolved"]) + "/"
-          + str(len(selected)) + ", images verified="
-          + str(report["image_urls_http_verified"]) + "/" + str(len(selected))
-          + ", methods=" + json.dumps(methods) + ", rss=" + str(len(items)))
-    print("Wrote rss.xml with " + str(len(items)) + " podcast episodes.")
+
+    if MODE == "test":
+        # Do not publish a partial/empty feed. Keep current RSS/items until all 50 pass.
+        if passed:
+            items = sorted(new_items, key=sort_key, reverse=True)[:TEST_LIMIT]
+            ITEMS_FILE.write_text(json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            RSS_FILE.write_text(rss_xml(items), encoding="utf-8")
+            report["saved_episode_count"] = len(items)
+        else:
+            report["saved_episode_count"] = len(existing)
+            print("TEST DID NOT PASS; keeping the previously published RSS/items unchanged.")
+    else:
+        merged = dict(existing_by_url)
+        for item in new_items:
+            merged[item["source_url"]] = item
+        items = sorted(merged.values(), key=sort_key, reverse=True)
+        ITEMS_FILE.write_text(json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        RSS_FILE.write_text(rss_xml(items), encoding="utf-8")
+        report["saved_episode_count"] = len(items)
+
+    REPORT_FILE.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(
+        "SUMMARY: articles=", len(selected),
+        "| audio=", str(audio_ok) + "/" + str(len(selected)),
+        "| artwork found=", str(image_found) + "/" + str(len(selected)),
+        "| artwork verified=", str(image_ok) + "/" + str(len(selected)),
+        "| methods=", json.dumps(methods),
+        "| test passed=", passed,
+        "| saved episodes=", report["saved_episode_count"],
+    )
+    # A zero-success test is still a useful diagnostic run; workflow commits report regardless.
     return 0
 
 
