@@ -8,6 +8,7 @@ import time
 import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 from email.utils import format_datetime, parsedate_to_datetime
 from pathlib import Path
 from threading import Lock, local
@@ -22,6 +23,7 @@ DATA = Path("data")
 ITEMS_FILE = DATA / "items.json"
 REPORT_FILE = DATA / "test-report.json"
 RETRY_FILE = DATA / "retry-queue.json"
+DAILY_FILE = DATA / "daily-additions.json"
 RSS_FILE = Path("rss.xml")
 
 MODE = os.getenv("FEED_MODE", "test").strip().lower()
@@ -695,6 +697,30 @@ def load_items():
     except Exception:
         return []
 
+def load_daily_additions():
+    try:
+        parsed = json.loads(DAILY_FILE.read_text(encoding="utf-8"))
+        return parsed if isinstance(parsed, dict) and isinstance(parsed.get("days"), dict) else {"timezone": "Europe/Istanbul", "days": {}}
+    except Exception:
+        return {"timezone": "Europe/Istanbul", "days": {}}
+
+
+def save_daily_additions(data, today):
+    # Keep the last 365 calendar days to prevent the history file growing forever.
+    from datetime import timedelta
+    cutoff = today - timedelta(days=364)
+    kept = {}
+    for day, entry in data.get("days", {}).items():
+        try:
+            parsed_day = datetime.strptime(day, "%Y-%m-%d").date()
+        except (TypeError, ValueError):
+            continue
+        if parsed_day >= cutoff:
+            kept[day] = entry
+    data["timezone"] = "Europe/Istanbul"
+    data["days"] = kept
+    DAILY_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
 
 def load_retry_queue():
     try:
@@ -855,6 +881,10 @@ def main():
     DATA.mkdir(parents=True, exist_ok=True)
     existing = load_items()
     retry_queue = load_retry_queue()
+    daily_data = load_daily_additions()
+    local_now = datetime.now(ZoneInfo("Europe/Istanbul"))
+    today_key = local_now.date().isoformat()
+    today_entry = daily_data.get("days", {}).get(today_key, {"added_count": 0, "episodes": []})
     print("Mode:", MODE, "| timeout:", TIMEOUT, "| workers:", WORKERS)
     posts, reported_pages, archive_errors = discover_posts(MODE)
     print("Selected archive article pages:", len(posts))
@@ -947,6 +977,11 @@ def main():
         "audio_resolution_methods": methods,
         "test_passed": None,
         "saved_episode_count": len(existing),
+        "new_episodes_added": 0,
+        "new_episode_titles": [],
+        "daily_date": today_key,
+        "daily_added_count": len(today_entry.get("episodes", [])),
+        "daily_episode_titles": [entry.get("title", "") for entry in today_entry.get("episodes", [])],
         "validation": validation,
         "retry_queue_before": len(retry_queue),
         "retry_queue_after": len(retry_queue),
@@ -984,12 +1019,41 @@ def main():
             report["publish_blocked"] = True
             report["saved_episode_count"] = len(existing)
         else:
-            ITEMS_FILE.write_text(json.dumps(candidate_items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            ITEMS_FILE.write_text(json.dumps(candidate_items, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
             RSS_FILE.write_text(candidate_xml, encoding="utf-8")
             report["publish_blocked"] = False
             report["saved_episode_count"] = len(candidate_items)
 
-        RETRY_FILE.write_text(json.dumps(next_retry_queue, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            # Count only genuinely new source URLs after the validated feed was published.
+            added_by_url = {}
+            for item in new_items:
+                source_url = item.get("source_url")
+                if source_url and source_url not in existing_by_url:
+                    added_by_url[source_url] = item
+            newly_added = list(added_by_url.values())
+            report["new_episodes_added"] = len(newly_added)
+            report["new_episode_titles"] = [item.get("title") or item.get("source_url", "") for item in newly_added]
+
+            day_entry = daily_data.get("days", {}).get(today_key, {"added_count": 0, "episodes": []})
+            day_episodes = day_entry.get("episodes", [])
+            recorded_urls = {entry.get("source_url") for entry in day_episodes}
+            for item in newly_added:
+                if item.get("source_url") not in recorded_urls:
+                    day_episodes.append({
+                        "title": item.get("title") or item.get("source_url", ""),
+                        "source_url": item.get("source_url", ""),
+                        "added_at": local_now.isoformat(),
+                    })
+                    recorded_urls.add(item.get("source_url"))
+            daily_data.setdefault("days", {})[today_key] = {
+                "added_count": len(day_episodes),
+                "episodes": day_episodes,
+            }
+            save_daily_additions(daily_data, local_now.date())
+            report["daily_added_count"] = len(day_episodes)
+            report["daily_episode_titles"] = [entry.get("title", "") for entry in day_episodes]
+
+        RETRY_FILE.write_text(json.dumps(next_retry_queue, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
 
     REPORT_FILE.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(
@@ -1003,6 +1067,8 @@ def main():
         "| validation errors=", len(validation["errors"]),
         "| sampled audio failures=", len(validation["audio_probe_failures"]),
         "| saved episodes=", report["saved_episode_count"],
+        "| newly added=", report.get("new_episodes_added", 0),
+        "| added today=", report.get("daily_added_count", 0),
         "| retry queue=", report["retry_queue_after"],
     )
     return 1 if MODE != "test" and validation["errors"] else 0
