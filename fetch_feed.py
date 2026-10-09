@@ -55,45 +55,6 @@ def session():
             "User-Agent": AGENT,
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         })
-        THREAD.login_attempted = False
-
-    if not THREAD.login_attempted:
-        THREAD.login_attempted = True
-        username = os.getenv("GLOBALDJMIX_USERNAME", "").strip()
-        password = os.getenv("GLOBALDJMIX_PASSWORD", "")
-        if username and password:
-            try:
-                auth_response = THREAD.session.get(BASE + "/get-auth-form", timeout=(6, TIMEOUT))
-                auth_soup = BeautifulSoup(auth_response.text, "html.parser")
-                form = auth_soup.find("form")
-                if not form:
-                    print("GlobalDJMix login form unavailable; tracklists will be skipped.")
-                else:
-                    data = {}
-                    for field in form.find_all("input"):
-                        name = field.get("name")
-                        if not name:
-                            continue
-                        field_type = (field.get("type") or "text").lower()
-                        if field_type == "password":
-                            data[name] = password
-                        elif name.lower() in {"login", "username", "user", "email"}:
-                            data[name] = username
-                        else:
-                            data[name] = field.get("value", "")
-                    action = urljoin(auth_response.url, form.get("action") or auth_response.url)
-                    login_response = THREAD.session.post(
-                        action, data=data, headers={"Referer": auth_response.url},
-                        timeout=(6, TIMEOUT), allow_redirects=True,
-                    )
-                    body = login_response.text.lower()
-                    if any(marker in body for marker in ("logout", "log out", "sign out")):
-                        print("GlobalDJMix login succeeded; tracklist retrieval enabled.")
-                    else:
-                        print("GlobalDJMix login could not be confirmed; tracklists may be unavailable.")
-            except Exception as exc:
-                print("GlobalDJMix login error; continuing without tracklists:", type(exc).__name__)
-
     return THREAD.session
 
 
@@ -104,20 +65,6 @@ def wait_turn():
         if now < NEXT_REQUEST:
             time.sleep(NEXT_REQUEST - now)
         NEXT_REQUEST = max(time.monotonic(), NEXT_REQUEST) + REQUEST_GAP
-
-
-TRACKLIST_REQUEST_GAP = 30.0
-TRACKLIST_RATE_LOCK = Lock()
-NEXT_TRACKLIST_REQUEST = 0.0
-
-
-def wait_tracklist_turn():
-    global NEXT_TRACKLIST_REQUEST
-    with TRACKLIST_RATE_LOCK:
-        now = time.monotonic()
-        if now < NEXT_TRACKLIST_REQUEST:
-            time.sleep(NEXT_TRACKLIST_REQUEST - now)
-        NEXT_TRACKLIST_REQUEST = max(time.monotonic(), NEXT_TRACKLIST_REQUEST) + TRACKLIST_REQUEST_GAP
 
 
 def clean_url(value, base=None):
@@ -600,57 +547,11 @@ def episode_date(text, title):
     return datetime.now(timezone.utc).isoformat()
 
 
-def fetch_tracklist(soup, article_url):
-    button = soup.select_one("button.show-tracklist[data-id]")
-    if not button or not button.get("data-id"):
-        return None, "Tracklist button not found"
-    if not (os.getenv("GLOBALDJMIX_USERNAME") and os.getenv("GLOBALDJMIX_PASSWORD")):
-        return None, "Login credentials not configured"
-
-    response = None
-    try:
-        # Warm the per-thread authenticated session before reserving a global request slot.
-        s = session()
-        wait_tracklist_turn()
-        response = s.get(
-            BASE + "/get-tracklist",
-            params={"id": button.get("data-id")},
-            headers={"Referer": article_url, "X-Requested-With": "XMLHttpRequest"},
-            timeout=(6, TIMEOUT),
-        )
-        response.raise_for_status()
-        payload = response.json()
-        if payload.get("success") is not True:
-            return None, "Tracklist endpoint did not return success"
-        tracklist_html = payload.get("tracklist") or ""
-        track_soup = BeautifulSoup(tracklist_html, "html.parser")
-        response_text = re.sub(r"\\s+", " ", track_soup.get_text(" ", strip=True)).strip()
-        if "many requests to tracklists" in response_text.lower():
-            return None, "GlobalDJMix rate-limited the tracklist request"
-        track_nodes = track_soup.select(".track")
-        tracks = [
-            re.sub(r"\\s+", " ", node.get_text(" ", strip=True)).strip()
-            for node in track_nodes
-        ]
-        tracks = [track for track in tracks if track]
-        if not tracks and response_text:
-            tracks = [response_text]
-        if not tracks:
-            return None, "Tracklist response was successful but contained no tracks"
-        return "\\n".join(tracks), None
-    except Exception as exc:
-        return None, type(exc).__name__ + ": " + str(exc)[:220]
-    finally:
-        if response is not None:
-            response.close()
-
-
 def parse_episode(url):
     diag = {
         "url": url, "article_fetched": False, "title": "", "audio_ok": False,
         "audio_method": None, "audio_candidates": [], "audio_url": None,
         "image_found": False, "image_url": None, "image_http_ok": False,
-        "tracklist_button_found": False, "tracklist_found": False, "tracklist_error": None,
         "audio_error": None, "image_error": None, "error": None,
     }
     try:
@@ -688,17 +589,10 @@ def parse_episode(url):
             if meta and meta.get("content"):
                 description = meta["content"].strip()
                 break
-        description = description or title
-        diag["tracklist_button_found"] = bool(soup.select_one("button.show-tracklist[data-id]"))
-        tracklist, tracklist_error = fetch_tracklist(soup, final_url)
-        diag["tracklist_found"] = bool(tracklist)
-        diag["tracklist_error"] = tracklist_error
-        if tracklist:
-            description += "\\n\\nTracklist:\\n" + tracklist
         item = {
             "title": title, "source_url": final_url, "audio_url": audio_url,
             "image_url": image_url, "pub_date": date, "length": size,
-            "description": description,
+            "description": description or title,
         }
         return item, diag
     except Exception as exc:
@@ -798,7 +692,6 @@ def main():
                 "Episode", number, "/", len(pending),
                 "| audio", bool(item),
                 "| image", bool(diag.get("image_http_ok")),
-                "| tracklist", bool(diag.get("tracklist_found")),
                 "| method", diag.get("audio_method") or "-",
                 "|", (diag.get("title") or diag.get("url") or "")[:92],
             )
@@ -806,27 +699,16 @@ def main():
                 print("  Diagnostic:", (diag.get("audio_error") or diag.get("error") or "audio unresolved")[:700])
             if diag.get("image_error"):
                 print("  Image diagnostic:", str(diag["image_error"])[:250])
-            if diag.get("tracklist_button_found") and diag.get("tracklist_error"):
-                print("  Tracklist diagnostic:", str(diag["tracklist_error"])[:250])
 
     audio_ok = sum(bool(d.get("audio_ok")) for d in diagnostics)
     image_ok = sum(bool(d.get("image_http_ok")) for d in diagnostics)
     image_found = sum(bool(d.get("image_found")) for d in diagnostics)
-    tracklists_found = sum(bool(d.get("tracklist_found")) for d in diagnostics)
-    tracklist_buttons_found = sum(bool(d.get("tracklist_button_found")) for d in diagnostics)
-    tracklist_buttonless_pages = len(diagnostics) - tracklist_buttons_found
-    tracklist_button_pages_missing_tracklist = tracklist_buttons_found - tracklists_found
-    tracklist_required = bool(os.getenv("GLOBALDJMIX_USERNAME") and os.getenv("GLOBALDJMIX_PASSWORD"))
-    tracklist_test_passed = (
-        not tracklist_required
-        or (tracklist_buttons_found > 0 and tracklists_found == tracklist_buttons_found)
-    )
     methods = {}
     for diag in diagnostics:
         if diag.get("audio_method"):
             methods[diag["audio_method"]] = methods.get(diag["audio_method"], 0) + 1
 
-    passed = bool(selected) and audio_ok == len(selected) and image_ok == len(selected) and tracklist_test_passed
+    passed = bool(selected) and audio_ok == len(selected) and image_ok == len(selected)
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "mode": MODE, "archive_source": ARCHIVE,
@@ -837,13 +719,6 @@ def main():
         "audio_resolved": audio_ok,
         "images_found": image_found,
         "images_verified": image_ok,
-        "tracklists_found": tracklists_found,
-        "tracklists_missing": len(diagnostics) - tracklists_found,
-        "tracklist_buttons_found": tracklist_buttons_found,
-        "tracklist_buttonless_pages": tracklist_buttonless_pages,
-        "tracklist_button_pages_missing_tracklist": tracklist_button_pages_missing_tracklist,
-        "tracklist_request_gap_seconds": TRACKLIST_REQUEST_GAP,
-        "tracklist_test_passed": tracklist_test_passed if MODE == "test" else None,
         "audio_resolution_methods": methods,
         "test_passed": passed if MODE == "test" else None,
         "saved_episode_count": 0,
@@ -875,10 +750,6 @@ def main():
         "| audio=", str(audio_ok) + "/" + str(len(selected)),
         "| artwork found=", str(image_found) + "/" + str(len(selected)),
         "| artwork verified=", str(image_ok) + "/" + str(len(selected)),
-        "| tracklists=", str(tracklists_found) + "/" + str(tracklist_buttons_found) + " buttons",
-        "| tracklist gap=", TRACKLIST_REQUEST_GAP,
-        "| pages without tracklist button=", tracklist_buttonless_pages,
-        "| button pages missing tracklist=", tracklist_button_pages_missing_tracklist,
         "| methods=", json.dumps(methods),
         "| test passed=", passed,
         "| saved episodes=", report["saved_episode_count"],
