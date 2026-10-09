@@ -1,16 +1,17 @@
 {
-  "generated_at": "2026-10-09T19:31:19.945997+00:00",
+  "generated_at": "2026-10-09T19:32:52.346313+00:00",
   "mode": "incremental",
   "archive_source": "https://globaldjmix.com/livedjsets",
   "archive_pages_reported": 1660,
   "archive_pages_failed": [],
   "selected_articles": 114,
-  "articles_checked": 2,
-  "audio_resolved": 2,
-  "images_found": 2,
-  "images_verified": 2,
+  "articles_checked": 32,
+  "audio_resolved": 11,
+  "images_found": 32,
+  "images_verified": 32,
   "audio_resolution_methods": {
-    "intermediate": 2
+    "intermediate": 6,
+    "direct": 5
   },
   "test_passed": null,
   "saved_episode_count": 7017,
@@ -22,10 +23,10 @@
     "item_count": 7017,
     "live_audio_checked": 3
   },
-  "retry_queue_before": 0,
-  "retry_queue_after": 0,
+  "retry_queue_before": 877,
+  "retry_queue_after": 868,
   "retry_queue_added": 0,
-  "retry_queue_processed": 0,
+  "retry_queue_processed": 30,
   "diagnostics": [
     {
       "url": "https://globaldjmix.com/tiësto-prismatic-040-2026-october-03/",
@@ -64,6 +65,552 @@
       "image_url": "https://globaldjmix.com/files/download/helslowed_-_borderlands.jpg",
       "image_http_ok": true,
       "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/blasterjaxx-maxximize-on-air-635-2026-august-17/",
+      "article_fetched": true,
+      "title": "Blasterjaxx - Maxximize On Air 635 (17 August 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://feeds.soundcloud.com/stream/2383141986-maxximizeonair-maxximize-on-air-635.mp3"
+      ],
+      "audio_url": "https://feeds.soundcloud.com/stream/2383141986-maxximizeonair-maxximize-on-air-635.mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/blasterjaxx_maxximize_on_air.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/laura-van-dam-capture-radio-108-2026-september-13/",
+      "article_fetched": true,
+      "title": "Laura Van Dam - Capture Radio 108 (13 September 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://cf-media.sndcdn.com/b6PScVgzcAg0.128.mp3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vYjZQU2NWZ3pjQWcwLjEyOC5tcDMqIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzg5MzcwMjkyfX19XX0_&Signature=OC86BgyYtEQ7zqHc42BtenNehxKWD72MNnVH0XcYMvgYpQozF2NNQ0C0lvBQBoGKk~~lTkl-gSGCSt1jqeMsUkUetDwxixWVLySJ2x~h-02DjS9rgajXJ~nywm-Ca~V5koE37AKLW3sesl8FPq67kD2EXIz4HKZAw55ZuoCof9dwahV7J1cQW-1kWS0FwvfaTaKz6J15tqpgUjg9bXUOIdviJ3e8z5GH6Poq29GYJoJVw51MbsbzkZhJopV~QAArzBQYg5uifb1Oq-aiEeWpoX4ow6wSx7jfGXnft3m45zTFzWPJmne79kn6XGRhTD0RwWKXrHLrv9GcQQjitF4ZWQ__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/laura_van_dam_capture_radio.jpg",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://cf-media.sndcdn.com/b6PScVgzcAg0.128.mp3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vYjZQU2NWZ3pjQWcwLjEyOC5tcDMqIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzg5MzcwMjkyfX19XX0_&Signature=OC86BgyYtEQ7zqHc42BtenNehxKWD72MNnVH0XcYMvgYpQozF2NNQ0C0lvBQBoGKk~~lTkl-gSGCSt1jqeMsUkUetDwxixWVLySJ2x~h-02DjS9rgajXJ~nywm-Ca~V5koE37AKLW3sesl8FPq67kD2EXIz4HKZAw55ZuoCof9dwahV7J1cQW-1kWS0FwvfaTaKz6J15tqpgUjg9bXUOIdviJ3e8z5GH6Poq29GYJoJVw51MbsbzkZhJopV~QAArzBQYg5uifb1Oq-aiEeWpoX4ow6wSx7jfGXnft3m45zTFzWPJmne79kn6XGRhTD0RwWKXrHLrv9GcQQjitF4ZWQ__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ\"]; HTTPError: 403 Client Error: Forbidden for url: https://cf-media.sndcdn.com/b6PScVgzcAg0.128.mp3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vYjZQU2NWZ3pjQWcwLjEyOC5tcDMqIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzg5MzcwMjkyfX19XX0_&Signature=OC86BgyYtEQ7zqHc42BtenNehxKWD72MNnVH0XcYMvgYpQozF2NNQ0C0lvBQBoGKk~~lTkl-gSGCSt1jqeMsUkUetDwxixWVLySJ2x~h-02DjS9rgajXJ~nywm-Ca~V5koE37AKLW3sesl8FPq67kD2EXIz4HKZAw55ZuoCof9dwahV7J1cQW-1kWS0FwvfaTaKz6J15tqpgUjg9bXUOIdviJ3e8z5GH6Poq29GYJoJVw51MbsbzkZhJopV~QAArzBQYg5uifb1Oq-aiEeWpoX4ow6wSx7jfGXnft3m45zTFzWPJmne79kn6XGRhTD0RwWKXrHLrv9GcQQjitF4ZWQ__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/fedde-le-grand-darklight-sessions-730-2026-august-17/",
+      "article_fetched": true,
+      "title": "Fedde le Grand - Darklight Sessions 730 (17 August 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://traffic.libsyn.com/secure/feddelegrand/Fedde_Le_Grand_-_Darklight_Sessions_730_-_Global.mp3?dest-id=177173"
+      ],
+      "audio_url": "https://traffic.libsyn.com/secure/feddelegrand/Fedde_Le_Grand_-_Darklight_Sessions_730_-_Global.mp3?dest-id=177173",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/fedde_le_grand_-_darklight_sessions.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/yves-v-v-sessions-574-2026-august-17/",
+      "article_fetched": true,
+      "title": "Yves V - V Sessions 574 (17 August 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://media3-yvesv.podtree.com/yvesv/media/podcast/V_Sessions_574.mp3"
+      ],
+      "audio_url": "https://media3-yvesv.podtree.com/yvesv/media/podcast/V_Sessions_574.mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/yves_v_difm_660x330.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/r3hab-cyb3rpvnk-radio-724-2026-august-17/",
+      "article_fetched": true,
+      "title": "R3hab - CYB3RPVNK Radio 724 (17 August 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://cdn.simplecast.com/media/audio/transcoded/9b1a1ac5-9559-41b7-9002-84899aa479a5/4243b339-d947-4b0d-9e58-31999d1c5022/episodes/audio/group/103a8568-b6e3-434c-b0eb-14e6e7ffdaf1/group-item/3e41bf93-3cd8-46d1-983f-f7b69eee8a2a/128_default_tc.mp3?aid=rss_feed&feed=hBbiHUAC"
+      ],
+      "audio_url": "https://cdn.simplecast.com/media/audio/transcoded/9b1a1ac5-9559-41b7-9002-84899aa479a5/4243b339-d947-4b0d-9e58-31999d1c5022/episodes/audio/group/103a8568-b6e3-434c-b0eb-14e6e7ffdaf1/group-item/3e41bf93-3cd8-46d1-983f-f7b69eee8a2a/128_default_tc.mp3?aid=rss_feed&feed=hBbiHUAC",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/i_need_r3hab_2017.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/paul-oakenfold-planet-perfecto-824-2026-august-17/",
+      "article_fetched": true,
+      "title": "Paul Oakenfold - Planet Perfecto 824 (17 August 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://traffic.libsyn.com/clean/secure/oakenfold/PlanetPerfecto_PaulOakenfold_824.mp3?dest-id=13439"
+      ],
+      "audio_url": "https://traffic.libsyn.com/clean/secure/oakenfold/PlanetPerfecto_PaulOakenfold_824.mp3?dest-id=13439",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/paul_oakenfold_planet_perfecto.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/paul-van-dyk-vonyc-sessions-1032-2026-august-16/",
+      "article_fetched": true,
+      "title": "Paul Van Dyk - Vonyc Sessions 1032 (16 August 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/paul-van-dyk-vonyc-sessions-1032-2026-august-16/SRltvP",
+        "http://files.globaldjmix.com/2026/08/16/Paul van Dyk - Vonyc Sessions 1032 on AH.FM 16-08-2026.mp3",
+        "http://files.globaldjmix.com/2026/08/16/Paul"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/08/16/Paul van Dyk - Vonyc Sessions 1032 on AH.FM 16-08-2026.mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/paul_van_dyks_vonyc_sessions_ytb.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/n-tchbl-subliminal-2026-august-16/",
+      "article_fetched": true,
+      "title": "N-tchbl - Subliminal (16 August 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/n-tchbl-subliminal-2026-august-16/SRltvP",
+        "http://files.globaldjmix.com/2026/08/16/N-Tchbl - Subliminal (16 August 2026).mp3",
+        "http://files.globaldjmix.com/2026/08/16/N-Tchbl"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/08/16/N-Tchbl - Subliminal (16 August 2026).mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/subliminal_-_n-tchbl.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/christian-monique-seventeen-2026-august-16/",
+      "article_fetched": true,
+      "title": "Christian Monique - SEVENTEEN (16 August 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/christian-monique-seventeen-2026-august-16/SRltvP",
+        "http://files.globaldjmix.com/2026/08/16/Christian Monique - SEVENTEEN (16 August 2026).mp3",
+        "http://files.globaldjmix.com/2026/08/16/Christian"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/08/16/Christian Monique - SEVENTEEN (16 August 2026).mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/seventeen_-_christian_monique.png",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/cool-carla-subzero-2026-august-16/",
+      "article_fetched": true,
+      "title": "Cool Carla - SubZero (16 August 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/cool-carla-subzero-2026-august-16/SRltvP",
+        "http://files.globaldjmix.com/2026/08/16/CoolCarla - SubZero (16 August 2026).mp3",
+        "http://files.globaldjmix.com/2026/08/16/CoolCarla"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/08/16/CoolCarla - SubZero (16 August 2026).mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/subzero_cool_carla.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/bobina-russia-goes-clubbing-929-2026-august-06/",
+      "article_fetched": true,
+      "title": "Bobina - Russia Goes Clubbing 929 (06 August 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://cf-media.sndcdn.com/xSPfgKx8kvS3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20veFNQZmdLeDhrdlMzKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc4NjA4MTAyM319fV19&Signature=JWXdPpsdyT38AQV0EBtOZva-9k4QP-6VEvaCloRrbWwjj8iLFRdKMaMAQWJc7BLlUQfXa~7g6xmvulTFFkXZ7iy6Ngqsh7DckwXdZaEFSvtgObGwLwdPGvMQ~66HgcaF2ryuLdQYvtr~LSwXgaCL8d767pzwGzzvmpm3snL0QnQQxqj7f8SNBzZO6PqoTafnuZLF-vmBVpzkEHdPkilC5vsJOxme06qinjVSu0EUUHJXzwhOUSv2TDroWkHoEivI1tA3MwvRC3zR8jcjE-7Mx4tiTeWyiwbXuAIZaThttps://feeds.soundcloud.com/stream/2377001873-russiagoesclubbing-episode-929.mp39kueMabPz24HK3rGbuPoZn1XjpbeC8B6iHOonVKPQ--MJfWw__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ",
+        "https://cf-media.sndcdn.com/xSPfgKx8kvS3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20veFNQZmdLeDhrdlMzKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc4NjA4MTAyM319fV19&Signature=JWXdPpsdyT38AQV0EBtOZva-9k4QP-6VEvaCloRrbWwjj8iLFRdKMaMAQWJc7BLlUQfXa~7g6xmvulTFFkXZ7iy6Ngqsh7DckwXdZaEFSvtgObGwLwdPGvMQ~66HgcaF2ryuLdQYvtr~LSwXgaCL8d767pzwGzzvmpm3snL0QnQQxqj7f8SNBzZO6PqoTafnuZLF-vmBVpzkEHdPkilC5vsJOxme06qinjVSu0EUUHJXzwhOUSv2TDroWkHoEivI1tA3MwvRC3zR8jcjE-7Mx4tiTeWyiwbXuAIZaThttps://feeds.soundcloud.com/stream/2377001873-russiagoesclubbing-episode-929.mp3"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/music_box_radio_bobina.jpg",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://cf-media.sndcdn.com/xSPfgKx8kvS3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20veFNQZmdLeDhrdlMzKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc4NjA4MTAyM319fV19&Signature=JWXdPpsdyT38AQV0EBtOZva-9k4QP-6VEvaCloRrbWwjj8iLFRdKMaMAQWJc7BLlUQfXa~7g6xmvulTFFkXZ7iy6Ngqsh7DckwXdZaEFSvtgObGwLwdPGvMQ~66HgcaF2ryuLdQYvtr~LSwXgaCL8d767pzwGzzvmpm3snL0QnQQxqj7f8SNBzZO6PqoTafnuZLF-vmBVpzkEHdPkilC5vsJOxme06qinjVSu0EUUHJXzwhOUSv2TDroWkHoEivI1tA3MwvRC3zR8jcjE-7Mx4tiTeWyiwbXuAIZaThttps://feeds.soundcloud.com/stream/2377001873-russiagoesclubbing-episode-929.mp39kueMabPz24HK3rGbuPoZn1XjpbeC8B6iHOonVKPQ--MJfWw__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ\", \"https://cf-media.sndcdn.com/xSPfgKx8kvS3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20veFNQZmdLeDhrdlMzKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc4NjA4MTAyM319fV19&Signature=JWXdPpsdyT38AQV0EBtOZva-9k4QP-6VEvaCloRrbWwjj8iLFRdKMaMAQWJc7BLlUQfXa~7g6xmvulTFFkXZ7iy6Ngqsh7DckwXdZaEFSvtgObGwLwdPGvMQ~66HgcaF2ryuLdQYvtr~LSwXgaCL8d767pzwGzzvmpm3snL0QnQQxqj7f8SNBzZO6PqoTafnuZLF-vmBVpzkEHdPkilC5vsJOxme06qinjVSu0EUUHJXzwhOUSv2TDroWkHoEivI1tA3MwvRC3zR8jcjE-7Mx4tiTeWyiwbXuAIZaThttps://feeds.soundcloud.com/stream/2377001873-russiagoesclubbing-episode-929.mp3\"]; HTTPError: 403 Client Error: Forbidden for url: https://cf-media.sndcdn.com/xSPfgKx8kvS3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20veFNQZmdLeDhrdlMzKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc4NjA4MTAyM319fV19&Signature=JWXdPpsdyT38AQV0EBtOZva-9k4QP-6VEvaCloRrbWwjj8iLFRdKMaMAQWJc7BLlUQfXa~7g6xmvulTFFkXZ7iy6Ngqsh7DckwXdZaEFSvtgObGwLwdPGvMQ~66HgcaF2ryuLdQYvtr~LSwXgaCL8d767pzwGzzvmpm3snL0QnQQxqj7f8SNBzZO6PqoTafnuZLF-vmBVpzkEHdPkilC5vsJOxme06qinjVSu0EUUHJXzwhOUSv2TDroWkHoEivI1tA3MwvRC3zR8jcjE-7Mx4tiTeWyiwbXuAIZaThttps://feeds.soundcloud.com/stream/2377001873-russiagoesclubbing-episode-929.mp39kueMabPz24HK3rGbuPoZn1XjpbeC8B6iHOonVKPQ--MJfWw__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ | HTTPError: 403 Client Error: Forbidden for url: https://cf-media.sndcdn.com/xSPfgKx8kvS3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20veFNQZmdLeDhrdlMzKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc4NjA4MTAyM319fV19&Signature=JWXdPpsdyT38AQV0EBtOZva-9k4QP-6VEvaCloRrbWwjj8iLFRdKMaMAQWJc7BLlUQfXa~7g6xmvulTFFkXZ7iy6Ngqsh7DckwXdZaEFSvtgObGwLwdPGvMQ~66HgcaF2ryuLdQYvtr~LSwXgaCL8d767pzwGzzvmpm3snL0QnQQxqj7f8SNBzZO6PqoTafnuZLF-vmBVpzkEHdPkilC5vsJOxme06qinjVSu0EUUHJXzwhOUSv2TDroWkHoEivI1tA3MwvRC3zR8jcjE-7Mx4tiTeWyiwbXuAIZaThttps://feeds.soundcloud.com/stream/2377001873-russiagoesclubbing-episode-929.mp3",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/grum-deep-state-radio-051-2026-may-26/",
+      "article_fetched": true,
+      "title": "Grum - Deep State Radio 051 (26 May 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://stitcher2.acast.com/livestitches/f6bd99040d60a4aab8e186c8e2936ff4.mp3?aid=6a157ee68ff41815a8647289&chid=65e5b90e5c6699001750c5ae&ci=p7qvoWe_XxURfvOM6QVjrkVxRhrAUEjOBDtK8oQCWfiqNCgLUGwP8w%3D%3D&pf=rss&range=bytes%3D0-&src=f6c700b1eba2b3523c56282392b6c623%2F128-2.mp3&sv=sphinx%401.277.1&uid=ee960c1ee8400deea1d9c803b17995f5&Expires=1779870157&Key-Pair-Id=K38CTQXUSD0VVB&Signature=SKKo1cvymb0OfPyHFVwfJ5lYD6xXZyiHT4N~UKTCaAiDQjjtGMYu7yalHVC6VLMpEboYzAmP1rYrXOsJEBG9za-qsOH9TM~Myk8PsnfTbv5rcmhqSkDVfyeUpTVr5UH4bKxV66faYIsqkPMtL~zwz4AexJWsztRHQvE-kistiynvve7xR2SFebAupnbh83hu~-D5GWYyQbpRrdC52wZdY3oBASpecVHZOG--wL3CO97dm4bH6yShRdBUgrmxpAH9saiV~qxu2VLm5tjX0AhG-R0Bokdksw8r23sfNArAQhiybAHqdU1Jn-Ei-AyI2ubzgiLwTf17QQhjJv3TZ3skfg__",
+        "https://stitcher2.acast.com/livestitches/f6bd99040d60a4aab8e186c8e2936ff4.mp3?aid=6a157ee68ff41815a8647289&chid=65e5b90e5c6699001750c5ae&ci=p7qvoWe_XxURfvOM6QVjrkVxRhrAUEjOBDtK8oQCWfiqNCgLUGwP8w%3D%3D&pf=rss&range=bytes%3D0-&src=f6c700b1eba2b3523c56282392b6c623%2F128-2.mp3"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/grum.jpg",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://stitcher2.acast.com/livestitches/f6bd99040d60a4aab8e186c8e2936ff4.mp3?aid=6a157ee68ff41815a8647289&chid=65e5b90e5c6699001750c5ae&ci=p7qvoWe_XxURfvOM6QVjrkVxRhrAUEjOBDtK8oQCWfiqNCgLUGwP8w%3D%3D&pf=rss&range=bytes%3D0-&src=f6c700b1eba2b3523c56282392b6c623%2F128-2.mp3&sv=sphinx%401.277.1&uid=ee960c1ee8400deea1d9c803b17995f5&Expires=1779870157&Key-Pair-Id=K38CTQXUSD0VVB&Signature=SKKo1cvymb0OfPyHFVwfJ5lYD6xXZyiHT4N~UKTCaAiDQjjtGMYu7yalHVC6VLMpEboYzAmP1rYrXOsJEBG9za-qsOH9TM~Myk8PsnfTbv5rcmhqSkDVfyeUpTVr5UH4bKxV66faYIsqkPMtL~zwz4AexJWsztRHQvE-kistiynvve7xR2SFebAupnbh83hu~-D5GWYyQbpRrdC52wZdY3oBASpecVHZOG--wL3CO97dm4bH6yShRdBUgrmxpAH9saiV~qxu2VLm5tjX0AhG-R0Bokdksw8r23sfNArAQhiybAHqdU1Jn-Ei-AyI2ubzgiLwTf17QQhjJv3TZ3skfg__\", \"https://stitcher2.acast.com/livestitches/f6bd99040d60a4aab8e186c8e2936ff4.mp3?aid=6a157ee68ff41815a8647289&chid=65e5b90e5c6699001750c5ae&ci=p7qvoWe_XxURfvOM6QVjrkVxRhrAUEjOBDtK8oQCWfiqNCgLUGwP8w%3D%3D&pf=rss&range=bytes%3D0-&src=f6c700b1eba2b3523c56282392b6c623%2F128-2.mp3\"]; HTTPError: 403 Client Error: Forbidden for url: https://stitcher2.acast.com/livestitches/f6bd99040d60a4aab8e186c8e2936ff4.mp3?aid=6a157ee68ff41815a8647289&chid=65e5b90e5c6699001750c5ae&ci=p7qvoWe_XxURfvOM6QVjrkVxRhrAUEjOBDtK8oQCWfiqNCgLUGwP8w%3D%3D&pf=rss&range=bytes%3D0-&src=f6c700b1eba2b3523c56282392b6c623%2F128-2.mp3&sv=sphinx%401.277.1&uid=ee960c1ee8400deea1d9c803b17995f5&Expires=1779870157&Key-Pair-Id=K38CTQXUSD0VVB&Signature=SKKo1cvymb0OfPyHFVwfJ5lYD6xXZyiHT4N~UKTCaAiDQjjtGMYu7yalHVC6VLMpEboYzAmP1rYrXOsJEBG9za-qsOH9TM~Myk8PsnfTbv5rcmhqSkDVfyeUpTVr5UH4bKxV66faYIsqkPMtL~zwz4AexJWsztRHQvE-kistiynvve7xR2SFebAupnbh83hu~-D5GWYyQbpRrdC52wZdY3oBASpecVHZOG--wL3CO97dm4bH6yShRdBUgrmxpAH9saiV~qxu2VLm5tjX0AhG-R0Bokdksw8r23sfNArAQhiybAHqdU1Jn-Ei-AyI2ubzgiLwTf17QQhjJv3TZ3skfg__ | HTTPError: 403 Client Error: Forbidden for url: https://stitcher2.acast.com/livestitches/f6bd99040d60a4aab8e186c8e2936ff4.mp3?aid=6a157ee68ff41815a8647289&chid=65e5b90e5c6699001750c5ae&ci=p7qvoWe_XxURfvOM6QVjrkVxRhrAUEjOBDtK8oQCWfiqNCgLUGwP8w%3D%3D&pf=rss&range=bytes%3D0-&src=f6c700b1eba2b3523c56282392b6c623%2F128-2.mp3",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/v-fox-the-world-around-seven-five-extendet-episode-284-2026-may-09/",
+      "article_fetched": true,
+      "title": "V-FOX - The World Around Seven Five Extendet Episode 284 (09 May 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://pixeldrain.com/u/tCvZwWUi"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/v-fox_-_the_world_around_seven_five_extendet_episode_284.png",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://pixeldrain.com/u/tCvZwWUi\"]; Pixeldrain API: HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/api/file/tCvZwWUi?download | HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/u/tCvZwWUi",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/v-fox-the-world-around-seven-five-extendet-episode-283-2026-may-01/",
+      "article_fetched": true,
+      "title": "V-FOX - The World Around Seven Five Extendet Episode 283 (01 May 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://pixeldrain.com/u/GyLVKNRL"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/-fox_-_the_world_around_seven_five_extendet_episode_283.png",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://pixeldrain.com/u/GyLVKNRL\"]; Pixeldrain API: HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/api/file/GyLVKNRL?download | HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/u/GyLVKNRL",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/v-fox-the-world-around-seven-five-282-xxl-episode-2026-april-26/",
+      "article_fetched": true,
+      "title": "V-FOX - The World Around Seven Five 282 XXL Episode (26 April 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://pixeldrain.com/u/A4gMNtfZ"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/v-fox_-_the_world_around_seven_five_282_xxl_episode_26_april_2026.png",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://pixeldrain.com/u/A4gMNtfZ\"]; Pixeldrain API: HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/api/file/A4gMNtfZ?download | HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/u/A4gMNtfZ",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/tiësto-prismatic-014-2026-april-03/",
+      "article_fetched": true,
+      "title": "Tiësto - Prismatic 014 (03 April 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/69d392af1d7024f1a78c7502/media.mp3"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/prismatic_by_tiesto.jpg",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/69d392af1d7024f1a78c7502/media.mp3\"]; HTTPError: 404 Client Error: Not Found for url: https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/69d392af1d7024f1a78c7502/media.mp3",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/v-fox-the-world-around-seven-five-280-xxl-episode-2026-april-12/",
+      "article_fetched": true,
+      "title": "V-FOX - The World Around Seven Five 280 XXL Episode (12 April 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://pixeldrain.com/u/TFf1t9Yt"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/v-fox_-_the_world_around_seven_five_280_xxl_episode.png",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://pixeldrain.com/u/TFf1t9Yt\"]; Pixeldrain API: HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/api/file/TFf1t9Yt?download | HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/u/TFf1t9Yt",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/zed-mcloud-soulful-house-live-dj-set-passion-ibiza-radio-2026-march-16/",
+      "article_fetched": true,
+      "title": "Zed Mcloud - SOULFUL HOUSE LIVE DJ SET PASSION IBIZA RADIO (16 March 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://pixeldrain.com/u/fark6Bue"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/zed_mcloud_passion_ibiza_radio_live_dj_set_16022025.jpg",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://pixeldrain.com/u/fark6Bue\"]; Pixeldrain API: HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/api/file/fark6Bue?download | HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/u/fark6Bue",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/v-fox-the-world-around-seven-five-276-2026-march-14/",
+      "article_fetched": true,
+      "title": "V-FOX - The World Around Seven Five 276 (14 March 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://pixeldrain.com/u/M9XcxDtD"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/v-fox_-_the_world_around_seven_five_276.png",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://pixeldrain.com/u/M9XcxDtD\"]; Pixeldrain API: HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/api/file/M9XcxDtD?download | HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/u/M9XcxDtD",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/v-fox-the-world-around-seven-five-275-xxl-episode-2026-march-07/",
+      "article_fetched": true,
+      "title": "V-FOX - The World Around Seven Five 275 (XXL Episode) (07 March 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://pixeldrain.com/u/rHW9pAmp"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/v-fox_-_the_world_around_seven_five_275.jpg",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://pixeldrain.com/u/rHW9pAmp\"]; Pixeldrain API: HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/api/file/rHW9pAmp?download | HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/u/rHW9pAmp",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/mehilove-year-mix-2025-2026-march-06/",
+      "article_fetched": true,
+      "title": "meHiLove - Year Mix 2025 (06 March 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://pixeldrain.com/u/cHMdyygh"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/mehilove_-_year_mix_2025.png",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://pixeldrain.com/u/cHMdyygh\"]; Pixeldrain API: HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/api/file/cHMdyygh?download | HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/u/cHMdyygh",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/v-fox-the-world-around-seven-five-279-anjunabeats-extra-hour-2026-april-06/",
+      "article_fetched": true,
+      "title": "V-FOX - The World Around Seven Five 279 (Anjunabeats Extra Hour) (06 April 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://limewire.com/d/X94w7"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/v-fox_-_the_world_around_seven_five_279_anjunabeats_extra_hour_06_may_2026.png",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://limewire.com/d/X94w7\"]; content-type=text/javascript | content-type=image/png | content-type=application/javascript; charset=utf-8 | content-type=application/javascript; charset=utf-8",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/zed-mcloud-soulful-house-live-dj-set-passion-ibiza-radio-2026-march-01/",
+      "article_fetched": true,
+      "title": "Zed Mcloud - SOULFUL HOUSE LIVE DJ SET PASSION IBIZA RADIO (01 March 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://pixeldrain.com/u/GCmkqpxP"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/zed_mcloud_passion_ibiza_radio_live_dj_set_09022025.jpg",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://pixeldrain.com/u/GCmkqpxP\"]; Pixeldrain API: HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/api/file/GCmkqpxP?download | HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/u/GCmkqpxP",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/v-fox-the-world-around-seven-five-274-spotlight-mix-redspace-2026-february-27/",
+      "article_fetched": true,
+      "title": "V-FOX - The World Around Seven Five 274 (Spotlight Mix: Redspace) (27 February 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://pixeldrain.com/u/1Bir6CGJ"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/v-fox_-_the_world_around_seven_five_274_spotlight_mix_redspace.png",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://pixeldrain.com/u/1Bir6CGJ\"]; Pixeldrain API: HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/api/file/1Bir6CGJ?download | HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/u/1Bir6CGJ",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/v-fox-the-world-around-seven-five-273-xxl-episode-with-dj-meoz-k-mi-sl-2026-february-21/",
+      "article_fetched": true,
+      "title": "V-FOX - The World Around Seven Five 273 (XXL Episode) with DJ Meoz & K-MI (SL) (21 February 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://pixeldrain.com/u/2etZUeab"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/the_world_around_seven_five_273.png",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://pixeldrain.com/u/2etZUeab\"]; Pixeldrain API: HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/api/file/2etZUeab?download | HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/u/2etZUeab",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/zed-mcloud-live-soulful-session-passion-ibiza-radio-2026-february-16/",
+      "article_fetched": true,
+      "title": "Zed Mcloud - LIVE SOULFUL SESSION PASSION IBIZA RADIO (16 February 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://pixeldrain.com/u/jT4XKWrz"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/zed_mcloud_live_soulful_session_passion_ibiza_radio_16_february_2026.jpg",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://pixeldrain.com/u/jT4XKWrz\"]; Pixeldrain API: HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/api/file/jT4XKWrz?download | HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/u/jT4XKWrz",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/mark-pledger-melodika-167-2026-february-08/",
+      "article_fetched": true,
+      "title": "Mark Pledger - Melodika 167 (08 February 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/mark_pledger_presents_melodika.jpg",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[]",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/v-fox-the-world-around-seven-five-272-2026-february-14/",
+      "article_fetched": true,
+      "title": "V-FOX - The World Around Seven Five 272 (14 February 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://pixeldrain.com/u/S5EqtivN"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/v-fox_-_the_world_around_seven_five_272_14_february_2026.png",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://pixeldrain.com/u/S5EqtivN\"]; Pixeldrain API: HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/api/file/S5EqtivN?download | HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/u/S5EqtivN",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/soundtropolis-003-2026-february-03/",
+      "article_fetched": true,
+      "title": "Soundtropolis 003",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/ah_fm_trance_music_presents.jpg",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[]",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/v-fox-ben-lost-the-world-around-seven-five-271-2026-february-07/",
+      "article_fetched": true,
+      "title": "V-FOX & Ben Lost - The World Around Seven Five 271 (07 February 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://pixeldrain.com/u/JwFV1JDz"
+      ],
+      "audio_url": null,
+      "audio_attempts": 2,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/v-fox_ben_lost_-_the_world_around_seven_five_271.png",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://pixeldrain.com/u/JwFV1JDz\"]; Pixeldrain API: HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/api/file/JwFV1JDz?download | HTTPError: 404 Client Error: Not Found for url: https://pixeldrain.com/u/JwFV1JDz",
       "image_error": null,
       "error": null
     }
