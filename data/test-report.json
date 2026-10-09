@@ -1,9 +1,50 @@
 {
-  "generated_at": "2026-10-09T06:08:51.673113+00:00",
+  "generated_at": "2026-10-09T06:11:11.564265+00:00",
   "mode": "test",
   "archive_source": "https://globaldjmix.com/livedjsets",
   "archive_pages_reported": 1,
-  "archive_pages_failed": [],
+  "archive_pages_failed": [
+    {
+      "page": 1,
+      "url": "https://globaldjmix.com/livedjsets",
+      "error": "No episode links extracted",
+      "response": {
+        "html_length": 128508,
+        "html_title": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free",
+        "text_preview": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free Toggle navigation Mixes Artists Shows Search Trance Vocal Trance Uplifting Trance Goa Psy Trance Melodic Trance Progressive Trance Tech Trance Epic Trance progressive Dark Progressive Melodic Progressive Progressive Psy House Afro House Deep House Deep NuDisco Disco House Dutch Ho"
+      }
+    },
+    {
+      "page": "home",
+      "url": "https://globaldjmix.com/",
+      "error": "No episode links extracted",
+      "response": {
+        "html_length": 157988,
+        "html_title": "GlobalDJMix - DJ Mixes & Live Sets 2026 Download MP3 / Listen Free",
+        "text_preview": "GlobalDJMix - DJ Mixes & Live Sets 2026 Download MP3 / Listen Free Toggle navigation Mixes Artists Shows Search Trance Vocal Trance Uplifting Trance Goa Psy Trance Melodic Trance Progressive Trance Tech Trance Epic Trance progressive Dark Progressive Melodic Progressive Progressive Psy House Afro House Deep House Deep NuDisco Disco House Dutch Hous"
+      }
+    },
+    {
+      "page": 2,
+      "url": "https://globaldjmix.com/livedjsets?p=2",
+      "error": "No episode links extracted",
+      "response": {
+        "html_length": 128102,
+        "html_title": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free - Page 2",
+        "text_preview": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free - Page 2 Toggle navigation Mixes Artists Shows Search Trance Vocal Trance Uplifting Trance Goa Psy Trance Melodic Trance Progressive Trance Tech Trance Epic Trance progressive Dark Progressive Melodic Progressive Progressive Psy House Afro House Deep House Deep NuDisco Disco House"
+      }
+    },
+    {
+      "page": 3,
+      "url": "https://globaldjmix.com/livedjsets?p=3",
+      "error": "No episode links extracted",
+      "response": {
+        "html_length": 128113,
+        "html_title": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free - Page 3",
+        "text_preview": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free - Page 3 Toggle navigation Mixes Artists Shows Search Trance Vocal Trance Uplifting Trance Goa Psy Trance Melodic Trance Progressive Trance Tech Trance Epic Trance progressive Dark Progressive Melodic Progressive Progressive Psy House Afro House Deep House Deep NuDisco Disco House"
+      }
+    }
+  ],
   "selected_articles": 0,
   "articles_checked": 0,
   "audio_resolved": 0,
