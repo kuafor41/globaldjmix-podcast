@@ -204,8 +204,30 @@ def page_debug(body):
     soup = BeautifulSoup(body[:200000], "html.parser")
     title = soup.title.get_text(" ", strip=True) if soup.title else "(no title)"
     text = re.sub(r"\s+", " ", soup.get_text(" ", strip=True))[:350]
-    return {"html_length": len(body), "html_title": title, "text_preview": text}
-
+    headings = []
+    for tag in soup.find_all(["h1", "h2", "h3", "h4", "h5"])[:35]:
+        anchor = tag.find("a", href=True)
+        headings.append({
+            "tag": tag.name,
+            "text": re.sub(r"\s+", " ", tag.get_text(" ", strip=True))[:100],
+            "href": clean_url(anchor.get("href"), BASE) if anchor else None,
+        })
+    links = []
+    for anchor in soup.find_all("a", href=True):
+        href = clean_url(anchor.get("href"), BASE)
+        label = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip()
+        if href and (urlparse(href).hostname or "").lower() in {"globaldjmix.com", "www.globaldjmix.com"} and len(label) >= 12:
+            links.append({
+                "text": label[:95], "href": href,
+                "article_candidate": is_article(href),
+                "parent_text": re.sub(r"\s+", " ", anchor.parent.get_text(" ", strip=True))[:120] if anchor.parent else "",
+            })
+        if len(links) >= 25:
+            break
+    return {
+        "html_length": len(body), "html_title": title, "text_preview": text,
+        "heading_sample": headings, "same_site_link_sample": links,
+    }
 
 def discover_posts(mode):
     errors = []
