@@ -1,1373 +1,936 @@
 {
-  "generated_at": "2026-10-09T06:12:12.555476+00:00",
+  "generated_at": "2026-10-09T06:13:51.406627+00:00",
   "mode": "test",
   "archive_source": "https://globaldjmix.com/livedjsets",
   "archive_pages_reported": 1,
-  "archive_pages_failed": [
-    {
-      "page": 1,
-      "url": "https://globaldjmix.com/livedjsets",
-      "error": "No episode links extracted",
-      "response": {
-        "html_length": 128508,
-        "html_title": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free",
-        "text_preview": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free Toggle navigation Mixes Artists Shows Search Trance Vocal Trance Uplifting Trance Goa Psy Trance Melodic Trance Progressive Trance Tech Trance Epic Trance progressive Dark Progressive Melodic Progressive Progressive Psy House Afro House Deep House Deep NuDisco Disco House Dutch Ho",
-        "heading_sample": [
-          {
-            "tag": "h1",
-            "text": "DJ Mixes and LiveSets - Full list",
-            "href": null
-          },
-          {
-            "tag": "h2",
-            "text": "Recent new DJ Mixes & Live Sets",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Melodic Progressive",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Techno",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Tech House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Electro Pop",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Electro House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Uplifting Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Electro Pop",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Deep NuDisco",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Techno",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Dubstep",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Electro Pop",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Techno",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Bass House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Melodic Progressive",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Tech House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Tech House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Melodic Progressive",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Techno",
-            "href": null
-          }
-        ],
-        "same_site_link_sample": [
-          {
-            "text": "Vocal Trance",
-            "href": "https://globaldjmix.com/style-mixes/vocal-trance",
-            "article_candidate": false,
-            "parent_text": "Vocal Trance"
-          },
-          {
-            "text": "Uplifting Trance",
-            "href": "https://globaldjmix.com/style-mixes/uplifting-trance",
-            "article_candidate": false,
-            "parent_text": "Uplifting Trance"
-          },
-          {
-            "text": "Goa Psy Trance",
-            "href": "https://globaldjmix.com/style-mixes/goa-psy-trance",
-            "article_candidate": false,
-            "parent_text": "Goa Psy Trance"
-          },
-          {
-            "text": "Melodic Trance",
-            "href": "https://globaldjmix.com/style-mixes/melodic-trance",
-            "article_candidate": false,
-            "parent_text": "Melodic Trance"
-          },
-          {
-            "text": "Progressive Trance",
-            "href": "https://globaldjmix.com/style-mixes/progressive-trance",
-            "article_candidate": false,
-            "parent_text": "Progressive Trance"
-          },
-          {
-            "text": "Dark Progressive",
-            "href": "https://globaldjmix.com/style-mixes/dark-progressive",
-            "article_candidate": false,
-            "parent_text": "Dark Progressive"
-          },
-          {
-            "text": "Melodic Progressive",
-            "href": "https://globaldjmix.com/style-mixes/melodic-progressive",
-            "article_candidate": false,
-            "parent_text": "Melodic Progressive"
-          },
-          {
-            "text": "Progressive Psy",
-            "href": "https://globaldjmix.com/style-mixes/progressive-psy",
-            "article_candidate": false,
-            "parent_text": "Progressive Psy"
-          },
-          {
-            "text": "Deep NuDisco",
-            "href": "https://globaldjmix.com/style-mixes/deep-nudisco",
-            "article_candidate": false,
-            "parent_text": "Deep NuDisco"
-          },
-          {
-            "text": "Electro House",
-            "href": "https://globaldjmix.com/style-mixes/electro-house",
-            "article_candidate": false,
-            "parent_text": "Electro House"
-          },
-          {
-            "text": "Garage house",
-            "href": "https://globaldjmix.com/style-mixes/garage-house",
-            "article_candidate": false,
-            "parent_text": "Garage house"
-          },
-          {
-            "text": "Soulful House",
-            "href": "https://globaldjmix.com/style-mixes/soulful-house",
-            "article_candidate": false,
-            "parent_text": "Soulful House"
-          },
-          {
-            "text": "South African House",
-            "href": "https://globaldjmix.com/style-mixes/south-african-house",
-            "article_candidate": false,
-            "parent_text": "South African House"
-          },
-          {
-            "text": "Tribal House",
-            "href": "https://globaldjmix.com/style-mixes/tribal-house",
-            "article_candidate": false,
-            "parent_text": "Tribal House"
-          },
-          {
-            "text": "Vocal Deep House",
-            "href": "https://globaldjmix.com/style-mixes/vocal-deep-house",
-            "article_candidate": false,
-            "parent_text": "Vocal Deep House"
-          },
-          {
-            "text": "Detroit Techno",
-            "href": "https://globaldjmix.com/style-mixes/detroit-techno",
-            "article_candidate": false,
-            "parent_text": "Detroit Techno"
-          },
-          {
-            "text": "Underground Techno",
-            "href": "https://globaldjmix.com/style-mixes/underground-techno",
-            "article_candidate": false,
-            "parent_text": "Underground Techno"
-          },
-          {
-            "text": "Drum and Bass",
-            "href": "https://globaldjmix.com/style-mixes/drum-and-bass",
-            "article_candidate": false,
-            "parent_text": "Drum and Bass"
-          },
-          {
-            "text": "Deep NuDisco",
-            "href": "https://globaldjmix.com/style-mixes/deep-nudisco",
-            "article_candidate": false,
-            "parent_text": "Deep NuDisco"
-          },
-          {
-            "text": "Vocal Deep House",
-            "href": "https://globaldjmix.com/style-mixes/vocal-deep-house",
-            "article_candidate": false,
-            "parent_text": "Vocal Deep House"
-          },
-          {
-            "text": "My Collection",
-            "href": "https://globaldjmix.com/my-collections",
-            "article_candidate": false,
-            "parent_text": "My Collection"
-          },
-          {
-            "text": "Tomorrowland",
-            "href": "https://globaldjmix.com/livesets-mixes-podcasts-radioshow/tomorrowland",
-            "article_candidate": false,
-            "parent_text": "Tomorrowland"
-          },
-          {
-            "text": "New DJ Mixes",
-            "href": "https://globaldjmix.com/livedjsets",
-            "article_candidate": false,
-            "parent_text": "New DJ Mixes"
-          },
-          {
-            "text": "Top Oct 2026",
-            "href": "https://globaldjmix.com/best-mixes/2026-10",
-            "article_candidate": false,
-            "parent_text": "Top Oct 2026"
-          },
-          {
-            "text": "Share Mix/Web Article",
-            "href": "https://globaldjmix.com/share-dj-mixes",
-            "article_candidate": false,
-            "parent_text": "Share Mix/Web Article"
-          }
-        ]
-      }
-    },
-    {
-      "page": "home",
-      "url": "https://globaldjmix.com/",
-      "error": "No episode links extracted",
-      "response": {
-        "html_length": 157994,
-        "html_title": "GlobalDJMix - DJ Mixes & Live Sets 2026 Download MP3 / Listen Free",
-        "text_preview": "GlobalDJMix - DJ Mixes & Live Sets 2026 Download MP3 / Listen Free Toggle navigation Mixes Artists Shows Search Trance Vocal Trance Uplifting Trance Goa Psy Trance Melodic Trance Progressive Trance Tech Trance Epic Trance progressive Dark Progressive Melodic Progressive Progressive Psy House Afro House Deep House Deep NuDisco Disco House Dutch Hous",
-        "heading_sample": [
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Electro Pop",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Tech House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h1",
-            "text": "Welcome to GlobalDjMix – The Home of DJ Mixes & Electronic Music",
-            "href": null
-          },
-          {
-            "tag": "h2",
-            "text": "Recent Trance Mixes",
-            "href": "https://globaldjmix.com/style-mixes/trance"
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Uplifting Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h2",
-            "text": "Recent Progressive Mixes",
-            "href": "https://globaldjmix.com/style-mixes/progressive-house"
-          },
-          {
-            "tag": "h4",
-            "text": "Melodic Progressive",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Melodic Progressive",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Melodic Progressive",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h2",
-            "text": "Recent House Mixes",
-            "href": "https://globaldjmix.com/style-mixes/house"
-          },
-          {
-            "tag": "h4",
-            "text": "Electro Pop",
-            "href": null
-          }
-        ],
-        "same_site_link_sample": [
-          {
-            "text": "Vocal Trance",
-            "href": "https://globaldjmix.com/style-mixes/vocal-trance",
-            "article_candidate": false,
-            "parent_text": "Vocal Trance"
-          },
-          {
-            "text": "Uplifting Trance",
-            "href": "https://globaldjmix.com/style-mixes/uplifting-trance",
-            "article_candidate": false,
-            "parent_text": "Uplifting Trance"
-          },
-          {
-            "text": "Goa Psy Trance",
-            "href": "https://globaldjmix.com/style-mixes/goa-psy-trance",
-            "article_candidate": false,
-            "parent_text": "Goa Psy Trance"
-          },
-          {
-            "text": "Melodic Trance",
-            "href": "https://globaldjmix.com/style-mixes/melodic-trance",
-            "article_candidate": false,
-            "parent_text": "Melodic Trance"
-          },
-          {
-            "text": "Progressive Trance",
-            "href": "https://globaldjmix.com/style-mixes/progressive-trance",
-            "article_candidate": false,
-            "parent_text": "Progressive Trance"
-          },
-          {
-            "text": "Dark Progressive",
-            "href": "https://globaldjmix.com/style-mixes/dark-progressive",
-            "article_candidate": false,
-            "parent_text": "Dark Progressive"
-          },
-          {
-            "text": "Melodic Progressive",
-            "href": "https://globaldjmix.com/style-mixes/melodic-progressive",
-            "article_candidate": false,
-            "parent_text": "Melodic Progressive"
-          },
-          {
-            "text": "Progressive Psy",
-            "href": "https://globaldjmix.com/style-mixes/progressive-psy",
-            "article_candidate": false,
-            "parent_text": "Progressive Psy"
-          },
-          {
-            "text": "Deep NuDisco",
-            "href": "https://globaldjmix.com/style-mixes/deep-nudisco",
-            "article_candidate": false,
-            "parent_text": "Deep NuDisco"
-          },
-          {
-            "text": "Electro House",
-            "href": "https://globaldjmix.com/style-mixes/electro-house",
-            "article_candidate": false,
-            "parent_text": "Electro House"
-          },
-          {
-            "text": "Garage house",
-            "href": "https://globaldjmix.com/style-mixes/garage-house",
-            "article_candidate": false,
-            "parent_text": "Garage house"
-          },
-          {
-            "text": "Soulful House",
-            "href": "https://globaldjmix.com/style-mixes/soulful-house",
-            "article_candidate": false,
-            "parent_text": "Soulful House"
-          },
-          {
-            "text": "South African House",
-            "href": "https://globaldjmix.com/style-mixes/south-african-house",
-            "article_candidate": false,
-            "parent_text": "South African House"
-          },
-          {
-            "text": "Tribal House",
-            "href": "https://globaldjmix.com/style-mixes/tribal-house",
-            "article_candidate": false,
-            "parent_text": "Tribal House"
-          },
-          {
-            "text": "Vocal Deep House",
-            "href": "https://globaldjmix.com/style-mixes/vocal-deep-house",
-            "article_candidate": false,
-            "parent_text": "Vocal Deep House"
-          },
-          {
-            "text": "Detroit Techno",
-            "href": "https://globaldjmix.com/style-mixes/detroit-techno",
-            "article_candidate": false,
-            "parent_text": "Detroit Techno"
-          },
-          {
-            "text": "Underground Techno",
-            "href": "https://globaldjmix.com/style-mixes/underground-techno",
-            "article_candidate": false,
-            "parent_text": "Underground Techno"
-          },
-          {
-            "text": "Drum and Bass",
-            "href": "https://globaldjmix.com/style-mixes/drum-and-bass",
-            "article_candidate": false,
-            "parent_text": "Drum and Bass"
-          },
-          {
-            "text": "Deep NuDisco",
-            "href": "https://globaldjmix.com/style-mixes/deep-nudisco",
-            "article_candidate": false,
-            "parent_text": "Deep NuDisco"
-          },
-          {
-            "text": "Vocal Deep House",
-            "href": "https://globaldjmix.com/style-mixes/vocal-deep-house",
-            "article_candidate": false,
-            "parent_text": "Vocal Deep House"
-          },
-          {
-            "text": "My Collection",
-            "href": "https://globaldjmix.com/my-collections",
-            "article_candidate": false,
-            "parent_text": "My Collection"
-          },
-          {
-            "text": "Tomorrowland",
-            "href": "https://globaldjmix.com/livesets-mixes-podcasts-radioshow/tomorrowland",
-            "article_candidate": false,
-            "parent_text": "Tomorrowland"
-          },
-          {
-            "text": "New DJ Mixes",
-            "href": "https://globaldjmix.com/livedjsets",
-            "article_candidate": false,
-            "parent_text": "New DJ Mixes"
-          },
-          {
-            "text": "Top Oct 2026",
-            "href": "https://globaldjmix.com/best-mixes/2026-10",
-            "article_candidate": false,
-            "parent_text": "Top Oct 2026"
-          },
-          {
-            "text": "Armin van Buuren",
-            "href": "https://globaldjmix.com/armin-van-buuren",
-            "article_candidate": true,
-            "parent_text": "Armin van Buuren"
-          }
-        ]
-      }
-    },
-    {
-      "page": 2,
-      "url": "https://globaldjmix.com/livedjsets?p=2",
-      "error": "No episode links extracted",
-      "response": {
-        "html_length": 128102,
-        "html_title": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free - Page 2",
-        "text_preview": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free - Page 2 Toggle navigation Mixes Artists Shows Search Trance Vocal Trance Uplifting Trance Goa Psy Trance Melodic Trance Progressive Trance Tech Trance Epic Trance progressive Dark Progressive Melodic Progressive Progressive Psy House Afro House Deep House Deep NuDisco Disco House",
-        "heading_sample": [
-          {
-            "tag": "h1",
-            "text": "DJ Mixes and LiveSets - Full list - page 2",
-            "href": null
-          },
-          {
-            "tag": "h2",
-            "text": "Recent new DJ Mixes & Live Sets",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Electro Pop",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Techno",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Electro House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Tech House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Electro House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Tech House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Electro Pop",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Tech House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Electro Pop",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Big Room",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Techno",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Uplifting Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Electro House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Electro House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Tech House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Melodic Progressive",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          }
-        ],
-        "same_site_link_sample": [
-          {
-            "text": "Vocal Trance",
-            "href": "https://globaldjmix.com/style-mixes/vocal-trance",
-            "article_candidate": false,
-            "parent_text": "Vocal Trance"
-          },
-          {
-            "text": "Uplifting Trance",
-            "href": "https://globaldjmix.com/style-mixes/uplifting-trance",
-            "article_candidate": false,
-            "parent_text": "Uplifting Trance"
-          },
-          {
-            "text": "Goa Psy Trance",
-            "href": "https://globaldjmix.com/style-mixes/goa-psy-trance",
-            "article_candidate": false,
-            "parent_text": "Goa Psy Trance"
-          },
-          {
-            "text": "Melodic Trance",
-            "href": "https://globaldjmix.com/style-mixes/melodic-trance",
-            "article_candidate": false,
-            "parent_text": "Melodic Trance"
-          },
-          {
-            "text": "Progressive Trance",
-            "href": "https://globaldjmix.com/style-mixes/progressive-trance",
-            "article_candidate": false,
-            "parent_text": "Progressive Trance"
-          },
-          {
-            "text": "Dark Progressive",
-            "href": "https://globaldjmix.com/style-mixes/dark-progressive",
-            "article_candidate": false,
-            "parent_text": "Dark Progressive"
-          },
-          {
-            "text": "Melodic Progressive",
-            "href": "https://globaldjmix.com/style-mixes/melodic-progressive",
-            "article_candidate": false,
-            "parent_text": "Melodic Progressive"
-          },
-          {
-            "text": "Progressive Psy",
-            "href": "https://globaldjmix.com/style-mixes/progressive-psy",
-            "article_candidate": false,
-            "parent_text": "Progressive Psy"
-          },
-          {
-            "text": "Deep NuDisco",
-            "href": "https://globaldjmix.com/style-mixes/deep-nudisco",
-            "article_candidate": false,
-            "parent_text": "Deep NuDisco"
-          },
-          {
-            "text": "Electro House",
-            "href": "https://globaldjmix.com/style-mixes/electro-house",
-            "article_candidate": false,
-            "parent_text": "Electro House"
-          },
-          {
-            "text": "Garage house",
-            "href": "https://globaldjmix.com/style-mixes/garage-house",
-            "article_candidate": false,
-            "parent_text": "Garage house"
-          },
-          {
-            "text": "Soulful House",
-            "href": "https://globaldjmix.com/style-mixes/soulful-house",
-            "article_candidate": false,
-            "parent_text": "Soulful House"
-          },
-          {
-            "text": "South African House",
-            "href": "https://globaldjmix.com/style-mixes/south-african-house",
-            "article_candidate": false,
-            "parent_text": "South African House"
-          },
-          {
-            "text": "Tribal House",
-            "href": "https://globaldjmix.com/style-mixes/tribal-house",
-            "article_candidate": false,
-            "parent_text": "Tribal House"
-          },
-          {
-            "text": "Vocal Deep House",
-            "href": "https://globaldjmix.com/style-mixes/vocal-deep-house",
-            "article_candidate": false,
-            "parent_text": "Vocal Deep House"
-          },
-          {
-            "text": "Detroit Techno",
-            "href": "https://globaldjmix.com/style-mixes/detroit-techno",
-            "article_candidate": false,
-            "parent_text": "Detroit Techno"
-          },
-          {
-            "text": "Underground Techno",
-            "href": "https://globaldjmix.com/style-mixes/underground-techno",
-            "article_candidate": false,
-            "parent_text": "Underground Techno"
-          },
-          {
-            "text": "Drum and Bass",
-            "href": "https://globaldjmix.com/style-mixes/drum-and-bass",
-            "article_candidate": false,
-            "parent_text": "Drum and Bass"
-          },
-          {
-            "text": "Deep NuDisco",
-            "href": "https://globaldjmix.com/style-mixes/deep-nudisco",
-            "article_candidate": false,
-            "parent_text": "Deep NuDisco"
-          },
-          {
-            "text": "Vocal Deep House",
-            "href": "https://globaldjmix.com/style-mixes/vocal-deep-house",
-            "article_candidate": false,
-            "parent_text": "Vocal Deep House"
-          },
-          {
-            "text": "My Collection",
-            "href": "https://globaldjmix.com/my-collections",
-            "article_candidate": false,
-            "parent_text": "My Collection"
-          },
-          {
-            "text": "Tomorrowland",
-            "href": "https://globaldjmix.com/livesets-mixes-podcasts-radioshow/tomorrowland",
-            "article_candidate": false,
-            "parent_text": "Tomorrowland"
-          },
-          {
-            "text": "New DJ Mixes",
-            "href": "https://globaldjmix.com/livedjsets",
-            "article_candidate": false,
-            "parent_text": "New DJ Mixes"
-          },
-          {
-            "text": "Top Oct 2026",
-            "href": "https://globaldjmix.com/best-mixes/2026-10",
-            "article_candidate": false,
-            "parent_text": "Top Oct 2026"
-          },
-          {
-            "text": "Share Mix/Web Article",
-            "href": "https://globaldjmix.com/share-dj-mixes",
-            "article_candidate": false,
-            "parent_text": "Share Mix/Web Article"
-          }
-        ]
-      }
-    },
-    {
-      "page": 3,
-      "url": "https://globaldjmix.com/livedjsets?p=3",
-      "error": "No episode links extracted",
-      "response": {
-        "html_length": 128113,
-        "html_title": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free - Page 3",
-        "text_preview": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free - Page 3 Toggle navigation Mixes Artists Shows Search Trance Vocal Trance Uplifting Trance Goa Psy Trance Melodic Trance Progressive Trance Tech Trance Epic Trance progressive Dark Progressive Melodic Progressive Progressive Psy House Afro House Deep House Deep NuDisco Disco House",
-        "heading_sample": [
-          {
-            "tag": "h1",
-            "text": "DJ Mixes and LiveSets - Full list - page 3",
-            "href": null
-          },
-          {
-            "tag": "h2",
-            "text": "Recent new DJ Mixes & Live Sets",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Electro Pop",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Uplifting Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Deep Tech",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Techno",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Techno",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Tech House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Vocal Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Drum and Bass",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Electro House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Deep NuDisco",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Chillout",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Tech House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Goa Psy Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Electro Pop",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Bass House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Tech House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Electro House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Tech House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Vocal Trance",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Techno",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Tech House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Electro House",
-            "href": null
-          },
-          {
-            "tag": "h4",
-            "text": "Progressive house",
-            "href": null
-          }
-        ],
-        "same_site_link_sample": [
-          {
-            "text": "Vocal Trance",
-            "href": "https://globaldjmix.com/style-mixes/vocal-trance",
-            "article_candidate": false,
-            "parent_text": "Vocal Trance"
-          },
-          {
-            "text": "Uplifting Trance",
-            "href": "https://globaldjmix.com/style-mixes/uplifting-trance",
-            "article_candidate": false,
-            "parent_text": "Uplifting Trance"
-          },
-          {
-            "text": "Goa Psy Trance",
-            "href": "https://globaldjmix.com/style-mixes/goa-psy-trance",
-            "article_candidate": false,
-            "parent_text": "Goa Psy Trance"
-          },
-          {
-            "text": "Melodic Trance",
-            "href": "https://globaldjmix.com/style-mixes/melodic-trance",
-            "article_candidate": false,
-            "parent_text": "Melodic Trance"
-          },
-          {
-            "text": "Progressive Trance",
-            "href": "https://globaldjmix.com/style-mixes/progressive-trance",
-            "article_candidate": false,
-            "parent_text": "Progressive Trance"
-          },
-          {
-            "text": "Dark Progressive",
-            "href": "https://globaldjmix.com/style-mixes/dark-progressive",
-            "article_candidate": false,
-            "parent_text": "Dark Progressive"
-          },
-          {
-            "text": "Melodic Progressive",
-            "href": "https://globaldjmix.com/style-mixes/melodic-progressive",
-            "article_candidate": false,
-            "parent_text": "Melodic Progressive"
-          },
-          {
-            "text": "Progressive Psy",
-            "href": "https://globaldjmix.com/style-mixes/progressive-psy",
-            "article_candidate": false,
-            "parent_text": "Progressive Psy"
-          },
-          {
-            "text": "Deep NuDisco",
-            "href": "https://globaldjmix.com/style-mixes/deep-nudisco",
-            "article_candidate": false,
-            "parent_text": "Deep NuDisco"
-          },
-          {
-            "text": "Electro House",
-            "href": "https://globaldjmix.com/style-mixes/electro-house",
-            "article_candidate": false,
-            "parent_text": "Electro House"
-          },
-          {
-            "text": "Garage house",
-            "href": "https://globaldjmix.com/style-mixes/garage-house",
-            "article_candidate": false,
-            "parent_text": "Garage house"
-          },
-          {
-            "text": "Soulful House",
-            "href": "https://globaldjmix.com/style-mixes/soulful-house",
-            "article_candidate": false,
-            "parent_text": "Soulful House"
-          },
-          {
-            "text": "South African House",
-            "href": "https://globaldjmix.com/style-mixes/south-african-house",
-            "article_candidate": false,
-            "parent_text": "South African House"
-          },
-          {
-            "text": "Tribal House",
-            "href": "https://globaldjmix.com/style-mixes/tribal-house",
-            "article_candidate": false,
-            "parent_text": "Tribal House"
-          },
-          {
-            "text": "Vocal Deep House",
-            "href": "https://globaldjmix.com/style-mixes/vocal-deep-house",
-            "article_candidate": false,
-            "parent_text": "Vocal Deep House"
-          },
-          {
-            "text": "Detroit Techno",
-            "href": "https://globaldjmix.com/style-mixes/detroit-techno",
-            "article_candidate": false,
-            "parent_text": "Detroit Techno"
-          },
-          {
-            "text": "Underground Techno",
-            "href": "https://globaldjmix.com/style-mixes/underground-techno",
-            "article_candidate": false,
-            "parent_text": "Underground Techno"
-          },
-          {
-            "text": "Drum and Bass",
-            "href": "https://globaldjmix.com/style-mixes/drum-and-bass",
-            "article_candidate": false,
-            "parent_text": "Drum and Bass"
-          },
-          {
-            "text": "Deep NuDisco",
-            "href": "https://globaldjmix.com/style-mixes/deep-nudisco",
-            "article_candidate": false,
-            "parent_text": "Deep NuDisco"
-          },
-          {
-            "text": "Vocal Deep House",
-            "href": "https://globaldjmix.com/style-mixes/vocal-deep-house",
-            "article_candidate": false,
-            "parent_text": "Vocal Deep House"
-          },
-          {
-            "text": "My Collection",
-            "href": "https://globaldjmix.com/my-collections",
-            "article_candidate": false,
-            "parent_text": "My Collection"
-          },
-          {
-            "text": "Tomorrowland",
-            "href": "https://globaldjmix.com/livesets-mixes-podcasts-radioshow/tomorrowland",
-            "article_candidate": false,
-            "parent_text": "Tomorrowland"
-          },
-          {
-            "text": "New DJ Mixes",
-            "href": "https://globaldjmix.com/livedjsets",
-            "article_candidate": false,
-            "parent_text": "New DJ Mixes"
-          },
-          {
-            "text": "Top Oct 2026",
-            "href": "https://globaldjmix.com/best-mixes/2026-10",
-            "article_candidate": false,
-            "parent_text": "Top Oct 2026"
-          },
-          {
-            "text": "Share Mix/Web Article",
-            "href": "https://globaldjmix.com/share-dj-mixes",
-            "article_candidate": false,
-            "parent_text": "Share Mix/Web Article"
-          }
-        ]
-      }
-    }
-  ],
-  "selected_articles": 0,
-  "articles_checked": 0,
-  "audio_resolved": 0,
-  "images_found": 0,
-  "images_verified": 0,
-  "audio_resolution_methods": {},
+  "archive_pages_failed": [],
+  "selected_articles": 50,
+  "articles_checked": 50,
+  "audio_resolved": 46,
+  "images_found": 50,
+  "images_verified": 50,
+  "audio_resolution_methods": {
+    "intermediate": 30,
+    "direct": 16
+  },
   "test_passed": false,
   "saved_episode_count": 0,
-  "diagnostics": []
+  "diagnostics": [
+    {
+      "url": "https://globaldjmix.com/cloudcage-monstercat-silk-showcase-874-2026-october-08/",
+      "article_fetched": true,
+      "title": "Cloudcage - Monstercat Silk Showcase 874 (08 October 2026)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "https://traffic.megaphone.fm/MSC7027724798.mp3"
+      ],
+      "audio_url": null,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/jacob_henry_tom_fall_jayeson_andel_johan_vilborg_vintage_morelli_and_terry_da_libra_monstercat_silk_showcase_2022.jpg",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"https://traffic.megaphone.fm/MSC7027724798.mp3\"]; ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/nicole-moudaber-in-the-mood-649-live-in-rockerill-cherleroi-belgium-2026-october-08/",
+      "article_fetched": true,
+      "title": "Nicole Moudaber - In The MOOD 649 - Live In Rockerill, Cherleroi, Belgium (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/nicole-moudaber-in-the-mood-649-live-in-rockerill-cherleroi-belgium-2026-october-08/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/08/02/Nicole Moudaber - In The MOOD 649 (08 October 2026).mp3",
+        "http://files.globaldjmix.com/2026/10/08/02/Nicole"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/08/02/Nicole%20Moudaber%20-%20In%20The%20MOOD%20649%20(08%20October%202026).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/in_the_mood_nicole_moudaber_common.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/anja-schneider-club-room-439-2026-october-08/",
+      "article_fetched": true,
+      "title": "Anja Schneider - Club Room 439 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://feeds.soundcloud.com/stream/2415152520-anjaschneider-anja-schneider-clubroom_439.mp3"
+      ],
+      "audio_url": "https://cf-media.sndcdn.com/aA5Oiv40PykQ.128.mp3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vYUE1T2l2NDBQeWtRLjEyOC5tcDMqIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkxNTMwMTI0fX19XX0_&Signature=OHWo3EX3MndrzcRTtfvnVN1GQMj0WU6f128RpH-N9u6i~F~9MQ7bl4rAc7Y~-z1j1scyiW5URbF8qb1vI69Ne6SMfL2aG4xnoMfPQSoP8B-6H1dw3-a~me~QXtxpesUO4afPqlmclZyHFZUaLynRE5GQbsEMb-WHjrg95gEl-zDNHorISfkSiytkc3OVIltLhWojqshbsuRfJANmjpCeEW59FV~KtJZDMwY3O9YiXXdqih68koHfbNl4GSaw0d875S3NOJYGcDfHAZhaCTT3ZINanZIzKt3qLkht~IqJlnA9Vpttd22PzKfsGnkUr-Iou7813h7m-mVp-AXAEUWgLQ__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/anja_sneider_club_room_di_fm.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/eric-prydz-epic-radio-040-2026-october-08/",
+      "article_fetched": true,
+      "title": "Eric Prydz - Epic Radio 040 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/eric-prydz-epic-radio-040-2026-october-08/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/08/02/Eric Prydz - Epic Radio 040 2026-10-07.mp3",
+        "https://cdn.podtoo.com/syndication/2026/10/full_episode_1791505260018.mp3",
+        "http://files.globaldjmix.com/2026/10/08/02/Eric"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/08/02/Eric%20Prydz%20-%20Epic%20Radio%20040%202026-10-07.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/eric_prydz_-_epic_radio_040_2026-10-07.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/euphoric-nation-trance-paradise-757-2026-october-08/",
+      "article_fetched": true,
+      "title": "Euphoric Nation - Trance Paradise 757 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/euphoric-nation-trance-paradise-757-2026-october-08/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/08/02/Euphoric Nation - Trance Paradise 757 on AH.FM 08-10-2026.mp3",
+        "http://files.globaldjmix.com/2026/10/08/02/Euphoric"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/08/02/Euphoric%20Nation%20-%20Trance%20Paradise%20757%20on%20AH.FM%2008-10-2026.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/trance_paradise_euphoric_nation.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/nicky-romero-protocol-radio-739-2026-october-08/",
+      "article_fetched": true,
+      "title": "Nicky Romero - Protocol Radio 739 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://podcasts.protocol-radio.com/podcast/protocol-radio-739.m4a"
+      ],
+      "audio_url": "https://podcasts.protocol-radio.com/podcast/protocol-radio-739.m4a",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/nicky_romero_-_protocol_radio_739_2026-10-08.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/armin-van-buuren-ruben-de-ronde-paul-oakenfold-a-state-of-trance-asot-1298-2026-october-08/",
+      "article_fetched": true,
+      "title": "Armin van Buuren & Ruben De Ronde & Paul Oakenfold - A State Of Trance ASOT 1298 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/armin-van-buuren-ruben-de-ronde-paul-oakenfold-a-state-of-trance-asot-1298-2026-october-08/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/08/Armin van Buuren - A State Of Trance Episode 1298.mp3",
+        "http://files.globaldjmix.com/2026/10/08/Armin"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/08/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201298.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/asot_1298.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/afrojack-jacked-radio-781-2026-october-08/",
+      "article_fetched": true,
+      "title": "Afrojack - Jacked Radio 781 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/afrojack-jacked-radio-781-2026-october-08/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/08/Afrojack - Jacked Radio 781 on AH.FM 08-10-2026.mp3",
+        "http://files.globaldjmix.com/2026/10/08/Afrojack"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/08/Afrojack%20-%20Jacked%20Radio%20781%20on%20AH.FM%2008-10-2026.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/afrojack_-_jacked_radio_660x330.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/ori-uplift-uplifting-only-713-2026-october-08/",
+      "article_fetched": true,
+      "title": "Ori Uplift - Uplifting Only 713 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/ori-uplift-uplifting-only-713-2026-october-08/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/08/Ori Uplift - Uplifting Only 713 (Oct 8, 2026).mp3",
+        "http://files.globaldjmix.com/2026/10/08/Ori"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/08/Ori%20Uplift%20-%20Uplifting%20Only%20713%20(Oct%208,%202026).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/ori_uplift_presents_-_uplifting_only.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/markus-schulz-sander-van-doorn-global-dj-broadcast-2026-october-08/",
+      "article_fetched": true,
+      "title": "Markus Schulz & Sander van Doorn - Global DJ Broadcast (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/markus-schulz-sander-van-doorn-global-dj-broadcast-2026-october-08/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/08/Markus Schulz - Global DJ Broadcast (8 October 2026) with guest Sander van Doorn.mp3",
+        "https://mcdn.podbean.com/mf/web/5z2v7doykhoqzqz1/GDJB_Oct_8_2026_Markus_Schulz_and_Sander_van_Doorn.mp3",
+        "http://files.globaldjmix.com/2026/10/08/Markus"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/08/Markus%20Schulz%20-%20Global%20DJ%20Broadcast%20(8%20October%202026)%20with%20guest%20Sander%20van%20Doorn.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/markus_schulz_global_dj_broadcast_2022.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/spinnin-records-spinnin-sessions-700-2026-october-08/",
+      "article_fetched": true,
+      "title": "Spinnin Records - Spinnin Sessions 700 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/spinnin-records-spinnin-sessions-700-2026-october-08/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/08/Spinnin' Records - Spinnin Sessions 700 (08 October 2026).mp3",
+        "http://files.globaldjmix.com/2026/10/08/Spinnin"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/08/Spinnin'%20Records%20-%20Spinnin%20Sessions%20700%20(08%20October%202026).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/spinnin'_sessions_radio_700_2026-10-08.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/jes-unleash-the-beat-727-2026-october-08/",
+      "article_fetched": true,
+      "title": "JES - Unleash The Beat 727 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/jes-unleash-the-beat-727-2026-october-08/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/08/JES - Unleash The Beat 727 (08 October 2026).mp3",
+        "http://files.globaldjmix.com/2026/10/08/JES"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/08/JES%20-%20Unleash%20The%20Beat%20727%20(08%20October%202026).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/jes_unleash_the_beat_2022.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/beatdealers-welcome-to-the-weekend-495-2026-october-08/",
+      "article_fetched": true,
+      "title": "Beatdealers - Welcome to the Weekend 495 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/beatdealers-welcome-to-the-weekend-495-2026-october-08/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/08/Beatdealers - Welcome to the Weekend 495 (08.October 2026).mp3",
+        "http://files.globaldjmix.com/2026/10/08/Beatdealers"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/08/Beatdealers%20-%20Welcome%20to%20the%20Weekend%20495%20(08.October%202026).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/nylo_music_welcome_to_the_weekend_.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/manuel-le-saux-extrema-961-2026-october-07/",
+      "article_fetched": true,
+      "title": "Manuel Le Saux - Extrema 961 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://feeds.soundcloud.com/stream/2414212965-manuellesaux-extrema-961.mp3"
+      ],
+      "audio_url": "https://cf-media.sndcdn.com/6tWVUwCbP4Gj?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vNnRXVlV3Q2JQNEdqKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5MTUyNjUxMn19fV19&Signature=Jtv7nbrkWjgpJp9tkhvKXbRu9L-0N4wvpZKLSNzVCiZDCkQSLUCWn86tHt-E4T-erGSRB9QwZO5LVrwboNLH39ctTt3P1VvxS~Z0IHBY47Y5OW5Dbn6PKBUJpgiWnE48UAZVZJVgXt1ixNw5SY3TQOwqx00dZfVaWUfxamrRVoYNxQg35ldO5ySLNOX6VvGeXkZvArEPl84BAfvzi1MH9o7zMhQfVRc0XzqpzylFbleXcluZsXbq-6qiiIWiViu1tsEyVZuZejTdS~iN40VHCab6WxZqt3CDoa9VuoRXHxQ3uCdgSAtTNib9xhi~f1qHPgV0xGuVvdVelJZhD6DJPg__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/manuel_le_saux_-_extrema_2025.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/andrew-rayel-find-your-harmony-radioshow-513-2026-october-07/",
+      "article_fetched": true,
+      "title": "Andrew Rayel - Find Your Harmony Radioshow 513 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://mcdn.podbean.com/mf/web/ihjaq6773dtuavz4/Andrew_Rayel_-_Find_Your_Harmony_Episode_5138s59m.mp3"
+      ],
+      "audio_url": "https://s388.podbean.com/pb/9c599d8618493a66c9d52c8b501411e3/6ac82f39/data1/fs124/683689/uploads/Andrew_Rayel_-_Find_Your_Harmony_Episode_5138s59m.mp3?pbss=eda8503b-f461-5b12-8691-b2549054c05b",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/find_your_harmony_radioshow_513_2026-10-07.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/aly-fila-future-sound-of-egypt-983-2026-october-07/",
+      "article_fetched": true,
+      "title": "Aly & Fila - Future Sound Of Egypt 983 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/aly-fila-future-sound-of-egypt-983-2026-october-07/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/07/Aly and Fila - Future Sound Of Egypt 983.mp3",
+        "http://files.globaldjmix.com/2026/10/07/Aly"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/07/Aly%20and%20Fila%20-%20Future%20Sound%20Of%20Egypt%20983.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/future_sound_of_egypt_with_aly_fila_official.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/illenium-phoenix-radio-349-2026-october-08/",
+      "article_fetched": true,
+      "title": "Illenium - Phoenix Radio 349 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://cdn.podtoo.com/syndication/2026/10/1791414706880full_episode_PHOENIX-RADIO--349--WORLD-.mp3"
+      ],
+      "audio_url": "https://cdn.podtoo.com/syndication/2026/10/1791414706880full_episode_PHOENIX-RADIO--349--WORLD-.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/illenium_-_phoenix_radio.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/kaiserdisco-kd-music-radio-161-2026-october-07/",
+      "article_fetched": true,
+      "title": "Kaiserdisco - KD Music Radio 161 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://app.syndicast.co.uk/download/itunes/uploads/audios/16/161-11.mp3"
+      ],
+      "audio_url": "https://app.syndicast.co.uk/download/itunes/uploads/audios/16/161-11.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/kd_music_radio_show_with_kaiserdisco_2022.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/ferry-corsten-resonation-radio-306-2026-october-07/",
+      "article_fetched": true,
+      "title": "Ferry Corsten - Resonation Radio 306 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/ferry-corsten-resonation-radio-306-2026-october-07/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/07/Ferry Corsten - Resonation Radio 306 on AH.FM 07-10-2026.mp3",
+        "http://files.globaldjmix.com/2026/10/07/Ferry"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/07/Ferry%20Corsten%20-%20Resonation%20Radio%20306%20on%20AH.FM%2007-10-2026.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/resonation_radio_presented_by_ferry_corsten.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/robin-schulz-sugar-radio-562-2026-october-07/",
+      "article_fetched": true,
+      "title": "Robin Schulz - Sugar Radio 562 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://app.syndicast.co.uk/download/itunes/uploads/audios/56/562-7.mp3"
+      ],
+      "audio_url": "https://app.syndicast.co.uk/download/itunes/uploads/audios/56/562-7.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/robin_schulz.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/christian-smith-tronic-podcast-741-2026-october-07/",
+      "article_fetched": true,
+      "title": "Christian Smith - Tronic Podcast 741 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://app.syndicast.co.uk/download/itunes/uploads/audios/74/741-2.mp3"
+      ],
+      "audio_url": "https://app.syndicast.co.uk/download/itunes/uploads/audios/74/741-2.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/christian_smith_tronic_radio_2022.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/don-diablo-hexagon-radio-610-with-pessto-2026-october-07/",
+      "article_fetched": true,
+      "title": "Don Diablo - Hexagon Radio 610 (with Pessto) (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://audio.thisisdistorted.com/repository/audio/episodes/Hexagon_Radio_610_Podcast-1791292475999190128-NDMxODktODY2MjAzNjg=.mp3"
+      ],
+      "audio_url": "https://audio.thisisdistorted.com/repository/audio/episodes/Hexagon_Radio_610_Podcast-1791292475999190128-NDMxODktODY2MjAzNjg=.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/don_diablo_presents_hexagon_radio_2025.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/matt-holliday-moments-069-2026-october-07/",
+      "article_fetched": true,
+      "title": "Matt Holliday - Moments 069 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/matt-holliday-moments-069-2026-october-07/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/07/Matt Holliday - Moments 069 (07 October 2026).mp3",
+        "http://files.globaldjmix.com/2026/10/07/Matt"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/07/Matt%20Holliday%20-%20Moments%20069%20(07%20October%202026).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/matt_holliday_moments_difm.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/melchi-dreaming-travel-show-093-2026-october-07/",
+      "article_fetched": true,
+      "title": "Melchi - Dreaming Travel Show 093 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/melchi-dreaming-travel-show-093-2026-october-07/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/07/Melchi - Dreaming Travel Show 093 (October 2026).mp3",
+        "http://files.globaldjmix.com/2026/10/07/Melchi"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/07/Melchi%20-%20Dreaming%20Travel%20Show%20093%20(October%202026).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/melchi_dreaming_travel_show.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/claptone-clapcast-585-2026-october-06/",
+      "article_fetched": true,
+      "title": "Claptone - CLAPCAST 585 (06 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/claptone-clapcast-585-2026-october-06/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/06/Claptone - CLAPCAST 585.mp3",
+        "http://files.globaldjmix.com/2026/10/06/Claptone"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/06/Claptone%20-%20CLAPCAST%20585.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/claptone_clapcast_2022.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/eelke-kleijn-days-like-nights-465-2026-october-06/",
+      "article_fetched": true,
+      "title": "Eelke Kleijn - Days Like Nights 465 (06 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/eelke-kleijn-days-like-nights-465-2026-october-06/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/06/Eelke Kleijn - Days Like Nights 465 (06 October 2026).mp3",
+        "http://files.globaldjmix.com/2026/10/06/Eelke"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/06/Eelke%20Kleijn%20-%20Days%20Like%20Nights%20465%20(06%20October%202026).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/eelke_kleijn_days_like_nights.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/ronski-speed-assorted-pieces-oct-2026-2026-october-06/",
+      "article_fetched": true,
+      "title": "Ronski Speed - Assorted Pieces Oct 2026 (06 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/ronski-speed-assorted-pieces-oct-2026-2026-october-06/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/06/Ronski Speed - Assorted Pieces Oct on AH.FM 06-10-2026.mp3",
+        "http://files.globaldjmix.com/2026/10/06/Ronski"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/06/Ronski%20Speed%20-%20Assorted%20Pieces%20Oct%20on%20AH.FM%2006-10-2026.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/ronski_speed_sessions_ronski_speed.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/suzy-solar-we-are-trance-radio-109-2026-october-06/",
+      "article_fetched": true,
+      "title": "Suzy Solar - We Are Trance Radio 109 (06 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/suzy-solar-we-are-trance-radio-109-2026-october-06/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/06/Suzy Solar - We Are Trance Radio 109 on AH.FM 06-10-2026.mp3",
+        "http://files.globaldjmix.com/2026/10/06/Suzy"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/06/Suzy%20Solar%20-%20We%20Are%20Trance%20Radio%20109%20on%20AH.FM%2006-10-2026.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/suzy_solar_-_we_are_trance_radio.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/robert-b-ionattan-soundtropolis-011-2026-october-06/",
+      "article_fetched": true,
+      "title": "Robert B & Ionattan - Soundtropolis 011 (06 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/robert-b-ionattan-soundtropolis-011-2026-october-06/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/06/Robert B. & Ionattan - Soundtropolis 011 on AH.FM 06-10-2026.mp3",
+        "http://files.globaldjmix.com/2026/10/06/Robert"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/06/Robert%20B.%20&%20Ionattan%20-%20Soundtropolis%20011%20on%20AH.FM%2006-10-2026.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/ah_fm_trance_music_presents.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/john-digweed-dance-spirit-transitions-episode-1153-05-october-2026-hour-2-2026-october-05/",
+      "article_fetched": true,
+      "title": "John Digweed & Dance Spirit - Transitions Episode 1153 (05 October 2026) Hour 2 (05 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/block-links/jtjXfZ?links=john-digweed-dance-spirit-transitions-episode-1153-05-october-2026-hour-2-2026-october-05"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/05/John%20Digweed%20-%20Transitions%20Episode%201153%20(05%20October%202026)%20Hour%201.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/transitions_john_digweed_2022.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/anthony-skybrand-beach-paradise-radio-081-2026-october-05/",
+      "article_fetched": true,
+      "title": "Anthony Skybrand - Beach Paradise Radio 081 (05 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/anthony-skybrand-beach-paradise-radio-081-2026-october-05/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/05/Anthony Skybrand - Beach Paradise Radio 081 (05 October 2026).mp3",
+        "http://files.globaldjmix.com/2026/10/05/Anthony"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/05/Anthony%20Skybrand%20-%20Beach%20Paradise%20Radio%20081%20(05%20October%202026).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/anthony_skybrand_beach_paradise.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/apollo-nash-scorchin-radio-325-2026-october-05/",
+      "article_fetched": true,
+      "title": "Apollo Nash - Scorchin Radio 325 (05 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/apollo-nash-scorchin-radio-325-2026-october-05/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/05/Apollo Nash - Scorchin Radio 325 on AH.FM 05-10-2026.mp3",
+        "http://files.globaldjmix.com/2026/10/05/Apollo"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/05/Apollo%20Nash%20-%20Scorchin%20Radio%20325%20on%20AH.FM%2005-10-2026.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/scorchin_radio.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/alison-wonderland-radio-wonderland-491-2026-october-05/",
+      "article_fetched": true,
+      "title": "Alison Wonderland - Radio Wonderland 491 (05 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://cdn.podtoo.com/syndication/2026/10/1790981306441full_episode_RADIO-WONDERLAND--491--WORLD-.mp3"
+      ],
+      "audio_url": "https://cdn.podtoo.com/syndication/2026/10/1790981306441full_episode_RADIO-WONDERLAND--491--WORLD-.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/alison_wonderland_-_radio_wonderland.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/lilly-palmer-spannung-radio-075-2026-october-05/",
+      "article_fetched": true,
+      "title": "Lilly Palmer - Spannung Radio 075 (05 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/lilly-palmer-spannung-radio-075-2026-october-05/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/05/Lilly Palmer - Spannung Radio 075 (05 October 2026).mp3",
+        "http://files.globaldjmix.com/2026/10/05/Lilly"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/05/Lilly%20Palmer%20-%20Spannung%20Radio%20075%20(05%20October%202026).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/spannung_radio_lilly_palmer.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/blasterjaxx-maxximize-on-air-642-2026-october-05/",
+      "article_fetched": true,
+      "title": "Blasterjaxx - Maxximize On Air 642 (05 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://feeds.soundcloud.com/stream/2412860526-maxximizeonair-maxximize-on-air-642.mp3"
+      ],
+      "audio_url": "https://cf-media.sndcdn.com/DRDIeBqYe2Wa?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vRFJESWVCcVllMldhKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5MTUyNjUyM319fV19&Signature=Wy-n39ctugkciEIApUL2zNZ4hZ-yTlp-nVkbSmg6iReu6lZXCm~gGCbayrLoGMmMUQvpfxNMX3uB1mpNFd1dGzbLSPEhZAiLn27rwBBcro5fomIBpLSqFY0jBiw19k4aprcSEpU7teQ4UHkPZrUu75MfwinP24WVfXp~GPPexwCBzXY69Vj-9YjeoNMXTsQUeoJJfPkUdek6iXd2qSYT0HvT~wHe51kMRZUsWC2VKMVzyxt7YthkB5grJZegSZ07H1XI287j9l9ZX1bYVdzf39pUTAkcw2dYSdFqQC99iL16mhHR6~T318r3gDymXnTw7AAuWKSN3A7ey1ByQQOIEQ__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/blasterjaxx_maxximize_on_air.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/alok-rave-the-world-radio-012-2026-october-05/",
+      "article_fetched": true,
+      "title": "ALOK - Rave The World Radio 012 (05 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://audio.thisisdistorted.com/repository/audio/episodes/Alok_Presents_Rave_The_World_Radio_012_ENGLISH_192-1790767823206335163-NDMxNjItODU2Mzc5NTU=.mp3"
+      ],
+      "audio_url": "https://audio.thisisdistorted.com/repository/audio/episodes/Alok_Presents_Rave_The_World_Radio_012_ENGLISH_192-1790767823206335163-NDMxNjItODU2Mzc5NTU=.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/alok_-_controversia_radio.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/fedde-le-grand-darklight-sessions-737-2026-october-05/",
+      "article_fetched": true,
+      "title": "Fedde le Grand - Darklight Sessions 737 (05 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://traffic.libsyn.com/secure/feddelegrand/Fedde_Le_Grand_-_Darklight_Sessions_737_-_Global.mp3?dest-id=177173"
+      ],
+      "audio_url": "https://content.libsyn.com/p/f/2/0/f205a8593f334e8c/Fedde_Le_Grand_-_Darklight_Sessions_737_-_Global.mp3?c_id=207126048&cs_id=207126048&destination_id=177173&response-content-type=audio%2Fmpeg&Expires=1791531145&Signature=FyOcbG3qlKfdUbSSoAIs2aF5p6aJLm8hNXwwf8gqLOuDRcJ02PWmhZFonD8RHofpKsyOGbjRR2FVTkNAoR4oRYZmK-aqtlkNSTwmqcSKnSicgKbaK0SkUeFnojuUIeDqdf7saSyzckxAUm8UtCl-MAu6bIuce1Cp50J-~gCroiag2lvccoBoxM03zKpMu37huJl1KNGElrU5EbMu0Pw-NZYZkLaJ38V6OVASipC3ADzCPUafYw4KxOmy705dkd56liOD1bYghsvWwIj7OuHr4jQxGpmMGJzWL9yEL45MFuwc5ZAyIsrGLoh04irR5gtrQ1ZdWMXE5VDGiATMC-giTQ__&Key-Pair-Id=K1YS7LZGUP96OI",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/fedde_le_grand_-_darklight_sessions.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/nora-en-pure-purified-radio-528-2026-october-05/",
+      "article_fetched": true,
+      "title": "Nora En Pure - Purified Radio 528 (05 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://audio.thisisdistorted.com/repository/audio/episodes/NORA_528_Podcast-1790786686905665851-NDMxNjYtODc3NDI1ODg=.mp3"
+      ],
+      "audio_url": "https://audio.thisisdistorted.com/repository/audio/episodes/NORA_528_Podcast-1790786686905665851-NDMxNjYtODc3NDI1ODg=.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/nora_en_pure_purified_di_fm.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/nora-en-pure-purified-281-2022-january-10/",
+      "article_fetched": true,
+      "title": "Nora En Pure - Purified 281 (10 January 2022)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://audio.thisisdistorted.com/repository/audio/episodes/NORA_281_iTunes_V2-1641648157574312702-MzM3NzAtODU4NzY0MjY=.mp3"
+      ],
+      "audio_url": "https://audio.thisisdistorted.com/repository/audio/episodes/NORA_281_iTunes_V2-1641648157574312702-MzM3NzAtODU4NzY0MjY=.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/nora_en_pure_-_purified_radio.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/black-coffee-radio-1's-essential-mix-live-at-printworks-2023-april-28/",
+      "article_fetched": true,
+      "title": "Black Coffee - Radio 1's Essential Mix (live at Printworks) (28 April 2023)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/black-coffee-radio-1's-essential-mix-live-at-printworks-2023-april-28/jtjXfZ",
+        "http://box.globaldjmix.com/media/black-coffee-radio-1",
+        "http://files.globaldjmix.com/2023/04/28/Black Coffee - Radio 1's Essential Mix (live at Printworks) 2023-04-28.mp3",
+        "http://files.globaldjmix.com/2023/04/28/Black"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2023/04/28/Black%20Coffee%20-%20Radio%201's%20Essential%20Mix%20(live%20at%20Printworks)%202023-04-28.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/essential_mix_live_at_printworks.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1100-xxl-top-50-of-2022-2022-december-22/",
+      "article_fetched": true,
+      "title": "Armin van Buuren & Ruben De Ronde & Ferry Corsten - A State Of Trance ASOT 1100 XXL (Top 50 Of 2022) (22 December 2022)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1100-xxl-top-50-of-2022-2022-december-22/jtjXfZ",
+        "http://files.globaldjmix.com/2022/12/22/Armin van Buuren - A State Of Trance Episode 1100 XXL (Top 50 Of 2022).mp3",
+        "http://files.globaldjmix.com/2022/12/22/Armin"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2022/12/22/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201100%20XXL%20(Top%2050%20Of%202022).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/a_state_of_trance_1100_top_50_of_2022_special_2022-12-22.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/dj-optick-obsession-ibiza-global-radio-best-of-2021-2022-january-11/",
+      "article_fetched": true,
+      "title": "Dj Optick - Obsession - Ibiza Global Radio - BEST OF 2021 (11 January 2022)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://feeds.soundcloud.com/stream/1194546016-djoptick-dj-optick-obsession-ibiza-global-radio-09012022-best-of-2021.mp3"
+      ],
+      "audio_url": "https://cf-media.sndcdn.com/G4mBt0RMUEOk?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vRzRtQnQwUk1VRU9rKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5MTUyNjUyN319fV19&Signature=Pena5DkM9EcRyiEAT~RGfxK08W24jcMnZHYw8QMSpPZ4~-7~OMD-LRIoNWYaQYIZIuCMCwrzEazf1wtLvLwN~CC4pagLDgytYRLzLg7Yu4AvWnGj2ueH0VmegcDf0a5qKx65S3xnwuuadq4XAYSSUGOy2naOUvLXvKsN7SQYqCyl7LKhFYjzYo13fXw-XJV2pwWw5Mjt9mYnsRnqNieJLBdkkHlkrNbffywm0BUYDfHWPoswmTNGyVJYdp9KNPlknnAWRyk1M7lPdh65IJrt8Q3n6Svx9042j5j7YlLmmFBFL0nZGlof3vZgvK6LwTXmdsEfNN60aSkmfKei7VP3Xw__&Key-Pair-Id=APKAI6TU7MMXM5DG6EPQ",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/dj_optick_-_obsession.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1170-top-1000-2024-final-50-2024-april-25/",
+      "article_fetched": true,
+      "title": "Armin van Buuren & Ruben De Ronde & Ferry Corsten - A State Of Trance ASOT 1170 (TOP 1000 2024 - Final 50) (25 April 2024)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1170-top-1000-2024-final-50-2024-april-25/jtjXfZ",
+        "http://files.globaldjmix.com/2024/04/25/Armin van Buuren - A State Of Trance Episode 1170 XXL (Top1000 2024, Final 50).mp3",
+        "http://files.globaldjmix.com/2024/04/25/Armin"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2024/04/25/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201170%20XXL%20(Top1000%202024,%20Final%2050).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/asot_1170.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/armin-van-buuren-ferry-corsten-a-state-of-trance-asot-1050-2022-january-06/",
+      "article_fetched": true,
+      "title": "Armin van Buuren & Ferry Corsten - A State of Trance ASOT 1050 (06 January 2022)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/armin-van-buuren-ferry-corsten-a-state-of-trance-asot-1050-2022-january-06/jtjXfZ",
+        "http://files.globaldjmix.com/dock-station/download/2022/01/06/Armin van Buuren - A State of Trance Episode 1050.mp3",
+        "http://files.globaldjmix.com/dock-station/download/2022/01/06/Armin"
+      ],
+      "audio_url": "http://files.globaldjmix.com/dock-station/download/2022/01/06/Armin%20van%20Buuren%20-%20A%20State%20of%20Trance%20Episode%201050.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/a_state_of_trance_episode_1050_-_armin_van_buuren_a_state_of_trance.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1204-xxl-top-50-of-2024-2024-december-19/",
+      "article_fetched": true,
+      "title": "Armin van Buuren & Ruben De Ronde & Ferry Corsten - A State Of Trance ASOT 1204 XXL (Top 50 Of 2024) (19 December 2024)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1204-xxl-top-50-of-2024-2024-december-19/jtjXfZ",
+        "http://files.globaldjmix.com/2024/12/18/Armin van Buuren - A State Of Trance Episode 1204 XXL (Top 50 Of 2024).mp3",
+        "http://files.globaldjmix.com/2024/12/18/Armin"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2024/12/18/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201204%20XXL%20(Top%2050%20Of%202024).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/asot_1204.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/armin-van-buuren-a-state-of-trance-asot-1101-yearmix-2022-2022-december-29/",
+      "article_fetched": true,
+      "title": "Armin van Buuren - A State Of Trance ASOT 1101 (Yearmix 2022) (29 December 2022)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/armin-van-buuren-a-state-of-trance-asot-1101-yearmix-2022-2022-december-29/jtjXfZ",
+        "http://files.globaldjmix.com/2022/12/29/Armin van Buuren - A State Of Trance Episode 1101 (Yearmix 2022).mp3",
+        "http://files.globaldjmix.com/2022/12/29/Armin"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2022/12/29/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201101%20(Yearmix%202022).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/asot_1101.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/armin-van-buuren-a-state-of-trance-asot-1205-yearmix-2024-2024-december-26/",
+      "article_fetched": true,
+      "title": "Armin van Buuren - A State Of Trance ASOT 1205 (Yearmix 2024) (26 December 2024)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/armin-van-buuren-a-state-of-trance-asot-1205-yearmix-2024-2024-december-26/jtjXfZ",
+        "http://files.globaldjmix.com/2024/12/26/Armin van Buuren - A State Of Trance Episode 1205 (Yearmix 2024).mp3",
+        "http://files.globaldjmix.com/2024/12/26/Armin"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2024/12/26/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201205%20(Yearmix%202024).mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/a_state_of_trance_episode_1205_-_year_mix_2025.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/shimza-black-coffee-live-factory-town-miami-united-states-2025-march-29/",
+      "article_fetched": true,
+      "title": "Shimza & Black Coffee - Live @ Factory Town Miami, United States (29 March 2025)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/shimza-black-coffee-live-factory-town-miami-united-states-2025-march-29/jtjXfZ",
+        "http://mirror.globaldjmix.com:7001/2025/04/02/Shimza - Black Coffee presents, Factory Town Miami, United States 2025-03-29.mp3",
+        "http://mirror.globaldjmix.com:7001/2025/04/02/Shimza"
+      ],
+      "audio_url": null,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/shimza_black_coffee_presents_factory_town_miami_united_states_2025-03-29.jpg",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"http://box.globaldjmix.com/media/shimza-black-coffee-live-factory-town-miami-united-states-2025-march-29/jtjXfZ\", \"http://mirror.globaldjmix.com:7001/2025/04/02/Shimza - Black Coffee presents, Factory Town Miami, United States 2025-03-29.mp3\", \"http://mirror.globaldjmix.com:7001/2025/04/02/Shimza\"]; content-type=text/css | ConnectTimeout: HTTPConnectionPool(host='mirror.globaldjmix.com', port=7001): Max retries exceeded with url: /2025/04/02/Shimza%20-%20Black%20Coffee%20presents,%20Factory%20Town%20Miami,%20United%20States%202025-03-29.mp3 (Caused by ConnectTimeoutError(<HTTPConnection(host='mirror.globaldjmix.com', port=7001) at 0x7fedd6c25cd0>, 'Connection to mirror.globaldjmix.com timed out. (connect timeout=6)')) | content-type=text/css; charset=utf-8 | ConnectTimeout: HTTPConnectionPool(host='mirror.globaldjmix.com', port=7001): Max retries exceeded with url: /2025/04/02/Shimza%20-%20Black%20Coffee%20presents,%20Factory%20Town%20Miami,%20United%20States%202025-03-29.mp3 (Caused by ConnectTimeoutError(<HTTPConnection(host='mirror.globaldjmix.com', port=7001) at 0x7fedd6f72f00>, 'Connection to mirror.globaldjmix.com timed out. (connect timeout=6)'))",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1152-xxl-top-50-of-2023-2023-december-21/",
+      "article_fetched": true,
+      "title": "Armin van Buuren & Ruben De Ronde & Ferry Corsten - A State Of Trance ASOT 1152 XXL (Top 50 Of 2023) (21 December 2023)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1152-xxl-top-50-of-2023-2023-december-21/jtjXfZ",
+        "http://mirror.globaldjmix.com:7001/2023/12/21/Armin van Buuren - A State Of Trance Episode 1152 XXL (Top 50 Of 2023).mp3",
+        "http://mirror.globaldjmix.com:7001/2023/12/21/Armin"
+      ],
+      "audio_url": null,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/armin_van_buuren_-_a_state_of_trance_1152_top_50_of_2023_special_2023-12-21.jpg",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"http://box.globaldjmix.com/media/armin-van-buuren-ruben-de-ronde-ferry-corsten-a-state-of-trance-asot-1152-xxl-top-50-of-2023-2023-december-21/jtjXfZ\", \"http://mirror.globaldjmix.com:7001/2023/12/21/Armin van Buuren - A State Of Trance Episode 1152 XXL (Top 50 Of 2023).mp3\", \"http://mirror.globaldjmix.com:7001/2023/12/21/Armin\"]; content-type=text/css | ConnectTimeout: HTTPConnectionPool(host='mirror.globaldjmix.com', port=7001): Max retries exceeded with url: /2023/12/21/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201152%20XXL%20(Top%2050%20Of%202023).mp3 (Caused by ConnectTimeoutError(<HTTPConnection(host='mirror.globaldjmix.com', port=7001) at 0x7fedd6a463c0>, 'Connection to mirror.globaldjmix.com timed out. (connect timeout=6)')) | content-type=text/css; charset=utf-8 | ConnectTimeout: HTTPConnectionPool(host='mirror.globaldjmix.com', port=7001): Max retries exceeded with url: /2023/12/21/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201152%20XXL%20(Top%2050%20Of%202023).mp3 (Caused by ConnectTimeoutError(<HTTPConnection(host='mirror.globaldjmix.com', port=7001) at 0x7fedd6c26930>, 'Connection to mirror.globaldjmix.com timed out. (connect timeout=6)'))",
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/armin-van-buuren-a-state-of-trance-asot-1153-yearmix-2023-2023-december-28/",
+      "article_fetched": true,
+      "title": "Armin van Buuren - A State Of Trance ASOT 1153 (Yearmix 2023) (28 December 2023)",
+      "audio_ok": false,
+      "audio_method": null,
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/armin-van-buuren-a-state-of-trance-asot-1153-yearmix-2023-2023-december-28/jtjXfZ",
+        "http://mirror.globaldjmix.com:7001/2023/12/28/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201153%20(Yearmix%202023).mp3"
+      ],
+      "audio_url": null,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/a_state_of_trance_episode_1153_-_year_mix_2023.jpg",
+      "image_http_ok": true,
+      "audio_error": "No audio URL resolved. candidates=[\"http://box.globaldjmix.com/media/armin-van-buuren-a-state-of-trance-asot-1153-yearmix-2023-2023-december-28/jtjXfZ\", \"http://mirror.globaldjmix.com:7001/2023/12/28/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201153%20(Yearmix%202023).mp3\"]; content-type=text/css | ConnectTimeout: HTTPConnectionPool(host='mirror.globaldjmix.com', port=7001): Max retries exceeded with url: /2023/12/28/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201153%20(Yearmix%202023).mp3 (Caused by ConnectTimeoutError(<HTTPConnection(host='mirror.globaldjmix.com', port=7001) at 0x7fedd6c266c0>, 'Connection to mirror.globaldjmix.com timed out. (connect timeout=6)')) | content-type=text/css; charset=utf-8 | ConnectTimeout: HTTPConnectionPool(host='mirror.globaldjmix.com', port=7001): Max retries exceeded with url: /2023/12/28/Armin%20van%20Buuren%20-%20A%20State%20Of%20Trance%20Episode%201153%20(Yearmix%202023).mp3 (Caused by ConnectTimeoutError(<HTTPConnection(host='mirror.globaldjmix.com', port=7001) at 0x7fedd64741a0>, 'Connection to mirror.globaldjmix.com timed out. (connect timeout=6)'))",
+      "image_error": null,
+      "error": null
+    }
+  ]
 }
