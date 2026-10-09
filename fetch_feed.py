@@ -1019,7 +1019,7 @@ def main():
             report["publish_blocked"] = True
             report["saved_episode_count"] = len(existing)
         else:
-            ITEMS_FILE.write_text(json.dumps(candidate_items, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+            ITEMS_FILE.write_text(json.dumps(candidate_items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             RSS_FILE.write_text(candidate_xml, encoding="utf-8")
             report["publish_blocked"] = False
             report["saved_episode_count"] = len(candidate_items)
@@ -1053,7 +1053,7 @@ def main():
             report["daily_added_count"] = len(day_episodes)
             report["daily_episode_titles"] = [entry.get("title", "") for entry in day_episodes]
 
-        RETRY_FILE.write_text(json.dumps(next_retry_queue, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+        RETRY_FILE.write_text(json.dumps(next_retry_queue, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     REPORT_FILE.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(
