@@ -611,17 +611,17 @@ def fetch_tracklist(soup, article_url):
         track_soup = BeautifulSoup(tracklist_html, "html.parser")
         track_nodes = track_soup.select(".track")
         tracks = [
-            re.sub(r"\\s+", " ", node.get_text(" ", strip=True)).strip()
+            re.sub(r"\s+", " ", node.get_text(" ", strip=True)).strip()
             for node in track_nodes
         ]
         tracks = [track for track in tracks if track]
         if not tracks:
-            plain = re.sub(r"\\s+", " ", track_soup.get_text(" ", strip=True)).strip()
+            plain = re.sub(r"\s+", " ", track_soup.get_text(" ", strip=True)).strip()
             if plain:
                 tracks = [plain]
         if not tracks:
             return None, "Tracklist response was successful but contained no tracks"
-        return "\\n".join(tracks), None
+        return "\n".join(tracks), None
     except Exception as exc:
         return None, type(exc).__name__ + ": " + str(exc)[:220]
     finally:
@@ -677,7 +677,7 @@ def parse_episode(url):
         diag["tracklist_found"] = bool(tracklist)
         diag["tracklist_error"] = tracklist_error
         if tracklist:
-            description += "\\n\\nTracklist:\\n" + tracklist
+            description += "\n\nTracklist:\n" + tracklist
         item = {
             "title": title, "source_url": final_url, "audio_url": audio_url,
             "image_url": image_url, "pub_date": date, "length": size,
