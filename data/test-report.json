@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T07:46:50.313397+00:00",
+  "generated_at": "2026-10-09T07:55:48.727800+00:00",
   "mode": "test",
   "archive_source": "https://globaldjmix.com/livedjsets",
   "archive_pages_reported": 1660,
@@ -16,43 +16,6 @@
   "test_passed": true,
   "saved_episode_count": 50,
   "diagnostics": [
-    {
-      "url": "https://globaldjmix.com/cloudcage-monstercat-silk-showcase-874-2026-october-08/",
-      "article_fetched": true,
-      "title": "Cloudcage - Monstercat Silk Showcase 874 (08 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://traffic.megaphone.fm/MSC7027724798.mp3"
-      ],
-      "audio_url": "https://traffic.megaphone.fm/MSC7027724798.mp3",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/jacob_henry_tom_fall_jayeson_andel_johan_vilborg_vintage_morelli_and_terry_da_libra_monstercat_silk_showcase_2022.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/eric-prydz-epic-radio-040-2026-october-08/",
-      "article_fetched": true,
-      "title": "Eric Prydz - Epic Radio 040 (08 October 2026)",
-      "audio_ok": true,
-      "audio_method": "intermediate",
-      "audio_candidates": [
-        "http://box.globaldjmix.com/media/eric-prydz-epic-radio-040-2026-october-08/jtjXfZ",
-        "http://files.globaldjmix.com/2026/10/08/02/Eric Prydz - Epic Radio 040 2026-10-07.mp3",
-        "https://cdn.podtoo.com/syndication/2026/10/full_episode_1791505260018.mp3",
-        "http://files.globaldjmix.com/2026/10/08/02/Eric"
-      ],
-      "audio_url": "http://files.globaldjmix.com/2026/10/08/02/Eric Prydz - Epic Radio 040 2026-10-07.mp3",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/eric_prydz_-_epic_radio_040_2026-10-07.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
     {
       "url": "https://globaldjmix.com/anja-schneider-club-room-439-2026-october-08/",
       "article_fetched": true,
@@ -84,6 +47,43 @@
       "audio_url": "http://files.globaldjmix.com/2026/10/08/02/Nicole Moudaber - In The MOOD 649 (08 October 2026).mp3",
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/in_the_mood_nicole_moudaber_common.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/eric-prydz-epic-radio-040-2026-october-08/",
+      "article_fetched": true,
+      "title": "Eric Prydz - Epic Radio 040 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/eric-prydz-epic-radio-040-2026-october-08/jtjXfZ",
+        "http://files.globaldjmix.com/2026/10/08/02/Eric Prydz - Epic Radio 040 2026-10-07.mp3",
+        "https://cdn.podtoo.com/syndication/2026/10/full_episode_1791505260018.mp3",
+        "http://files.globaldjmix.com/2026/10/08/02/Eric"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/08/02/Eric Prydz - Epic Radio 040 2026-10-07.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/eric_prydz_-_epic_radio_040_2026-10-07.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/cloudcage-monstercat-silk-showcase-874-2026-october-08/",
+      "article_fetched": true,
+      "title": "Cloudcage - Monstercat Silk Showcase 874 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://traffic.megaphone.fm/MSC7027724798.mp3"
+      ],
+      "audio_url": "https://traffic.megaphone.fm/MSC7027724798.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/jacob_henry_tom_fall_jayeson_andel_johan_vilborg_vintage_morelli_and_terry_da_libra_monstercat_silk_showcase_2022.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -258,23 +258,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/andrew-rayel-find-your-harmony-radioshow-513-2026-october-07/",
-      "article_fetched": true,
-      "title": "Andrew Rayel - Find Your Harmony Radioshow 513 (07 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://mcdn.podbean.com/mf/web/ihjaq6773dtuavz4/Andrew_Rayel_-_Find_Your_Harmony_Episode_5138s59m.mp3"
-      ],
-      "audio_url": "https://mcdn.podbean.com/mf/web/ihjaq6773dtuavz4/Andrew_Rayel_-_Find_Your_Harmony_Episode_5138s59m.mp3",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/find_your_harmony_radioshow_513_2026-10-07.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/beatdealers-welcome-to-the-weekend-495-2026-october-08/",
       "article_fetched": true,
       "title": "Beatdealers - Welcome to the Weekend 495 (08 October 2026)",
@@ -288,6 +271,23 @@
       "audio_url": "http://files.globaldjmix.com/2026/10/08/Beatdealers - Welcome to the Weekend 495 (08.October 2026).mp3",
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/nylo_music_welcome_to_the_weekend_.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/andrew-rayel-find-your-harmony-radioshow-513-2026-october-07/",
+      "article_fetched": true,
+      "title": "Andrew Rayel - Find Your Harmony Radioshow 513 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://mcdn.podbean.com/mf/web/ihjaq6773dtuavz4/Andrew_Rayel_-_Find_Your_Harmony_Episode_5138s59m.mp3"
+      ],
+      "audio_url": "https://mcdn.podbean.com/mf/web/ihjaq6773dtuavz4/Andrew_Rayel_-_Find_Your_Harmony_Episode_5138s59m.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/find_your_harmony_radioshow_513_2026-10-07.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -330,23 +330,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/kaiserdisco-kd-music-radio-161-2026-october-07/",
-      "article_fetched": true,
-      "title": "Kaiserdisco - KD Music Radio 161 (07 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://app.syndicast.co.uk/download/itunes/uploads/audios/16/161-11.mp3"
-      ],
-      "audio_url": "https://app.syndicast.co.uk/download/itunes/uploads/audios/16/161-11.mp3",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/kd_music_radio_show_with_kaiserdisco_2022.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/ferry-corsten-resonation-radio-306-2026-october-07/",
       "article_fetched": true,
       "title": "Ferry Corsten - Resonation Radio 306 (07 October 2026)",
@@ -360,6 +343,23 @@
       "audio_url": "http://files.globaldjmix.com/2026/10/07/Ferry Corsten - Resonation Radio 306 on AH.FM 07-10-2026.mp3",
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/resonation_radio_presented_by_ferry_corsten.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/kaiserdisco-kd-music-radio-161-2026-october-07/",
+      "article_fetched": true,
+      "title": "Kaiserdisco - KD Music Radio 161 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://app.syndicast.co.uk/download/itunes/uploads/audios/16/161-11.mp3"
+      ],
+      "audio_url": "https://app.syndicast.co.uk/download/itunes/uploads/audios/16/161-11.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/kd_music_radio_show_with_kaiserdisco_2022.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -586,6 +586,23 @@
       "error": null
     },
     {
+      "url": "https://globaldjmix.com/alison-wonderland-radio-wonderland-491-2026-october-05/",
+      "article_fetched": true,
+      "title": "Alison Wonderland - Radio Wonderland 491 (05 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://cdn.podtoo.com/syndication/2026/10/1790981306441full_episode_RADIO-WONDERLAND--491--WORLD-.mp3"
+      ],
+      "audio_url": "https://cdn.podtoo.com/syndication/2026/10/1790981306441full_episode_RADIO-WONDERLAND--491--WORLD-.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/alison_wonderland_-_radio_wonderland.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
       "url": "https://globaldjmix.com/apollo-nash-scorchin-radio-325-2026-october-05/",
       "article_fetched": true,
       "title": "Apollo Nash - Scorchin Radio 325 (05 October 2026)",
@@ -599,23 +616,6 @@
       "audio_url": "http://files.globaldjmix.com/2026/10/05/Apollo Nash - Scorchin Radio 325 on AH.FM 05-10-2026.mp3",
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/scorchin_radio.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/alison-wonderland-radio-wonderland-491-2026-october-05/",
-      "article_fetched": true,
-      "title": "Alison Wonderland - Radio Wonderland 491 (05 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://cdn.podtoo.com/syndication/2026/10/1790981306441full_episode_RADIO-WONDERLAND--491--WORLD-.mp3"
-      ],
-      "audio_url": "https://cdn.podtoo.com/syndication/2026/10/1790981306441full_episode_RADIO-WONDERLAND--491--WORLD-.mp3",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/alison_wonderland_-_radio_wonderland.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -833,23 +833,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/v-fox-the-world-around-seven-five-303-xxl-special-2026-october-03/",
-      "article_fetched": true,
-      "title": "V-FOX - The World Around Seven Five 303 XXL Special (03 October 2026)",
-      "audio_ok": true,
-      "audio_method": "intermediate",
-      "audio_candidates": [
-        "https://pixeldrain.com/u/MeRsgzLf"
-      ],
-      "audio_url": "https://pixeldrain.com/api/file/MeRsgzLf?download",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/v-fox_-_the_world_around_seven_five_303_xxl_special.png",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/armin-van-buuren-kaskade-dance-department-2026-october-03/",
       "article_fetched": true,
       "title": "Armin van Buuren & Kaskade - Dance Department (03 October 2026)",
@@ -888,23 +871,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/steve-aoki-aoki's-house-podcast-687-2026-october-03/",
-      "article_fetched": true,
-      "title": "Steve Aoki - Aoki's House Podcast 687 (03 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://traffic.libsyn.com/secure/steveaoki/Aokis_House_Podcast_687_EP_765_Air_Date_9.30.26_-_Podcast.mp3?dest-id=317282"
-      ],
-      "audio_url": "https://traffic.libsyn.com/secure/steveaoki/Aokis_House_Podcast_687_EP_765_Air_Date_9.30.26_-_Podcast.mp3?dest-id=317282",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/steve_aoki_sirius.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/vintage-culture-affairs-158-2026-october-03/",
       "article_fetched": true,
       "title": "Vintage Culture - Affairs 158 (03 October 2026)",
@@ -916,6 +882,40 @@
       "audio_url": "https://cdn.podtoo.com/syndication/2026/10/1791001563371full_episode_AFFAIRS--158--World-.mp3",
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/vintage_culture_-_affairs.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/v-fox-the-world-around-seven-five-303-xxl-special-2026-october-03/",
+      "article_fetched": true,
+      "title": "V-FOX - The World Around Seven Five 303 XXL Special (03 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "https://pixeldrain.com/u/MeRsgzLf"
+      ],
+      "audio_url": "https://pixeldrain.com/api/file/MeRsgzLf?download",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/v-fox_-_the_world_around_seven_five_303_xxl_special.png",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/steve-aoki-aoki's-house-podcast-687-2026-october-03/",
+      "article_fetched": true,
+      "title": "Steve Aoki - Aoki's House Podcast 687 (03 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://traffic.libsyn.com/secure/steveaoki/Aokis_House_Podcast_687_EP_765_Air_Date_9.30.26_-_Podcast.mp3?dest-id=317282"
+      ],
+      "audio_url": "https://traffic.libsyn.com/secure/steveaoki/Aokis_House_Podcast_687_EP_765_Air_Date_9.30.26_-_Podcast.mp3?dest-id=317282",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/steve_aoki_sirius.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
