@@ -19,7 +19,7 @@ An automated RSS builder for the GlobalDJMix DJ mix and live-set archive.
 
 Episodes whose audio cannot be resolved are placed in `data/retry-queue.json`. A failed audio resolution is retried once immediately; queued URLs are then retried on later incremental runs. The queue is capped at 1,000 URLs, with up to 30 attempted per hourly run. Successfully resolved URLs leave the queue.
 
-The latest run report is saved in `data/test-report.json`. It includes archive-page errors, per-episode audio/image diagnostics, retry-queue counts, and RSS validation results.
+The latest run report is saved in `data/test-report.json`. It includes archive-page errors, per-episode audio/image diagnostics, retry-queue counts, and RSS validation results. It also reports `new_episodes_added` and `new_episode_titles` for the current run, plus `daily_added_count` and `daily_episode_titles` for the current date in Turkey. The rolling `data/daily-additions.json` file records episodes actually added each day and keeps the last 365 days. Test mode does not change this daily history.
 
 ## Automatic validation
 
