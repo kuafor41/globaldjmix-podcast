@@ -1,9 +1,1366 @@
 {
-  "generated_at": "2026-10-09T06:08:51.673113+00:00",
+  "generated_at": "2026-10-09T06:12:12.555476+00:00",
   "mode": "test",
   "archive_source": "https://globaldjmix.com/livedjsets",
   "archive_pages_reported": 1,
-  "archive_pages_failed": [],
+  "archive_pages_failed": [
+    {
+      "page": 1,
+      "url": "https://globaldjmix.com/livedjsets",
+      "error": "No episode links extracted",
+      "response": {
+        "html_length": 128508,
+        "html_title": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free",
+        "text_preview": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free Toggle navigation Mixes Artists Shows Search Trance Vocal Trance Uplifting Trance Goa Psy Trance Melodic Trance Progressive Trance Tech Trance Epic Trance progressive Dark Progressive Melodic Progressive Progressive Psy House Afro House Deep House Deep NuDisco Disco House Dutch Ho",
+        "heading_sample": [
+          {
+            "tag": "h1",
+            "text": "DJ Mixes and LiveSets - Full list",
+            "href": null
+          },
+          {
+            "tag": "h2",
+            "text": "Recent new DJ Mixes & Live Sets",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Melodic Progressive",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Techno",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Tech House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Electro Pop",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Electro House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Uplifting Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Electro Pop",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Deep NuDisco",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Techno",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Dubstep",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Electro Pop",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Techno",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Bass House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Melodic Progressive",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Tech House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Tech House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Melodic Progressive",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Techno",
+            "href": null
+          }
+        ],
+        "same_site_link_sample": [
+          {
+            "text": "Vocal Trance",
+            "href": "https://globaldjmix.com/style-mixes/vocal-trance",
+            "article_candidate": false,
+            "parent_text": "Vocal Trance"
+          },
+          {
+            "text": "Uplifting Trance",
+            "href": "https://globaldjmix.com/style-mixes/uplifting-trance",
+            "article_candidate": false,
+            "parent_text": "Uplifting Trance"
+          },
+          {
+            "text": "Goa Psy Trance",
+            "href": "https://globaldjmix.com/style-mixes/goa-psy-trance",
+            "article_candidate": false,
+            "parent_text": "Goa Psy Trance"
+          },
+          {
+            "text": "Melodic Trance",
+            "href": "https://globaldjmix.com/style-mixes/melodic-trance",
+            "article_candidate": false,
+            "parent_text": "Melodic Trance"
+          },
+          {
+            "text": "Progressive Trance",
+            "href": "https://globaldjmix.com/style-mixes/progressive-trance",
+            "article_candidate": false,
+            "parent_text": "Progressive Trance"
+          },
+          {
+            "text": "Dark Progressive",
+            "href": "https://globaldjmix.com/style-mixes/dark-progressive",
+            "article_candidate": false,
+            "parent_text": "Dark Progressive"
+          },
+          {
+            "text": "Melodic Progressive",
+            "href": "https://globaldjmix.com/style-mixes/melodic-progressive",
+            "article_candidate": false,
+            "parent_text": "Melodic Progressive"
+          },
+          {
+            "text": "Progressive Psy",
+            "href": "https://globaldjmix.com/style-mixes/progressive-psy",
+            "article_candidate": false,
+            "parent_text": "Progressive Psy"
+          },
+          {
+            "text": "Deep NuDisco",
+            "href": "https://globaldjmix.com/style-mixes/deep-nudisco",
+            "article_candidate": false,
+            "parent_text": "Deep NuDisco"
+          },
+          {
+            "text": "Electro House",
+            "href": "https://globaldjmix.com/style-mixes/electro-house",
+            "article_candidate": false,
+            "parent_text": "Electro House"
+          },
+          {
+            "text": "Garage house",
+            "href": "https://globaldjmix.com/style-mixes/garage-house",
+            "article_candidate": false,
+            "parent_text": "Garage house"
+          },
+          {
+            "text": "Soulful House",
+            "href": "https://globaldjmix.com/style-mixes/soulful-house",
+            "article_candidate": false,
+            "parent_text": "Soulful House"
+          },
+          {
+            "text": "South African House",
+            "href": "https://globaldjmix.com/style-mixes/south-african-house",
+            "article_candidate": false,
+            "parent_text": "South African House"
+          },
+          {
+            "text": "Tribal House",
+            "href": "https://globaldjmix.com/style-mixes/tribal-house",
+            "article_candidate": false,
+            "parent_text": "Tribal House"
+          },
+          {
+            "text": "Vocal Deep House",
+            "href": "https://globaldjmix.com/style-mixes/vocal-deep-house",
+            "article_candidate": false,
+            "parent_text": "Vocal Deep House"
+          },
+          {
+            "text": "Detroit Techno",
+            "href": "https://globaldjmix.com/style-mixes/detroit-techno",
+            "article_candidate": false,
+            "parent_text": "Detroit Techno"
+          },
+          {
+            "text": "Underground Techno",
+            "href": "https://globaldjmix.com/style-mixes/underground-techno",
+            "article_candidate": false,
+            "parent_text": "Underground Techno"
+          },
+          {
+            "text": "Drum and Bass",
+            "href": "https://globaldjmix.com/style-mixes/drum-and-bass",
+            "article_candidate": false,
+            "parent_text": "Drum and Bass"
+          },
+          {
+            "text": "Deep NuDisco",
+            "href": "https://globaldjmix.com/style-mixes/deep-nudisco",
+            "article_candidate": false,
+            "parent_text": "Deep NuDisco"
+          },
+          {
+            "text": "Vocal Deep House",
+            "href": "https://globaldjmix.com/style-mixes/vocal-deep-house",
+            "article_candidate": false,
+            "parent_text": "Vocal Deep House"
+          },
+          {
+            "text": "My Collection",
+            "href": "https://globaldjmix.com/my-collections",
+            "article_candidate": false,
+            "parent_text": "My Collection"
+          },
+          {
+            "text": "Tomorrowland",
+            "href": "https://globaldjmix.com/livesets-mixes-podcasts-radioshow/tomorrowland",
+            "article_candidate": false,
+            "parent_text": "Tomorrowland"
+          },
+          {
+            "text": "New DJ Mixes",
+            "href": "https://globaldjmix.com/livedjsets",
+            "article_candidate": false,
+            "parent_text": "New DJ Mixes"
+          },
+          {
+            "text": "Top Oct 2026",
+            "href": "https://globaldjmix.com/best-mixes/2026-10",
+            "article_candidate": false,
+            "parent_text": "Top Oct 2026"
+          },
+          {
+            "text": "Share Mix/Web Article",
+            "href": "https://globaldjmix.com/share-dj-mixes",
+            "article_candidate": false,
+            "parent_text": "Share Mix/Web Article"
+          }
+        ]
+      }
+    },
+    {
+      "page": "home",
+      "url": "https://globaldjmix.com/",
+      "error": "No episode links extracted",
+      "response": {
+        "html_length": 157994,
+        "html_title": "GlobalDJMix - DJ Mixes & Live Sets 2026 Download MP3 / Listen Free",
+        "text_preview": "GlobalDJMix - DJ Mixes & Live Sets 2026 Download MP3 / Listen Free Toggle navigation Mixes Artists Shows Search Trance Vocal Trance Uplifting Trance Goa Psy Trance Melodic Trance Progressive Trance Tech Trance Epic Trance progressive Dark Progressive Melodic Progressive Progressive Psy House Afro House Deep House Deep NuDisco Disco House Dutch Hous",
+        "heading_sample": [
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Electro Pop",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Tech House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h1",
+            "text": "Welcome to GlobalDjMix – The Home of DJ Mixes & Electronic Music",
+            "href": null
+          },
+          {
+            "tag": "h2",
+            "text": "Recent Trance Mixes",
+            "href": "https://globaldjmix.com/style-mixes/trance"
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Uplifting Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h2",
+            "text": "Recent Progressive Mixes",
+            "href": "https://globaldjmix.com/style-mixes/progressive-house"
+          },
+          {
+            "tag": "h4",
+            "text": "Melodic Progressive",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Melodic Progressive",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Melodic Progressive",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h2",
+            "text": "Recent House Mixes",
+            "href": "https://globaldjmix.com/style-mixes/house"
+          },
+          {
+            "tag": "h4",
+            "text": "Electro Pop",
+            "href": null
+          }
+        ],
+        "same_site_link_sample": [
+          {
+            "text": "Vocal Trance",
+            "href": "https://globaldjmix.com/style-mixes/vocal-trance",
+            "article_candidate": false,
+            "parent_text": "Vocal Trance"
+          },
+          {
+            "text": "Uplifting Trance",
+            "href": "https://globaldjmix.com/style-mixes/uplifting-trance",
+            "article_candidate": false,
+            "parent_text": "Uplifting Trance"
+          },
+          {
+            "text": "Goa Psy Trance",
+            "href": "https://globaldjmix.com/style-mixes/goa-psy-trance",
+            "article_candidate": false,
+            "parent_text": "Goa Psy Trance"
+          },
+          {
+            "text": "Melodic Trance",
+            "href": "https://globaldjmix.com/style-mixes/melodic-trance",
+            "article_candidate": false,
+            "parent_text": "Melodic Trance"
+          },
+          {
+            "text": "Progressive Trance",
+            "href": "https://globaldjmix.com/style-mixes/progressive-trance",
+            "article_candidate": false,
+            "parent_text": "Progressive Trance"
+          },
+          {
+            "text": "Dark Progressive",
+            "href": "https://globaldjmix.com/style-mixes/dark-progressive",
+            "article_candidate": false,
+            "parent_text": "Dark Progressive"
+          },
+          {
+            "text": "Melodic Progressive",
+            "href": "https://globaldjmix.com/style-mixes/melodic-progressive",
+            "article_candidate": false,
+            "parent_text": "Melodic Progressive"
+          },
+          {
+            "text": "Progressive Psy",
+            "href": "https://globaldjmix.com/style-mixes/progressive-psy",
+            "article_candidate": false,
+            "parent_text": "Progressive Psy"
+          },
+          {
+            "text": "Deep NuDisco",
+            "href": "https://globaldjmix.com/style-mixes/deep-nudisco",
+            "article_candidate": false,
+            "parent_text": "Deep NuDisco"
+          },
+          {
+            "text": "Electro House",
+            "href": "https://globaldjmix.com/style-mixes/electro-house",
+            "article_candidate": false,
+            "parent_text": "Electro House"
+          },
+          {
+            "text": "Garage house",
+            "href": "https://globaldjmix.com/style-mixes/garage-house",
+            "article_candidate": false,
+            "parent_text": "Garage house"
+          },
+          {
+            "text": "Soulful House",
+            "href": "https://globaldjmix.com/style-mixes/soulful-house",
+            "article_candidate": false,
+            "parent_text": "Soulful House"
+          },
+          {
+            "text": "South African House",
+            "href": "https://globaldjmix.com/style-mixes/south-african-house",
+            "article_candidate": false,
+            "parent_text": "South African House"
+          },
+          {
+            "text": "Tribal House",
+            "href": "https://globaldjmix.com/style-mixes/tribal-house",
+            "article_candidate": false,
+            "parent_text": "Tribal House"
+          },
+          {
+            "text": "Vocal Deep House",
+            "href": "https://globaldjmix.com/style-mixes/vocal-deep-house",
+            "article_candidate": false,
+            "parent_text": "Vocal Deep House"
+          },
+          {
+            "text": "Detroit Techno",
+            "href": "https://globaldjmix.com/style-mixes/detroit-techno",
+            "article_candidate": false,
+            "parent_text": "Detroit Techno"
+          },
+          {
+            "text": "Underground Techno",
+            "href": "https://globaldjmix.com/style-mixes/underground-techno",
+            "article_candidate": false,
+            "parent_text": "Underground Techno"
+          },
+          {
+            "text": "Drum and Bass",
+            "href": "https://globaldjmix.com/style-mixes/drum-and-bass",
+            "article_candidate": false,
+            "parent_text": "Drum and Bass"
+          },
+          {
+            "text": "Deep NuDisco",
+            "href": "https://globaldjmix.com/style-mixes/deep-nudisco",
+            "article_candidate": false,
+            "parent_text": "Deep NuDisco"
+          },
+          {
+            "text": "Vocal Deep House",
+            "href": "https://globaldjmix.com/style-mixes/vocal-deep-house",
+            "article_candidate": false,
+            "parent_text": "Vocal Deep House"
+          },
+          {
+            "text": "My Collection",
+            "href": "https://globaldjmix.com/my-collections",
+            "article_candidate": false,
+            "parent_text": "My Collection"
+          },
+          {
+            "text": "Tomorrowland",
+            "href": "https://globaldjmix.com/livesets-mixes-podcasts-radioshow/tomorrowland",
+            "article_candidate": false,
+            "parent_text": "Tomorrowland"
+          },
+          {
+            "text": "New DJ Mixes",
+            "href": "https://globaldjmix.com/livedjsets",
+            "article_candidate": false,
+            "parent_text": "New DJ Mixes"
+          },
+          {
+            "text": "Top Oct 2026",
+            "href": "https://globaldjmix.com/best-mixes/2026-10",
+            "article_candidate": false,
+            "parent_text": "Top Oct 2026"
+          },
+          {
+            "text": "Armin van Buuren",
+            "href": "https://globaldjmix.com/armin-van-buuren",
+            "article_candidate": true,
+            "parent_text": "Armin van Buuren"
+          }
+        ]
+      }
+    },
+    {
+      "page": 2,
+      "url": "https://globaldjmix.com/livedjsets?p=2",
+      "error": "No episode links extracted",
+      "response": {
+        "html_length": 128102,
+        "html_title": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free - Page 2",
+        "text_preview": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free - Page 2 Toggle navigation Mixes Artists Shows Search Trance Vocal Trance Uplifting Trance Goa Psy Trance Melodic Trance Progressive Trance Tech Trance Epic Trance progressive Dark Progressive Melodic Progressive Progressive Psy House Afro House Deep House Deep NuDisco Disco House",
+        "heading_sample": [
+          {
+            "tag": "h1",
+            "text": "DJ Mixes and LiveSets - Full list - page 2",
+            "href": null
+          },
+          {
+            "tag": "h2",
+            "text": "Recent new DJ Mixes & Live Sets",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Electro Pop",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Techno",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Electro House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Tech House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Electro House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Tech House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Electro Pop",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Tech House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Electro Pop",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Big Room",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Techno",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Uplifting Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Electro House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Electro House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Tech House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Melodic Progressive",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          }
+        ],
+        "same_site_link_sample": [
+          {
+            "text": "Vocal Trance",
+            "href": "https://globaldjmix.com/style-mixes/vocal-trance",
+            "article_candidate": false,
+            "parent_text": "Vocal Trance"
+          },
+          {
+            "text": "Uplifting Trance",
+            "href": "https://globaldjmix.com/style-mixes/uplifting-trance",
+            "article_candidate": false,
+            "parent_text": "Uplifting Trance"
+          },
+          {
+            "text": "Goa Psy Trance",
+            "href": "https://globaldjmix.com/style-mixes/goa-psy-trance",
+            "article_candidate": false,
+            "parent_text": "Goa Psy Trance"
+          },
+          {
+            "text": "Melodic Trance",
+            "href": "https://globaldjmix.com/style-mixes/melodic-trance",
+            "article_candidate": false,
+            "parent_text": "Melodic Trance"
+          },
+          {
+            "text": "Progressive Trance",
+            "href": "https://globaldjmix.com/style-mixes/progressive-trance",
+            "article_candidate": false,
+            "parent_text": "Progressive Trance"
+          },
+          {
+            "text": "Dark Progressive",
+            "href": "https://globaldjmix.com/style-mixes/dark-progressive",
+            "article_candidate": false,
+            "parent_text": "Dark Progressive"
+          },
+          {
+            "text": "Melodic Progressive",
+            "href": "https://globaldjmix.com/style-mixes/melodic-progressive",
+            "article_candidate": false,
+            "parent_text": "Melodic Progressive"
+          },
+          {
+            "text": "Progressive Psy",
+            "href": "https://globaldjmix.com/style-mixes/progressive-psy",
+            "article_candidate": false,
+            "parent_text": "Progressive Psy"
+          },
+          {
+            "text": "Deep NuDisco",
+            "href": "https://globaldjmix.com/style-mixes/deep-nudisco",
+            "article_candidate": false,
+            "parent_text": "Deep NuDisco"
+          },
+          {
+            "text": "Electro House",
+            "href": "https://globaldjmix.com/style-mixes/electro-house",
+            "article_candidate": false,
+            "parent_text": "Electro House"
+          },
+          {
+            "text": "Garage house",
+            "href": "https://globaldjmix.com/style-mixes/garage-house",
+            "article_candidate": false,
+            "parent_text": "Garage house"
+          },
+          {
+            "text": "Soulful House",
+            "href": "https://globaldjmix.com/style-mixes/soulful-house",
+            "article_candidate": false,
+            "parent_text": "Soulful House"
+          },
+          {
+            "text": "South African House",
+            "href": "https://globaldjmix.com/style-mixes/south-african-house",
+            "article_candidate": false,
+            "parent_text": "South African House"
+          },
+          {
+            "text": "Tribal House",
+            "href": "https://globaldjmix.com/style-mixes/tribal-house",
+            "article_candidate": false,
+            "parent_text": "Tribal House"
+          },
+          {
+            "text": "Vocal Deep House",
+            "href": "https://globaldjmix.com/style-mixes/vocal-deep-house",
+            "article_candidate": false,
+            "parent_text": "Vocal Deep House"
+          },
+          {
+            "text": "Detroit Techno",
+            "href": "https://globaldjmix.com/style-mixes/detroit-techno",
+            "article_candidate": false,
+            "parent_text": "Detroit Techno"
+          },
+          {
+            "text": "Underground Techno",
+            "href": "https://globaldjmix.com/style-mixes/underground-techno",
+            "article_candidate": false,
+            "parent_text": "Underground Techno"
+          },
+          {
+            "text": "Drum and Bass",
+            "href": "https://globaldjmix.com/style-mixes/drum-and-bass",
+            "article_candidate": false,
+            "parent_text": "Drum and Bass"
+          },
+          {
+            "text": "Deep NuDisco",
+            "href": "https://globaldjmix.com/style-mixes/deep-nudisco",
+            "article_candidate": false,
+            "parent_text": "Deep NuDisco"
+          },
+          {
+            "text": "Vocal Deep House",
+            "href": "https://globaldjmix.com/style-mixes/vocal-deep-house",
+            "article_candidate": false,
+            "parent_text": "Vocal Deep House"
+          },
+          {
+            "text": "My Collection",
+            "href": "https://globaldjmix.com/my-collections",
+            "article_candidate": false,
+            "parent_text": "My Collection"
+          },
+          {
+            "text": "Tomorrowland",
+            "href": "https://globaldjmix.com/livesets-mixes-podcasts-radioshow/tomorrowland",
+            "article_candidate": false,
+            "parent_text": "Tomorrowland"
+          },
+          {
+            "text": "New DJ Mixes",
+            "href": "https://globaldjmix.com/livedjsets",
+            "article_candidate": false,
+            "parent_text": "New DJ Mixes"
+          },
+          {
+            "text": "Top Oct 2026",
+            "href": "https://globaldjmix.com/best-mixes/2026-10",
+            "article_candidate": false,
+            "parent_text": "Top Oct 2026"
+          },
+          {
+            "text": "Share Mix/Web Article",
+            "href": "https://globaldjmix.com/share-dj-mixes",
+            "article_candidate": false,
+            "parent_text": "Share Mix/Web Article"
+          }
+        ]
+      }
+    },
+    {
+      "page": 3,
+      "url": "https://globaldjmix.com/livedjsets?p=3",
+      "error": "No episode links extracted",
+      "response": {
+        "html_length": 128113,
+        "html_title": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free - Page 3",
+        "text_preview": "Recent New DJ Mixes and Livesets: Download MP3 or listen online free - Page 3 Toggle navigation Mixes Artists Shows Search Trance Vocal Trance Uplifting Trance Goa Psy Trance Melodic Trance Progressive Trance Tech Trance Epic Trance progressive Dark Progressive Melodic Progressive Progressive Psy House Afro House Deep House Deep NuDisco Disco House",
+        "heading_sample": [
+          {
+            "tag": "h1",
+            "text": "DJ Mixes and LiveSets - Full list - page 3",
+            "href": null
+          },
+          {
+            "tag": "h2",
+            "text": "Recent new DJ Mixes & Live Sets",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Electro Pop",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Uplifting Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Deep Tech",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Techno",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Techno",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Tech House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Vocal Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Drum and Bass",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Electro House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Deep NuDisco",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Chillout",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Tech House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Goa Psy Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Electro Pop",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Bass House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Tech House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Electro House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Tech House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Vocal Trance",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Techno",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Tech House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Electro House",
+            "href": null
+          },
+          {
+            "tag": "h4",
+            "text": "Progressive house",
+            "href": null
+          }
+        ],
+        "same_site_link_sample": [
+          {
+            "text": "Vocal Trance",
+            "href": "https://globaldjmix.com/style-mixes/vocal-trance",
+            "article_candidate": false,
+            "parent_text": "Vocal Trance"
+          },
+          {
+            "text": "Uplifting Trance",
+            "href": "https://globaldjmix.com/style-mixes/uplifting-trance",
+            "article_candidate": false,
+            "parent_text": "Uplifting Trance"
+          },
+          {
+            "text": "Goa Psy Trance",
+            "href": "https://globaldjmix.com/style-mixes/goa-psy-trance",
+            "article_candidate": false,
+            "parent_text": "Goa Psy Trance"
+          },
+          {
+            "text": "Melodic Trance",
+            "href": "https://globaldjmix.com/style-mixes/melodic-trance",
+            "article_candidate": false,
+            "parent_text": "Melodic Trance"
+          },
+          {
+            "text": "Progressive Trance",
+            "href": "https://globaldjmix.com/style-mixes/progressive-trance",
+            "article_candidate": false,
+            "parent_text": "Progressive Trance"
+          },
+          {
+            "text": "Dark Progressive",
+            "href": "https://globaldjmix.com/style-mixes/dark-progressive",
+            "article_candidate": false,
+            "parent_text": "Dark Progressive"
+          },
+          {
+            "text": "Melodic Progressive",
+            "href": "https://globaldjmix.com/style-mixes/melodic-progressive",
+            "article_candidate": false,
+            "parent_text": "Melodic Progressive"
+          },
+          {
+            "text": "Progressive Psy",
+            "href": "https://globaldjmix.com/style-mixes/progressive-psy",
+            "article_candidate": false,
+            "parent_text": "Progressive Psy"
+          },
+          {
+            "text": "Deep NuDisco",
+            "href": "https://globaldjmix.com/style-mixes/deep-nudisco",
+            "article_candidate": false,
+            "parent_text": "Deep NuDisco"
+          },
+          {
+            "text": "Electro House",
+            "href": "https://globaldjmix.com/style-mixes/electro-house",
+            "article_candidate": false,
+            "parent_text": "Electro House"
+          },
+          {
+            "text": "Garage house",
+            "href": "https://globaldjmix.com/style-mixes/garage-house",
+            "article_candidate": false,
+            "parent_text": "Garage house"
+          },
+          {
+            "text": "Soulful House",
+            "href": "https://globaldjmix.com/style-mixes/soulful-house",
+            "article_candidate": false,
+            "parent_text": "Soulful House"
+          },
+          {
+            "text": "South African House",
+            "href": "https://globaldjmix.com/style-mixes/south-african-house",
+            "article_candidate": false,
+            "parent_text": "South African House"
+          },
+          {
+            "text": "Tribal House",
+            "href": "https://globaldjmix.com/style-mixes/tribal-house",
+            "article_candidate": false,
+            "parent_text": "Tribal House"
+          },
+          {
+            "text": "Vocal Deep House",
+            "href": "https://globaldjmix.com/style-mixes/vocal-deep-house",
+            "article_candidate": false,
+            "parent_text": "Vocal Deep House"
+          },
+          {
+            "text": "Detroit Techno",
+            "href": "https://globaldjmix.com/style-mixes/detroit-techno",
+            "article_candidate": false,
+            "parent_text": "Detroit Techno"
+          },
+          {
+            "text": "Underground Techno",
+            "href": "https://globaldjmix.com/style-mixes/underground-techno",
+            "article_candidate": false,
+            "parent_text": "Underground Techno"
+          },
+          {
+            "text": "Drum and Bass",
+            "href": "https://globaldjmix.com/style-mixes/drum-and-bass",
+            "article_candidate": false,
+            "parent_text": "Drum and Bass"
+          },
+          {
+            "text": "Deep NuDisco",
+            "href": "https://globaldjmix.com/style-mixes/deep-nudisco",
+            "article_candidate": false,
+            "parent_text": "Deep NuDisco"
+          },
+          {
+            "text": "Vocal Deep House",
+            "href": "https://globaldjmix.com/style-mixes/vocal-deep-house",
+            "article_candidate": false,
+            "parent_text": "Vocal Deep House"
+          },
+          {
+            "text": "My Collection",
+            "href": "https://globaldjmix.com/my-collections",
+            "article_candidate": false,
+            "parent_text": "My Collection"
+          },
+          {
+            "text": "Tomorrowland",
+            "href": "https://globaldjmix.com/livesets-mixes-podcasts-radioshow/tomorrowland",
+            "article_candidate": false,
+            "parent_text": "Tomorrowland"
+          },
+          {
+            "text": "New DJ Mixes",
+            "href": "https://globaldjmix.com/livedjsets",
+            "article_candidate": false,
+            "parent_text": "New DJ Mixes"
+          },
+          {
+            "text": "Top Oct 2026",
+            "href": "https://globaldjmix.com/best-mixes/2026-10",
+            "article_candidate": false,
+            "parent_text": "Top Oct 2026"
+          },
+          {
+            "text": "Share Mix/Web Article",
+            "href": "https://globaldjmix.com/share-dj-mixes",
+            "article_candidate": false,
+            "parent_text": "Share Mix/Web Article"
+          }
+        ]
+      }
+    }
+  ],
   "selected_articles": 0,
   "articles_checked": 0,
   "audio_resolved": 0,
