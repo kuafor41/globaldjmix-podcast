@@ -39,6 +39,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     env:
       FEED_MODE: ${{ github.event_name == 'schedule' && 'incremental' || inputs.mode || 'test' }}
+      GLOBALDJMIX_USERNAME: ${{ secrets.GLOBALDJMIX_USERNAME }}
+      GLOBALDJMIX_PASSWORD: ${{ secrets.GLOBALDJMIX_PASSWORD }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -46,66 +48,6 @@ jobs:
           python-version: "3.12"
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
-      - name: Test GlobalDJMix login and inspect tracklist handler (temporary)
-        continue-on-error: true
-        env:
-          SITE_LOGIN: ${{ secrets.GLOBALDJMIX_USERNAME }}
-          SITE_PASSWORD: ${{ secrets.GLOBALDJMIX_PASSWORD }}
-        run: |
-          python - <<'PY'
-          import os, re, requests
-          from bs4 import BeautifulSoup
-          from urllib.parse import urljoin
-          base = "https://globaldjmix.com"
-          episode = base + "/david-guetta-playlist-849-2026-october-02/"
-          s = requests.Session()
-          s.headers.update({"User-Agent": "Mozilla/5.0"})
-          try:
-              r = s.get(base + "/get-auth-form", timeout=20)
-              soup = BeautifulSoup(r.text, "html.parser")
-              form = soup.find("form")
-              print("LOGIN_FORM", r.status_code, "action=", form.get("action") if form else None, "method=", form.get("method") if form else None)
-              username, password = os.getenv("SITE_LOGIN", ""), os.getenv("SITE_PASSWORD", "")
-              if form and username and password:
-                  data = {}
-                  for el in form.find_all("input"):
-                      name = el.get("name")
-                      if not name: continue
-                      typ = (el.get("type") or "text").lower()
-                      if typ == "password": data[name] = password
-                      elif name.lower() in ("login", "username", "user", "email"): data[name] = username
-                      else: data[name] = el.get("value", "")
-                  action = urljoin(r.url, form.get("action") or r.url)
-                  resp = s.post(action, data=data, timeout=20, allow_redirects=True)
-                  body = resp.text.lower()
-                  print("LOGIN_RESULT", "status=", resp.status_code, "final_url=", resp.url, "bytes=", len(resp.text), "auth_form_still_present=", "/get-auth-form" in resp.url, "logout_marker=", any(x in body for x in ("logout", "log out", "sign out")))
-              else:
-                  print("LOGIN_RESULT skipped: credentials unavailable or form missing")
-              er = s.get(episode, timeout=20)
-              es = BeautifulSoup(er.text, "html.parser")
-              btn = es.select_one("button.show-tracklist")
-              print("EPISODE_AFTER_LOGIN", er.status_code, "bytes=", len(er.text), "tracklist_button=", bool(btn), "data_id=", btn.get("data-id") if btn else None)
-              print("JS_FILES", [urljoin(er.url, x.get("src")) for x in es.find_all("script", src=True)])
-              hits = 0
-              for tag in es.find_all("script", src=True):
-                  jsurl = urljoin(er.url, tag.get("src"))
-                  try:
-                      jr = s.get(jsurl, timeout=12)
-                      text = jr.text
-                      for pattern in (r"show-tracklist", r"tracklist"):
-                          m = re.search(pattern, text, re.I)
-                          if m:
-                              snippet = re.sub(r"\\s+", " ", text[max(0,m.start()-250):m.start()+500])
-                              print("JS_HANDLER", jsurl, "status=", jr.status_code, snippet[:750])
-                              hits += 1
-                              break
-                  except Exception as e:
-                      print("JS_FETCH_ERROR", jsurl, type(e).__name__)
-              print("JS_HANDLER_HITS", hits)
-              print("EPISODE_URL", episode)
-          except Exception as e:
-              print("LOGIN_TRACKLIST_TEST_ERROR", type(e).__name__, str(e)[:250])
-          PY
       - name: Build podcast feed
         run: python fetch_feed.py
       - name: Commit feed data and diagnostics
