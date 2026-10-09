@@ -51,6 +51,16 @@ jobs:
               es = BeautifulSoup(er.text, "html.parser")
               btn = es.select_one("button.show-tracklist")
               print("BUTTON", btn.get("data-id") if btn else None, "page", er.status_code)
+              if btn:
+                  tr = s.get(base + "/get-tracklist", params={"id": btn.get("data-id")}, headers={"Referer": episode, "X-Requested-With": "XMLHttpRequest"}, timeout=20)
+                  print("TRACKLIST_RESPONSE", tr.status_code, "content_type=", tr.headers.get("Content-Type"), "bytes=", len(tr.text), "preview=", tr.text[:900].replace("\\n", " "))
+                  try:
+                      payload = tr.json()
+                      raw = payload.get("tracklist", "")
+                      plain = BeautifulSoup(raw, "html.parser").get_text(" ", strip=True)
+                      print("TRACKLIST_JSON", "success=", payload.get("success"), "raw_length=", len(raw), "plain_length=", len(plain), "plain_preview=", plain[:700])
+                  except Exception as exc:
+                      print("TRACKLIST_JSON_PARSE_ERROR", type(exc).__name__)
               for script in es.find_all("script"):
                   txt = script.string or script.get_text()
                   if txt:
