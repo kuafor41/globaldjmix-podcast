@@ -735,6 +735,10 @@ def main():
     else:
         selected = posts[:TEST_LIMIT] if MODE == "test" else posts
         pending = [url for url in selected if url not in existing_by_url]
+    if MODE == "since2025":
+        # Re-parse all retained archive pages once so stored pubDate values
+        # are refreshed with the Post Date-first rule.
+        pending = selected
     if MODE == "test":
         # A test always performs the requested checks instead of skipping previously saved rows.
         pending = selected
