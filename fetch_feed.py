@@ -31,6 +31,9 @@ ARCHIVE_PAGE_CAP = 3
 WORKERS = 5
 TIMEOUT = 18
 REQUEST_GAP = 0.12
+TRACKLIST_REQUEST_GAP = 6.0
+TRACKLIST_RATE_LOCK = Lock()
+NEXT_TRACKLIST_REQUEST = 0.0
 AGENT = "Mozilla/5.0 (compatible; GlobalDJMixPodcastRSS/3.0)"
 THREAD = local()
 RATE_LOCK = Lock()
@@ -105,6 +108,15 @@ def wait_turn():
         if now < NEXT_REQUEST:
             time.sleep(NEXT_REQUEST - now)
         NEXT_REQUEST = max(time.monotonic(), NEXT_REQUEST) + REQUEST_GAP
+
+
+def wait_tracklist_turn():
+    global NEXT_TRACKLIST_REQUEST
+    with TRACKLIST_RATE_LOCK:
+        now = time.monotonic()
+        if now < NEXT_TRACKLIST_REQUEST:
+            time.sleep(NEXT_TRACKLIST_REQUEST - now)
+        NEXT_TRACKLIST_REQUEST = max(time.monotonic(), NEXT_TRACKLIST_REQUEST) + TRACKLIST_REQUEST_GAP
 
 
 def clean_url(value, base=None):
@@ -596,7 +608,7 @@ def fetch_tracklist(soup, article_url):
 
     response = None
     try:
-        wait_turn()
+        wait_tracklist_turn()
         response = session().get(
             BASE + "/get-tracklist",
             params={"id": button.get("data-id")},
@@ -609,6 +621,9 @@ def fetch_tracklist(soup, article_url):
             return None, "Tracklist endpoint did not return success"
         tracklist_html = payload.get("tracklist") or ""
         track_soup = BeautifulSoup(tracklist_html, "html.parser")
+        response_text = re.sub(r"\s+", " ", track_soup.get_text(" ", strip=True)).strip()
+        if "many requests to tracklists" in response_text.lower():
+            return None, "GlobalDJMix rate-limited the tracklist request"
         track_nodes = track_soup.select(".track")
         tracks = [
             re.sub(r"\s+", " ", node.get_text(" ", strip=True)).strip()
@@ -790,6 +805,8 @@ def main():
                 print("  Diagnostic:", (diag.get("audio_error") or diag.get("error") or "audio unresolved")[:700])
             if diag.get("image_error"):
                 print("  Image diagnostic:", str(diag["image_error"])[:250])
+            if diag.get("tracklist_button_found") and diag.get("tracklist_error"):
+                print("  Tracklist diagnostic:", str(diag["tracklist_error"])[:250])
 
     audio_ok = sum(bool(d.get("audio_ok")) for d in diagnostics)
     image_ok = sum(bool(d.get("image_http_ok")) for d in diagnostics)
