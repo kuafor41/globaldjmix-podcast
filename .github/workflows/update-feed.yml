@@ -39,6 +39,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     env:
       FEED_MODE: ${{ github.event_name == 'schedule' && 'incremental' || inputs.mode || 'test' }}
+      GLOBALDJMIX_USERNAME: ${{ secrets.GLOBALDJMIX_USERNAME }}
+      GLOBALDJMIX_PASSWORD: ${{ secrets.GLOBALDJMIX_PASSWORD }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
