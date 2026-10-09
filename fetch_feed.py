@@ -699,7 +699,20 @@ def load_items():
 def load_retry_queue():
     try:
         parsed = json.loads(RETRY_FILE.read_text(encoding="utf-8"))
-        return unique(parsed) if isinstance(parsed, list) else []
+        if isinstance(parsed, list) and parsed:
+            return unique(parsed)[:MAX_RETRY_QUEUE]
+    except Exception:
+        pass
+
+    # Recovery path: if the queue is empty/missing, seed it from the latest
+    # diagnostic report so a prior full import's failures are not forgotten.
+    try:
+        report = json.loads(REPORT_FILE.read_text(encoding="utf-8"))
+        failed = [
+            diag.get("url") for diag in report.get("diagnostics", [])
+            if not diag.get("audio_ok") and diag.get("url")
+        ]
+        return unique(failed)[:MAX_RETRY_QUEUE]
     except Exception:
         return []
 
