@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09T07:44:20.769098+00:00",
+  "generated_at": "2026-10-09T07:46:50.313397+00:00",
   "mode": "test",
   "archive_source": "https://globaldjmix.com/livedjsets",
   "archive_pages_reported": 1660,
@@ -258,6 +258,23 @@
       "error": null
     },
     {
+      "url": "https://globaldjmix.com/andrew-rayel-find-your-harmony-radioshow-513-2026-october-07/",
+      "article_fetched": true,
+      "title": "Andrew Rayel - Find Your Harmony Radioshow 513 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://mcdn.podbean.com/mf/web/ihjaq6773dtuavz4/Andrew_Rayel_-_Find_Your_Harmony_Episode_5138s59m.mp3"
+      ],
+      "audio_url": "https://mcdn.podbean.com/mf/web/ihjaq6773dtuavz4/Andrew_Rayel_-_Find_Your_Harmony_Episode_5138s59m.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/find_your_harmony_radioshow_513_2026-10-07.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
       "url": "https://globaldjmix.com/beatdealers-welcome-to-the-weekend-495-2026-october-08/",
       "article_fetched": true,
       "title": "Beatdealers - Welcome to the Weekend 495 (08 October 2026)",
@@ -271,23 +288,6 @@
       "audio_url": "http://files.globaldjmix.com/2026/10/08/Beatdealers - Welcome to the Weekend 495 (08.October 2026).mp3",
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/nylo_music_welcome_to_the_weekend_.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/andrew-rayel-find-your-harmony-radioshow-513-2026-october-07/",
-      "article_fetched": true,
-      "title": "Andrew Rayel - Find Your Harmony Radioshow 513 (07 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://mcdn.podbean.com/mf/web/ihjaq6773dtuavz4/Andrew_Rayel_-_Find_Your_Harmony_Episode_5138s59m.mp3"
-      ],
-      "audio_url": "https://mcdn.podbean.com/mf/web/ihjaq6773dtuavz4/Andrew_Rayel_-_Find_Your_Harmony_Episode_5138s59m.mp3",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/find_your_harmony_radioshow_513_2026-10-07.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -347,23 +347,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/robin-schulz-sugar-radio-562-2026-october-07/",
-      "article_fetched": true,
-      "title": "Robin Schulz - Sugar Radio 562 (07 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://app.syndicast.co.uk/download/itunes/uploads/audios/56/562-7.mp3"
-      ],
-      "audio_url": "https://app.syndicast.co.uk/download/itunes/uploads/audios/56/562-7.mp3",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/robin_schulz.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/ferry-corsten-resonation-radio-306-2026-october-07/",
       "article_fetched": true,
       "title": "Ferry Corsten - Resonation Radio 306 (07 October 2026)",
@@ -377,6 +360,23 @@
       "audio_url": "http://files.globaldjmix.com/2026/10/07/Ferry Corsten - Resonation Radio 306 on AH.FM 07-10-2026.mp3",
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/resonation_radio_presented_by_ferry_corsten.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/robin-schulz-sugar-radio-562-2026-october-07/",
+      "article_fetched": true,
+      "title": "Robin Schulz - Sugar Radio 562 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://app.syndicast.co.uk/download/itunes/uploads/audios/56/562-7.mp3"
+      ],
+      "audio_url": "https://app.syndicast.co.uk/download/itunes/uploads/audios/56/562-7.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/robin_schulz.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -675,23 +675,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/fedde-le-grand-darklight-sessions-737-2026-october-05/",
-      "article_fetched": true,
-      "title": "Fedde le Grand - Darklight Sessions 737 (05 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://traffic.libsyn.com/secure/feddelegrand/Fedde_Le_Grand_-_Darklight_Sessions_737_-_Global.mp3?dest-id=177173"
-      ],
-      "audio_url": "https://traffic.libsyn.com/secure/feddelegrand/Fedde_Le_Grand_-_Darklight_Sessions_737_-_Global.mp3?dest-id=177173",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/fedde_le_grand_-_darklight_sessions.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/nora-en-pure-purified-radio-528-2026-october-05/",
       "article_fetched": true,
       "title": "Nora En Pure - Purified Radio 528 (05 October 2026)",
@@ -703,6 +686,23 @@
       "audio_url": "https://audio.thisisdistorted.com/repository/audio/episodes/NORA_528_Podcast-1790786686905665851-NDMxNjYtODc3NDI1ODg=.mp3",
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/nora_en_pure_purified_di_fm.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/fedde-le-grand-darklight-sessions-737-2026-october-05/",
+      "article_fetched": true,
+      "title": "Fedde le Grand - Darklight Sessions 737 (05 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://traffic.libsyn.com/secure/feddelegrand/Fedde_Le_Grand_-_Darklight_Sessions_737_-_Global.mp3?dest-id=177173"
+      ],
+      "audio_url": "https://traffic.libsyn.com/secure/feddelegrand/Fedde_Le_Grand_-_Darklight_Sessions_737_-_Global.mp3?dest-id=177173",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/fedde_le_grand_-_darklight_sessions.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -888,23 +888,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/vintage-culture-affairs-158-2026-october-03/",
-      "article_fetched": true,
-      "title": "Vintage Culture - Affairs 158 (03 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://cdn.podtoo.com/syndication/2026/10/1791001563371full_episode_AFFAIRS--158--World-.mp3"
-      ],
-      "audio_url": "https://cdn.podtoo.com/syndication/2026/10/1791001563371full_episode_AFFAIRS--158--World-.mp3",
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/vintage_culture_-_affairs.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/steve-aoki-aoki's-house-podcast-687-2026-october-03/",
       "article_fetched": true,
       "title": "Steve Aoki - Aoki's House Podcast 687 (03 October 2026)",
@@ -916,6 +899,23 @@
       "audio_url": "https://traffic.libsyn.com/secure/steveaoki/Aokis_House_Podcast_687_EP_765_Air_Date_9.30.26_-_Podcast.mp3?dest-id=317282",
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/steve_aoki_sirius.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/vintage-culture-affairs-158-2026-october-03/",
+      "article_fetched": true,
+      "title": "Vintage Culture - Affairs 158 (03 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://cdn.podtoo.com/syndication/2026/10/1791001563371full_episode_AFFAIRS--158--World-.mp3"
+      ],
+      "audio_url": "https://cdn.podtoo.com/syndication/2026/10/1791001563371full_episode_AFFAIRS--158--World-.mp3",
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/vintage_culture_-_affairs.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
