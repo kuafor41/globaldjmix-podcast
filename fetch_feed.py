@@ -581,19 +581,33 @@ def verify_image(url, referer):
 
 
 def episode_date(text, title):
-    patterns = [
-        (r"(?:Post Date|Rec Date)\s*:?\s*(\d{1,2}-[A-Za-z]{3,9}-\d{4})", ("%d-%b-%Y", "%d-%B-%Y")),
-        (r"(?:Post Date|Rec Date)\s*:?\s*(\d{1,2}/\d{1,2}/\d{4})", ("%d/%m/%Y", "%m/%d/%Y")),
-        (r"\b(\d{4}-\d{2}-\d{2})\b", ("%Y-%m-%d",)),
+    # Prefer the publication/listing date so Podcast Addict shows episodes
+    # near their actual release date. Rec Date is only a fallback.
+    date_formats = [
+        (r"(\d{1,2}-[A-Za-z]{3,9}-\d{4})", ("%d-%b-%Y", "%d-%B-%Y")),
+        (r"(\d{1,2}/\d{1,2}/\d{4})", ("%d/%m/%Y", "%m/%d/%Y")),
     ]
-    for pattern, formats in patterns:
-        values = re.findall(pattern, text, re.I) or re.findall(pattern, title, re.I)
-        for value in values:
-            for fmt in formats:
-                try:
-                    return datetime.strptime(value, fmt).replace(tzinfo=timezone.utc).isoformat()
-                except ValueError:
-                    pass
+    for label in ("Post Date", "Rec Date"):
+        for source in (text, title):
+            for pattern, formats in date_formats:
+                match = re.search(label + r"\s*:?\s*" + pattern, source, re.I)
+                if not match:
+                    continue
+                value = match.group(1)
+                for fmt in formats:
+                    try:
+                        return datetime.strptime(value, fmt).replace(tzinfo=timezone.utc).isoformat()
+                    except ValueError:
+                        pass
+
+    # Fallback for pages that expose only an ISO-formatted date.
+    for source in (text, title):
+        match = re.search(r"\b(\d{4}-\d{2}-\d{2})\b", source)
+        if match:
+            try:
+                return datetime.strptime(match.group(1), "%Y-%m-%d").replace(tzinfo=timezone.utc).isoformat()
+            except ValueError:
+                pass
     return datetime.now(timezone.utc).isoformat()
 
 
