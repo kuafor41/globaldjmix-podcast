@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""GlobalDJMix podcast RSS builder; new runs test 50 recent episodes first."""
+"""Build and validate the GlobalDJMix podcast RSS feed."""
 import html
 import json
 import os
@@ -21,13 +21,17 @@ ARCHIVE = BASE + "/livedjsets"
 DATA = Path("data")
 ITEMS_FILE = DATA / "items.json"
 REPORT_FILE = DATA / "test-report.json"
+RETRY_FILE = DATA / "retry-queue.json"
 RSS_FILE = Path("rss.xml")
 
 MODE = os.getenv("FEED_MODE", "test").strip().lower()
 if MODE not in {"test", "incremental", "since2025", "full"}:
     MODE = "test"
 TEST_LIMIT = 50
-ARCHIVE_PAGE_CAP = 3
+TEST_PAGE_CAP = 5
+INCREMENTAL_PAGE_LIMIT = 3
+MAX_RETRIES_PER_RUN = 30
+MAX_RETRY_QUEUE = 1000
 WORKERS = 5
 TIMEOUT = 18
 REQUEST_GAP = 0.12
@@ -298,7 +302,8 @@ def discover_posts(mode):
                     errors.append({"page": n, "url": archive_page_url(n), "error": type(exc).__name__ + ": " + str(exc)})
         found = unique(found)
     else:
-        for n in range(2, max(reported, ARCHIVE_PAGE_CAP) + 1):
+        page_limit = min(reported, TEST_PAGE_CAP if mode == "test" else INCREMENTAL_PAGE_LIMIT)
+        for n in range(2, page_limit + 1):
             try:
                 _, body = get_page(archive_page_url(n))
                 pages_checked += 1
@@ -615,7 +620,7 @@ def parse_episode(url):
     diag = {
         "url": url, "article_fetched": False, "title": "", "audio_ok": False,
         "audio_method": None, "audio_candidates": [], "audio_url": None,
-        "image_found": False, "image_url": None, "image_http_ok": False,
+        "audio_attempts": 0, "image_found": False, "image_url": None, "image_http_ok": False,
         "audio_error": None, "image_error": None, "error": None,
     }
     try:
@@ -637,6 +642,15 @@ def parse_episode(url):
         diag["image_http_ok"], diag["image_error"] = verify_image(image_url, final_url)
 
         audio_url, method, size, candidates, error = resolve_audio(soup, body, final_url)
+        diag["audio_attempts"] = 1
+        # One delayed retry catches transient timeouts and server failures without
+        # allowing a single episode to stall the entire archive scan.
+        if not audio_url:
+            time.sleep(1.2)
+            audio_url, method, size, retry_candidates, retry_error = resolve_audio(soup, body, final_url)
+            diag["audio_attempts"] = 2
+            candidates = unique(candidates + retry_candidates)
+            error = retry_error or error
         diag["audio_candidates"] = candidates
         diag["audio_error"] = error
         if not audio_url:
@@ -666,7 +680,10 @@ def parse_episode(url):
 
 def sort_key(item):
     try:
-        return datetime.fromisoformat(item.get("pub_date", "").replace("Z", "+00:00"))
+        dt = datetime.fromisoformat(item.get("pub_date", "").replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(timezone.utc)
     except Exception:
         return datetime.min.replace(tzinfo=timezone.utc)
 
@@ -675,6 +692,14 @@ def load_items():
     try:
         parsed = json.loads(ITEMS_FILE.read_text(encoding="utf-8"))
         return parsed if isinstance(parsed, list) else []
+    except Exception:
+        return []
+
+
+def load_retry_queue():
+    try:
+        parsed = json.loads(RETRY_FILE.read_text(encoding="utf-8"))
+        return unique(parsed) if isinstance(parsed, list) else []
     except Exception:
         return []
 
@@ -721,27 +746,123 @@ def rss_xml(items):
     return '<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(rss, encoding="unicode") + "\n"
 
 
+def validate_feed(xml_text, expected_count, live_audio_checks=3):
+    """Validate RSS structure/order/retention and probe a few published enclosures."""
+    errors, warnings, audio_probe_failures = [], [], []
+    try:
+        root = ET.fromstring(xml_text)
+    except ET.ParseError as exc:
+        return {
+            "passed": False, "errors": ["Malformed XML: " + str(exc)],
+            "warnings": [], "audio_probe_failures": [], "item_count": 0,
+            "live_audio_checked": 0,
+        }
+
+    if root.tag != "rss" or root.get("version") != "2.0":
+        errors.append("Root must be RSS 2.0.")
+    channel = root.find("channel")
+    if channel is None:
+        return {
+            "passed": False, "errors": errors + ["Missing channel element."],
+            "warnings": warnings, "audio_probe_failures": [],
+            "item_count": 0, "live_audio_checked": 0,
+        }
+
+    feed_items = channel.findall("item")
+    if len(feed_items) != expected_count:
+        errors.append(f"RSS item count {len(feed_items)} does not match expected {expected_count}.")
+
+    seen_guids = set()
+    parsed_dates = []
+    enclosure_urls = []
+    for index, node in enumerate(feed_items, start=1):
+        title = (node.findtext("title") or "").strip()
+        guid = (node.findtext("guid") or "").strip()
+        pub_date = (node.findtext("pubDate") or "").strip()
+        enclosure = node.find("enclosure")
+        if not title:
+            errors.append(f"Item {index} has no title.")
+        if not guid:
+            errors.append(f"Item {index} has no GUID.")
+        elif guid in seen_guids:
+            errors.append(f"Duplicate GUID at item {index}: {guid}")
+        seen_guids.add(guid)
+
+        try:
+            dt = parsedate_to_datetime(pub_date)
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            dt = dt.astimezone(timezone.utc)
+            parsed_dates.append(dt)
+            if dt < datetime(2025, 1, 1, tzinfo=timezone.utc):
+                errors.append(f"Item {index} is older than 2025: {pub_date}")
+        except Exception:
+            errors.append(f"Item {index} has invalid pubDate: {pub_date}")
+
+        if enclosure is None:
+            errors.append(f"Item {index} has no enclosure.")
+            continue
+        url = enclosure.get("url", "")
+        parsed = urlparse(url)
+        if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+            errors.append(f"Item {index} has an invalid enclosure URL.")
+        if enclosure.get("type") != "audio/mpeg":
+            errors.append(f"Item {index} enclosure type is not audio/mpeg.")
+        if not url:
+            errors.append(f"Item {index} has an empty enclosure URL.")
+        else:
+            enclosure_urls.append((url, node.findtext("link") or ""))
+
+    if any(parsed_dates[i] < parsed_dates[i + 1] for i in range(len(parsed_dates) - 1)):
+        errors.append("RSS items are not sorted by pubDate descending.")
+
+    checked = 0
+    for url, referer in enclosure_urls[:max(0, live_audio_checks)]:
+        checked += 1
+        kind, final_url, _, _, error = probe_audio(url, referer or ARCHIVE)
+        if kind != "audio":
+            audio_probe_failures.append({
+                "url": url, "result": kind, "final_url": final_url, "error": error,
+            })
+
+    if audio_probe_failures:
+        warnings.append(
+            f"{len(audio_probe_failures)} of {checked} sampled published audio links failed a live probe."
+        )
+    return {
+        "passed": not errors and not audio_probe_failures,
+        "errors": errors, "warnings": warnings,
+        "audio_probe_failures": audio_probe_failures,
+        "item_count": len(feed_items), "live_audio_checked": checked,
+    }
+
+
+
 def main():
     DATA.mkdir(parents=True, exist_ok=True)
     existing = load_items()
+    retry_queue = load_retry_queue()
     print("Mode:", MODE, "| timeout:", TIMEOUT, "| workers:", WORKERS)
     posts, reported_pages, archive_errors = discover_posts(MODE)
-    print("Selected article pages:", len(posts))
+    print("Selected archive article pages:", len(posts))
 
     existing_by_url = {item.get("source_url"): item for item in existing if item.get("source_url")}
-    if MODE == "full":
-        selected = posts
+    selected = posts[:TEST_LIMIT] if MODE == "test" else posts
+
+    if MODE == "test":
+        # Test mode checks recent entries but never touches production data.
+        pending = selected
+    elif MODE == "since2025":
+        # Re-parse retained archive pages so stored publication dates are refreshed.
+        pending = selected
+    elif MODE == "full":
         pending = [url for url in selected if url not in existing_by_url]
     else:
-        selected = posts[:TEST_LIMIT] if MODE == "test" else posts
-        pending = [url for url in selected if url not in existing_by_url]
-    if MODE == "since2025":
-        # Re-parse all retained archive pages once so stored pubDate values
-        # are refreshed with the Post Date-first rule.
-        pending = selected
-    if MODE == "test":
-        # A test always performs the requested checks instead of skipping previously saved rows.
-        pending = selected
+        # Hourly mode scans only three archive pages plus a bounded retry batch.
+        retry_batch = retry_queue[:MAX_RETRIES_PER_RUN]
+        pending = unique(
+            [url for url in selected if url not in existing_by_url] + retry_batch
+        )
 
     diagnostics = []
     new_items = []
@@ -752,7 +873,7 @@ def main():
                 item, diag = future.result()
             except Exception as exc:
                 item = None
-                diag = {"url": futures[future], "error": type(exc).__name__ + ": " + str(exc)}
+                diag = {"url": futures[future], "audio_ok": False, "error": type(exc).__name__ + ": " + str(exc)}
             diagnostics.append(diag)
             if item:
                 new_items.append(item)
@@ -760,6 +881,7 @@ def main():
                 "Episode", number, "/", len(pending),
                 "| audio", bool(item),
                 "| image", bool(diag.get("image_http_ok")),
+                "| audio attempts", diag.get("audio_attempts", 0),
                 "| method", diag.get("audio_method") or "-",
                 "|", (diag.get("title") or diag.get("url") or "")[:92],
             )
@@ -776,7 +898,29 @@ def main():
         if diag.get("audio_method"):
             methods[diag["audio_method"]] = methods.get(diag["audio_method"], 0) + 1
 
-    passed = bool(selected) and audio_ok == len(selected) and image_ok == len(selected)
+    merged = dict(existing_by_url)
+    if MODE != "test":
+        for item in new_items:
+            merged[item["source_url"]] = item
+
+        def item_year(item):
+            year = archive_url_year(item.get("source_url", ""))
+            if year is not None:
+                return year
+            try:
+                return datetime.fromisoformat(item.get("pub_date", "").replace("Z", "+00:00")).year
+            except Exception:
+                return 0
+
+        # Enforce retention on every production run so older entries cannot return.
+        merged = {url: item for url, item in merged.items() if item_year(item) >= 2025}
+        candidate_items = sorted(merged.values(), key=sort_key, reverse=True)
+    else:
+        candidate_items = sorted(new_items, key=sort_key, reverse=True)[:TEST_LIMIT]
+
+    candidate_xml = rss_xml(candidate_items)
+    expected_count = sum(bool(item.get("audio_url")) for item in candidate_items)
+    validation = validate_feed(candidate_xml, expected_count, live_audio_checks=3)
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "mode": MODE, "archive_source": ARCHIVE,
@@ -788,53 +932,67 @@ def main():
         "images_found": image_found,
         "images_verified": image_ok,
         "audio_resolution_methods": methods,
-        "test_passed": passed if MODE == "test" else None,
-        "saved_episode_count": 0,
+        "test_passed": None,
+        "saved_episode_count": len(existing),
+        "validation": validation,
+        "retry_queue_before": len(retry_queue),
+        "retry_queue_after": len(retry_queue),
+        "retry_queue_added": 0,
+        "retry_queue_processed": 0,
         "diagnostics": diagnostics,
     }
 
     if MODE == "test":
-        # Do not publish a partial/empty feed. Keep current RSS/items until all 50 pass.
-        if passed:
-            items = sorted(new_items, key=sort_key, reverse=True)[:TEST_LIMIT]
-            ITEMS_FILE.write_text(json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-            RSS_FILE.write_text(rss_xml(items), encoding="utf-8")
-            report["saved_episode_count"] = len(items)
-        else:
-            report["saved_episode_count"] = len(existing)
-            print("TEST DID NOT PASS; keeping the previously published RSS/items unchanged.")
+        # Test mode writes only its report; it cannot replace the production feed.
+        report["test_passed"] = (
+            bool(selected)
+            and audio_ok == len(selected)
+            and image_ok == len(selected)
+            and validation["passed"]
+        )
+        report["saved_episode_count"] = len(existing)
+        print("TEST MODE: production RSS/items/retry queue left unchanged.")
     else:
-        merged = dict(existing_by_url)
-        for item in new_items:
-            merged[item["source_url"]] = item
-        def item_year(item):
-            year = archive_url_year(item.get("source_url", ""))
-            if year is not None:
-                return year
-            try:
-                return datetime.fromisoformat(item.get("pub_date", "").replace("Z", "+00:00")).year
-            except Exception:
-                return 0
-        # Apply the retention boundary on every non-test run so old episodes
-        # cannot re-enter the feed from previously saved data.
-        merged = {url: item for url, item in merged.items() if item_year(item) >= 2025}
-        items = sorted(merged.values(), key=sort_key, reverse=True)
-        ITEMS_FILE.write_text(json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        RSS_FILE.write_text(rss_xml(items), encoding="utf-8")
-        report["saved_episode_count"] = len(items)
+        processed_urls = set(pending)
+        failed_urls = unique([
+            d.get("url") for d in diagnostics
+            if not d.get("audio_ok") and d.get("url")
+        ])
+        remaining_queue = [url for url in retry_queue if url not in processed_urls]
+        next_retry_queue = unique(remaining_queue + failed_urls)[:MAX_RETRY_QUEUE]
+        report["retry_queue_processed"] = sum(url in processed_urls for url in retry_queue)
+        report["retry_queue_added"] = sum(url not in retry_queue for url in failed_urls)
+        report["retry_queue_after"] = len(next_retry_queue)
+
+        # Structural failures preserve the last known-good RSS. Sampled audio
+        # probe failures are warnings because remote hosts can be transient.
+        if validation["errors"]:
+            print("VALIDATION ERROR: keeping previously published RSS/items unchanged.")
+            report["publish_blocked"] = True
+            report["saved_episode_count"] = len(existing)
+        else:
+            ITEMS_FILE.write_text(json.dumps(candidate_items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            RSS_FILE.write_text(candidate_xml, encoding="utf-8")
+            report["publish_blocked"] = False
+            report["saved_episode_count"] = len(candidate_items)
+
+        RETRY_FILE.write_text(json.dumps(next_retry_queue, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     REPORT_FILE.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(
-        "SUMMARY: articles=", len(selected),
-        "| audio=", str(audio_ok) + "/" + str(len(selected)),
-        "| artwork found=", str(image_found) + "/" + str(len(selected)),
-        "| artwork verified=", str(image_ok) + "/" + str(len(selected)),
+        "SUMMARY: archive selected=", len(selected),
+        "| checked=", len(diagnostics),
+        "| audio resolved=", str(audio_ok) + "/" + str(len(diagnostics)),
+        "| artwork found=", str(image_found) + "/" + str(len(diagnostics)),
+        "| artwork verified=", str(image_ok) + "/" + str(len(diagnostics)),
         "| methods=", json.dumps(methods),
-        "| test passed=", passed,
+        "| validation passed=", validation["passed"],
+        "| validation errors=", len(validation["errors"]),
+        "| sampled audio failures=", len(validation["audio_probe_failures"]),
         "| saved episodes=", report["saved_episode_count"],
+        "| retry queue=", report["retry_queue_after"],
     )
-    # A zero-success test is still a useful diagnostic run; workflow commits report regardless.
-    return 0
+    return 1 if MODE != "test" and validation["errors"] else 0
 
 
 if __name__ == "__main__":
