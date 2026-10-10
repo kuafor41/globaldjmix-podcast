@@ -1095,18 +1095,25 @@ def main():
             # Record only successful scheduled hourly checks, including checks that add zero episodes.
             if os.getenv("HOURLY_REPORT_ENABLED", "").strip().lower() == "true" and MODE == "incremental":
                 HOURLY_REPORT_FILE.parent.mkdir(parents=True, exist_ok=True)
-                needs_header = not HOURLY_REPORT_FILE.exists() or HOURLY_REPORT_FILE.stat().st_size == 0
-                with HOURLY_REPORT_FILE.open("a", encoding="utf-8", newline="") as history_file:
+                report_header = ["date_turkey", "time_turkey", "added_count", "episode_titles"]
+                previous_rows = []
+                if HOURLY_REPORT_FILE.exists() and HOURLY_REPORT_FILE.stat().st_size > 0:
+                    with HOURLY_REPORT_FILE.open("r", encoding="utf-8", newline="") as history_file:
+                        previous_rows = list(csv.reader(history_file))
+                # Keep one rolling file, with the newest successful scheduled check first.
+                old_entries = previous_rows[1:] if previous_rows and previous_rows[0] == report_header else []
+                new_entry = [
+                    local_now.strftime("%Y-%m-%d"),
+                    local_now.strftime("%H:%M:%S"),
+                    str(len(newly_added)),
+                    " | ".join(item.get("title") or item.get("source_url", "") for item in newly_added),
+                ]
+                with HOURLY_REPORT_FILE.open("w", encoding="utf-8", newline="") as history_file:
                     writer = csv.writer(history_file)
-                    if needs_header:
-                        writer.writerow(["date_turkey", "time_turkey", "added_count", "episode_titles"])
-                    writer.writerow([
-                        local_now.strftime("%Y-%m-%d"),
-                        local_now.strftime("%H:%M:%S"),
-                        len(newly_added),
-                        " | ".join(item.get("title") or item.get("source_url", "") for item in newly_added),
-                    ])
-                print("Hourly success report updated:", str(HOURLY_REPORT_FILE))
+                    writer.writerow(report_header)
+                    writer.writerow(new_entry)
+                    writer.writerows(old_entries)
+                print("Hourly success report updated (newest first):", str(HOURLY_REPORT_FILE))
 
         RETRY_FILE.write_text(json.dumps(next_retry_queue, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
