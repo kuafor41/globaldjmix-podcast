@@ -18,7 +18,7 @@ import requests
 from bs4 import BeautifulSoup
 
 BASE = "https://globaldjmix.com"
-ARCHIVE = BASE + "/livedjsets"
+ARCHIVE = BASE + "/dj-songs-mp3-download"
 DATA = Path("data")
 ITEMS_FILE = DATA / "items.json"
 REPORT_FILE = DATA / "test-report.json"
