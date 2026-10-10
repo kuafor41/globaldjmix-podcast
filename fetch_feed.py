@@ -963,40 +963,7 @@ def main():
 
     merged = dict(existing_by_url)
     if MODE != "test":
-        # Deduplicate only newly discovered episodes. Existing archive records are
-        # retained untouched; when a new item matches an existing record, keep the
-        # existing record. For duplicates within this batch, newest-sorted wins.
-        def episode_dedupe_keys(item):
-            title_key = re.sub(r"\s+", " ", (item.get("title") or "").strip()).casefold()
-            source_key = (item.get("source_url") or "").rstrip("/").casefold()
-            audio_key = (item.get("audio_url") or "").split("?")[0].rstrip("/").casefold()
-            keys = []
-            if source_key:
-                keys.append(("source", source_key))
-            if title_key:
-                keys.append(("title", title_key))
-            if audio_key:
-                keys.append(("audio", audio_key))
-            return keys
-
-        seen_episode_keys = set()
-        for old_item in existing:
-            seen_episode_keys.update(episode_dedupe_keys(old_item))
-
-        unique_new_items = []
-        duplicate_new_items = 0
-        for item in sorted(new_items, key=sort_key, reverse=True):
-            keys = episode_dedupe_keys(item)
-            if any(key in seen_episode_keys for key in keys):
-                duplicate_new_items += 1
-                continue
-            unique_new_items.append(item)
-            seen_episode_keys.update(keys)
-
-        if duplicate_new_items:
-            print("Skipped duplicate newly discovered episodes:", duplicate_new_items)
-
-        for item in unique_new_items:
+        for item in new_items:
             merged[item["source_url"]] = item
 
         def item_year(item):
