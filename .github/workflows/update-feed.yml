@@ -20,8 +20,9 @@ on:
           - since2025
           - full
   schedule:
-    # Avoid the quarter-hour boundary and GitHub scheduler congestion; run hourly at :27 Istanbul time.
-    - cron: "27 * * * *"
+    # Request one run every hour at minute 30, using Istanbul local time.
+    # GitHub may still delay scheduled starts during periods of scheduler load.
+    - cron: "30 * * * *"
       timezone: "Europe/Istanbul"
 
 permissions:
