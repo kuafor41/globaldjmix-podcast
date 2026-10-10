@@ -979,23 +979,64 @@ def main():
         merged = {url: item for url, item in merged.items() if item_year(item) >= 2025}
         candidate_items = sorted(merged.values(), key=sort_key, reverse=True)
 
-        # Remove legacy duplicate episodes before publishing. Keep the newest
-        # record when the same episode appears under multiple source URLs.
+        # Remove duplicate episode records before publishing.
+        # Source/audio identity is strongest; title-only matches are deliberately
+        # not enough because different episodes can legitimately share a title.
+        # A normalized title + publication date is used as a conservative fallback.
+        def normalized_title(value):
+            return re.sub(r"\s+", " ", (value or "").strip()).casefold()
+
+        def normalized_url_key(value, strip_query=False):
+            if not value:
+                return ""
+            parsed = urlparse(value.strip())
+            scheme = parsed.scheme.lower()
+            host = (parsed.hostname or "").lower()
+            if host.startswith("www."):
+                host = host[4:]
+            try:
+                port = parsed.port
+            except ValueError:
+                port = None
+            if port and not ((scheme == "http" and port == 80) or (scheme == "https" and port == 443)):
+                host = f"{host}:{port}"
+            path = (parsed.path or "/").rstrip("/") or "/"
+            query = "" if strip_query else parsed.query
+            return urlunparse((scheme, host, path, "", query, "")).casefold()
+
+        def publication_day(item):
+            value = (item.get("pub_date") or "").strip()
+            if not value:
+                return ""
+            try:
+                dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=timezone.utc)
+                return dt.astimezone(timezone.utc).date().isoformat()
+            except (TypeError, ValueError):
+                return ""
+
         deduplicated_items = []
         seen_episode_keys = set()
         for item in candidate_items:
-            title_key = re.sub(r"\\s+", " ", (item.get("title") or "").strip()).casefold()
-            source_key = (item.get("source_url") or "").rstrip("/").casefold()
-            audio_key = (item.get("audio_url") or "").split("?")[0].rstrip("/").casefold()
+            title_key = normalized_title(item.get("title"))
+            source_key = normalized_url_key(item.get("source_url"))
+            audio_key = normalized_url_key(item.get("audio_url"), strip_query=True)
+            date_key = publication_day(item)
             keys = [("source", source_key)] if source_key else []
-            if title_key:
-                keys.append(("title", title_key))
             if audio_key:
                 keys.append(("audio", audio_key))
+            if title_key and date_key:
+                keys.append(("title_date", title_key, date_key))
+
             if any(key in seen_episode_keys for key in keys):
+                # Remember all aliases of a skipped duplicate too, so a third
+                # URL variant of the same episode cannot slip through later.
+                seen_episode_keys.update(keys)
                 continue
             deduplicated_items.append(item)
             seen_episode_keys.update(keys)
+
         removed_duplicates = len(candidate_items) - len(deduplicated_items)
         if removed_duplicates:
             print("Removed duplicate episode records:", removed_duplicates)
