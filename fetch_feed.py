@@ -878,6 +878,15 @@ def validate_feed(xml_text, expected_count, live_audio_checks=3):
 
 
 def main():
+    global MODE
+    # A report marker arms exactly one cleanup run without changing the hourly schedule.
+    try:
+        previous_report = json.loads(REPORT_FILE.read_text(encoding="utf-8"))
+        if MODE == "incremental" and previous_report.get("one_time_legacy_retry_pending"):
+            MODE = "finalretry"
+            print("One-time cleanup enabled: checking the entire legacy retry queue.")
+    except Exception:
+        pass
     DATA.mkdir(parents=True, exist_ok=True)
     existing = load_items()
     retry_queue = load_retry_queue()
@@ -973,6 +982,7 @@ def main():
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "mode": MODE, "archive_source": ARCHIVE,
+        "one_time_legacy_retry_pending": False,
         "archive_pages_reported": reported_pages,
         "archive_pages_failed": archive_errors,
         "selected_articles": len(selected),
