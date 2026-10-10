@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Build and validate the GlobalDJMix podcast RSS feed."""
+import csv
 import html
 import json
 import os
@@ -24,6 +25,7 @@ ITEMS_FILE = DATA / "items.json"
 REPORT_FILE = DATA / "test-report.json"
 RETRY_FILE = DATA / "retry-queue.json"
 DAILY_FILE = DATA / "daily-additions.json"
+HOURLY_REPORT_FILE = DATA / "hourly-success-report.csv"
 RSS_FILE = Path("rss.xml")
 
 MODE = os.getenv("FEED_MODE", "test").strip().lower()
@@ -1089,6 +1091,22 @@ def main():
             save_daily_additions(daily_data, local_now.date())
             report["daily_added_count"] = len(day_episodes)
             report["daily_episode_titles"] = [entry.get("title", "") for entry in day_episodes]
+
+            # Record only successful scheduled hourly checks, including checks that add zero episodes.
+            if os.getenv("HOURLY_REPORT_ENABLED", "").strip().lower() == "true" and MODE == "incremental":
+                HOURLY_REPORT_FILE.parent.mkdir(parents=True, exist_ok=True)
+                needs_header = not HOURLY_REPORT_FILE.exists() or HOURLY_REPORT_FILE.stat().st_size == 0
+                with HOURLY_REPORT_FILE.open("a", encoding="utf-8", newline="") as history_file:
+                    writer = csv.writer(history_file)
+                    if needs_header:
+                        writer.writerow(["date_turkey", "time_turkey", "added_count", "episode_titles"])
+                    writer.writerow([
+                        local_now.strftime("%Y-%m-%d"),
+                        local_now.strftime("%H:%M:%S"),
+                        len(newly_added),
+                        " | ".join(item.get("title") or item.get("source_url", "") for item in newly_added),
+                    ])
+                print("Hourly success report updated:", str(HOURLY_REPORT_FILE))
 
         RETRY_FILE.write_text(json.dumps(next_retry_queue, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
