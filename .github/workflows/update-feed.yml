@@ -40,6 +40,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     env:
       FEED_MODE: ${{ github.event_name == 'schedule' && 'incremental' || (github.event_name == 'push' && (contains(github.event.head_commit.message, '[backfill-full]') && 'full' || contains(github.event.head_commit.message, '[backfill-2025]') && 'since2025')) || inputs.mode || 'incremental' }}
+      HOURLY_REPORT_ENABLED: ${{ github.event_name == 'schedule' && 'true' || 'false' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -57,7 +58,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add rss.xml data/items.json data/test-report.json data/retry-queue.json data/daily-additions.json
+          git add rss.xml data/items.json data/test-report.json data/retry-queue.json data/daily-additions.json data/hourly-success-report.csv
           if git diff --cached --quiet; then
             echo "No output changes to commit."
           else
