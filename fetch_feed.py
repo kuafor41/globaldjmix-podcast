@@ -27,7 +27,7 @@ DAILY_FILE = DATA / "daily-additions.json"
 RSS_FILE = Path("rss.xml")
 
 MODE = os.getenv("FEED_MODE", "test").strip().lower()
-if MODE not in {"test", "incremental", "since2025", "full"}:
+if MODE not in {"test", "incremental", "since2025", "full", "finalretry"}:
     MODE = "test"
 TEST_LIMIT = 50
 TEST_PAGE_CAP = 5
@@ -900,6 +900,12 @@ def main():
         pending = selected
     elif MODE == "full":
         pending = [url for url in selected if url not in existing_by_url]
+    elif MODE == "finalretry":
+        # One-time cleanup run: check every legacy queued URL exactly once.
+        # Keep discovery of recent new episodes active during the cleanup.
+        pending = unique(
+            [url for url in selected if url not in existing_by_url] + retry_queue
+        )
     else:
         # Hourly mode scans only three archive pages plus a bounded retry batch.
         retry_batch = retry_queue[:MAX_RETRIES_PER_RUN]
@@ -1007,7 +1013,16 @@ def main():
             if not d.get("audio_ok") and d.get("url")
         ])
         remaining_queue = [url for url in retry_queue if url not in processed_urls]
-        next_retry_queue = unique(remaining_queue + failed_urls)[:MAX_RETRY_QUEUE]
+        if MODE == "finalretry":
+            # Do not re-queue failures from the legacy backlog after its one final check.
+            # Only failures from newly discovered episodes stay queued for future retries.
+            fresh_episode_urls = {url for url in selected if url not in existing_by_url}
+            failed_fresh_urls = [url for url in failed_urls if url in fresh_episode_urls]
+            next_retry_queue = unique(failed_fresh_urls)[:MAX_RETRY_QUEUE]
+            report["legacy_retry_urls_retired"] = sum(url in retry_queue for url in processed_urls)
+            report["legacy_retry_failures_retired"] = sum(url in retry_queue for url in failed_urls)
+        else:
+            next_retry_queue = unique(remaining_queue + failed_urls)[:MAX_RETRY_QUEUE]
         report["retry_queue_processed"] = sum(url in processed_urls for url in retry_queue)
         report["retry_queue_added"] = sum(url not in retry_queue for url in failed_urls)
         report["retry_queue_after"] = len(next_retry_queue)
