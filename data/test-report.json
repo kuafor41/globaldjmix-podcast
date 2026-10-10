@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T14:38:42.250015+00:00",
+  "generated_at": "2026-10-10T17:12:56.928969+00:00",
   "mode": "incremental",
   "archive_source": "https://globaldjmix.com/dj-songs-mp3-download",
   "one_time_legacy_retry_pending": false,
@@ -14,7 +14,7 @@
     "intermediate": 2
   },
   "test_passed": null,
-  "saved_episode_count": 7152,
+  "saved_episode_count": 7037,
   "new_episodes_added": 0,
   "new_episode_titles": [],
   "daily_date": "2026-10-10",
@@ -161,7 +161,7 @@
     "errors": [],
     "warnings": [],
     "audio_probe_failures": [],
-    "item_count": 7152,
+    "item_count": 7037,
     "live_audio_checked": 3
   },
   "retry_queue_before": 0,
@@ -176,7 +176,7 @@
       "audio_ok": true,
       "audio_method": "intermediate",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/tiësto-prismatic-040-2026-october-03/qn44iJ",
+        "http://box.globaldjmix.com/media/tiësto-prismatic-040-2026-october-03/PXH1ig",
         "http://files.globaldjmix.com/2026/10/03/Tiesto - Prismatic 040 (2026-10-03).mp3",
         "http://files.globaldjmix.com/2026/10/03/Tiesto"
       ],
@@ -196,7 +196,7 @@
       "audio_ok": true,
       "audio_method": "intermediate",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/hel-sløwed-borderlands-111-2026-september-28/qn44iJ",
+        "http://box.globaldjmix.com/media/hel-sløwed-borderlands-111-2026-september-28/PXH1ig",
         "http://files.globaldjmix.com/2026/09/28/Helslowed - Borderlands 111 on AH.FM 28-09-2026.mp3",
         "http://files.globaldjmix.com/2026/09/28/Helslowed"
       ],
