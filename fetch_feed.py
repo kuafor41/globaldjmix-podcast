@@ -978,28 +978,6 @@ def main():
         # Enforce retention on every production run so older entries cannot return.
         merged = {url: item for url, item in merged.items() if item_year(item) >= 2025}
         candidate_items = sorted(merged.values(), key=sort_key, reverse=True)
-
-        # Remove legacy duplicate episodes before publishing. Keep the newest
-        # record when the same episode appears under multiple source URLs.
-        deduplicated_items = []
-        seen_episode_keys = set()
-        for item in candidate_items:
-            title_key = re.sub(r"\\s+", " ", (item.get("title") or "").strip()).casefold()
-            source_key = (item.get("source_url") or "").rstrip("/").casefold()
-            audio_key = (item.get("audio_url") or "").split("?")[0].rstrip("/").casefold()
-            keys = [("source", source_key)] if source_key else []
-            if title_key:
-                keys.append(("title", title_key))
-            if audio_key:
-                keys.append(("audio", audio_key))
-            if any(key in seen_episode_keys for key in keys):
-                continue
-            deduplicated_items.append(item)
-            seen_episode_keys.update(keys)
-        removed_duplicates = len(candidate_items) - len(deduplicated_items)
-        if removed_duplicates:
-            print("Removed duplicate episode records:", removed_duplicates)
-        candidate_items = deduplicated_items
     else:
         candidate_items = sorted(new_items, key=sort_key, reverse=True)[:TEST_LIMIT]
 
