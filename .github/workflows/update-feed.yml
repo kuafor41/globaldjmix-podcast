@@ -20,7 +20,8 @@ on:
           - since2025
           - full
   schedule:
-    - cron: "15 * * * *"
+    # Avoid the quarter-hour boundary and GitHub scheduler congestion; run hourly at :27 Istanbul time.
+    - cron: "27 * * * *"
       timezone: "Europe/Istanbul"
 
 permissions:
