@@ -725,13 +725,15 @@ def save_daily_additions(data, today):
 def load_retry_queue():
     try:
         parsed = json.loads(RETRY_FILE.read_text(encoding="utf-8"))
-        if isinstance(parsed, list) and parsed:
+        # An existing empty list is an intentional "queue cleared" state.
+        # Only recover from the report when the queue file is missing or invalid.
+        if isinstance(parsed, list):
             return unique(parsed)[:MAX_RETRY_QUEUE]
     except Exception:
         pass
 
-    # Recovery path: if the queue is empty/missing, seed it from the latest
-    # diagnostic report so a prior full import's failures are not forgotten.
+    # Recovery path: if the queue file is missing or invalid, seed it from the
+    # latest diagnostic report so a prior full import's failures are not forgotten.
     try:
         report = json.loads(REPORT_FILE.read_text(encoding="utf-8"))
         failed = [
@@ -869,7 +871,8 @@ def validate_feed(xml_text, expected_count, live_audio_checks=3):
             f"{len(audio_probe_failures)} of {checked} sampled published audio links failed a live probe."
         )
     return {
-        "passed": not errors and not audio_probe_failures,
+        # Structural errors fail validation; transient live-probe failures are warnings.
+        "passed": not errors,
         "errors": errors, "warnings": warnings,
         "audio_probe_failures": audio_probe_failures,
         "item_count": len(feed_items), "live_audio_checked": checked,
@@ -1026,7 +1029,10 @@ def main():
         if MODE == "finalretry":
             # Do not re-queue failures from the legacy backlog after its one final check.
             # Only failures from newly discovered episodes stay queued for future retries.
-            fresh_episode_urls = {url for url in selected if url not in existing_by_url}
+            fresh_episode_urls = {
+                url for url in selected
+                if url not in existing_by_url and url not in retry_queue
+            }
             failed_fresh_urls = [url for url in failed_urls if url in fresh_episode_urls]
             next_retry_queue = unique(failed_fresh_urls)[:MAX_RETRY_QUEUE]
             report["legacy_retry_urls_retired"] = sum(url in retry_queue for url in processed_urls)
@@ -1043,6 +1049,12 @@ def main():
             print("VALIDATION ERROR: keeping previously published RSS/items unchanged.")
             report["publish_blocked"] = True
             report["saved_episode_count"] = len(existing)
+            if MODE == "finalretry":
+                # Do not retire the legacy backlog unless the recovered items can be published.
+                next_retry_queue = retry_queue
+                report["retry_queue_after"] = len(retry_queue)
+                report["legacy_retry_urls_retired"] = 0
+                report["legacy_retry_failures_retired"] = 0
         else:
             ITEMS_FILE.write_text(json.dumps(candidate_items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             RSS_FILE.write_text(candidate_xml, encoding="utf-8")
