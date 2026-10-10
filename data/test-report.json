@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T07:36:18.032102+00:00",
+  "generated_at": "2026-10-10T13:34:42.912933+00:00",
   "mode": "incremental",
   "archive_source": "https://globaldjmix.com/dj-songs-mp3-download",
   "one_time_legacy_retry_pending": false,
@@ -170,33 +170,13 @@
   "retry_queue_processed": 0,
   "diagnostics": [
     {
-      "url": "https://globaldjmix.com/tiësto-prismatic-040-2026-october-03",
-      "article_fetched": true,
-      "title": "Tiësto - Prismatic 040 (03 October 2026)",
-      "audio_ok": true,
-      "audio_method": "intermediate",
-      "audio_candidates": [
-        "http://box.globaldjmix.com/media/tiësto-prismatic-040-2026-october-03/2OAKa9",
-        "http://files.globaldjmix.com/2026/10/03/Tiesto - Prismatic 040 (2026-10-03).mp3",
-        "http://files.globaldjmix.com/2026/10/03/Tiesto"
-      ],
-      "audio_url": "http://files.globaldjmix.com/2026/10/03/Tiesto - Prismatic 040 (2026-10-03).mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/prismatic_by_tiesto.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/hel-sløwed-borderlands-111-2026-september-28",
       "article_fetched": true,
       "title": "Hel:sløwed - Borderlands 111 (28 September 2026)",
       "audio_ok": true,
       "audio_method": "intermediate",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/hel-sløwed-borderlands-111-2026-september-28/2OAKa9",
+        "http://box.globaldjmix.com/media/hel-sløwed-borderlands-111-2026-september-28/qn44iJ",
         "http://files.globaldjmix.com/2026/09/28/Helslowed - Borderlands 111 on AH.FM 28-09-2026.mp3",
         "http://files.globaldjmix.com/2026/09/28/Helslowed"
       ],
@@ -204,6 +184,26 @@
       "audio_attempts": 1,
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/helslowed_-_borderlands.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/tiësto-prismatic-040-2026-october-03",
+      "article_fetched": true,
+      "title": "Tiësto - Prismatic 040 (03 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/tiësto-prismatic-040-2026-october-03/qn44iJ",
+        "http://files.globaldjmix.com/2026/10/03/Tiesto - Prismatic 040 (2026-10-03).mp3",
+        "http://files.globaldjmix.com/2026/10/03/Tiesto"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/03/Tiesto - Prismatic 040 (2026-10-03).mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/prismatic_by_tiesto.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
