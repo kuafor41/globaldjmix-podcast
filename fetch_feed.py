@@ -967,7 +967,7 @@ def main():
         # retained untouched; when a new item matches an existing record, keep the
         # existing record. For duplicates within this batch, newest-sorted wins.
         def episode_dedupe_keys(item):
-            title_key = re.sub(r"\\s+", " ", (item.get("title") or "").strip()).casefold()
+            title_key = re.sub(r"\s+", " ", (item.get("title") or "").strip()).casefold()
             source_key = (item.get("source_url") or "").rstrip("/").casefold()
             audio_key = (item.get("audio_url") or "").split("?")[0].rstrip("/").casefold()
             keys = []
