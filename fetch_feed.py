@@ -1126,13 +1126,35 @@ def main():
             report["publish_blocked"] = False
             report["saved_episode_count"] = len(candidate_items)
 
-            # Count only genuinely new source URLs after the validated feed was published.
-            added_by_url = {}
+            # Count only genuinely new episodes after publication. Compare normalized
+            # source/audio URLs and normalized title + publication day against the
+            # previously saved feed, not only exact source URL strings.
+            def episode_identity_keys(item):
+                keys = []
+                source_key = normalized_url_key(item.get("source_url"))
+                audio_key = normalized_url_key(item.get("audio_url"), strip_query=True)
+                title_key = normalized_title(item.get("title"))
+                date_key = publication_day(item)
+                if source_key:
+                    keys.append(("source", source_key))
+                if audio_key:
+                    keys.append(("audio", audio_key))
+                if title_key and date_key:
+                    keys.append(("title_date", title_key, date_key))
+                return keys
+
+            previously_known_keys = set()
+            for old_item in existing:
+                previously_known_keys.update(episode_identity_keys(old_item))
+
+            newly_added = []
+            seen_new_keys = set()
             for item in new_items:
-                source_url = item.get("source_url")
-                if source_url and source_url not in existing_by_url:
-                    added_by_url[source_url] = item
-            newly_added = list(added_by_url.values())
+                keys = episode_identity_keys(item)
+                if not keys or any(key in previously_known_keys or key in seen_new_keys for key in keys):
+                    continue
+                newly_added.append(item)
+                seen_new_keys.update(keys)
             report["new_episodes_added"] = len(newly_added)
             report["new_episode_titles"] = [item.get("title") or item.get("source_url", "") for item in newly_added]
 
@@ -1169,7 +1191,7 @@ def main():
                     local_now.strftime("%Y-%m-%d"),
                     local_now.strftime("%H:%M:%S"),
                     str(len(newly_added)),
-                    " | ".join(item.get("title") or item.get("source_url", "") for item in newly_added),
+                    " | ".join(item.get("title") or item.get("source_url", "") for item in newly_added) if newly_added else "Yeni bölüm eklenmedi",
                 ]
                 with HOURLY_REPORT_FILE.open("w", encoding="utf-8", newline="") as history_file:
                     writer = csv.writer(history_file)
