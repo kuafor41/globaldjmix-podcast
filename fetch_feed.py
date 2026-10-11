@@ -786,7 +786,7 @@ def rss_xml(items):
         if item.get("image_url"):
             ET.SubElement(node, "{http://www.itunes.com/dtds/podcast-1.0.dtd}image", {"href": item["image_url"]})
 
-    return '<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(rss, encoding="unicode") + "\n"
+    ET.indent(rss, space="  ")\n    return '<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(rss, encoding="unicode") + "\n"
 
 
 def validate_feed(xml_text, expected_count, live_audio_checks=3):
