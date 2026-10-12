@@ -1282,7 +1282,7 @@
       ]
     },
     "2026-10-12": {
-      "added_count": 9,
+      "added_count": 13,
       "episodes": [
         {
           "title": "Paul Van Dyk - Vonyc Sessions 1040 (11 October 2026)",
@@ -1328,6 +1328,26 @@
           "title": "Hernan Cattaneo - Resident 805 (10 October 2026)",
           "source_url": "https://globaldjmix.com/hernan-cattaneo-resident-805-2026-october-10",
           "added_at": "2026-10-12T10:52:58.712186+03:00"
+        },
+        {
+          "title": "Nora En Pure - Purified Radio 529 (12 October 2026)",
+          "source_url": "https://globaldjmix.com/nora-en-pure-purified-radio-529-2026-october-12",
+          "added_at": "2026-10-12T12:38:23.237837+03:00"
+        },
+        {
+          "title": "Blasterjaxx - Maxximize On Air 643 (12 October 2026)",
+          "source_url": "https://globaldjmix.com/blasterjaxx-maxximize-on-air-643-2026-october-12",
+          "added_at": "2026-10-12T12:38:23.237837+03:00"
+        },
+        {
+          "title": "R3hab - CYB3RPVNK Radio 732 (12 October 2026)",
+          "source_url": "https://globaldjmix.com/r3hab-cyb3rpvnk-radio-732-2026-october-12",
+          "added_at": "2026-10-12T12:38:23.237837+03:00"
+        },
+        {
+          "title": "Lucas - Lucas & Steve Radio 172 (10 October 2026)",
+          "source_url": "https://globaldjmix.com/lucas-lucas-steve-radio-172-2026-october-10",
+          "added_at": "2026-10-12T12:38:23.237837+03:00"
         }
       ]
     }
