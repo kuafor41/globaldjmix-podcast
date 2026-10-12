@@ -757,9 +757,7 @@ def rss_xml(items):
     ET.SubElement(channel, "language").text = "en"
     ET.SubElement(channel, "{http://www.itunes.com/dtds/podcast-1.0.dtd}author").text = "GlobalDJMix"
     ET.SubElement(channel, "{http://www.itunes.com/dtds/podcast-1.0.dtd}explicit").text = "no"
-    channel_image = next((item.get("image_url") for item in sorted(items, key=sort_key, reverse=True) if item.get("image_url")), None)
-    if channel_image:
-        ET.SubElement(channel, "{http://www.itunes.com/dtds/podcast-1.0.dtd}image", {"href": channel_image})
+    ET.SubElement(channel, "{http://www.itunes.com/dtds/podcast-1.0.dtd}image", {"href": "https://raw.githubusercontent.com/kuafor41/globaldjmix-podcast/main/data/podcast-cover.jpg"})
 
     for item in sorted(items, key=sort_key, reverse=True):
         if not item.get("audio_url"):
