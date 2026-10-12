@@ -1282,7 +1282,7 @@
       ]
     },
     "2026-10-12": {
-      "added_count": 13,
+      "added_count": 14,
       "episodes": [
         {
           "title": "Paul Van Dyk - Vonyc Sessions 1040 (11 October 2026)",
@@ -1348,6 +1348,11 @@
           "title": "Lucas - Lucas & Steve Radio 172 (10 October 2026)",
           "source_url": "https://globaldjmix.com/lucas-lucas-steve-radio-172-2026-october-10",
           "added_at": "2026-10-12T12:38:23.237837+03:00"
+        },
+        {
+          "title": "Fedde le Grand - Darklight Sessions 738 (12 October 2026)",
+          "source_url": "https://globaldjmix.com/fedde-le-grand-darklight-sessions-738-2026-october-12",
+          "added_at": "2026-10-12T21:08:49.330047+03:00"
         }
       ]
     }
