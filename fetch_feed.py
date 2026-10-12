@@ -752,10 +752,9 @@ def rss_xml(items):
     rss = ET.Element("rss", {"version": "2.0"})
     channel = ET.SubElement(rss, "channel")
     ET.SubElement(channel, "title").text = "UniversalMixDJ Podcast"
-    ET.SubElement(channel, "link").text = ARCHIVE
     ET.SubElement(channel, "description").text = "DJ mixes, podcasts and live sets from the best DJs around the world."
     ET.SubElement(channel, "language").text = "en"
-    ET.SubElement(channel, "{http://www.itunes.com/dtds/podcast-1.0.dtd}author").text = "GlobalDJMix"
+    ET.SubElement(channel, "{http://www.itunes.com/dtds/podcast-1.0.dtd}author").text = "UniversalMixDJ"
     ET.SubElement(channel, "{http://www.itunes.com/dtds/podcast-1.0.dtd}explicit").text = "no"
     ET.SubElement(channel, "{http://www.itunes.com/dtds/podcast-1.0.dtd}image", {"href": "https://raw.githubusercontent.com/kuafor41/globaldjmix-podcast/main/data/podcast-cover.jpg"})
 
