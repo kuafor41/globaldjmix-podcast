@@ -1597,7 +1597,7 @@
       ]
     },
     "2026-10-16": {
-      "added_count": 6,
+      "added_count": 7,
       "episodes": [
         {
           "title": "Gai Barone - Patterns 722 (14 October 2026)",
@@ -1628,6 +1628,11 @@
           "title": "Sultan & Ned Shepard - Dialekt Radio 349 (15 October 2026)",
           "source_url": "https://globaldjmix.com/sultan-ned-shepard-dialekt-radio-349-2026-october-15",
           "added_at": "2026-10-16T10:28:10.921946+03:00"
+        },
+        {
+          "title": "Solarstone - Pure Trance Radio 494 (14 October 2026)",
+          "source_url": "https://globaldjmix.com/solarstone-pure-trance-radio-494-2026-october-14",
+          "added_at": "2026-10-16T15:41:34.911611+03:00"
         }
       ]
     }
