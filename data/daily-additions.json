@@ -1597,8 +1597,39 @@
       ]
     },
     "2026-10-16": {
-      "added_count": 0,
-      "episodes": []
+      "added_count": 6,
+      "episodes": [
+        {
+          "title": "Gai Barone - Patterns 722 (14 October 2026)",
+          "source_url": "https://globaldjmix.com/gai-barone-patterns-722-2026-october-14",
+          "added_at": "2026-10-16T10:28:10.921946+03:00"
+        },
+        {
+          "title": "Nicky Romero - Protocol Radio 740 (15 October 2026)",
+          "source_url": "https://globaldjmix.com/nicky-romero-protocol-radio-740-2026-october-15",
+          "added_at": "2026-10-16T10:28:10.921946+03:00"
+        },
+        {
+          "title": "Euphoric Nation - Trance Paradise 758 (15 October 2026)",
+          "source_url": "https://globaldjmix.com/euphoric-nation-trance-paradise-758-2026-october-15",
+          "added_at": "2026-10-16T10:28:10.921946+03:00"
+        },
+        {
+          "title": "Nicole Moudaber - In The MOOD 650 - Live In ARC After Dark, PRYSM Chicago (15 October 2026)",
+          "source_url": "https://globaldjmix.com/nicole-moudaber-in-the-mood-650-live-in-arc-after-dark-prysm-chicago-2026-october-15",
+          "added_at": "2026-10-16T10:28:10.921946+03:00"
+        },
+        {
+          "title": "Sigala - Spinnin Sessions 701 (15 October 2026)",
+          "source_url": "https://globaldjmix.com/sigala-spinnin-sessions-701-2026-october-15",
+          "added_at": "2026-10-16T10:28:10.921946+03:00"
+        },
+        {
+          "title": "Sultan & Ned Shepard - Dialekt Radio 349 (15 October 2026)",
+          "source_url": "https://globaldjmix.com/sultan-ned-shepard-dialekt-radio-349-2026-october-15",
+          "added_at": "2026-10-16T10:28:10.921946+03:00"
+        }
+      ]
     }
   }
 }
