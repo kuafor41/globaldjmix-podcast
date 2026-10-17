@@ -31,14 +31,13 @@ jobs:
 
           path = Path("rss.xml")
           original = path.read_text(encoding="utf-8")
-          pattern = re.compile(r'(<enclosure\\b[^>]*?\\burl=(["\\']))(.*?)(\\2[^>]*>)', re.I | re.S)
+          pattern = re.compile(r"""(<enclosure\b[^>]*?\burl=(["']))(.*?)(\2[^>]*>)""", re.I | re.S)
           old_matches = list(pattern.finditer(original))
           old_urls = [m.group(3) for m in old_matches]
           changed_urls = 0
           encoded_spaces = 0
 
           def replace(match):
-              nonlocal_placeholder = None
               global changed_urls, encoded_spaces
               url = match.group(3)
               n = url.count(" ")
