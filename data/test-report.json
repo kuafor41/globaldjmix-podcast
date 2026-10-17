@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T11:05:29.687107+00:00",
+  "generated_at": "2026-10-17T14:21:15.678187+00:00",
   "mode": "incremental",
   "archive_source": "https://globaldjmix.com/dj-songs-mp3-download",
   "one_time_legacy_retry_pending": false,
@@ -67,26 +67,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/hel-sløwed-borderlands-112-2026-october-12",
-      "article_fetched": true,
-      "title": "Hel:sløwed - Borderlands 112 (12 October 2026)",
-      "audio_ok": true,
-      "audio_method": "intermediate",
-      "audio_candidates": [
-        "http://box.globaldjmix.com/media/hel-sløwed-borderlands-112-2026-october-12/YCPU4s",
-        "http://files.globaldjmix.com/2026/10/12/Helslowed - Borderlands 112 on AH.FM 12-10-2026.mp3",
-        "http://files.globaldjmix.com/2026/10/12/Helslowed"
-      ],
-      "audio_url": "http://files.globaldjmix.com/2026/10/12/Helslowed - Borderlands 112 on AH.FM 12-10-2026.mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/helslowed_-_borderlands.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/grum-deep-state-radio-episode-55-2026-october-09",
       "article_fetched": true,
       "title": "Grum - Deep State Radio Episode 55 (09 October 2026)",
@@ -99,47 +79,6 @@
       "audio_attempts": 1,
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/grum.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/parts-enhanced-sessions-870-with-dj-cøsmic-dream-2026-october-16",
-      "article_fetched": true,
-      "title": "PARTS - Enhanced Sessions 870 (with DJ CØSMIC DREAM) (16 October 2026)",
-      "audio_ok": true,
-      "audio_method": "intermediate",
-      "audio_candidates": [
-        "http://box.globaldjmix.com/media/parts-enhanced-sessions-870-with-dj-cØsmic-dream-2026-october-16/YCPU4s",
-        "http://files.globaldjmix.com/2026/10/16/Enhanced Music - Enhanced Sessions 870 (DJ CГ!SMIC DREAM).mp3",
-        "http://files.globaldjmix.com/2026/10/16/Enhanced"
-      ],
-      "audio_url": "http://files.globaldjmix.com/2026/10/16/Enhanced Music - Enhanced Sessions 870 (DJ CГ!SMIC DREAM).mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/enhanced_sessions_870_2026-10-16.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/tiësto-prismatic-041-2026-october-10",
-      "article_fetched": true,
-      "title": "Tiësto - Prismatic 041 (10 October 2026)",
-      "audio_ok": true,
-      "audio_method": "intermediate",
-      "audio_candidates": [
-        "http://box.globaldjmix.com/media/tiësto-prismatic-041-2026-october-10/YCPU4s",
-        "http://files.globaldjmix.com/2026/10/10/Tiesto - Prismatic 041 (2026-10-10).mp3",
-        "https://stream18.hearthis.at/listen.mp3?id=14717798&track=13s2c4t264a4x2j5j5f4g5e49423z2p25484a4e4r2l5v2646463a464b484p2a444h4o444&key=10649525&t=-62169987208",
-        "http://files.globaldjmix.com/2026/10/10/Tiesto"
-      ],
-      "audio_url": "http://files.globaldjmix.com/2026/10/10/Tiesto - Prismatic 041 (2026-10-10).mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/prismatic_by_tiesto.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -182,6 +121,26 @@
       "error": null
     },
     {
+      "url": "https://globaldjmix.com/parts-enhanced-sessions-870-with-dj-cøsmic-dream-2026-october-16",
+      "article_fetched": true,
+      "title": "PARTS - Enhanced Sessions 870 (with DJ CØSMIC DREAM) (16 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/parts-enhanced-sessions-870-with-dj-cØsmic-dream-2026-october-16/q4eNgH",
+        "http://files.globaldjmix.com/2026/10/16/Enhanced Music - Enhanced Sessions 870 (DJ CГ!SMIC DREAM).mp3",
+        "http://files.globaldjmix.com/2026/10/16/Enhanced"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/16/Enhanced Music - Enhanced Sessions 870 (DJ CГ!SMIC DREAM).mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/enhanced_sessions_870_2026-10-16.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
       "url": "https://globaldjmix.com/gai-barone-patterns-721-2026-october-07",
       "article_fetched": true,
       "title": "Gai Barone - Patterns 721 (07 October 2026)",
@@ -194,24 +153,6 @@
       "audio_attempts": 1,
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/gai_barone_patterns_2022.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/circoloco-radio-470-benja-2026-october-09",
-      "article_fetched": true,
-      "title": "Circoloco Radio 470 - Benja",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://audio.thisisdistorted.com/repository/audio/episodes/Benja_-_Circoloco_Mix_192k-1789033406432360130-NDMwNzktODg2OTkzNjc=.mp3"
-      ],
-      "audio_url": "https://audio.thisisdistorted.com/repository/audio/episodes/Benja_-_Circoloco_Mix_192k-1789033406432360130-NDMwNzktODg2OTkzNjc=.mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/circoloco_radio.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -236,21 +177,59 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/eric-prydz-epic-radio-040-2026-october-08",
+      "url": "https://globaldjmix.com/circoloco-radio-470-benja-2026-october-09",
       "article_fetched": true,
-      "title": "Eric Prydz - Epic Radio 040 (08 October 2026)",
+      "title": "Circoloco Radio 470 - Benja",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://audio.thisisdistorted.com/repository/audio/episodes/Benja_-_Circoloco_Mix_192k-1789033406432360130-NDMwNzktODg2OTkzNjc=.mp3"
+      ],
+      "audio_url": "https://audio.thisisdistorted.com/repository/audio/episodes/Benja_-_Circoloco_Mix_192k-1789033406432360130-NDMwNzktODg2OTkzNjc=.mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/circoloco_radio.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/hel-sløwed-borderlands-112-2026-october-12",
+      "article_fetched": true,
+      "title": "Hel:sløwed - Borderlands 112 (12 October 2026)",
       "audio_ok": true,
       "audio_method": "intermediate",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/eric-prydz-epic-radio-040-2026-october-08/YCPU4s",
-        "http://files.globaldjmix.com/2026/10/08/02/Eric Prydz - Epic Radio 040 2026-10-07.mp3",
-        "https://cdn.podtoo.com/syndication/2026/10/full_episode_1791505260018.mp3",
-        "http://files.globaldjmix.com/2026/10/08/02/Eric"
+        "http://box.globaldjmix.com/media/hel-sløwed-borderlands-112-2026-october-12/q4eNgH",
+        "http://files.globaldjmix.com/2026/10/12/Helslowed - Borderlands 112 on AH.FM 12-10-2026.mp3",
+        "http://files.globaldjmix.com/2026/10/12/Helslowed"
       ],
-      "audio_url": "http://files.globaldjmix.com/2026/10/08/02/Eric Prydz - Epic Radio 040 2026-10-07.mp3",
+      "audio_url": "http://files.globaldjmix.com/2026/10/12/Helslowed - Borderlands 112 on AH.FM 12-10-2026.mp3",
       "audio_attempts": 1,
       "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/eric_prydz_-_epic_radio_040_2026-10-07.jpg",
+      "image_url": "https://globaldjmix.com/files/download/helslowed_-_borderlands.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/tiësto-prismatic-041-2026-october-10",
+      "article_fetched": true,
+      "title": "Tiësto - Prismatic 041 (10 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/tiësto-prismatic-041-2026-october-10/q4eNgH",
+        "http://files.globaldjmix.com/2026/10/10/Tiesto - Prismatic 041 (2026-10-10).mp3",
+        "https://stream18.hearthis.at/listen.mp3?id=14717798&track=13s2c4t264a4x2j5j5f4g5e49423z2p25484a4e4r2l5v2646463a464b484p2a444h4o444&key=10649525&t=-62169987208",
+        "http://files.globaldjmix.com/2026/10/10/Tiesto"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/10/Tiesto - Prismatic 041 (2026-10-10).mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/prismatic_by_tiesto.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -293,13 +272,52 @@
       "error": null
     },
     {
+      "url": "https://globaldjmix.com/nicky-romero-protocol-radio-739-2026-october-08",
+      "article_fetched": true,
+      "title": "Nicky Romero - Protocol Radio 739 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://podcasts.protocol-radio.com/podcast/protocol-radio-739.m4a"
+      ],
+      "audio_url": "https://podcasts.protocol-radio.com/podcast/protocol-radio-739.m4a",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/nicky_romero_-_protocol_radio_739_2026-10-08.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/eric-prydz-epic-radio-040-2026-october-08",
+      "article_fetched": true,
+      "title": "Eric Prydz - Epic Radio 040 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/eric-prydz-epic-radio-040-2026-october-08/q4eNgH",
+        "http://files.globaldjmix.com/2026/10/08/02/Eric Prydz - Epic Radio 040 2026-10-07.mp3",
+        "https://cdn.podtoo.com/syndication/2026/10/full_episode_1791505260018.mp3",
+        "http://files.globaldjmix.com/2026/10/08/02/Eric"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/08/02/Eric Prydz - Epic Radio 040 2026-10-07.mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/eric_prydz_-_epic_radio_040_2026-10-07.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
       "url": "https://globaldjmix.com/nicole-moudaber-in-the-mood-649-live-in-rockerill-cherleroi-belgium-2026-october-08",
       "article_fetched": true,
       "title": "Nicole Moudaber - In The MOOD 649 - Live In Rockerill, Cherleroi, Belgium (08 October 2026)",
       "audio_ok": true,
       "audio_method": "intermediate",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/nicole-moudaber-in-the-mood-649-live-in-rockerill-cherleroi-belgium-2026-october-08/YCPU4s",
+        "http://box.globaldjmix.com/media/nicole-moudaber-in-the-mood-649-live-in-rockerill-cherleroi-belgium-2026-october-08/q4eNgH",
         "http://files.globaldjmix.com/2026/10/08/02/Nicole Moudaber - In The MOOD 649 (08 October 2026).mp3",
         "http://files.globaldjmix.com/2026/10/08/02/Nicole"
       ],
@@ -319,7 +337,7 @@
       "audio_ok": true,
       "audio_method": "intermediate",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/euphoric-nation-trance-paradise-757-2026-october-08/YCPU4s",
+        "http://box.globaldjmix.com/media/euphoric-nation-trance-paradise-757-2026-october-08/q4eNgH",
         "http://files.globaldjmix.com/2026/10/08/02/Euphoric Nation - Trance Paradise 757 on AH.FM 08-10-2026.mp3",
         "https://static1.squarespace.com/static/5b0845798f51306f80b9224c/t/6ac73187e1f8781ba792e736/1792044857161/Euphoric+Nation+-+Trance+Paradise+757.mp3",
         "http://files.globaldjmix.com/2026/10/08/02/Euphoric"
@@ -334,31 +352,13 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/nicky-romero-protocol-radio-739-2026-october-08",
-      "article_fetched": true,
-      "title": "Nicky Romero - Protocol Radio 739 (08 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://podcasts.protocol-radio.com/podcast/protocol-radio-739.m4a"
-      ],
-      "audio_url": "https://podcasts.protocol-radio.com/podcast/protocol-radio-739.m4a",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/nicky_romero_-_protocol_radio_739_2026-10-08.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/armin-van-buuren-ruben-de-ronde-paul-oakenfold-a-state-of-trance-asot-1298-2026-october-08",
       "article_fetched": true,
       "title": "Armin van Buuren & Ruben De Ronde & Paul Oakenfold - A State Of Trance ASOT 1298 (08 October 2026)",
       "audio_ok": true,
       "audio_method": "intermediate",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/armin-van-buuren-ruben-de-ronde-paul-oakenfold-a-state-of-trance-asot-1298-2026-october-08/YCPU4s",
+        "http://box.globaldjmix.com/media/armin-van-buuren-ruben-de-ronde-paul-oakenfold-a-state-of-trance-asot-1298-2026-october-08/q4eNgH",
         "http://files.globaldjmix.com/2026/10/08/Armin van Buuren - A State Of Trance Episode 1298.mp3",
         "http://files.globaldjmix.com/2026/10/08/Armin"
       ],
@@ -378,7 +378,7 @@
       "audio_ok": true,
       "audio_method": "intermediate",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/markus-schulz-sander-van-doorn-global-dj-broadcast-2026-october-08/YCPU4s",
+        "http://box.globaldjmix.com/media/markus-schulz-sander-van-doorn-global-dj-broadcast-2026-october-08/q4eNgH",
         "http://files.globaldjmix.com/2026/10/08/Markus Schulz - Global DJ Broadcast (8 October 2026) with guest Sander van Doorn.mp3",
         "https://mcdn.podbean.com/mf/web/5z2v7doykhoqzqz1/GDJB_Oct_8_2026_Markus_Schulz_and_Sander_van_Doorn.mp3",
         "http://files.globaldjmix.com/2026/10/08/Markus"
@@ -399,7 +399,7 @@
       "audio_ok": true,
       "audio_method": "intermediate",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/afrojack-jacked-radio-781-2026-october-08/YCPU4s",
+        "http://box.globaldjmix.com/media/afrojack-jacked-radio-781-2026-october-08/q4eNgH",
         "http://files.globaldjmix.com/2026/10/08/Afrojack - Jacked Radio 781 on AH.FM 08-10-2026.mp3",
         "https://cdn.podtoo.com/syndication/2026/10/1791389853733full_episode_JACKED-RADIO--781--WORLD-.mp3",
         "http://files.globaldjmix.com/2026/10/08/Afrojack"
@@ -420,7 +420,7 @@
       "audio_ok": true,
       "audio_method": "intermediate",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/ori-uplift-uplifting-only-713-2026-october-08/YCPU4s",
+        "http://box.globaldjmix.com/media/ori-uplift-uplifting-only-713-2026-october-08/q4eNgH",
         "http://files.globaldjmix.com/2026/10/08/Ori Uplift - Uplifting Only 713 (Oct 8, 2026).mp3",
         "http://files.globaldjmix.com/2026/10/08/Ori"
       ],
@@ -440,7 +440,7 @@
       "audio_ok": true,
       "audio_method": "intermediate",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/jes-unleash-the-beat-727-2026-october-08/YCPU4s",
+        "http://box.globaldjmix.com/media/jes-unleash-the-beat-727-2026-october-08/q4eNgH",
         "http://files.globaldjmix.com/2026/10/08/JES - Unleash The Beat 727 (08 October 2026).mp3",
         "http://files.globaldjmix.com/2026/10/08/JES"
       ],
@@ -448,26 +448,6 @@
       "audio_attempts": 1,
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/jes_unleash_the_beat_2022.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/spinnin-records-spinnin-sessions-700-2026-october-08",
-      "article_fetched": true,
-      "title": "Spinnin Records - Spinnin Sessions 700 (08 October 2026)",
-      "audio_ok": true,
-      "audio_method": "intermediate",
-      "audio_candidates": [
-        "http://box.globaldjmix.com/media/spinnin-records-spinnin-sessions-700-2026-october-08/YCPU4s",
-        "http://files.globaldjmix.com/2026/10/08/Spinnin' Records - Spinnin Sessions 700 (08 October 2026).mp3",
-        "http://files.globaldjmix.com/2026/10/08/Spinnin"
-      ],
-      "audio_url": "http://files.globaldjmix.com/2026/10/08/Spinnin' Records - Spinnin Sessions 700 (08 October 2026).mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/spinnin'_sessions_radio_700_2026-10-08.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -498,7 +478,7 @@
       "audio_ok": true,
       "audio_method": "intermediate",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/beatdealers-welcome-to-the-weekend-495-2026-october-08/YCPU4s",
+        "http://box.globaldjmix.com/media/beatdealers-welcome-to-the-weekend-495-2026-october-08/q4eNgH",
         "http://files.globaldjmix.com/2026/10/08/Beatdealers - Welcome to the Weekend 495 (08.October 2026).mp3",
         "http://files.globaldjmix.com/2026/10/08/Beatdealers"
       ],
@@ -506,6 +486,26 @@
       "audio_attempts": 1,
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/nylo_music_welcome_to_the_weekend_.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/spinnin-records-spinnin-sessions-700-2026-october-08",
+      "article_fetched": true,
+      "title": "Spinnin Records - Spinnin Sessions 700 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/spinnin-records-spinnin-sessions-700-2026-october-08/q4eNgH",
+        "http://files.globaldjmix.com/2026/10/08/Spinnin' Records - Spinnin Sessions 700 (08 October 2026).mp3",
+        "http://files.globaldjmix.com/2026/10/08/Spinnin"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/08/Spinnin' Records - Spinnin Sessions 700 (08 October 2026).mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/spinnin'_sessions_radio_700_2026-10-08.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -536,7 +536,7 @@
       "audio_ok": true,
       "audio_method": "intermediate",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/aly-fila-future-sound-of-egypt-983-2026-october-07/YCPU4s",
+        "http://box.globaldjmix.com/media/aly-fila-future-sound-of-egypt-983-2026-october-07/q4eNgH",
         "http://files.globaldjmix.com/2026/10/07/Aly and Fila - Future Sound Of Egypt 983.mp3",
         "http://files.globaldjmix.com/2026/10/07/Aly"
       ],
@@ -544,6 +544,24 @@
       "audio_attempts": 1,
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/future_sound_of_egypt_with_aly_fila_official.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/kaiserdisco-kd-music-radio-161-2026-october-07",
+      "article_fetched": true,
+      "title": "Kaiserdisco - KD Music Radio 161 (07 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://app.syndicast.co.uk/download/itunes/uploads/audios/16/161-11.mp3"
+      ],
+      "audio_url": "https://app.syndicast.co.uk/download/itunes/uploads/audios/16/161-11.mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/kd_music_radio_show_with_kaiserdisco_2022.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -574,7 +592,7 @@
       "audio_ok": true,
       "audio_method": "intermediate",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/ferry-corsten-resonation-radio-306-2026-october-07/YCPU4s",
+        "http://box.globaldjmix.com/media/ferry-corsten-resonation-radio-306-2026-october-07/q4eNgH",
         "http://files.globaldjmix.com/2026/10/07/Ferry Corsten - Resonation Radio 306 on AH.FM 07-10-2026.mp3",
         "http://files.globaldjmix.com/2026/10/07/Ferry"
       ],
@@ -582,24 +600,6 @@
       "audio_attempts": 1,
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/resonation_radio_presented_by_ferry_corsten.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/kaiserdisco-kd-music-radio-161-2026-october-07",
-      "article_fetched": true,
-      "title": "Kaiserdisco - KD Music Radio 161 (07 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://app.syndicast.co.uk/download/itunes/uploads/audios/16/161-11.mp3"
-      ],
-      "audio_url": "https://app.syndicast.co.uk/download/itunes/uploads/audios/16/161-11.mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/kd_music_radio_show_with_kaiserdisco_2022.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
