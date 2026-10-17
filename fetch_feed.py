@@ -775,7 +775,7 @@ def rss_xml(items):
         ET.SubElement(node, "description").text = item.get("description") or item.get("title") or ""
         enclosure_type = "audio/mpeg"
         ET.SubElement(node, "enclosure", {
-            "url": item["audio_url"].replace(" ", "%20"), "length": str(max(0, int(item.get("length") or 0))),
+            "url": item["audio_url"], "length": str(max(0, int(item.get("length") or 0))),
             "type": enclosure_type,
         })
         if item.get("duration"):
