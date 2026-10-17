@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T21:36:25.595016+00:00",
+  "generated_at": "2026-10-17T00:43:41.819969+00:00",
   "mode": "incremental",
   "archive_source": "https://globaldjmix.com/dj-songs-mp3-download",
   "one_time_legacy_retry_pending": false,
@@ -91,6 +91,24 @@
       "error": null
     },
     {
+      "url": "https://globaldjmix.com/alexander-popov-interplay-radioshow-628-2026-october-05",
+      "article_fetched": true,
+      "title": "Alexander Popov - Interplay Radioshow 628 (05 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://feeds.soundcloud.com/stream/2415921231-popovmusic-interplay-radioshow-628-05-10.mp3"
+      ],
+      "audio_url": "https://feeds.soundcloud.com/stream/2415921231-popovmusic-interplay-radioshow-628-05-10.mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/alexander_popov_-_interplay_radioshow_628_2026-10-05.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
       "url": "https://globaldjmix.com/tiësto-prismatic-041-2026-october-10",
       "article_fetched": true,
       "title": "Tiësto - Prismatic 041 (10 October 2026)",
@@ -106,24 +124,6 @@
       "audio_attempts": 1,
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/prismatic_by_tiesto.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/alexander-popov-interplay-radioshow-628-2026-october-05",
-      "article_fetched": true,
-      "title": "Alexander Popov - Interplay Radioshow 628 (05 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://feeds.soundcloud.com/stream/2415921231-popovmusic-interplay-radioshow-628-05-10.mp3"
-      ],
-      "audio_url": "https://feeds.soundcloud.com/stream/2415921231-popovmusic-interplay-radioshow-628-05-10.mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/alexander_popov_-_interplay_radioshow_628_2026-10-05.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -166,24 +166,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/super8-tab-supertab-radio-289-2026-october-09",
-      "article_fetched": true,
-      "title": "Super8 & Tab - SuperTab Radio 289 (09 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://radio.super8andtab.com/radio/audio/Supertab289.mp3"
-      ],
-      "audio_url": "https://radio.super8andtab.com/radio/audio/Supertab289.mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/super8_tab_-_supertab_radio_2022_rec.jpeg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/circoloco-radio-470-benja-2026-october-09",
       "article_fetched": true,
       "title": "Circoloco Radio 470 - Benja",
@@ -196,6 +178,24 @@
       "audio_attempts": 1,
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/circoloco_radio.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/super8-tab-supertab-radio-289-2026-october-09",
+      "article_fetched": true,
+      "title": "Super8 & Tab - SuperTab Radio 289 (09 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://radio.super8andtab.com/radio/audio/Supertab289.mp3"
+      ],
+      "audio_url": "https://radio.super8andtab.com/radio/audio/Supertab289.mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/super8_tab_-_supertab_radio_2022_rec.jpeg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -241,24 +241,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/anja-schneider-club-room-439-2026-october-08",
-      "article_fetched": true,
-      "title": "Anja Schneider - Club Room 439 (08 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://feeds.soundcloud.com/stream/2415152520-anjaschneider-anja-schneider-clubroom_439.mp3"
-      ],
-      "audio_url": "https://feeds.soundcloud.com/stream/2415152520-anjaschneider-anja-schneider-clubroom_439.mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/anja_sneider_club_room_di_fm.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/nicole-moudaber-in-the-mood-649-live-in-rockerill-cherleroi-belgium-2026-october-08",
       "article_fetched": true,
       "title": "Nicole Moudaber - In The MOOD 649 - Live In Rockerill, Cherleroi, Belgium (08 October 2026)",
@@ -273,6 +255,24 @@
       "audio_attempts": 1,
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/in_the_mood_nicole_moudaber_common.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/anja-schneider-club-room-439-2026-october-08",
+      "article_fetched": true,
+      "title": "Anja Schneider - Club Room 439 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://feeds.soundcloud.com/stream/2415152520-anjaschneider-anja-schneider-clubroom_439.mp3"
+      ],
+      "audio_url": "https://feeds.soundcloud.com/stream/2415152520-anjaschneider-anja-schneider-clubroom_439.mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/anja_sneider_club_room_di_fm.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -359,6 +359,26 @@
       "error": null
     },
     {
+      "url": "https://globaldjmix.com/ori-uplift-uplifting-only-713-2026-october-08",
+      "article_fetched": true,
+      "title": "Ori Uplift - Uplifting Only 713 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/ori-uplift-uplifting-only-713-2026-october-08/LAAexy",
+        "http://files.globaldjmix.com/2026/10/08/Ori Uplift - Uplifting Only 713 (Oct 8, 2026).mp3",
+        "http://files.globaldjmix.com/2026/10/08/Ori"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/08/Ori Uplift - Uplifting Only 713 (Oct 8, 2026).mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/ori_uplift_presents_-_uplifting_only.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
       "url": "https://globaldjmix.com/afrojack-jacked-radio-781-2026-october-08",
       "article_fetched": true,
       "title": "Afrojack - Jacked Radio 781 (08 October 2026)",
@@ -374,26 +394,6 @@
       "audio_attempts": 1,
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/afrojack_-_jacked_radio_660x330.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/ori-uplift-uplifting-only-713-2026-october-08",
-      "article_fetched": true,
-      "title": "Ori Uplift - Uplifting Only 713 (08 October 2026)",
-      "audio_ok": true,
-      "audio_method": "intermediate",
-      "audio_candidates": [
-        "http://box.globaldjmix.com/media/ori-uplift-uplifting-only-713-2026-october-08/LAAexy",
-        "http://files.globaldjmix.com/2026/10/08/Ori Uplift - Uplifting Only 713 (Oct 8, 2026).mp3",
-        "http://files.globaldjmix.com/2026/10/08/Ori"
-      ],
-      "audio_url": "http://files.globaldjmix.com/2026/10/08/Ori Uplift - Uplifting Only 713 (Oct 8, 2026).mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/ori_uplift_presents_-_uplifting_only.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -516,24 +516,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/illenium-phoenix-radio-349-2026-october-08",
-      "article_fetched": true,
-      "title": "Illenium - Phoenix Radio 349 (08 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://cdn.podtoo.com/syndication/2026/10/1791414706880full_episode_PHOENIX-RADIO--349--WORLD-.mp3"
-      ],
-      "audio_url": "https://cdn.podtoo.com/syndication/2026/10/1791414706880full_episode_PHOENIX-RADIO--349--WORLD-.mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/illenium_-_phoenix_radio.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/ferry-corsten-resonation-radio-306-2026-october-07",
       "article_fetched": true,
       "title": "Ferry Corsten - Resonation Radio 306 (07 October 2026)",
@@ -548,6 +530,24 @@
       "audio_attempts": 1,
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/resonation_radio_presented_by_ferry_corsten.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/illenium-phoenix-radio-349-2026-october-08",
+      "article_fetched": true,
+      "title": "Illenium - Phoenix Radio 349 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://cdn.podtoo.com/syndication/2026/10/1791414706880full_episode_PHOENIX-RADIO--349--WORLD-.mp3"
+      ],
+      "audio_url": "https://cdn.podtoo.com/syndication/2026/10/1791414706880full_episode_PHOENIX-RADIO--349--WORLD-.mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/illenium_-_phoenix_radio.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -666,6 +666,26 @@
       "error": null
     },
     {
+      "url": "https://globaldjmix.com/eelke-kleijn-days-like-nights-465-2026-october-06",
+      "article_fetched": true,
+      "title": "Eelke Kleijn - Days Like Nights 465 (06 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/eelke-kleijn-days-like-nights-465-2026-october-06/LAAexy",
+        "http://files.globaldjmix.com/2026/10/06/Eelke Kleijn - Days Like Nights 465 (06 October 2026).mp3",
+        "http://files.globaldjmix.com/2026/10/06/Eelke"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/06/Eelke Kleijn - Days Like Nights 465 (06 October 2026).mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/eelke_kleijn_days_like_nights.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
       "url": "https://globaldjmix.com/claptone-clapcast-585-2026-october-06",
       "article_fetched": true,
       "title": "Claptone - CLAPCAST 585 (06 October 2026)",
@@ -681,26 +701,6 @@
       "audio_attempts": 1,
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/claptone_clapcast_2022.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/eelke-kleijn-days-like-nights-465-2026-october-06",
-      "article_fetched": true,
-      "title": "Eelke Kleijn - Days Like Nights 465 (06 October 2026)",
-      "audio_ok": true,
-      "audio_method": "intermediate",
-      "audio_candidates": [
-        "http://box.globaldjmix.com/media/eelke-kleijn-days-like-nights-465-2026-october-06/LAAexy",
-        "http://files.globaldjmix.com/2026/10/06/Eelke Kleijn - Days Like Nights 465 (06 October 2026).mp3",
-        "http://files.globaldjmix.com/2026/10/06/Eelke"
-      ],
-      "audio_url": "http://files.globaldjmix.com/2026/10/06/Eelke Kleijn - Days Like Nights 465 (06 October 2026).mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/eelke_kleijn_days_like_nights.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -805,24 +805,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/alison-wonderland-radio-wonderland-491-2026-october-05",
-      "article_fetched": true,
-      "title": "Alison Wonderland - Radio Wonderland 491 (05 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://cdn.podtoo.com/syndication/2026/10/1790981306441full_episode_RADIO-WONDERLAND--491--WORLD-.mp3"
-      ],
-      "audio_url": "https://cdn.podtoo.com/syndication/2026/10/1790981306441full_episode_RADIO-WONDERLAND--491--WORLD-.mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/alison_wonderland_-_radio_wonderland.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/apollo-nash-scorchin-radio-325-2026-october-05",
       "article_fetched": true,
       "title": "Apollo Nash - Scorchin Radio 325 (05 October 2026)",
@@ -837,6 +819,24 @@
       "audio_attempts": 1,
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/scorchin_radio.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/alison-wonderland-radio-wonderland-491-2026-october-05",
+      "article_fetched": true,
+      "title": "Alison Wonderland - Radio Wonderland 491 (05 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://cdn.podtoo.com/syndication/2026/10/1790981306441full_episode_RADIO-WONDERLAND--491--WORLD-.mp3"
+      ],
+      "audio_url": "https://cdn.podtoo.com/syndication/2026/10/1790981306441full_episode_RADIO-WONDERLAND--491--WORLD-.mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/alison_wonderland_-_radio_wonderland.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
