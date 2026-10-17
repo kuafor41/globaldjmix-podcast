@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T16:23:35.765832+00:00",
+  "generated_at": "2026-10-17T16:42:16.740276+00:00",
   "mode": "incremental",
   "archive_source": "https://globaldjmix.com/dj-songs-mp3-download",
   "one_time_legacy_retry_pending": false,
@@ -11,8 +11,8 @@
   "images_found": 31,
   "images_verified": 31,
   "audio_resolution_methods": {
-    "direct": 16,
-    "intermediate": 15
+    "intermediate": 15,
+    "direct": 16
   },
   "test_passed": null,
   "saved_episode_count": 7126,
@@ -49,18 +49,20 @@
   "retry_queue_processed": 0,
   "diagnostics": [
     {
-      "url": "https://globaldjmix.com/bobina-russia-goes-clubbing-938-2026-october-09",
+      "url": "https://globaldjmix.com/parts-enhanced-sessions-870-with-dj-cøsmic-dream-2026-october-16",
       "article_fetched": true,
-      "title": "Bobina - Russia Goes Clubbing 938 (09 October 2026)",
+      "title": "PARTS - Enhanced Sessions 870 (with DJ CØSMIC DREAM) (16 October 2026)",
       "audio_ok": true,
-      "audio_method": "direct",
+      "audio_method": "intermediate",
       "audio_candidates": [
-        "https://feeds.soundcloud.com/stream/2415418251-russiagoesclubbing-episode-938.mp3"
+        "http://box.globaldjmix.com/media/parts-enhanced-sessions-870-with-dj-cØsmic-dream-2026-october-16/q4eNgH",
+        "http://files.globaldjmix.com/2026/10/16/Enhanced Music - Enhanced Sessions 870 (DJ CГ!SMIC DREAM).mp3",
+        "http://files.globaldjmix.com/2026/10/16/Enhanced"
       ],
-      "audio_url": "https://feeds.soundcloud.com/stream/2415418251-russiagoesclubbing-episode-938.mp3",
+      "audio_url": "http://files.globaldjmix.com/2026/10/16/Enhanced Music - Enhanced Sessions 870 (DJ CГ!SMIC DREAM).mp3",
       "audio_attempts": 1,
       "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/music_box_radio_bobina.jpg",
+      "image_url": "https://globaldjmix.com/files/download/enhanced_sessions_870_2026-10-16.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -105,20 +107,18 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/parts-enhanced-sessions-870-with-dj-cøsmic-dream-2026-october-16",
+      "url": "https://globaldjmix.com/bobina-russia-goes-clubbing-938-2026-october-09",
       "article_fetched": true,
-      "title": "PARTS - Enhanced Sessions 870 (with DJ CØSMIC DREAM) (16 October 2026)",
+      "title": "Bobina - Russia Goes Clubbing 938 (09 October 2026)",
       "audio_ok": true,
-      "audio_method": "intermediate",
+      "audio_method": "direct",
       "audio_candidates": [
-        "http://box.globaldjmix.com/media/parts-enhanced-sessions-870-with-dj-cØsmic-dream-2026-october-16/q4eNgH",
-        "http://files.globaldjmix.com/2026/10/16/Enhanced Music - Enhanced Sessions 870 (DJ CГ!SMIC DREAM).mp3",
-        "http://files.globaldjmix.com/2026/10/16/Enhanced"
+        "https://feeds.soundcloud.com/stream/2415418251-russiagoesclubbing-episode-938.mp3"
       ],
-      "audio_url": "http://files.globaldjmix.com/2026/10/16/Enhanced Music - Enhanced Sessions 870 (DJ CГ!SMIC DREAM).mp3",
+      "audio_url": "https://feeds.soundcloud.com/stream/2415418251-russiagoesclubbing-episode-938.mp3",
       "audio_attempts": 1,
       "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/enhanced_sessions_870_2026-10-16.jpg",
+      "image_url": "https://globaldjmix.com/files/download/music_box_radio_bobina.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -164,36 +164,18 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/alexander-popov-interplay-radioshow-628-2026-october-05",
+      "url": "https://globaldjmix.com/super8-tab-supertab-radio-289-2026-october-09",
       "article_fetched": true,
-      "title": "Alexander Popov - Interplay Radioshow 628 (05 October 2026)",
+      "title": "Super8 & Tab - SuperTab Radio 289 (09 October 2026)",
       "audio_ok": true,
       "audio_method": "direct",
       "audio_candidates": [
-        "https://feeds.soundcloud.com/stream/2415921231-popovmusic-interplay-radioshow-628-05-10.mp3"
+        "https://radio.super8andtab.com/radio/audio/Supertab289.mp3"
       ],
-      "audio_url": "https://feeds.soundcloud.com/stream/2415921231-popovmusic-interplay-radioshow-628-05-10.mp3",
+      "audio_url": "https://radio.super8andtab.com/radio/audio/Supertab289.mp3",
       "audio_attempts": 1,
       "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/alexander_popov_-_interplay_radioshow_628_2026-10-05.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/gai-barone-patterns-721-2026-october-07",
-      "article_fetched": true,
-      "title": "Gai Barone - Patterns 721 (07 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://feeds.soundcloud.com/stream/2415823203-gai-barone-patterns-721.mp3"
-      ],
-      "audio_url": "https://feeds.soundcloud.com/stream/2415823203-gai-barone-patterns-721.mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/gai_barone_patterns_2022.jpg",
+      "image_url": "https://globaldjmix.com/files/download/super8_tab_-_supertab_radio_2022_rec.jpeg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -218,18 +200,54 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/super8-tab-supertab-radio-289-2026-october-09",
+      "url": "https://globaldjmix.com/gai-barone-patterns-721-2026-october-07",
       "article_fetched": true,
-      "title": "Super8 & Tab - SuperTab Radio 289 (09 October 2026)",
+      "title": "Gai Barone - Patterns 721 (07 October 2026)",
       "audio_ok": true,
       "audio_method": "direct",
       "audio_candidates": [
-        "https://radio.super8andtab.com/radio/audio/Supertab289.mp3"
+        "https://feeds.soundcloud.com/stream/2415823203-gai-barone-patterns-721.mp3"
       ],
-      "audio_url": "https://radio.super8andtab.com/radio/audio/Supertab289.mp3",
+      "audio_url": "https://feeds.soundcloud.com/stream/2415823203-gai-barone-patterns-721.mp3",
       "audio_attempts": 1,
       "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/super8_tab_-_supertab_radio_2022_rec.jpeg",
+      "image_url": "https://globaldjmix.com/files/download/gai_barone_patterns_2022.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/cloudcage-monstercat-silk-showcase-874-2026-october-08",
+      "article_fetched": true,
+      "title": "Cloudcage - Monstercat Silk Showcase 874 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://traffic.megaphone.fm/MSC7027724798.mp3"
+      ],
+      "audio_url": "https://traffic.megaphone.fm/MSC7027724798.mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/jacob_henry_tom_fall_jayeson_andel_johan_vilborg_vintage_morelli_and_terry_da_libra_monstercat_silk_showcase_2022.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/alexander-popov-interplay-radioshow-628-2026-october-05",
+      "article_fetched": true,
+      "title": "Alexander Popov - Interplay Radioshow 628 (05 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://feeds.soundcloud.com/stream/2415921231-popovmusic-interplay-radioshow-628-05-10.mp3"
+      ],
+      "audio_url": "https://feeds.soundcloud.com/stream/2415921231-popovmusic-interplay-radioshow-628-05-10.mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/alexander_popov_-_interplay_radioshow_628_2026-10-05.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -256,42 +274,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/anja-schneider-club-room-439-2026-october-08",
-      "article_fetched": true,
-      "title": "Anja Schneider - Club Room 439 (08 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://feeds.soundcloud.com/stream/2415152520-anjaschneider-anja-schneider-clubroom_439.mp3"
-      ],
-      "audio_url": "https://feeds.soundcloud.com/stream/2415152520-anjaschneider-anja-schneider-clubroom_439.mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/anja_sneider_club_room_di_fm.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
-      "url": "https://globaldjmix.com/cloudcage-monstercat-silk-showcase-874-2026-october-08",
-      "article_fetched": true,
-      "title": "Cloudcage - Monstercat Silk Showcase 874 (08 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://traffic.megaphone.fm/MSC7027724798.mp3"
-      ],
-      "audio_url": "https://traffic.megaphone.fm/MSC7027724798.mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/jacob_henry_tom_fall_jayeson_andel_johan_vilborg_vintage_morelli_and_terry_da_libra_monstercat_silk_showcase_2022.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/eric-prydz-epic-radio-040-2026-october-08",
       "article_fetched": true,
       "title": "Eric Prydz - Epic Radio 040 (08 October 2026)",
@@ -307,6 +289,24 @@
       "audio_attempts": 1,
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/eric_prydz_-_epic_radio_040_2026-10-07.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/anja-schneider-club-room-439-2026-october-08",
+      "article_fetched": true,
+      "title": "Anja Schneider - Club Room 439 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://feeds.soundcloud.com/stream/2415152520-anjaschneider-anja-schneider-clubroom_439.mp3"
+      ],
+      "audio_url": "https://feeds.soundcloud.com/stream/2415152520-anjaschneider-anja-schneider-clubroom_439.mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/anja_sneider_club_room_di_fm.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -372,26 +372,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/ori-uplift-uplifting-only-713-2026-october-08",
-      "article_fetched": true,
-      "title": "Ori Uplift - Uplifting Only 713 (08 October 2026)",
-      "audio_ok": true,
-      "audio_method": "intermediate",
-      "audio_candidates": [
-        "http://box.globaldjmix.com/media/ori-uplift-uplifting-only-713-2026-october-08/q4eNgH",
-        "http://files.globaldjmix.com/2026/10/08/Ori Uplift - Uplifting Only 713 (Oct 8, 2026).mp3",
-        "http://files.globaldjmix.com/2026/10/08/Ori"
-      ],
-      "audio_url": "http://files.globaldjmix.com/2026/10/08/Ori Uplift - Uplifting Only 713 (Oct 8, 2026).mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/ori_uplift_presents_-_uplifting_only.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/markus-schulz-sander-van-doorn-global-dj-broadcast-2026-october-08",
       "article_fetched": true,
       "title": "Markus Schulz & Sander van Doorn - Global DJ Broadcast (08 October 2026)",
@@ -428,6 +408,26 @@
       "audio_attempts": 1,
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/afrojack_-_jacked_radio_660x330.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/ori-uplift-uplifting-only-713-2026-october-08",
+      "article_fetched": true,
+      "title": "Ori Uplift - Uplifting Only 713 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "intermediate",
+      "audio_candidates": [
+        "http://box.globaldjmix.com/media/ori-uplift-uplifting-only-713-2026-october-08/q4eNgH",
+        "http://files.globaldjmix.com/2026/10/08/Ori Uplift - Uplifting Only 713 (Oct 8, 2026).mp3",
+        "http://files.globaldjmix.com/2026/10/08/Ori"
+      ],
+      "audio_url": "http://files.globaldjmix.com/2026/10/08/Ori Uplift - Uplifting Only 713 (Oct 8, 2026).mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/ori_uplift_presents_-_uplifting_only.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
@@ -550,24 +550,6 @@
       "error": null
     },
     {
-      "url": "https://globaldjmix.com/illenium-phoenix-radio-349-2026-october-08",
-      "article_fetched": true,
-      "title": "Illenium - Phoenix Radio 349 (08 October 2026)",
-      "audio_ok": true,
-      "audio_method": "direct",
-      "audio_candidates": [
-        "https://cdn.podtoo.com/syndication/2026/10/1791414706880full_episode_PHOENIX-RADIO--349--WORLD-.mp3"
-      ],
-      "audio_url": "https://cdn.podtoo.com/syndication/2026/10/1791414706880full_episode_PHOENIX-RADIO--349--WORLD-.mp3",
-      "audio_attempts": 1,
-      "image_found": true,
-      "image_url": "https://globaldjmix.com/files/download/illenium_-_phoenix_radio.jpg",
-      "image_http_ok": true,
-      "audio_error": null,
-      "image_error": null,
-      "error": null
-    },
-    {
       "url": "https://globaldjmix.com/ferry-corsten-resonation-radio-306-2026-october-07",
       "article_fetched": true,
       "title": "Ferry Corsten - Resonation Radio 306 (07 October 2026)",
@@ -582,6 +564,24 @@
       "audio_attempts": 1,
       "image_found": true,
       "image_url": "https://globaldjmix.com/files/download/resonation_radio_presented_by_ferry_corsten.jpg",
+      "image_http_ok": true,
+      "audio_error": null,
+      "image_error": null,
+      "error": null
+    },
+    {
+      "url": "https://globaldjmix.com/illenium-phoenix-radio-349-2026-october-08",
+      "article_fetched": true,
+      "title": "Illenium - Phoenix Radio 349 (08 October 2026)",
+      "audio_ok": true,
+      "audio_method": "direct",
+      "audio_candidates": [
+        "https://cdn.podtoo.com/syndication/2026/10/1791414706880full_episode_PHOENIX-RADIO--349--WORLD-.mp3"
+      ],
+      "audio_url": "https://cdn.podtoo.com/syndication/2026/10/1791414706880full_episode_PHOENIX-RADIO--349--WORLD-.mp3",
+      "audio_attempts": 1,
+      "image_found": true,
+      "image_url": "https://globaldjmix.com/files/download/illenium_-_phoenix_radio.jpg",
       "image_http_ok": true,
       "audio_error": null,
       "image_error": null,
